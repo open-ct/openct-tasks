@@ -37,17 +37,17 @@
    </script>
    <script type="text/javascript">
       var taskStrings = {
-         success: "Congratulations, you succeeded !",
-         end: "end",
-         toRemove: "To remove a card, drag & drop it \noutside of the response area.",
-         wrongSpot: "There is already a card there. You can remove a card by dragging it towards the grid.",
-         wrongNeighbourLeft: "The card you are trying to place is not at the coordinates given by the card place to its left.",
-         wrongNeighbourRight: "The card you are trying to place gives the coordinates of a card that doesn't correspond to the card place on its right.",
-         wrongOrder: "Place the cards starting from the left.",
-         wrongFirstLetter: "This first card is not the correct one. Read the task statement again.",
+         success: "祝贺你,你成功了!",
+         end: "结束",
+         toRemove: "若要删除卡片，请拖拽&拖拽它\n到响应区域之外。",
+         wrongSpot: "这里已经有一张卡片了。你可以通过将这里的卡片拖向网格区域来移除它。",
+         wrongNeighbourLeft: "你试图放置的卡片不在其左边的卡片位置所给出的坐标处。",
+         wrongNeighbourRight: "你试图放置的卡片给出了一张卡片的坐标，而这张卡片并不对应于其右侧的位置。",
+         wrongOrder: "请从左边第一个开始放置卡片。",
+         wrongFirstLetter: "第一张卡片就不正确哦。请再读一遍题干。",
          failure: function(level) {
             if(level == "easy" || level == "medium"){
-               var word = "the 5 symbols password";
+               var word = "5个符号的密码";
             }else if(level == "hard"){
                var word = "the three 5 symbols passwords"
             }
@@ -55,27 +55,27 @@
          },
          wrongGoto: function(letter,goto,nextLetter,nextCoord) {
             if (goto == null) {
-               return "The card "+letter+" should be at the end of a password, and can't be followed by another card.";
+               return "卡片 "+letter+" 应该在密码的最后一位, 它后面不能再放置卡片了。";
             } else {
                return "The card "+letter+" indicates the cell "+goto.col+goto.row+", but the card "+nextLetter+" that follows it comes from cell "+nextCoord.col+nextCoord.row+".";
             }
          },
          wrongLastLetter: function(lastLetterCoord) {
-            return "The password is not completed, since the last symbol is not the one from cell "+lastLetterCoord.col+lastLetterCoord.row+".";
+            return "密码未完成哦！ "+lastLetterCoord.col+lastLetterCoord.row+".";
          },
-         sameWordTwice: "The same password is present twice",
+         sameWordTwice: "同一个密码出现了两次",
          tooManyWords: function(n) {
-            var plural = (n > 1) ? "s" : "";   
+            var plural = (n > 1) ? "s" : "";
             return "You only need to form "+n+" password"+plural+" in the grid.";
          },
          missingWord: function(nbWords, nbSolutions) {
-            var plural = (nbWords > 1) ? "s" : "";   
+            var plural = (nbWords > 1) ? "s" : "";
             return "VYou have found " + nbWords + " password" + plural + ". Continue and find the " + nbSolutions + " passwords.";
          },
-         wrongLength: function(solutionLength) { 
-            return "This password doesn't contain " + solutionLength + " symbols."; 
+         wrongLength: function(solutionLength) {
+            return "This password doesn't contain " + solutionLength + " symbols.";
          },
-         dropLabel: "Place cards in this area to create three words."
+         dropLabel: "在这个区域放置卡片来创造三个密码。"
       };
    </script>
    <script type="text/javascript" src="task.js"></script>
@@ -96,23 +96,23 @@
 
 <body>
    <div id="task">
-      <h1>Passwords</h1>
+      <h1>密码</h1>
       <div id="tabsContainer"></div>
       <div id="taskContent">
          <div id="zone_1">
             <div class="consigne">
-               <p>Drag cards from the grid into the answer area, to form <span class="easy medium">a password</span><span class="hard" style="font-weight:bold">three passwords</span> made of 5 symbols<span class="hard"> each</span>.</p>
-               <p class="hard">For each password:</p>
+               <p>将卡片从网格拖到答案区域，形成<span class="easy medium">一个密码</span><span class="hard" style="font-weight:bold">三个密码</span>，是由5个符号组成的<span class="hard">密码</span>。</p>
+               <p class="hard">对于每个密码:</p>
                <ul class="instr-bullets">
-               <li class="easy">The first card is the card from cell <strong>A1</strong>.</li>
-               <li class="medium hard">We don't tell you where the first card is from.</li>
-               <li>Each card indicates which cell contains the next card.</li>
-               <li class="medium hard">The last card is from cell <strong><span class="medium">F3</span><span class="hard">C6</span></strong>.</li>
+               <li class="easy">第一张卡片来自单元格<strong> A1</strong>。</li>
+               <li class="medium hard">我们不会告诉你第一张卡片是哪里来的。</li>
+               <li>每张卡片下方的字母和数字指示包含下一张卡片来自哪个单元格。</li>
+               <li class="medium hard">最后一张卡来自单元格<strong><span class="medium"> F3</span><span class="hard"> C6</span></strong>。</li>
                </ul>
 
                <table><tr>
                <td><img src="example.png" style="width:100px; padding-bottom:0px"></td>
-               <td>For example, after this card,<br/>you need to put the card located in column C, row 2.
+               <td>例如，在这张卡片之后，你需要放置的卡片是来自C列第2行的卡片。
                </td></tr></table>
             </div>
          </div>
@@ -127,8 +127,8 @@
    <!-- task -->
 
    <div id="solution">
-      <h2>Solution</h2>
-      <h2>It's informatics!</h2>
+      <h2>答案解析</h2>
+      <h2>这是提示信息！</h2>
    </div>
    <!-- task-solution -->
 </body>

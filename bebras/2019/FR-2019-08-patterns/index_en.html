@@ -37,16 +37,16 @@
    </script>
    <script type="text/javascript">
       var taskStrings = {
-         success: "Congratulations, you succeeded!",
+         success: "祝贺你,你成功了!",
          missingPattern: function(n) {
-            return "You must place the "+n+" blue shapes in the grid."
+            return "你必须在网格中放置 "+n+" 个蓝色形状哦。"
          },
          almost: function(n) {
-            return "You managed to place "+(n - 1)+" shapes. Try again to place the last one."
+            return "你已经成功地放置了 "+(n - 1)+" 个形状。 请试着再放置最后一个。"
          },
-         errorMismatch: "The content of the two cells highlighted in red is different.",
-         rotationText: "Turn the shapes.",
-         spotOccupied: "The shapes should not overlap one another."
+         errorMismatch: "红色高亮表示这两个单元格所覆盖的内容是不同的。",
+         rotationText: "变换形状",
+         spotOccupied: "这些形状不应该相互重叠。"
       };
    </script>
    <script type="text/javascript" src="task.js"></script>
@@ -64,14 +64,14 @@
 
 <body>
    <div id="task">
-      <h1>Repeated patterns</h1>
+      <h1>模式的复制</h1>
       <div id="tabsContainer"></div>
       <div id="taskContent">
          <div id="zone_1">
             <div class="consigne">
-               <p>Place the <strong><span class="nbPatterns"></span></strong> blue shapes on the grid.</p>
-               <p>The content of every shape should be the same.</p>
-               <p class="hard">You can turn the shapes at each step.</p>
+               <p>请把 <strong><span class="nbPatterns"></span></strong> 个蓝色图形放在下方的网格上。</p>
+               <p>请保持每个形状所覆盖图案的内容是相同的。</p>
+               <p class="hard">你可以在每一步结束后转动形状，改变形状的方向。</p>
          </div>
          </div>
          <div id="zone_2">
@@ -89,8 +89,8 @@
    <!-- task -->
 
    <div id="solution">
-      <h2>Solution</h2>
-      <h2>C'est de l'informatique !</h2>
+      <h2>答案解析</h2>
+      <h2>这是提示信息！排列组合</h2>
    </div>
    <!-- task-solution -->
 </body>

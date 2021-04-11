@@ -36,10 +36,10 @@
    </script>
    <script type="text/javascript">
       var taskStrings = {
-         success: "Congratulations, you succeeded !",
+         success: "恭喜, 你成功了 !",
          tooManyJumps: function(nbBounces, maxNbBounces) {
-             return "Beaver was able to jump down " + nbBounces + " times.<br/>Beaver should be stuck after " + maxNbBounces + " jumps."; },
-         "try": "Try"
+             return "小松鼠可以跳跃 " + nbBounces + " 次。<br/>注意，本任务要求小松鼠最多只能跳跃 " + maxNbBounces + " 次哦。"; },
+         "try": "验证一下"
 
       };
    </script>
@@ -59,19 +59,19 @@
 
 <body>
    <div id="task">
-      <h1>Jumping posts</h1>
+      <h1>小松鼠跳柱子</h1>
       <div id="tabsContainer"></div>
       <div id="taskContent">
          <div id="zone_1">
             <div class="consigne">
                <p>
-                  Beaver tries to touch as many bamboos as possible. Your goal is to stop him.
+                  小松鼠想要尽可能多地碰到柱子。而你的目标是阻止它碰到柱子。
                </p>
                <p>
-                  Beaver can only jump down. Beaver can never jump above bamboos higher than himself.
+                  小松鼠只能从高的柱子跳到低的柱子上，它没办法跳到比自己高的柱子上。
                </p>
                <p>
-                  Change the order of the bamboos, to prevent him from jumping more than <strong><span class="easy medium">two</span><span class="hard">three</span></strong> times.
+                  改变柱子的顺序，使得小松鼠最多只能跳跃 <strong><span class="easy medium">2</span><span class="hard">3</span></strong>次。
                </p>
             </div>
          </div>
@@ -87,8 +87,8 @@
    <!-- task -->
 
    <div id="solution">
-      <h2>Solution</h2>
-      <h2>It's informatics!</h2>
+      <h2>答案解析</h2>
+      <h2>这是提示信息！折半查找，快速排序</h2>
    </div>
    <!-- task-solution -->
 </body>

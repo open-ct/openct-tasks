@@ -37,16 +37,16 @@
    </script>
    <script type="text/javascript">
       var taskStrings = {
-         success: "Congratulations, you succeeded !",
-         "try": "Try",
-         next: "Next",
-         errorMissingAndExtraGift: "There are pots without flowers, and flowers without pots.",
-         errorExtraGift: "There are pots without flowers.",
-         errorMissingGift: "There are flowers without pots.",
-         noBeaver: "Click on the kangaroos that will receive flowers.",
-         tryToUnderstand: "Find out why some of the kangaroos get flowers, and others don't, then click on the \"next\" button.",
-         clickNext: "Click on the \"next\" button ton continue.",
-         clickNow: "Click right away to try, or click on some kangaroos to give them pots."
+         success: "恭喜, 你成功了 !",
+         "try": "试一试",
+         next: "下一步",
+         errorMissingAndExtraGift: "有盆无花，有花无盆。",
+         errorExtraGift: "存在没有花的花盆哦。",
+         errorMissingGift: "依然存在没有花盆的花哦。",
+         noBeaver: "点击将要收到鲜花的袋鼠。",
+         tryToUnderstand: "看看为什么有些袋鼠会有花，而有些却没有，然后点击 \"下一步\" 按钮。",
+         clickNext: "点击 \"下一步\" 按钮继续。",
+         clickNow: "马上点击试试，或者点击一些袋鼠给它们花盆。"
       };
    </script>
    <script type="text/javascript" src="task.js"></script>
@@ -63,25 +63,25 @@
 
 <body>
    <div id="task">
-      <h1>Predictions</h1>
+      <h1>预测</h1>
       <div id="tabsContainer"></div>
       <div id="taskContent">
          <div id="zone_1">
             <div class="consigne">
-               <p>Your goal is to understand why some kangaroos receive flowers, and others don't.</p>
-               <p>Click on the "try" button to make flowers appear.</p>
-               <p>Look carefully at the content of the
+               <p>你的目标是探究为什么有些袋鼠会收到花，而有些则不会。</p>
+               <p>点击“试一试”按钮，让花朵出现。</p>
+               <p>请仔细观察一下：
                <strong>
-               <span class="easy">cell above each kangaroo.</span>
-               <span class="medium hard">cells below and above each kangaroo.</span>
+               <span class="easy">注意每只袋鼠上方的小方格哦。</span>
+               <span class="medium hard">注意每只袋鼠上方和下方的小方格哦。</span>
                </strong></p>
 
-               <p>Then, click on the "next" button, then click on the kangaroos that will receive flowers, to give them a flower pot.</p>
+               <p>然后，点击“下一步”按钮，再点击将收到鲜花的袋鼠，给它们一个花盆。</p>
          </div>
          </div>
          <div id="zone_2">
             <div id="paper"></div>
-            
+
             <div id="error"></div>
          </div>
       </div>
@@ -96,8 +96,8 @@
    <!-- task -->
 
    <div id="solution">
-      <h2>Solution</h2>
-      <h2>It's informatics!</h2>
+      <h2>答案解析</h2>
+      <h2>这是提示信息！分治法</h2>
    </div>
    <!-- task-solution -->
 </body>

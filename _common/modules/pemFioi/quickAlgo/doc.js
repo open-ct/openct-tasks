@@ -52,7 +52,7 @@ var docLanguageStrings = {
     subcategory: 'Subcategory “{}”',
     blocklyColumns: ["Display", "Internal name", "Comment"],
     columns: ["Block name", "Python name", "Internal name", "Type", "Arguments", "Description", "Comment"],
-    nameUndefined: 'undefined!',
+    nameUndefined: '未定义!',
     action: 'Action',
     sensor: 'Sensor'
   },

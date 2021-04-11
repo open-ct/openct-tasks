@@ -42,7 +42,7 @@
                }
                return "You have found the treasure, but it was possible to do it with " + walls + ". Try again. Be careful, the treasure might be in a different room."
             },
-            success: "Congratulations, you succeeded!",
+            success: "祝贺你,你成功了!",
             notFinished: "You haven't found the treasure yet!",
             feedbackHard: "Total thickness</br> of walls broken: ",
             feedbackEasyMedium: "Number of walls broken: "
@@ -50,7 +50,7 @@
       </script>
       <script type="text/javascript" src="task.js"></script>
       <style type="text/css">
-         #anim { 
+         #anim {
             width: 500px;
             display: inline-block;
             vertical-align: middle;
@@ -60,12 +60,12 @@
             display: inline-block;
             text-align: center;
             vertical-align: middle;
-            margin-left:20px; 
+            margin-left:20px;
          }
          #nb_walls {
             font-size: 2.5em;
             font-weight: bold;
-         }        
+         }
       </style>
    </head>
    <body>
@@ -100,7 +100,7 @@
       </div>
       <div id="solution">
          <h2>Solution</h2>
-		 
+
 		 <div class="easy">
            <p>In each step you choose to destroy the walls of the corridor that has the least number of walls, of those that lead to rooms that you cannot yet visit.</p>
            <p>In the example below you should therefore start with the corridor at the bottom right.</p>
@@ -118,7 +118,7 @@
            <p>For example, in the part below, the next wall to break is one of the thick walls 13.</p>
            <img src="sol_hard.png">
          </div>
-		 
+
       </div>
     </body>
 </html>

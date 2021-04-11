@@ -37,21 +37,21 @@
    </script>
    <script type="text/javascript">
       var taskStrings = {
-         success: "Congratulations, you succeeded!",
+         success: "祝贺你,你成功了!",
          rollerParameters: function(id) {
             if(id){
                id += " ";
             }
             return "Roller "+id+" parameters:";
          },
-         nbStamps: "Number of stamps:",
-         stamps: "Stamps:",
-         startPos: "Start position:",
-         endPos: "End position:",
-         target: "Target:",
-         "try": "Try",
-         error: "The tile highlighted in red is different from the target.",
-         clickHere: "Click to change"
+         nbStamps: "邮票的数量:",
+         stamps: "邮票:",
+         startPos: "起始位置:",
+         endPos: "结束位置:",
+         target: "目标:",
+         "try": "试一试",
+         error: "红色高亮表示该邮票与目标不同。",
+         clickHere: "点击这里改变邮票类型"
       };
    </script>
    <script type="text/javascript" src="task.js"></script>
@@ -90,21 +90,21 @@
 
 <body>
    <div id="task">
-      <h1>Roller</h1>
+      <h1>滚筒</h1>
       <div id="tabsContainer"></div>
       <div id="taskContent">
          <div id="zone_1">
             <div class="consigne">
-               <p><span class="easy">A roller rolls on the cells. It applies </span><span class="medium hard">Rollers roll on the cells. They apply </span> stamps while rolling.</p>
+               <p><span class="easy">一个滚筒在方格纸上滚动。 它可以印制</span><span class="medium hard">滚筒在方格纸上滚动。 在滚动的时候它们可以印出来 </span> 邮票。</p>
 
-               <p class="easy">Modify its parameters to recreate the target.</p>
-               <p class="medium hard">Click on each roller to view its parameters, and modify them to recreate the target.</p>
+               <p class="easy">修改滚筒的各个参数，以便印刷出目标中的邮票序列。</p>
+               <p class="medium hard">单击每个滚轮可以查看它的参数，请修改它们，以便你可以创建出来目标中的邮票序列。</p>
 
-               <p class="medium">Roller 1 will roll first, then roller 2.</p>
+               <p class="medium">先滚1号滚筒，然后再滚2号滚筒。</p>
 
-               <p class="hard">Roller 1 will roll first, then roller 2, then roller 3.</p>
-               
-               <p class="medium hard"><strong>A roller can change what the previous one did.</strong></p>
+               <p class="hard">先滚1号滚筒，然后再滚2号滚筒，最后是3号滚筒。</p>
+
+               <p class="medium hard"><strong>每个滚轮可以改变前一个滚轮所形成的形状。</strong></p>
 
             </div>
          </div>
@@ -130,8 +130,8 @@
    <!-- task -->
 
    <div id="solution">
-      <h2>Solution</h2>
-      <h2>It's informatics!</h2>
+      <h2>答案解析</h2>
+      <h2>这是提示信息！</h2>
    </div>
    <!-- task-solution -->
 </body>

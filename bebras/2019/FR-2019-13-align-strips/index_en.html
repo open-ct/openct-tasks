@@ -38,20 +38,20 @@
    </script>
    <script type="text/javascript">
       var taskStrings = {
-         success: "Congratulations, you succeeded!",
+         success: "祝贺你,你成功了!",
          wrong: function(nbBeavers) {
-            var msg = "Some Beavers don't receive any water.";
+            var msg = "水没有到达个别小松鼠所在的位置哦。";
             if (nbBeavers == 1) {
-               msg = "Beaver doesn't receive any water.";
+               msg = "水没有到达小松鼠所在的位置哦。";
             }
-            return msg + " Try differently so that all pipes become blue.";
+            return msg + " 尝试不同的方法，让所有管道都变成蓝色。";
            },
-         clickToTurn: "Click to turn",
-         clickToLower: "Click on a wheel to disconnect it",
-         tooManyDisconnect: "You suceeded, but it's possible to do it by disconnecting fewer wheels.",
-         undo: "Undo",
+         clickToTurn: "点击转动",
+         clickToLower: "点击轮子可以断开该轮子与其它轮子的联动",
+         tooManyDisconnect: "你成功了，但是通过断开更少的轮子也是有可能做到的哦。",
+         undo: "撤销",
          nbDisconnect: function(n) {
-            return "Number of disconnections: "+n;
+            return "断开一个轮子的联动转动杠杆的次数: "+n;
          }
       };
    </script>
@@ -71,19 +71,19 @@
 
 <body>
    <div id="task">
-      <h1>Water network</h1>
+      <h1>供水系统</h1>
       <div id="tabsContainer"></div>
       <div id="taskContent">
          <p id="difficultyWarning" class="hard"></p>
          <div id="zone_1">
             <div class="consigne">
-               <p>Your goal is to align the gray pipes so that the water flows from the square tank to  <span class="easy medium">Beaver</span><span class="hard">each of the 4 Beavers</span>.</p>
+               <p>你的目标是对齐灰色的管道，使水从方形水箱流向  <span class="easy medium">小松鼠所在的位置</span><span class="hard">4只小松鼠中的每一只所在的位置</span>。</p>
 
-               <p>The pipes are attatched to wheels. To orient them, you can perform two actions:
+               <p>管道装在轮子上。要改变管道的方向，可以进行两个操作:
                </p>
                <ol class="actions-descr">
-               <li>Move the black lever to make all the connected wheels turn</li>
-               <li>Click on a wheel to disconnect from others, or reconnect it.</li>
+               <li>移动黑色的杠杆使所有相连的轮子转动。</li>
+               <li>点击轮子可以断开该轮子与其它轮子的联动（黑色杠杆移动时该轮子不再一起转动），或者重新连接轮子。</li>
                </ol>
             </div>
          </div>
@@ -99,8 +99,8 @@
    <!-- task -->
 
    <div id="solution">
-      <h2>Solution</h2>
-      <h2>C'est de l'informatique !</h2>
+      <h2>答案解析</h2>
+      <h2>这是提示信息！</h2>
    </div>
    <!-- task-solution -->
 </body>

@@ -37,21 +37,21 @@
    </script>
    <script type="text/javascript">
       var taskStrings = {
-         success: "Congratulations, you succeeded !",
+         success: "恭喜, 你成功了 !",
          tooManyMarkers: function(max) {
-            return "You have no pebbles left in your reserve. Click on pebbles to take them back.";
+            return "你的储备库里没有小石子了。点击上方已经放置的小石子可以把它们带回去。";
          },
-         sumGreaterThan: function(max) { 
-            return "You have no pebbles left in your reserve. Click on pebbles to take them back.";
+         sumGreaterThan: function(max) {
+            return "你的储备库里没有小石子了。点击上方已经放置的小石子可以把它们带回去。";
          },
-         noMarkerBelow: "To place a pebble in the red circle, you need all circles underneath to contain pebbles.",
-         placed: "Pebbles placed",
-         failure: "There is no pebble in the top circle.",
-         reserve: "Reserve of pebbles:",
-         empty: "Empty. Remove pebbles that are not needed.",
-         validateNow: "You succeeded, you just need to validate now.",
-         undo: "Undo",
-         pebbleClick: "Clicking on the pebbles in the reserve doesn't do anything."
+         noMarkerBelow: "如果你想在红色圆圈中放置小石子，是需要下面的所有圆圈里都已经放置了小石子哦。",
+         placed: "已经放置过小石子了",
+         failure: "上面的圆圈里没有小石子。",
+         reserve: "小石子储备库:",
+         empty: "空的。移除不需要的小石子。",
+         validateNow: "你成功了，现在只需要验证一下。",
+         undo: "撤销",
+         pebbleClick: "点击在保护区的小石子没有用哦。"
 
       };
    </script>
@@ -76,17 +76,17 @@
 
 <body>
    <div id="task">
-      <h1>Rising pebbles</h1>
+      <h1>填充小石子</h1>
       <div id="tabsContainer"></div>
       <div id="taskContent">
          <div id="zone_1">
             <div class="consigne">
                <p>
-                  Your goal is to place a pebble in the top circle.
+                  你的目标是在最顶部的圆圈中放置一个小石子。
                </p>
-               <p>To place <span class="easy medium">a</span> pebble<span class="hard">s</span> in a circle, all the circles underneath need to have pebbles. You can then get these back.
+               <p>想要在<span class="easy medium">一个</span>圆圈中放置<span class="hard">数字所对应数量的</span>小石子, 下面所有箭头指向的圆圈里都要有小石子。 然后你可以再把这些小石子拿回储备库。
                </p>
-               <p>Click on a circle to place <span class="easy medium">a</span><span class="hard">the number of</span> pebble<span class="hard">s indicated in the circle, </span> or to remove <span class="easy medium">it</span><span class="hard">them</span>.</p>
+               <p>点击圆圈放置<span class="easy medium">一个</span><span class="hard">圆圈中数字所对应数量的</span>小石子<span class="hard">组合 , </span>或者拿回<span class="easy medium">所放置的小石子</span><span class="hard">小石子</span>.</p>
 
          </div>
          </div>
@@ -102,8 +102,8 @@
    <!-- task -->
 
    <div id="solution">
-      <h2>Solution</h2>
-      <h2>It's informatics!</h2>
+      <h2>答案解析</h2>
+      <h2>这是提示信息！贪心算法</h2>
    </div>
    <!-- task-solution -->
 </body>

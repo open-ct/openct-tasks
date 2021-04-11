@@ -112,7 +112,7 @@ function getLanguageString(key) {
             <div id="miniPlatformHeader">\
                <table>\
                   <td><img src="' + (window.modulesPath?window.modulesPath:'../../../_common/modules') + '/img/castor.png" width="60px" style="display:inline-block;margin-right:20px;vertical-align:middle"/></td>\
-                  <td><span class="platform">Concours castor</span></td>\
+                  <td><span class="platform">高阶思维能力测试</span></td>\
                   <td><a href="http://concours.castor-informatique.fr/" style="display:inline-block;text-align:right;">Le concours Castor</a></td>\
                </table>\
             </div>'

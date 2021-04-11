@@ -196,7 +196,7 @@ if (!isCrossDomain()) {
       }
    };
    platform.stop = function() {
-      platform.chan.destroy(); 
+      platform.chan.destroy();
    };
    platform.validate = function (sMode, success, error) {
       if (!success) success = function(){}; // not mandatory, as most code doesn't use it
@@ -390,7 +390,7 @@ window.displayHelper = {
          enemyWarning: "<strong>Attention :</strong> dans ce défi, l'ordinateur vous empêchera de trouver la solution par hasard."
       },
       en: {
-         version: "Version",
+         version: "版本",
          levelVersionName_easy: "easy version",
          levelVersionName_medium: "medium version",
          levelVersionName_hard: "hard version",
@@ -419,21 +419,21 @@ window.displayHelper = {
          tryToDoBetterOrChangeTask: "Try to do even better, or move on to another task.",
          tryToDoBetterOrMoveToNextLevel: "Try to do even better, or move on to a more difficult version.",
          bestPossibleScoreCongrats: "This is the best possible score on this task, congratulations!",
-         forMorePointsMoveToNextLevel: "To obtain more points, move on to a harder version of this task.",
+         forMorePointsMoveToNextLevel: "要想获得更多的分数，请进入更难的版本。",
          youDidBetterBefore: "You did better before.",
-         scoreStays2: "Your score stays the same.",
-         reloadBestAnswer: "Reload your best answer.",
-         noAnswerSaved: "No answer saved so far for this version.",
+         scoreStays2: "你的得分保持不变",
+         reloadBestAnswer: "重新加载你的最佳答案。",
+         noAnswerSaved: "到目前为止，这个版本还没有答案。",
          validate: "Validate",
-         restart: "Restart",
+         restart: "重新开始",
          harderLevelSolved: "Warning: you already solved a harder version of this task. You won't be able to obtain extra points with this version.",
          showLevelAnyway: "Show it to me anyways.",
-         scoreObtained: "Obtained score:",
+         scoreObtained: "得分：",
          hardVersionTakesTime: "Solving a {0} can take a lot of time. Consider working on the {1} to gain points quickly.",
          illKeepThatInMind: "I'll consider it.",
          harderLevelAvailable: "Note that for this task, you may try to directly work on a harder version than this one.",
          lockedLevel: "This version is locked. Solve the previous version to display it!",
-         gradeThisAnswer: "Grade this answer",
+         gradeThisAnswer: "验证一下",
 
          // The following messages are used for tasks with no feedback
          saveAnswer: "Save this answer",
@@ -456,7 +456,7 @@ window.displayHelper = {
          scoreWouldStay: "With this answer, your score would stay the same:",
          answerNotSavedContestOver: "The contest being over, your answer was not saved. You may {0}.",
          reloadSubmittedAnswer: "reload the validated answer",
-         difficultyWarning: "<strong>Warning:</strong> solving this version takes time.<br/>You would solve the 2 or 3 star versions of other tasks more quickly.",
+         difficultyWarning: "<strong>提醒:</strong> 解决这个版本很耗费时间。<br/>解决2星或3星版本的任务可以更快哦。",
          enemyWarning: "<strong>Warning:</strong> in this challenge, the computer will make sure you don't find the solution by chance."
       },
       sv: {
@@ -2538,7 +2538,7 @@ Beav.dragWithTouch = function(element, onMove, onStart, onEnd) {
       var touches = evt.changedTouches;
       touchingX = touches[0].pageX;
       touchingY = touches[0].pageY;
-      onStart(touches[0].pageX, touches[0].pageY, evt);         
+      onStart(touches[0].pageX, touches[0].pageY, evt);
    }
 
    function onTouchEnd(evt) {
@@ -2547,7 +2547,7 @@ Beav.dragWithTouch = function(element, onMove, onStart, onEnd) {
       }
       onEnd(null);
    }
-   
+
    function onTouchMove(evt) {
       if (disabled) {
          return;
@@ -2557,17 +2557,17 @@ Beav.dragWithTouch = function(element, onMove, onStart, onEnd) {
       var dy = touches[0].pageY - touchingY;
       onMove(dx, dy, touches[0].pageX, touches[0].pageY, evt);
    }
-   
+
    function callOnStart(x,y,event) {
       disabled = true;
       onStart(x,y,event);
    }
-   
+
    function callOnMove(dx,dy,x,y,event) {
       disabled = true;
       onMove(dx,dy,x,y,event);
    }
-   
+
    function callOnEnd(event) {
       disabled = false;
       onEnd(event);
@@ -2624,7 +2624,7 @@ window.implementGetResources = function(task) {
       if (!res.title) {
          res.title = $('title').text();
       }
-      
+
       // Resources
       var curDest = 'task';
       var curType = 'javascript';
@@ -2672,14 +2672,14 @@ window.implementGetResources = function(task) {
          else {
             curDest = res.task;
          }
-         
+
          if ($(this).is('script')) {
             curType = 'javascript';
          }
          else if ($(this).is('style') || $(this).is('link')) {
             curType = 'css';
          }
-         
+
          if ($(this).attr('src')) {
             curDest.push({ type: curType, url: $(this).attr('src'), id: $(this).attr('id') });
          }
@@ -2854,7 +2854,7 @@ function fillImages(text, images, res) {
          'solution': 'Solution',
          'editor': 'Edit',
          'hints': 'Hints',
-         'showSolution': 'Show solution',
+         'showSolution': '显示答案',
          'yourScore': "Your score:",
          'canReadSolution': "You can now read the solution at the bottom of this page.",
          'gradeAnswer': 'Test grader'
@@ -2943,7 +2943,7 @@ function getLanguageString(key) {
             <div id="miniPlatformHeader">\
                <table>\
                   <td><img src="' + (window.modulesPath?window.modulesPath:'../../../_common/modules') + '/img/castor.png" width="60px" style="display:inline-block;margin-right:20px;vertical-align:middle"/></td>\
-                  <td><span class="platform">Concours castor</span></td>\
+                  <td><span class="platform">高阶思维能力测试</span></td>\
                   <td><a href="http://concours.castor-informatique.fr/" style="display:inline-block;text-align:right;">Le concours Castor</a></td>\
                </table>\
             </div>'
