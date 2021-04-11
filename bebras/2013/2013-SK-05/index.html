@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=770, initial-scale=1.0">
+      <title>2013-SK-05</title>
+      <script>
+         window.stringsLanguage = 'fr';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1_M.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+         var modulesPath = '../../../_common/modules';
+         importModules([
+            'jquery-1.7.1', 'jquery-ui.touch-punch', 'raphael-2.1', 'JSON-js',
+            'beav-1.0', 'beaver-task-2.0', 'simulation-2.0', 'raphaelFactory-1.0',
+            'delayFactory-1.0', 'simulationFactory-1.0', 'raphaelButton-1.0',
+            'platform-pr', 'buttonsAndMessages', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1', 'randomGenerator-1.0', 'drag_lib-2.0', 'shape-paths'
+         ]);
+      </script>
+
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/tasks/2013/2013-SK-05/",
+          "language": "fr",
+          "version": "fr.01",
+          "authors": "France-ioi",
+          "translators": [
+          ],
+          "license": "CC BY-SA 3.0",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [
+          ],
+          "acceptedAnswers": [
+              "[3,2,0,2]"
+          ]
+      };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+      <script type="text/javascript">
+         var taskStrings = {
+            success: "Bravo, vous avez réussi !",
+            failure: "Ce n'est pas la bonne réponse",
+            current: "Résultat",
+            target: "Objectif"
+         };
+      </script>
+      <style>
+         #necklace {
+            margin: 1em auto;
+         }
+         #paper {
+            margin: auto;
+            margin-top: 1em;
+         }
+
+      </style>
+      
+   </head>
+   <body>
+      <div id="task">
+         <h1>Collier de perles</h1>
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <div id="zone_1">
+               <div class="consigne">
+                  <p>
+                  Castor veut fabriquer le collier ci-contre à l'aide d'une machine.
+                  </p>
+                  <p>
+                  Pour cela, il doit indiquer un motif de <span class="easy">4</span><span class="medium hard">5</span> perles. La machine <span class="easy">produira alors</span><span class="medium"> doit alors produire</span> un collier en répétant ce motif, en enfilant les perles une par une sur le fil situé sur le haut du collier. <span class="medium hard">Cependant, la machine est cassée et remplace chaque perle du motif par une autre.</span> <span class="hard">D'autre part, elle ne répète pas correctement le motif.</span>
+                  </p>
+                  <p>
+                  Quelle est la séquence de <span class="easy">4</span><span class="medium hard">5</span> perles que Castor doit utiliser&nbsp;?
+                  </p>
+                  <p>
+                  Glissez les perles dans les cases pour former cette séquence. <span class="easy">La première perle vous est donnée.</span>
+                  </p>
+               </div>
+            </div>
+            <div id="zone_2">
+               <div id="necklace"></div>
+               <div id="paper" class="touch"></div>
+            </div>
+         </div>            
+      </div><!-- task -->
+      <div id="solution">
+         <h2>La solution</h2>
+         <p>Le motif à utiliser pour construire le collier est&nbsp;:
+          <table> 
+            <tr>
+               <td><div id="sol1"></div></td>
+               <td><div id="sol2"> </div></td>
+               <td><div id="sol3"> </div></td>
+               <td><div id="sol4"> </div></td>
+            </tr>
+         </table>
+         </p>
+         <p>
+         Notez que les perles sont enfilées par le fil du haut du collier. Ainsi, la première perle enfilée, la perle jaune, se retrouve en première position sur le fil du bas du collier. Le sujet indique que la première perle est jaune, ce qui évite de se tromper en commençant par mettre une perle rouge.
+         </p>
+
+         <h2>C'est de l'informatique </h2>
+
+         <p>
+         De nombreux programmes informatiques, à un moment ou à un autre, répètent un même <i>motif</i> de nombreuses fois. En fait, une des premières machines «&nbsp;programmables&nbsp;» de l'histoire de l'humanité est le <i>métier à tisser</i>. Il s'agit d'une machine mise au point il y a plus de 200 ans qui permet d'automatiser la réalisation de dessins réguliers sur des tissus.
+         </p>
+         <p>
+         Ces métiers à tisser sont contrôlés par des <i>cartes perforées</i>, c'est-à-dire des feuilles cartonnées contenant des trous. Ces trous peuvent ainsi représenter les positions auxquelles faire apparaître des points colorés sur le tissu. Les cartes perforées sont accrochées ensemble de sorte que lorsque la machine arrive à la dernière, elle reparte du début de la première, commençant ainsi une nouvelle répétition du motif.
+         </p>
+      </div> <!-- task-solution -->
+   </body>
+</html>

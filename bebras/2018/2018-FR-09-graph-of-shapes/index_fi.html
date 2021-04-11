@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>2018-FR-09-graph-of-shapes</title>
+      <script>
+           window.stringsLanguage = 'fi';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1_M.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+           var modulesPath = '../../../_common/modules';
+           importModules([
+               'jquery-1.7.1', 'jquery-ui.touch-punch', 'raphael-2.2.1', 'JSON-js',
+               'beav-1.0', 'beaver-task-2.0', 'simulation-2.0', 'raphaelFactory-1.0',
+               'delayFactory-1.0', 'simulationFactory-1.0', 'raphaelButton-1.0',
+               'platform-pr', 'buttonsAndMessages', 'installationAPI.01',
+               'miniPlatform', 'taskStyles-0.1','graph-1.0', 'visual-graph-1.0', 'graph-mouse-1.0']);
+       </script>
+       <script class="remove" type="text/javascript">
+            var json = {
+            "id": "",
+            "language": "fi",
+            "version": "fi.01",
+            "authors": "France-ioi",
+            "translators": "Heikki Hyyrö",
+            "license": "CC BY-SA 3.0",
+            "taskPathPrefix": "",
+            "modulesPathPrefix": "",
+            "browserSupport": [],
+            "fullFeedback": true,
+            "acceptedAnswers": [],
+            "usesRandomSeed": false
+            };
+      </script>
+      <script type="text/javascript">
+         var instructions = "<br/>Voit muuttaa harmaiden neliöiden kuvioita klikkaamalla niitä.";
+         var taskStrings = {
+             success: "Onnittelut, ratkaisit tämän version!",
+             errorArrivedEarly: "Majava saapui perille liian aikaisin: ohjelistassa on vielä käyttämättömiä kuvioita." + instructions,
+             errorOneNotGood: "Majavan edessä oleva kuvio ei täsmää ohjelistan seuraavan kuvion kanssa." + instructions,
+             errorSeveralNotGood: "Mikään Majavan edessä oleva kuvio ei täsmää ohjelistan seuraavan kuvion kanssa." + instructions,
+             errorDefault: "Majavan seuraavan mahdollisen etenemisnuolen kuvio ei täsmää ohjelistan seuraavan kuvion kanssa.",
+             errorMultiplePath: "Majavalla on enemmän kuin yksi mahdollinen etenemisnuoli, joiden kuvio täsmää ohjelistan seuraavan kuvion kanssa: Majava ei tiedä, mitä nuolta pitkin niistä pitäisi edetä." + instructions,
+             instructions: "Ohjelista:",
+             tryButton: "Kokeile",
+             stopButton: "Peru",
+             validateAnswer: "Tarkista vastaus",
+             mustFillAll: "Ainakin yksi harmaa neliö on vielä tyhjä. Aseta jokaiseen kuvio klikkaamalla neliöitä."
+         };
+      </script>
+      <script type="text/javascript" src="shape-paths.js"></script>
+      <script type="text/javascript" src="task.js"></script>
+      <style>
+         #graph path, #graph rect
+         {
+            cursor: pointer;
+         }
+         #graph {
+            text-align: center;
+         }
+         #feedback {
+            margin-top: 0.5em;
+            margin-bottom: 0.1em;
+            min-height: 3em;
+            text-align: center;
+            font-weight: bold;
+            color: red;
+         }
+      </style>
+   </head>
+   <body>
+      <div id="task">
+         <h1>Kuvioreitti</h1>
+         <div id="tabsContainer"></div>   <!-- will contain the versions tabs -->
+         <div id="taskContent">        <!-- will contain the content of the task -->
+            <div id="zone_1">       
+               <div class="consigne">
+                  <p>Aseta jokaiseen harmaaseen neliöön jokin kuvio klikkailemalla neliöitä.</p>
+                  <p>Majava kulkee ohjelistan kuvioita vastaavista etenemisnuolista koostuvan reitin.</p>
+                  <p style="margin-bottom:0.3em">Tavoite on saada Majava saapumaan kotitaloonsa, kun hän on askeltanut ohjelistan mukaisen reitin loppuun asti.</p> 
+               </div>
+            </div>
+            <div id="zone_2">
+               <div id="graph"></div>
+               <div id="topBar"></div>
+               <div id="feedback"></div>
+            </div>
+         </div>
+         <!-- a list of hidden images that are part of the task (not its solution
+         but are not already present as elements in the task html. This
+         always includes icon.png -->
+         <img src="icon.png" style="display:none">
+         <img id="castor" src="castor.png" style="display:none">
+         <img id="house" src="house.png" style="display:none">
+      </div>
+    <div id="solution">
+      <h2>Ratkaisu</h2>
+
+         <div class="easy">
+           <p>Ohjelistassa on 5 kuviota, joten majavan pitää seurata yläkautta kiertävää reittiä, jossa on 5 askelta, eikä suoraa reittiä, jossa on vain 4 askelta. Näin ollen asettelemme ohjelistan kuviot järjestyksessä majavasta kotitaloon yläkautta kiertävälle reitille.</p>
+           <img src="sol_easy_1.png">
+           <p>Yläkautta kiertävän reitin väliin jättämiin kahteen neliöön voi laittaa mitkä tahansa kuviot, kunhan niistä vasemmanpuoleinen ei ole ympyrä: muuten majava voisi harhautua kulkemaan toisella askeleellaan suoraan eteenpäin. Alla esitetyssä valmiissa ratkaisussa näihin kahteen neliöön on laitettu kolmiot.</p>
+           <img src="sol_easy_2.png">
+         </div>
+
+         <div class="medium">
+           <p>Majavan reitin keskikohdasta lähtee kaksi "silmukkaa": toinen kiertää yläpuolella ja toinen alapuolella. Jos majava kulkisi ensin alasilmukkaa pitkin, päätyisi hän ohjelistan kuvioiden mukaan aloittamaan toisenkin alasilmukan kierroksen ja jäisi jumiin.</p>
+           <img src="sol_medium_1.png">
+           <p>Näin ollen meidän on ohjattava majava ensin yläsilmukkaan:</p>
+           <img src="sol_medium_2.png">
+           <p>Tämän jälkeen ainoa vaihtoehto on ohjata majava alasilmukkaan, koska on vielä liian aikaista kääntyä kotitaloa kohti. Voimme huomata, että nyt ohjelista ohjaa majavan kulkemaan ensin yläsilmukan, sitten alasilmukan, ja sitten vielä kerran yläsilmukan. Tämän jälkeen ohejlistassa on enää vain yksi kuvio jäljellä, ja se asetetaan kotitalon eteen. Ratkaisu on valmis:</p>
+           <img src="sol_medium_3.png">
+         </div>
+
+         <div class="hard">
+           <p>Ohjelistassa on ensimmäisen ympyrän jälkeen kaksi kertaa jakso (tähti, kolmio, kolmio, tähti), sen jälkeen tähti, sen jälkeen kaksi kertaa jakso (ympyrä, ympyrä, kolmio), ja lopuksi tähti. Aloitetaan sijoittamalla ensimmäinen neljän kuvion jakso käymään neljän neliön muodostama alasilmukka. Ohjelista ohjaa majavan kulkemaan kyseisen alasilmukan kaksi kertaa, päätyen lopuksi silmukan oikeaan yläkulmaan.</p>
+           <img src="sol_hard_1.png">
+           <p>Nyt ainoa mahdollisuus on ohjata majava käymään oikealla ylhäällä oleva kolmen neliön silmukka. Asetetaan siihen jälkimmäinen ohjelistassa havaitsemamme jakso. Ohjelista ohjaa majavan kulkemaan yläsilmukan kaksi kertaa. Sen jälkeen ohjelistassa on jäljellä enää tähti, ja asetamme sen kotitalon eteen. Ratkaisu on valmis:</p>
+           <img src="sol_hard_2.png">
+         </div>
+
+
+
+      <!-- description of the solution -->
+      <h2>Tämä on tietojenkäsittelyä!</h2>
+      <p>Tehtävän taustalla piileskelee tietojenkäsittelyssä monien ongelmien analysointiin ja ratkaisemiseen käytetty <b>tilakone</b> (tai <b>automaatti</b>). Tilakone koostuu joukosta tiloja (tehtävässä nuolten päissä olevat kohdat: majava, reitin varren pallot ja kotitalo) sekä säännöistä, miten tilojen välillä siirrytään (tehtävässä nuolet ja neliöt, joihin piti asettaa kuviot). Tilakoneelle syötetään syötetta (tehtävässä majava lukee ohjelistaa) yksi symboli kerrallaan, ja tilakone "siirtyy" tämänhetkisestä tilasta siirtymäsääntöjen nyt luettua symbolia vastaavaan tilaan. Tilakone käyttäytyy siten varsin samantapaisesti kuin tehtävässä reittiä pitkin kulkeva majava.
+      </p>
+      <p>Katso lisää esim. <a href="https://fi.wikipedia.org/wiki/%C3%84%C3%A4rellinen_automaatti" target="_blank">https://fi.wikipedia.org/wiki/Äärellinen_automaatti</a>.</p>
+      <img src="icon.png" style="display:none">
+    </div>
+   </body>
+

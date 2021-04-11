@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>2016-FR-24-blockly-fill</title>
+      <script>
+      window.stringsLanguage = 'fr';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.0.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+        var modulesPath = '../../../_common/modules/';
+        importModules([
+            'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+            'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1']);
+        // set Blockly as default language when none is specified through ?language=
+        importLanguageModules('blockly');
+      </script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/algorea_tasks/algorea_2016_2/2015-FR-24-blockly-fill/",
+          "language": "fr",
+          "version": "fr.01",
+          "authors": "Mathias Hiron",
+          "translators": [],
+          "license": "",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "fullFeedback": true,
+          "minWidth": "auto"
+      };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+   </head>
+   <body onresize="task.displayedSubTask.updateScale()">
+      <div id="task">
+         <h1>Exercice démo</h1>
+         <img src="obstacle.png" style="display:none" />
+         <img src="green.png" style="display:none" />
+         <img src="demo.gif" style="display:none" />
+         <img src="green_robot.png" style="display:none" />
+         <img src="icon.png" style="display:none" />
+
+         <div id="tabsContainer"></div>
+         <div id="taskContent" style="text-align:left;position:relative">
+            <div id="taskIntro" style="width: 100%">
+               <p>
+                  Programmer le robot pour qu'il atteigne la case verte en évitant les obstacles.
+               </p>
+               <p data-lang="blockly scratch">
+                  Pour cela, glissez des blocs depuis la zone de gauche pour former une séquence d'instructions attachée au bloc « Programme du robot ».
+               </p>
+               <div data-lang="python">
+                  <p>Le programme Python à écrire est :</p>
+<code>
+from robot import *
+
+droite()
+haut()
+droite()
+</code>
+               </div>
+               <p>
+                  Cliquez ensuite sur le bouton « Valider le programme ».
+               </p>
+               <div data-lang="blockly scratch">
+                  <p>
+                     L'animation suivante vous montre ces étapes :
+                  </p>
+                  <img src="demo.gif" style="border: solid black 1px"/>
+               </div>
+            </div>
+            <div id="gridContainer"></div>
+            <div id="blocklyLibContent"></div>
+         </div>
+
+      </div><!-- task -->
+   </body>
+</html>
+ 

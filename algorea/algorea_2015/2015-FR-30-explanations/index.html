@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>2015-FR-30-explanations</title>
+      <script class="module" type="text/javascript" src="../../../_common/modules/ext/jquery/1.7/jquery.min.js" id="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+      <script class="module" type="text/javascript" src="../../../_common/modules/ext/json/json2.min.js" id="https://github.com/douglascrockford/JSON-js"></script>
+      <script class="module" type="text/javascript" src="../../../_common/modules/ext/raphael/2.2.1/raphael.min.js" id="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.1/raphael.min.js"></script>
+
+      <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/beaver-task.js" id="http://www.france-ioi.org/modules/pemFioi/beaver-task.js"></script>
+      <script class="remove" type="text/javascript" src="../../../_common/modules/ext/jschannel/jschannel.js"></script>
+      <script class="proxy module" type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/platform-pr.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/platform-pr.js"></script>
+      <script class="stdButtonsAndMessages module" type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"  id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"></script>
+      <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/beav-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/beav-1.0.js"></script>
+      <script class="remove" type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js"></script>
+      <script class="remove" type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/miniPlatform.js"></script>
+
+      <link class="module" rel="stylesheet" type="text/css" href="../../../_common/modules/pemFioi/taskStyles-0.1.css" id="http://www.france-ioi.org/modules/pemFioi/taskStyles-0.1.css">
+      <script type="text/javascript" src="task.js"></script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/tasks/algorea_2015/2015-FR-30-explanations/",
+          "language": "fr",
+          "version": "fr.01",
+          "authors": "Mathias Hiron",
+          "translators": [],
+          "license": "",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "acceptedAnswers": [""],
+          "fullFeedback": true
+      };
+      </script>
+      <style>
+         .questions  {
+            margin-bottom: 1em;
+            border-collapse: collapse;
+         }
+         .questions td {
+            border: 1px solid black;
+            padding: .5em;
+         }
+         .questions td + td {
+            text-align: center;
+         }
+      </style>
+   </head>
+
+   <body>
+      <div id="task">
+         <h1>Gestion de versions</h1>
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <p>
+               Bienvenue ! Chacune des 9 questions propose 3 versions du même problème, accessibles depuis les onglets au-dessus de l'énoncé.
+               Ceci est la version <b class="easy">facile</b><b class="medium">moyenne</b><b class="hard">difficile</b> de cette question.
+            </p>
+            <p>
+               Votre score pour chaque question est <b>le meilleur de vos scores parmi les trois versions</b>.
+               Plus une version est difficile, plus elle rapporte de points.
+            </p>
+            <p>
+               Si vous trouvez que la version facile d'une question est très simple,
+               vous pouvez donc la passer et résoudre directement la version moyenne ou même difficile pour gagner du temps.
+            </p>
+            <p>
+               Si par contre vous bloquez sur les versions moyennes ou difficiles de certaines questions,
+               préférez résoudre les versions faciles des autres questions.
+               <b>Avec toutes les versions faciles résolues, vous aurez un peu plus de la moitié des points.</b>
+            </p>
+            <p>
+               <b>Vérifions que vous avez compris :</b>
+            </p>
+            <table class="questions">
+               <tr class="easy">
+                  <td>Résoudre la version difficile rapporte tous les points d'une question.</td>
+                  <td><input id="ans_0_0" type="button" value="non" onclick="task.selectAnswer(0, 0)"></td>
+                  <td><input id="ans_0_1" type="button" value="oui" onclick="task.selectAnswer(0, 1)"></td>
+               </tr>
+               <tr class="easy">
+                  <td>Résoudre la version facile de toutes les questions donne plus de la moitié des points.</td>
+                  <td><input id="ans_4_0" type="button" value="non" onclick="task.selectAnswer(4, 0)"></td>
+                  <td><input id="ans_4_1" type="button" value="oui" onclick="task.selectAnswer(4, 1)"></td>
+               </tr>
+               <tr class="medium">
+                  <td>On peut avoir tous les points d'une question sans résoudre la version moyenne.</td>
+                  <td><input id="ans_1_0" type="button" value="non" onclick="task.selectAnswer(1, 0)"></td>
+                  <td><input id="ans_1_1" type="button" value="oui" onclick="task.selectAnswer(1, 1)"></td>
+               </tr>
+               <tr class="hard">
+                  <td>
+                     Si j'ai 3 points à la version facile, 5 points à la version moyenne,
+                     et 0 point à la version difficile, mon score pour cette question est :
+                  </td>
+                  <td><input id="ans_2_0" type="button" value="5 points" onclick="task.selectAnswer(2, 0)"></td>
+                  <td><input id="ans_2_1" type="button" value="8 points" onclick="task.selectAnswer(2, 1)"></td>
+               </tr>
+               <tr class="hard">
+                  <td>
+                     Si je bloque longtemps sur la version moyenne ou difficile d'une question,
+                     il vaut mieux passer aux questions suivantes et assurer d'abord les points des versions faciles.
+                  </td>
+                  <td><input id="ans_3_0" type="button" value="non" onclick="task.selectAnswer(3, 0)"></td>
+                  <td><input id="ans_3_1" type="button" value="oui" onclick="task.selectAnswer(3, 1)"></td>
+               </tr>
+            </table>
+         </div>
+         <img src="icon.png" style="display: none;"/>
+      </div><!-- task -->
+
+      <div id="solution">
+         <!--<h2>Solution</h2>-->
+      </div><!-- task-solution -->
+   </body>
+</html>

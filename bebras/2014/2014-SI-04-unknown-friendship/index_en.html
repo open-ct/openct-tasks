@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>2014-SI-04-unknown-friendship</title>
+      <script>
+         window.stringsLanguage = 'en';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1_M.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+         var modulesPath = '../../modules';
+         importModules([
+            'jquery-1.7.1', 'jquery-ui.touch-punch', 'raphael-2.2.1', 'JSON-js',
+            'beav-1.0', 'beaver-task-2.0', 'simulation-2.0', 'raphaelFactory-1.0',
+            'delayFactory-1.0', 'simulationFactory-1.0', 'raphaelButton-1.0', 'drag_lib-2.0',
+            'platform-pr', 'buttonsAndMessages', 'installationAPI.01', 'randomGenerator-1.0',
+            'miniPlatform', 'taskStyles-0.1','graph-1.0', 'visual-graph-1.0']);
+      </script>
+      <script class="remove" type="text/javascript">
+
+       var json = {
+          "id": "http://castor-informatique.fr/tasks/2014/2014-SI-04-unknown-friendship/",
+          "language": "en",
+          "version": "",
+          "authors": "Janez Demšar, janez.demsar@fri.uni-lj.si, Slovenia ; Arthur Chargueraud ; Mathias Hiron, France-ioi",
+          "translators": [],
+          "license": "CC BY-NC-SA 3.0",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [
+          ],
+          "acceptedAnswers": [
+          ],
+          "difficulty": {"1": "medium", "2": "medium", "3": "easy", "4": "easy"},
+          "categories": {},
+          "answerType": "Interactive, drag and drop",
+          "fullFeedback": true, 
+          "usesRandomSeed": true
+      };
+      </script>
+      <script>
+         var taskStrings = {
+            and: "and",
+            placeNamesOnRectangles: "Place all names in rectangles.",
+            success: "Congratulations, you did it!",
+            failure: "Friends are not in the right place. Try again."
+         };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+      <style>
+         body * {
+            box-sizing: content-box;
+         }
+         #relations ul {
+            padding: 0 1em;            
+         }
+         #relations ul li {
+            display: inline-block;
+            margin: 0.5em;
+            padding: 0.5em;
+            /*font-weight: bold;*/
+            width: 120px;
+            border: 1px solid black;
+            text-align: center;
+         }
+         .easy, .hard {
+            display: none;
+         }
+      </style>
+  </head>
+  <body>
+      <div id="task">
+         <h1>The Friends</h1>
+         <div id="tabsContainer"></div>   <!-- will contain the versions tabs -->
+         <div id="taskContent">        <!-- will contain the content of the task --> 
+            <div id="zone_1">
+               <div class="consigne">
+                  <p>
+                  A Beaver entered in a new class. He quickly spotted who is a friend with whom&nbsp;:
+                  </p>
+                  <div id="relations"></div>
+                  <p>
+         	 To see more clearly, Beaver drew the diagram below,
+                  Where each rectangle represents a friend and each line connects two friends.
+                  However, he forgot to write the names of the people in the rectangles. Can help him?&nbsp;?
+                  </p>
+                  <p>
+         	 Drag the names to the corresponding rectangles.
+                  </p>
+               </div>
+            </div>
+            <div id="zone_2">
+               <div id="anim" class="touch"></div>
+            </div>
+         </div>
+         <img src="icon.png" style="display:none" >
+      </div>
+      
+      <div id="solution">
+<!--
+          <h2>Solution</h2>
+          <p>
+          Une manière d'aborder le problème consiste à repérer sur le graphe qu'il y a des cas singuliers : une seule personne n'a qu'un ami, et une seule personne a 4 amis. On peut donc étudier le nombre d'amis de chaque personne et repérer qui peut être l'un de ces cas singuliers pour le placer en premier.
+          </p>
+          <ul>
+          <li>
+          Par exemple, on peut commencer par repérer le nom de la seule personne qui n'a qu'un seul ami ; puis le placer directement. Ensuite, on peut placer le nom de l'ami de cette personne.
+          </li>
+          <li>
+          Pour continuer, parmi les deux amis de cette dernière personne, l'une a un total de <span class="easy">3</span> <span class="hard">2</span> amis, tandis que l'autre a un total de 4 amis. On peut donc distinguer ces deux amis et les mettre aux bons endroits.
+          </li>
+          <li>
+          De même, on peut identifier les autres personnes en fonction du nombre total de leurs amis, en continuant de proche en proche.
+          </li>
+          </ul>
+          <p>
+          Voici la solution complète.
+          </p>
+          <div id="animSolution" class="touch"></div>
+
+          <h2>C'est de l'informatique !</h2>
+
+          <p>
+          Le diagramme ci-dessus est appelé un «&nbsp;graphe&nbsp;». De manière générale, un graphe sert à représenter un ensemble de «&nbsp;relations&nbsp;» entre des objets ou des personnes. 
+          </p>
+          <p>Les graphes peuvent être gigantesques, comme par exemple le graphe de Facebook qui contient plus d'un milliards de personnes, chacune ayant typiquement de l'ordre d'une centaine d'amis. Pour pouvoir récupérer des informations sur la structure de graphes aussi grands, comme par exemple pour trouver une chaîne d'amis connectant deux personnes données, il est nécessaire d'utiliser des algorithmes très efficaces.
+          </p>
+-->
+      </div>
+  </body>
+</html>

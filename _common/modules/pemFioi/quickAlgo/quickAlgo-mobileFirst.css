@@ -1,0 +1,1917 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+html {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+body, select {
+  font-size: 12px;
+  position: relative;
+  overflow-x: hidden;
+  font-family: 'Titillium Web', Arial, Helvetica, sans-serif;
+  color: #9b9b9b;
+}
+
+code { 
+  padding: 2px 4px;
+  font-size: 90%;
+  font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+  color: #a91c66;
+  background-color:#f9f2f6;
+  border-radius: 4px;
+}
+
+@media screen and (min-width: 1024px) {
+  body, select {
+    font-size: 16px;
+  }
+}
+body.blockly > *,
+body > * {
+  width: auto;
+}
+* {
+  box-sizing: border-box;
+}
+
+.interfaceToggled {
+  display: none !important;
+}
+input:disabled,
+select:disabled {
+  background-color: #eee !important;
+  cursor: not-allowed !important;
+}
+button:disabled {
+  background-color: #e3e3e3 !important;
+  cursor: not-allowed !important;
+}
+/*****************
+  EDITOR MENU
+*****************/
+#tabsContainer.noLevelTabs {
+  -webkit-box-pack: end;
+    -ms-flex-pack: end;
+        justify-content: flex-end;
+}
+#openEditorMenu {
+  position: relative;
+  background-color: #4a4a4a;
+  padding: 8px 13px;
+  border-radius: 5px 0 0 5px;
+  color: #fff;
+  cursor: pointer;
+  order: 1;
+  font-size: 12px;
+}
+@media screen and (orientation: landscape) { /* horizontal screen layout */
+  #openEditorMenu {
+    /*align-self: flex-end;*/
+  }
+}
+@media screen and (min-width: 1024px) {
+  #openEditorMenu {
+    /*align-self: flex-end;*/
+  }
+}
+#openEditorMenu::before,
+#openEditorMenu::after {
+  content: " ";
+  position: absolute;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  background: transparent;
+}
+#openEditorMenu::before {
+  top: -10px;
+  border-radius: 50% 0;
+  box-shadow: 0px 5px 0 #4a4a4a;
+}
+#openEditorMenu::after {
+  bottom: -10px;
+  border-radius: 0 50%;
+  box-shadow: 0px -5px 0 #4a4a4a;
+}
+#editorMenu {
+  height: 100%;
+  position: absolute;
+  right: -50%;
+  width: 50%;
+  top: 0;
+  box-shadow: 2px 0 0 #000 inset;
+  background-color: #4a4a4a;
+  color: #FFF;
+  z-index: 99;
+  overflow: auto;
+}
+#editorMenu .editorMenuHeader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 12px 20px;
+  z-index: 1;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+@media /* Tablets and desktop */
+  screen and (min-width: 768px) and (max-width: 1024.9px) and (orientation: portrait),
+  screen and (min-width: 855px) and (min-height: 450px) and (orientation: landscape),
+  screen and (min-width: 1025px) and (min-height: 450px) {
+  #editorMenu {
+    width: 250px;
+    right: -250px;
+  }
+  #editorMenu .editorMenuHeader {
+    position: static;
+  }
+}
+#editorMenu #closeEditorMenu {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  cursor: pointer;
+}
+#editorMenu #closeEditorMenu:hover {
+  color:#4a90e2;
+}
+#editorMenu .editorActions {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  text-transform: uppercase;
+}
+#editorMenu .editorActions div {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 0px;
+          flex: 1 1 0;
+  padding: 20px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-top: 1px solid #5c5c5c;
+  cursor: pointer;
+  text-align: center;
+}
+#editorMenu .editorActions div.editorActionDisabled,
+#editorMenu .editorActions div.editorActionDisabled:hover {
+  color: #707070;
+}
+#editorMenu .editorActions div.editorActionForbidden,
+#editorMenu .editorActions div.editorActionForbidden:hover {
+  color: #ff001f;
+}
+@media /* Tablets and desktop */
+  screen and (min-width: 768px) and (max-width: 1024.9px) and (orientation: portrait),
+  screen and (min-width: 855px) and (min-height: 450px) and (orientation: landscape),
+  screen and (min-width: 1025px) and (min-height: 450px) {
+  #editorMenu .editorActions {
+    height: auto;
+  }
+  #editorMenu .editorActions div {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+  }
+}
+#editorMenu .editorActions div:first-child {
+  border-top-width: 0;
+}
+#editorMenu .editorActions div:hover {
+  color:#4a90e2;
+}
+#editorMenu .editorActions div span.fas,
+#editorMenu .editorActions div span.far {
+  font-size: 32px;
+}
+@media /* Landscape mobiles */
+  screen and (min-width: 480px) and (max-width: 854.9px) and (orientation: landscape),
+  screen and (min-width: 480px) and (max-height: 449.9px) and (orientation: landscape) {
+  #editorMenu .editorActions {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  #editorMenu .editorActions div {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 50%;
+            flex: 1 1 50%;
+    padding: 20px 0;
+    font-size: 10px;
+    border-right: 1px solid #5c5c5c;
+    border-bottom: 1px solid #5c5c5c;
+    margin-bottom: -1px;
+  }
+  #editorMenu .editorActions div:first-child {
+    border-top-width: 1px;
+  }
+}
+#editorMenu #saveUrl {
+  display: none;
+}
+#editorMenu input[type=file] {
+  cursor: pointer;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  -moz-opacity: 0;
+  filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+}
+
+/************************
+  LAYOUT & GENERIC ELEMENTS
+*************************/
+h2.sectionTitle {
+  font-size: 22px;
+  font-weight: 100;
+  color: #4a90e2;
+  margin: 0;
+}
+h2.sectionTitle .icon {
+  color: #fff;
+  background-color: #4a90e2;
+  border-radius: 50%;
+  width: 2em;
+  line-height: 2em;
+  text-align: center;
+  font-size: 14px;
+  vertical-align: text-bottom;
+  margin-right: 10px;
+}
+p {
+  margin: 0 0 15px 0;
+}
+#task {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: stretch;
+      -ms-flex-pack: stretch;
+          justify-content: stretch;
+  height: 100vh;
+  width: 100vw;
+}
+#taskContent {
+  -webkit-box-flex: 2;
+      -ms-flex: 2 0 0px;
+          flex: 2 0 0;
+  position: static !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: stretch;
+      -ms-flex-pack: stretch;
+          justify-content: stretch;
+  min-height: 0;
+}
+#introGrid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 40%;
+          flex: 1 1 40%;
+  min-height: 0;
+}
+#taskIntro {
+  padding: 10px 20px;
+  overflow: auto;
+}
+#taskIntro .introContent {
+  max-height: 100%;
+  overflow: auto;
+}
+#gridContainer {
+  background-color: #fff;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 50%;
+          flex: 1 0 50%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+@media /* Mobiles */
+  screen and (max-width: 767.9px) and (orientation: portrait),
+  screen and (min-width: 480px) and (max-width: 854.9px) and (orientation: landscape),
+  screen and (min-width: 480px) and (max-height: 449.9px) and (orientation: landscape) {
+  .mode-player #taskContent {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .mode-player #introGrid {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 0 40%;
+        flex: 1 0 40%;
+  }
+  .mode-instructions #introGrid {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: 100%;
+  }
+  .mode-instructions #taskIntro {
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 0px;
+            flex: 1 1 0;
+  }
+  .mode-player #taskIntro,
+  .mode-instructions #blocklyLibContent,
+  .mode-editor #introGrid {
+    display: none;
+  }
+  .mode-player #editorBar {
+    display: none !important;
+  }
+  .mode-instructions .notificationMessage,
+  .mode-player .notificationMessage.notificationMessageLock {
+    display: none;
+  }
+}
+
+@media /* Landscape mobiles */
+  screen and (min-width: 480px) and (max-width: 854.9px) and (orientation: landscape),
+  screen and (min-width: 480px) and (max-height: 449.9px) and (orientation: landscape) {
+
+  #taskContent {
+    background-color: #fff;
+  }
+  .mode-player #taskContent {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .mode-player #introGrid {
+    min-width: 0;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 50%;
+            flex: 0 0 50%;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .mode-instructions #introGrid {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  }
+  .mode-editor #editorBar {
+    display: none;
+  }
+  .fullscreen .mode-editor #editorBar {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  #taskIntro {
+    background-color: #f1f2f7;
+    padding: 15px;
+    overflow: auto;
+    border-radius: 5px 5px 0 0;
+    margin: 10px 10px 0 10px;
+  }
+  #gridContainer #gridButtonsAfter {
+    padding-bottom: 5px;
+  }
+  .mode-instructions #introGrid {
+    -webkit-box-flex: 1;
+      -ms-flex: 1 0 40%;
+          flex: 1 0 40%;
+  }
+  .mode-instructions #gridContainer {
+    min-width: 0;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 40%;
+            flex: 0 0 40%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .mode-player #blocklyLibContent {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 60%;
+            flex: 0 0 60%;
+    min-width: 0;
+    margin: 10px 10px 0 10px;
+  }
+}
+@media /* Tablets portrait */
+  screen and (min-width: 768px) and (orientation: portrait) {
+
+  #taskContent {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  /* introGrid : takes the height it needs up to max-height, but keeps at least
+     min-height so the grid, player and test buttons display correctly */
+  #introGrid {
+    position: relative;
+    margin-bottom: 10px;
+    -webkit-box-flex: 1;
+        -ms-flex: 0 1 auto;
+            flex: 0 1 auto;
+    min-height: 250px;
+    max-height: 40%;
+  }
+  #introGrid .speedControls {
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 40%; /* Must be the same width as the task intro */
+    padding-top: 10px;
+    border-top: 3px solid #fff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+      justify-content: space-evenly;
+    background-color: #f1f2f7;
+    -webkit-box-shadow: 0 1px 0 0px #ccc inset;
+            box-shadow: 0 1px 0 0px #ccc inset;
+  }
+  #taskIntro {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 40%;
+            flex: 1 1 40%;
+    background-color: #fff;
+    padding-bottom: 50px;
+  }
+  #gridContainer {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 60%;
+            flex: 1 0 60%;
+    min-width: 0;
+  }
+  #taskIntro {
+    overflow: visible;
+    padding: 0;
+  }
+  #taskIntro .introContent {
+    padding: 10px 20px;
+    max-height: 100%;
+    overflow: auto;
+    margin-bottom: 20px;
+  }
+  #taskIntro.hasLongIntro .introContent {
+    padding-bottom: 70px;
+  }
+}
+@media /* Tablets landscape and desktop */
+  screen and (min-width: 855px) and (min-height: 450px) and (orientation: landscape) {
+  #introGrid {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    max-width: 40%;
+  }
+  /* introGrid elements
+     taskIntro takes the height it needs up to max-height (set by
+     quickAlgoInterface) ; then whatever is left goes to gridContainer */
+  #taskIntro {
+    background-color: #fff;
+    -webkit-box-flex: 1;
+        -ms-flex: 0 1 auto;
+            flex: 0 1 auto;
+  }
+  #gridContainer {
+    background-color: transparent;
+    -webkit-box-flex: 0;
+        -ms-flex: 1 0 auto;
+            flex: 1 0 auto;
+  }
+
+  #gridContainer .gridArea {
+    background-color: #fff;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+  }
+  #taskIntro {
+    overflow: visible;
+    padding: 0;
+  }
+  #taskIntro .introContent {
+    padding: 10px 20px;
+    max-height: 100%;
+    overflow: auto;
+    margin-bottom: 20px;
+  }
+  #taskIntro.hasLongIntro .introContent {
+    padding-bottom: 40px;
+  }
+}
+/*****************
+  TASK GRID & TESTS
+*****************/
+.gridArea {
+    position: relative;
+    overflow-x: auto;
+    max-width: 100%;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+            flex-grow: 1;
+    z-index: 2;
+    text-align: center;
+    min-height: 150px;
+    min-width: 200px;
+}
+#grid {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+#testSelector {
+    padding-left: 10px;
+}
+.testResult {
+    margin-left: 10px;
+    padding: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 50px;
+    color: #FFFFFF;
+    width: 250px;
+    font-size: 12px;
+    font-weight: 500;
+}
+.testResult.testSuccess {
+    background-color: green;
+}
+.testResult.testPartial {
+    background-color: orange;
+}
+.testResult.testFailure {
+    background-color: red;
+}
+.testResult.testEvaluating {
+    background-color: purple;
+}
+.testResultIcon.testSuccess span {
+  background: #b8e986;
+  border-radius: 100%;
+  color: #fff;
+  padding: 5px;
+}
+.testResultIcon.testPartial,
+.testResultIcon.testFailure {
+  color: #ff001f;
+}
+#gridContainer #gridButtonsAfter {
+  background-color: #f1f2f7;
+}
+#gridButtonsAfter #testSelector {
+  padding: 0;
+}
+#testSelector .tabs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  line-height: 24px;
+  text-align: center;
+}
+#testSelector .tabs .testTab {
+  -webkit-box-flex: 1;
+    -ms-flex: 1 0 auto;
+        flex: 1 0 auto;
+  cursor: pointer;
+  padding: 2px;
+  text-transform: uppercase;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+    -ms-flex-pack: center;
+  justify-content: center;
+  align-items: center;
+}
+#testSelector .testTab.currentTest {
+  box-shadow: 0 1px 0 0px #ccc;
+  color: #4a90e2;
+  border-radius: 0 0 10px 10px;
+  background-color: #fff;
+  z-index: 1;
+}
+#testSelector .testTab.currentTest::before,
+#testSelector .testTab.currentTest:not(:last-child)::after {
+  content: " ";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: transparent;
+}
+#testSelector .testTab.currentTest::before {
+  top: -3px;
+  border-radius: 0 70%;
+  box-shadow: 0px 1px 0 #ccc inset;
+  left: -10px;
+  z-index: 1;
+  border-top: 3px solid #fff;
+  border-right: 6px solid #fff;
+}
+#testSelector .testTab.currentTest::after {
+  top: -3px;
+  border-radius: 70% 0;
+  box-shadow: 0px 1px 0 #ccc inset;
+  right: -10px;
+  z-index: 1;
+  border-top: 3px solid #fff;
+  border-left: 6px solid #fff;
+}
+#testSelector .tabs .testTab:not(.currentTest) {
+  box-shadow: 0 1px 0 0px #ccc inset;
+  color: #ababac;
+  font-size: 12px;
+  line-height: 16px;
+}
+#testSelector .tabs .testTab .testThumbnail {
+  width: 80%;
+}
+@media /* Tablets and desktop */
+  screen and (min-width: 768px) and (max-width: 1024.9px) and (orientation: portrait),
+  screen and (min-width: 855px) and (min-height: 450px) and (orientation: landscape),
+  screen and (min-width: 1025px) and (min-height: 450px) {
+  #testSelector .tabs .testTab {
+    line-height: 36px;
+  }
+}
+
+/*****************
+  PLAYER CONTROLS
+*****************/
+.playerControls {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  margin-right: 20px;
+}
+.speedControls {
+  position: relative;
+  -ms-flex-negative: 0;
+    flex-shrink: 0;
+}
+#introGrid .speedControls .icon span {
+  padding: 5px 10px;
+}
+#taskToolbar .speedControls .icon span {
+  padding: 0 12px;
+}
+/* toggle player controls and speed slider visibility */
+@media screen and (max-width: 480.9px) { /* Portrait mobiles and low res display */
+  #mode-player.displaySpeedSlider > div.playerControls,
+  #mode-player.displaySpeedSlider > div.speedSlider {
+    flex-basis: 100%;
+  }
+  #mode-player.displaySpeedSlider .playerControls,
+  #mode-player.displaySpeedSlider > span.far,
+  #mode-player.displaySpeedSlider > span.fas {
+    display: none;
+  }
+  #mode-player:not(.displaySpeedSlider) .speedSlider {
+    display: none;
+  }
+}
+@media /* Small tablets portrait */
+  screen and (min-width: 768px) and (max-width: 854.999px) and (orientation: portrait) {
+  #introGrid .speedControls > div.playerControls,
+  #introGrid .speedControls > div.speedSlider {
+    flex-basis: 100%;
+  }
+  #introGrid .speedControls.displaySpeedSlider .playerControls,
+  #introGrid .speedControls.displaySpeedSlider > span.far,
+  #introGrid .speedControls.displaySpeedSlider > span.fas {
+    display: none;
+  }
+  #introGrid .speedControls:not(.displaySpeedSlider) .speedSlider {
+    display: none;
+  }
+}
+@media screen and (min-width: 481px) {
+  #taskToolbar .icon.displaySpeedSlider,
+  #taskToolbar .icon.hideSpeedSlider {
+    display: none;
+  }
+}
+@media /* Some tablets and desktop */
+  screen and (min-width: 855px) and (min-height: 450px) {
+  #introGrid .icon.displaySpeedSlider,
+  #introGrid .icon.hideSpeedSlider {
+    display: none;
+  }
+}
+
+/*****************
+  SPEED CONTROLS
+*****************/
+#introGrid .speedControls {
+  display: none;
+}
+#taskToolbar .mode:not(.active) .speedControls {
+  display: none;
+}
+#taskToolbar .mode .speedControls {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+    -ms-flex-pack: center;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: -4px;
+}
+.speedSlider {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.speedCursor {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  margin-top: 6px;
+}
+@media /* Tablets and desktop */
+  screen and (min-width: 768px) and (max-width: 1024.9px) and (orientation: portrait),
+  screen and (min-width: 855px) and (min-height: 450px) and (orientation: landscape),
+  screen and (min-width: 1025px) and (min-height: 450px) {
+  .speedCursor {
+    width: 100%;
+  }
+}
+
+/* Chrome */
+.speedCursor::-webkit-slider-runnable-track {
+  background-color: rgba(0,0,0,0.3);
+  height: 5px;
+  border-radius: 5px;
+  margin-top: -6px;
+}
+.speedCursor::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: none;
+  height: 20px;
+  width: 28px;
+  border-radius: 100px;
+  background-color: #fff;
+  margin-top: -7px;
+  cursor: ew-resize;
+}
+.speedCursor:focus {
+  outline: none;
+}
+.speedCursor:focus::-webkit-slider-runnable-track {
+  background-color: rgba(0,0,0,0.3);
+}
+/* Firefox */
+.speedCursor::-moz-range-track {
+  height: 5px;
+  background-color: rgba(0,0,0,0.3);
+  border: none;
+  border-radius: 5px;
+}
+.speedCursor::-moz-range-thumb {
+  border: none;
+  height: 20px;
+  width: 28px;
+  border-radius: 100px;
+  background-color: #fff;
+  cursor: ew-resize;
+}
+/* Edge / IE10+ */
+.speedCursor::-ms-track {
+  width: 100%;
+  height: 5px;
+  background: transparent;
+  /*leave room for the larger thumb to overflow with a transparent border */
+  border-color: transparent;
+  border-width: 6px 0;
+  /*remove default tick marks*/
+  color: transparent;
+}
+.speedCursor::-ms-fill-lower {
+  background: #db8b0a;
+  border-radius: 5px;
+}
+.speedCursor::-ms-fill-upper {
+  background: rgba(0,0,0,0.3);
+  border-radius: 5px;
+}
+.speedCursor::-ms-thumb {
+  border: none;
+  height: 20px;
+  width: 28px;
+  border-radius: 100px;
+  background: #fff;
+  cursor: ew-resize;
+}
+.speedCursor:focus::-ms-fill-lower {
+  background: #db8b0a;
+}
+.speedCursor:focus::-ms-fill-upper {
+  background: rgba(0,0,0,0.3);
+}
+
+#introGrid .speedControls {
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  padding: 5px 10px;
+  align-items: center;
+  height: 53px;
+}
+#introGrid .playerControls,
+#introGrid .speedSlider {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  background-color: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  width: 100%;
+}
+#introGrid .playerControls .icon {
+  margin-right: 15px;
+  cursor: pointer;
+}
+#introGrid .playerControls .icon span {
+  padding: 0;
+  border-radius: 50%;
+  line-height: 30px;
+  width: 30px;
+  text-align: center;
+}
+#introGrid .playerControls .icon:not(.playPause) span {
+  color: #fff;
+  background-color: #4a90e2;
+  font-size: 16px;
+}
+#introGrid .playerControls .icon.playPause span {
+  color: #fff;
+  background-color: #4a90e2;
+  width: 40px;
+  vertical-align: middle;
+  line-height: 40px;
+}
+#introGrid .playerControls .icon.playPause span.fa-play {
+  font-size: 28px;
+  padding-left: 6px;
+}
+#introGrid .playerControls .icon.playPause span.fa-pause {
+  font-size: 22px;
+  padding-left: 0px;
+}
+#introGrid .speedSlider {
+  background-color: rgba(0,0,0,0.10);
+  box-shadow: 1px 1px 0 0 rgba(0,0,0,0.10) inset ;
+  border-radius: 5px;
+  font-size: 18px;
+  color: #4a4a4a;
+}
+
+@media /* Tablets and desktop */
+  screen and (min-width: 768px) and (max-width: 1024.9px) and (orientation: portrait),
+  screen and (min-width: 855px) and (min-height: 450px) and (orientation: landscape),
+  screen and (min-width: 1025px) and (min-height: 450px) {
+  #introGrid .speedControls {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  #introGrid .playerControls {
+    -webkit-box-pack: center;
+      -ms-flex-pack: center;
+    justify-content: space-evenly;
+    flex-basis: 50%;
+  }
+  #introGrid .speedSlider {
+    flex-basis: 50%;
+  }
+}
+@media /* Tablets portrait */
+  screen and (min-width: 768px) and (orientation: portrait) {
+  .speedControls {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    qq-ms-flex-pack: distribute;
+    justify-content: space-around;
+    padding: 0 10px;
+  }
+}
+@media /* Tablets landscape and desktop */
+  screen and (min-width: 855px) and (min-height: 450px) and (orientation: landscape) {
+  #introGrid .playerControls .icon {
+    margin-right: 15px;
+  }
+}
+
+/*****************
+  CODE EDITOR
+*****************/
+body.fullscreen #miniPlatformHeader,
+body.fullscreen #tabsContainer,
+body.fullscreen #introGrid,
+body.fullscreen #taskToolbar {
+  display: none;
+}
+#blocklyContainer {
+  position: relative;
+}
+#blocklyLibContent {
+  width: 100%;
+  -webkit-box-flex: 1;
+    -ms-flex: 1 0 60%;
+        flex: 1 0 60%;
+}
+@media /* Tablets and desktop */
+  screen and (min-width: 768px) and (max-width: 1024.9px) and (orientation: portrait),
+  screen and (min-width: 855px) and (min-height: 450px) and (orientation: landscape),
+  screen and (min-width: 1025px) and (min-height: 450px) {
+  #blocklyLibContent {
+    width: auto;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 0 60%;
+        flex: 1 0 60%;
+    min-width: 0;
+    background: #fff;
+  }
+}
+#blocklyDiv {
+  width: 100%;
+  height: 100%;
+}
+#blocklyLibContent {
+  position: relative;
+}
+
+/* Editor Bar */
+#editorBar {
+  pointer-events: none;
+}
+#editorBar .buttons button {
+  pointer-events: auto;
+  cursor: pointer;
+}
+.buttons button > span {
+  min-width: 12px;
+}
+@media /* Portrait mobiles */
+  screen and (max-width: 767.9px) and (orientation: portrait) {
+    #editorBar {
+      height: 30px;
+      background-color: #fff;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+      justify-content: space-between;
+    }
+    #capacity {
+      -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+              flex-grow: 1;
+    }
+    #editorBar button {
+      border: 0;
+      background-color: transparent;
+      box-shadow: none;
+      line-height: 30px;
+    }
+    #mode-editor .capacity,
+    #mode-editor button {
+      display: none;
+    }
+}
+@media /* landscape mobiles, tablets and desktop */
+  screen and (min-width: 480px) and (max-width: 854.9px) and (orientation: landscape),
+  screen and (min-width: 480px) and (max-height: 449.9px) and (orientation: landscape),
+  screen and (min-width: 768px) and (max-width: 1024.9px) and (orientation: portrait),
+  screen and (min-width: 855px) and (orientation: landscape),
+  screen and (min-width: 1025px) {
+  #editorBar {
+    position: absolute;
+    top: 10px;
+    right: 0;
+    padding-top: 10px;
+    z-index: 10;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+          align-items: flex-start;
+  }
+  #capacity {
+    margin-right: 5px;
+  }
+  #editorBar button {
+    position: relative;
+    display: block;
+    font-size: 14px;
+    padding: 8px 12px;
+    -webkit-box-flex: 0;
+    -ms-flex-positive: 0;
+        flex-grow: 0;
+    color: #fff;
+    background: #4a90e2;
+    border: 0;
+    box-shadow: none;
+    border-radius: 5px 0 0 5px;
+    outline: 0;
+  }
+  #editorBar #fullscreenButton {
+    margin-bottom: 10px;
+  }
+}
+#languageInterface {
+  position: relative;
+}
+#capacity {
+  line-height: 30px;
+  background-color: white;
+  background-color: rgba(255, 255, 255, 0.85);
+  color: #787878;
+  text-align: center;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 5px;
+  pointer-events: none;
+}
+#capacity.capacityRed {
+  background-color: #FF9794;
+  background-color: rgba(255, 150, 150, 0.85);
+  color: black;
+  padding-left: 5px;
+}
+
+.scaleDrawingControl {
+  display: none;
+}
+#testCaseName {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+#messages {
+  padding-top:10px;
+  min-height: 28px;
+}
+#errors .testError {
+  color: red;
+}
+.blocklyToolboxDiv {
+    background-color: #ddd !important;
+}
+
+.blocklyFlyoutBackground {
+    fill-opacity: 1 !important;
+}
+.blocklyDropDownDiv {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    display: none;
+    border: 1px solid;
+    border-radius: 4px;
+    box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, .3);
+    padding: 4px;
+    -webkit-user-select: none;
+}
+.blocklyDropDownContent {
+    max-height: 300px;
+    overflow: auto;
+}
+.blocklyDropDownArrow {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 16px;
+    height: 16px;
+    z-index: -1;
+    background-color: inherit;
+    border-color: inherit;
+}
+.blocklyDropDownButton {
+    display: inline-block;
+    float: left;
+    padding: 0;
+    margin: 4px;
+    border-radius: 4px;
+    outline: none;
+    border: 1px solid;
+    transition: box-shadow .1s;
+    cursor: pointer;
+}
+.blocklyDropDownButtonHover {
+    box-shadow: 0px 0px 0px 4px rgba(0,0,0,0.1);
+}
+.blocklyDropDownButton:active {
+    box-shadow: 0px 0px 0px 6px rgba(0,0,0,0.1);
+}
+.blocklyDropDownButton > img {
+    width: 80%;
+    height: 80%;
+    margin-top: 5%
+}
+.blocklyDropDownPlaceholder {
+    display: inline-block;
+    float: left;
+    padding: 0;
+    margin: 4px;
+}
+.arrowTop {
+    border-top: 1px solid;
+    border-left: 1px solid;
+    border-top-left-radius: 4px;
+    border-color: inherit;
+}
+.arrowBottom {
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+    border-bottom-right-radius: 4px;
+    border-color: inherit;
+}
+.valueReportBox {
+    min-width: 50px;
+    max-width: 300px;
+    max-height: 200px;
+    overflow: auto;
+    word-wrap: break-word;
+    text-align: center;
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-size: .8em;
+}
+.aceHighlight {
+   position: absolute;
+   background: rgba(100, 100, 200, 0.5);
+   z-index: 20;
+}
+
+/*****************
+  TASK TOOLBAR
+*****************/
+#taskToolbar {
+  -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+        flex: 0 0 auto;
+  z-index: 1;
+  position: relative;
+}
+@media /* Tablets and desktop */
+  screen and (min-width: 768px) and (max-width: 1024.9px) and (orientation: portrait),
+  screen and (min-width: 855px) and (min-height: 450px) and (orientation: landscape),
+  screen and (min-width: 1025px) and (min-height: 450px) {
+/* Hide task toolbar for tablets and desktop,
+  but keep element as it is used to calculate other elements position in JS */
+  #taskToolbar {
+    visibility: hidden;
+    overflow: hidden;
+    height: 0;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 0px;
+        flex: 0 0 0;
+  }
+}
+#taskToolbar::after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  width: 100%;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.8) inset;
+  height: 2px;
+}
+#taskToolbar .fas,
+#taskToolbar .far {
+  font-size: 18px;
+}
+#taskToolbar .playerControls .fa-play {
+  font-size: 24px;
+}
+#modeSelector {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  line-height: 25px;
+}
+#modeSelector .mode {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 51px;
+          flex: 0 1 51px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 12px;
+  background-color: #4a4a4a;
+  color: #fff;
+  position: relative;
+}
+#modeSelector .mode#mode-editor {
+  -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+}
+#modeSelector .mode:not(.active) {
+  -webkit-box-pack: center;
+    -ms-flex-pack: center;
+        justify-content: center;
+}
+#modeSelector .mode.active {
+  background: #4a90e2;
+  -webkit-box-flex: 2;
+    -ms-flex: 2 0 auto;
+        flex: 2 0 auto;
+}
+#modeSelector .mode.active::before {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 16px;
+  border: 5px solid transparent;
+  border-top-color: #f1f2f7;
+  z-index: 1;
+}
+#modeSelector .mode:not(.active) + .mode:not(.active) {
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 1px 0px 0px 0px #000 inset;
+}
+#modeSelector button {
+  background-color: rgba(0,0,0,0.3);
+  border-radius: 50%;
+  padding: 6px 9px;
+  font-size: 13px;
+  margin-top: -4px;
+  margin-bottom: -3px;
+  color: #fff;
+  border: 0;
+}
+#modeSelector .capacity {
+  margin-right: 6px;
+}
+#modeSelector .mode:not(.active) button {
+  display: none;
+}
+#modeSelector .mode:not(.active) .capacity {
+  display: none;
+}
+#modeSelector button .fas {
+  font-size: 13px;
+}
+#modeSelector .mode .label {
+  text-transform: uppercase;
+  margin-left: 10px;
+  font-weight: bold;
+}
+#modeSelector .mode:not(.active) .label {
+  display: none;
+}
+#modeSelector #mode-player.active .selectIcon {
+  display: none;
+}
+
+/************************
+  DISPLAY HELPER ELEMENTS
+*************************/
+#displayHelperAnswering {
+  display: none;
+}
+
+/************************
+  DISPLAY NOTIFICATIONS
+*************************/
+.notificationMessage {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 11px 0;
+  color: #fff;
+  font-weight: bold;
+  z-index: 1;
+  border-radius: 5px 5px 0 0;
+  line-height: 1.1em;
+}
+@media /* Mobiles */
+  screen and (max-width: 767.9px) and (orientation: portrait),
+  screen and (min-width: 480px) and (max-width: 854.9px) and (orientation: landscape),
+  screen and (min-width: 480px) and (max-height: 449.9px) and (orientation: landscape) {
+  .notificationMessage {
+    box-shadow: 0px 0px 0 2px #fff;
+  }
+}
+.notificationMessage.errorMessage {
+  background-color: #db8b0a;
+}
+.notificationMessage.successMessage {
+  background-color: #8bbb0a;
+}
+.notificationMessage.waitMessage {
+  background-color: #4a90e2;
+}
+.notificationMessage .messageWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.notificationMessage .messageWrapper .icon {
+  width: 28px;
+  margin: 0 10px;
+  line-height: 28px;
+  text-align: center;
+  color: #fff;
+  background-color: rgba(0,0,0,0.20);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.notificationMessage .messageWrapper .message {
+  -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+  margin: 0;
+}
+.notificationMessage .messageWrapper code {
+  color: #777777;
+}
+
+.notificationMessage .notificationMessageClose {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  color: rgba(0,0,0,0.20);
+  cursor: pointer;
+}
+.notificationMessage .notificationMessageClose span {
+  font-size: 18px;
+}
+.successMessage .btn {
+  background-color: #669900;
+  border: none;
+  box-shadow: none;
+  border-radius: 30px;
+  color: #fff;
+  cursor: pointer;
+  margin-left: 10px;
+  padding: 2px 10px;
+}
+.notificationMessage.notificationMessageLock.errorMessage {
+  background-color: #FF9794;
+}
+.notificationMessage.notificationMessageLock button {
+  display: none;
+}
+.notificationMessage .testResults {
+  padding: 2px 10px;
+  margin: 0px 6px;
+  border-radius: 10px;
+  background-color: white;
+}
+.notificationMessage .testSuccess {
+  color: green;
+}
+.notificationMessage .testResults .testError {
+  color: #FF001F;
+}
+.notificationMessage .testLink {
+  color: #4A90E2;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+
+
+.modalWrapper {
+  display: none;
+  z-index: 1000;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #777;
+  background-color: rgba(0,0,0,0.7);
+  transition: all 250ms;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.modalWrapper .modal {
+  width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 20px;
+  position: relative;
+}
+.modalWrapper .modalError {
+  background: #fdd;
+  border: 1px solid #caa;
+  color: #600;
+}
+.modalWrapper .modal>.btn.close {
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 1em;
+  color: #a7a6a6;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/************************
+  INTRODUCTION
+*************************/
+#taskIntro,
+#taskIntroLong {
+  color: #787878;
+  /*font-weight: bold;*/
+  font-size: 18px;
+  position: relative;
+}
+#taskIntro .introTitleIcon {
+  float: left;
+  margin: 0px 15px 9px 0;
+  line-height: 1;
+}
+#taskIntro .introTitleIcon .icon {
+  color: #fff;
+  background-color: #4a90e2;
+  border-radius: 50%;
+  width: 2em;
+  line-height: 2em;
+  text-align: center;
+  font-size: 14px;
+}
+#taskIntroLong h2.sectionTitle {
+  font-size: 22px;
+  font-weight: 100;
+  color: #4a90e2;
+}
+button.videoBtn {
+  position: relative;
+  color: #4a90e2;
+  border: 1px solid #4a90e2;
+  border-radius: 50px;
+  box-shadow: none;
+  padding: 8px 15px 8px 40px;
+  cursor: pointer;
+  background: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 12px;
+}
+button.videoBtn .icon {
+  position: absolute;
+  left: 15px;
+  top: 10px;
+}
+
+#taskIntroLong .panel-body {
+  padding: 20px;
+  overflow: auto;
+  max-height: calc(100% - 62px); /* 100% - height of panel-heading */
+}
+#taskIntro video {
+  max-width: 100%;
+  margin: 20px auto;
+}
+
+/* Intro controls
+  QuickPi Connexion, QuickPi connexion status, display long intro
+ */
+#introControls {
+  position: absolute;
+  width: 100%;
+  right: 0;
+  bottom: 10px;
+  padding: 0 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap-reverse;
+  margin-bottom: -10px; /* Compensate margin bottom needed when buttons wrapped */
+  z-index: 1;
+}
+#introControls .showLongIntro {
+  align-self: flex-end;
+  margin-bottom: 10px; /* Needed to space buttons when wrapped */
+}
+
+button.showLongIntro {
+  position: relative;
+  color: #4a90e2;
+  border: 1px solid #4a90e2;
+  border-radius: 50px;
+  box-shadow: none;
+  padding: 8px 15px 8px 40px;
+  cursor: pointer;
+  background: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 12px;
+  display: none;
+}
+button.showLongIntro .icon {
+  position: absolute;
+  left: 15px;
+  top: 10px;
+}
+@media /* Tablets portrait */
+  screen and (min-width: 768px) and (orientation: portrait) {
+  #introControls {
+    bottom: 47px;
+  }
+}
+@media /* Tablets and desktop */
+  screen and (min-width: 768px) and (max-width: 1024.9px) and (orientation: portrait),
+  screen and (min-width: 855px) and (min-height: 450px) and (orientation: landscape),
+  screen and (min-width: 1025px) and (min-height: 450px) {
+  button.showLongIntro {
+    display: block;
+  }
+}
+
+/* Long version of task introduction */
+#taskIntroLong {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  z-index: 30;
+}
+#taskIntroLong .short {
+  display: none;
+}
+#taskIntroLong.displayIntroLong {
+  display: block !important;
+}
+@media /* Tablets and desktop */
+  screen and (min-width: 768px) and (max-width: 1024.9px) and (orientation: portrait),
+  screen and (min-width: 855px) and (min-height: 450px) and (orientation: landscape),
+  screen and (min-width: 1025px) and (min-height: 450px) {
+  #taskIntro .long {
+    display: none;
+  }
+}
+.pythonIntroBtn {
+  color: #4D87CE;
+  font-weight: bold;
+  text-decoration: none;
+}
+.pythonIntroSelect {
+  display: inline-block;
+}
+.pythonIntroSelectBtn {
+  display: inline-block;
+}
+.pythonIntroSelectBtn span {
+  cursor: pointer;
+  padding: 0px 4px;
+  border-radius: 50%;
+  font-size: 14px;
+  line-height: 24px;
+  width: 24px;
+  text-align: center;
+  color: #fff;
+  background-color: #4a90e2;
+  margin: 0px 4px;
+}
+.panel-heading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.panel-heading .exit {
+  cursor: pointer;
+  font-size: 18px;
+  color: #4a90e2;
+  border: 0;
+  background-color: transparent;
+  box-shadow: none;
+}
+/* QuickPi */
+#taskIntro.piui .introContent {
+  padding: 10px 20px 2em;
+}
+@media /* Tablets portrait */
+  screen and (min-width: 768px) and (orientation: portrait) {
+  #taskIntro.piui .introContent {
+    padding-bottom: 60px;
+  }
+}
+.piui #introControls {
+  justify-content: space-between;
+}
+#piui > * {
+  margin-bottom: 10px;
+}
+#piui .btn {
+  color: #fff;
+  background: #4a90e2;
+  border: none;
+  border-radius: 50px;
+  box-shadow: none;
+  padding: 8px 15px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 12px;
+}
+#piui .btn span + span {
+  margin-left: 10px;
+}
+.btn#piconnect {
+  background-color: #f5a623;
+}
+.connectPi #piconnectionlabel {
+  text-align: center;
+}
+.connectPi #piconnectionlabel .deviceName {
+  color: #4a90e2;
+  font-weight: bold;
+}
+.connectPi #piconnectionlabel .deviceName i {
+  padding-right: 10px;
+}
+
+/************************
+  MODAL POPUPS
+*************************/
+
+
+
+/********
+  KEYPAD
+*********/
+
+#quickAlgo-keypad {
+  position: absolute;
+  z-index: 50;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+.blocklyWidgetDiv {
+  z-index: 49 !important;
+}
+
+.keypad {
+  position: absolute;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  background-color: #E2F4FC;
+  width: 228px;
+  height: 260px;
+  padding: 8px;
+  border-radius: 6px;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.keypad-value {
+  width: 204px;
+  height: 30px;
+  background-color: #FFF;
+  color: #4A90E2;
+  border-radius: 6px;
+  text-align: center;
+  line-height: 30px;
+  font-size: 26px;
+}
+.keypad-value.keypad-value-small {
+  font-size: 18px;
+}
+
+.keypad-row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 4px;
+}
+.keypad-row.keypad-row-margin {
+  margin-top: 8px;
+}
+
+.keypad-btn {
+  background-color: #4A90E2;
+  color: #FFF;
+  width: 64px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  font-size: 26px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.keypad-btn.keypad-btn-r {
+  background-color: #DB8B0A;
+}
+
+.keypad-btn.keypad-btn-v {
+  width: 136px;
+  background-color: #88BB88;
+  font-size: 24px;
+}
+
+.keypad-exit {
+  position: absolute;
+  right: -20px;
+  top: -20px;
+  height: 40px;
+  width: 40px;
+  text-align:  center;
+  background-color: #e86E64;
+  border-radius: 20px;
+  font-size: 20px;
+  color: #FFF;
+  line-height: 40px;
+}
+
+
+#quickAlgo-altcode {
+    z-index: 50;
+    position: absolute;
+    top: calc(51% - (50vh / 2));
+    left: calc(50% - (50vw / 2));
+    width: 50vw;
+    height: 50vh;
+    background-color: #fff;
+    border-radius: 5px;
+    border: 2px solid #4a90e2;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    resize: both;
+    overflow: auto;
+    box-shadow: 2px 4px;
+}
+
+#quickAlgo-altcode textarea {
+    height: 100%;
+    width: 100%;
+    resize: none;
+}
+#quickAlgo-altcode textarea:focus {
+    background-color: #DAE9F9;
+}
+
+.panel-heading.panel-heading-nopadding {
+    padding: 0px;
+}
+#editExerciseTitle {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 44px;
+}
+#editExerciseTitle label {
+  font-size: 12px;
+}
+#editExerciseTitle input {
+  width: 90%;
+}
+#editExerciseDescription label {
+  font-size: 12px;
+}
+#editExerciseDescription textarea {
+  width: 100%;
+  height: 100%;
+  resize: vertical;
+  margin-right: 44px;
+}
+#panel-body-bottom {
+  padding-top: 8px;
+  display: flex;
+  justify-content: right;
+}
+.panel-body #aboutAuthorsLicense {
+  font-size: 1.5em;
+}
+#aboutPanel p {
+  text-align: center;
+}
+#aboutLicenseIcon {
+  color: #4a90e2;
+}
+#aboutAuthorsLicense {
+  text-align: center;
+}
+#aboutLicenseIcon {
+  cursor: pointer;
+}

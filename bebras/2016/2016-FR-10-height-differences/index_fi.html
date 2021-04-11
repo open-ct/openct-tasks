@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>2016-FR-10</title>
+    <link class="module" rel="stylesheet" href="../../../_common/modules/pemFioi/taskStyles-0.1.css" id="http://www.france-ioi.org/modules/pemFioi/taskStyles-0.1.css">
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/jquery/1.7/jquery.min.js" id="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/jquery-ui/jquery.ui.touch-punch.min.js" id="jquery.ui.touch-punch.min.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/raphael/2.2.1/raphael.min.js" id="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.1/raphael.min.js"></script>
+
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/json/json2.min.js" id="https://github.com/douglascrockford/JSON-js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/beav-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/beav-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/drag_lib-2.0.js" id="http://www.france-ioi.org/modules/pemFioi/drag_lib.js"></script>
+
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/beaver-task-2.0.js" id="http://www.france-ioi.org/modules/pemFioi/beaver-task-2.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/simulation-2.0.js" id="http://www.france-ioi.org/modules/pemFioi/simulation-2.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/raphaelFactory-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/raphaelFactory-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/delayFactory-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/delayFactory-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/simulationFactory-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/simulationFactory-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/grid-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/grid-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/randomGenerator-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/randomGenerator-1.0.js"></script>
+
+    <script class="remove" type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js" id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js"></script>
+    <script class="proxy module" type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/platform-pr.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/platform-pr.js"></script>
+    <script class="stdButtonsAndMessages module" type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"  id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"></script>
+    <script class="remove" type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/miniPlatform.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/miniPlatform.js"></script>
+      <script>
+         var stringsLanguage = 'fi';
+      </script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/tasks/2016/2016-FR-10-height-differences/",
+          "language": "fi",
+          "version": "fi.01",
+          "authors": "Arthur Charguéraud, Mathias Hiron, Nir Lavee, France-ioi",
+          "translators": "Timo Poranen, Heikki Hyyrö",
+          "license": "CC BY-SA 3.0",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "fullFeedback": true,
+          "acceptedAnswers": [],
+          "usesRandomSeed": false
+      };
+      </script>
+      <script type="text/javascript">
+      var taskStrings = {
+            success: "Onnittelut, ratkaisit tämän version!",
+            wrong: function(diff) { return "Vastauksesi erotusten summa on " + diff + ". On mahdollista löytää parempi ratkaisu."; },
+            teamNames: ["Siniset\nMajavat", "Keltaiset\nMajavat"],
+            difference: "Erotus:",
+            total: "Erotusten summa:"
+         };
+      var taskParams = {
+         totalX: 450
+      };         
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+      <style>
+         #anim_container {
+            text-align: center;
+         }
+         #anim {
+            display: inline-block;
+         }
+      </style>
+   </head>
+   <body>
+      <div id="task">
+         <h1>Kokojen erot</h1>
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <p>
+              Siniset Majavat haluavat pelata Keltaisten Majavoiden kanssa. Raahaa majavat sellaiseen järjestykseen, että vastinparien kokojen erotusten summa on mahdollisimman pieni.
+            </p>
+            <div id="anim_consinon tainer">
+               <div id="anim"></div>
+            </div>
+            <img src="blue.png" style="display:none">
+            <img src="yellow.png" style="display:none">
+            <img src="icon.png" style="display:none">
+         </div>
+      </div><!-- task -->
+      <div id="solution">
+
+         <h2>Ratkaisu</h2>
+            <p>Yleispätevä ratkaisuperiaate on asettaa aina i:nneksi suurin sininen majava i:nneksi suurimman keltaisen majavan pariksi. Eli esim. ensin suurin sininen majava suurimman keltaisen majavan pariksi, sitten toiseksi suurin sininen majava toiseksi suurimman keltaisen majavan pariksi, ja niin edelleen.</p>
+            <div class="easy">
+               <p>Alla on kuvattu eräs mahdollinen tapa tehdä tämä. Ratkaisun erotusten summa on 11.</p>
+               <p><img src="sol_easy_1_fi.png"></p>
+            </div>   
+            <p>Edellä kuvattu ratkaisuperiaate lienee helpointa toteuttaa niin, että järjestämme kummankin väriset majavat erikseen suuruusjärjestyksiin omilla riveillään. Tämä johtaa suoraan ratkaisuun.</p>
+            <div class="easy">
+				<p>Myös seuraavan ratkaisun erotusten summa on 11.</p>
+               <p><img src="sol_easy_2.png"></p>
+            </div>   
+            <div class="medium">
+               <p></p>
+               <p><img src="sol_medium.png"></p>
+            </div>
+            <div class="hard">
+               <p></p>
+               <p><img src="sol_hard.png"></p>
+            </div>
+            <p>Yllä kuvailtu ratkaisuperiaate voidaan todeta oikeaksi tutkimalla tilannetta, jossa ratkaisuperiaatetta ei olekaan noudatettu: tällöin löytyy sellaiset majavaparit (A, X) ja (B, Y), että A ja B ovat yhtä väriä ja X ja Y toista, ja koko(A) &lt; koko(B) mutta koko(X) &gt; koko(Y). Voidaan melko suoraviivaisesti osoittaa, että ratkaisu paranee, jos vaihdamme näiden majavien paritukseksi (A, Y) ja (B, X). Jos kaikki tällaiset majavaparit vaihdetaan edellä kuvatulla tavalla, päädymme tilanteeseen, jossa i:nneksi suurin sininen majava on i:nneksi suurimman keltaisen majavan pari.</p>
+         <h2>Tämä on tietojenkäsittelyä!</h2>
+
+            <p>Tehtävä on esimerkki tietojenkäsittelyn sovelluksissa yleisestä järjestystä koskevaksi <strong>optimointiongelmasta</strong>, jossa jokin datajoukko (tässä majavat) halutaan järjestää jonkin ennaltamääritetyn kriteerin (esim. tässä kokojen erotusten summan) perusteella mahdollisimman hyvällä tavalla.</p>
+
+            <p>Tehtävän majavien järjestämisen kohdalla helpoin tapa oli järjestää kaikki majavat jo heti alussa, mutta monissa muissa ongelmissa ei ole etukäteen tiedossa sellaista kriteeriä, minkä mukaan alkiot voitaisiin suoraan järjestää. Tällöin yksi melko yleisesti käytetty tapa ratkaisun hakemiseen on lähteä liikkeelle jostain ratkaisusta (joka ei välttämättä ole paras mahdollinen) ja yrittää muuttaa sitä vähitellen kohti parempaa ja parempaa ratkaisua. Tehtävän ratkaisun lopussa karkeasti hahmoteltu perustelu havainnollistaa tällaista tapaa: tehtävän voisi ratkaista myös "pikku hiljaa edeten" niin, että etsimme toistuvasti sellaisia majavapareja (A, X) ja (B, Y), missä koko(A) &lt; koko(B) mutta koko(X) &gt; koko(Y), ja vaihdamme niiden tilalle parit (A, Y) ja (B, X). Kukin tällainen vaihto parantaa ratkaisua edellistä paremmaksi. Optimointiongelmien yhteydessä voidaan sanoa, että ratkaisu tällöin vähitellen <b>suppenee</b> kohti parasta ratkaisua.</p>
+
+			<p>Katso lisää esim. <a href="https://en.wikipedia.org/wiki/Combinatorial_optimization" target="_blank">https://en.wikipedia.org/wiki/Combinatorial_optimization</a> (englanniksi).</p>
+     </div> <!-- task-solution -->
+   </body>
+</html>

@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>2016-FR-18</title>
+    <link class="module" rel="stylesheet" href="../../modules/pemFioi/taskStyles-0.1.css" id="http://www.france-ioi.org/modules/pemFioi/taskStyles-0.1.css">
+    <script class="module" type="text/javascript" src="../../modules/ext/jquery/1.7/jquery.min.js" id="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script class="module" type="text/javascript" src="../../modules/ext/jquery-ui/jquery.ui.touch-punch.min.js" id="jquery.ui.touch-punch.min.js"></script>
+    <script class="module" type="text/javascript" src="../../modules/ext/raphael/2.2.1/raphael.min.js" id="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.1/raphael.min.js"></script>
+
+    <script class="module" type="text/javascript" src="../../modules/ext/json/json2.min.js" id="https://github.com/douglascrockford/JSON-js"></script>
+    <script class="module" type="text/javascript" src="../../modules/pemFioi/beaver-task.js" id="http://www.france-ioi.org/modules/pemFioi/beaver-task.js"></script>
+    <script class="module" type="text/javascript" src="../../modules/pemFioi/beav-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/beav-1.0.js"></script>
+    <script class="remove" type="text/javascript" src="../../modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js" id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js"></script>
+    <script class="proxy module" type="text/javascript" src="../../modules/integrationAPI.01/official/platform-pr.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/platform-pr.js"></script>
+    <script class="stdButtonsAndMessages module" type="text/javascript" src="../../modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"  id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"></script>
+    <script class="remove" type="text/javascript" src="../../modules/integrationAPI.01/official/miniPlatform.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/miniPlatform.js"></script>
+    
+    <script class="module" type="text/javascript" src="../../modules/pemFioi/simulation-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/simulation-1.0.js"></script>
+    
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/algorea_tasks/2016/2016-FR-18-lemmings/",
+          "language": "en",
+          "version": "en.01",
+          "authors": "Arthur Charguéraud, Mathias Hiron, Nir Lavee",
+          "translators": [],
+          "license": "",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "fullFeedback": true,
+          "acceptedAnswers": [],
+          "usesRandomSeed": true
+      };
+      </script>
+      <script type="text/javascript">
+           var stringsLanguage = 'en';
+           var taskStrings = {
+              success: "Congratulations, you did it.",
+              signHelp: "Click to install \n or remove a sign.", 
+              add1ToA: "Increase A\nby 1",
+              playButton: "Try",
+              pauseButton: "Pause",
+              shapeLoop: "Object is stuck.", 
+              fullBucket: "Object arrived in a box already occupied.", 
+              wrongBucket: "Object arrived in the wrong place." 
+           };
+        </script>
+        <script type="text/javascript" src="task.js"></script>
+      <style>
+        #playback input {
+          width: 120px;
+          height: 32px;
+          margin: 20px;
+        }
+        #anim_container {
+          text-align: center;
+          margin: 0px auto;
+        }
+      </style>
+   </head>
+   <body>
+      <div id="task">
+         <h1>Lemmings</h1>
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <p class="hard"><strong style="color:red">Attention: this version is one of the most difficult of the contest, keep it for the end.</strong></p>
+            <p>
+               Place the signs on the left on the platform to help the shapes to be dropped in the correct box.
+            </p>
+            <p>
+	    Shapes will change its way when it meets a sign with its shape.
+            </p>
+            <p class="hard">
+	    The sign "≤ 4" will affect the direction of the first 4 shapes Only.
+            </p>
+            <p>
+               To place sign, click on it, then click on the desired place.
+            </p>
+            
+            <div id="anim_container">
+              <div id="anim">
+              </div>
+            </div>
+            <div id="playback" style="text-align: center">
+              <input type="button" id="playPause" value="Play">
+              <input type="button" id="stop" value="Stop">
+            </div>
+            <br><br>
+            <img src="icon.png" style="display:none">
+         </div>
+     </div><!-- task -->
+      <div id="solution">
+
+         <h2>Solution</h2> 
+         <p>Voici une solution possible :</p>
+         <div class="easy"><img src="solution_easy.png" /></div>
+         <div class="medium"><img src="solution_medium.png" /></div>
+         <div class="hard"><img src="solution_hard.png" /></div>
+
+	  </div> <!-- task-solution -->
+  </body>
+</html>

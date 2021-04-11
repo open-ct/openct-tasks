@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>2014-FR-08-maze</title>
+      <script>
+         window.stringsLanguage = 'en';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1_M.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+         var modulesPath = '../../modules';
+         importModules([
+            'jquery-1.7.1', 'jquery-ui.touch-punch', 'raphael-2.2.1', 'JSON-js',
+            'beav-1.0', 'beaver-task-2.0', 'simulation-2.0', 'raphaelFactory-1.0',
+            'delayFactory-1.0', 'simulationFactory-1.0', 'raphaelButton-1.0', 'drag_lib-2.0',
+            'platform-pr', 'buttonsAndMessages', 'installationAPI.01', 'randomGenerator-1.0',
+            'miniPlatform', 'taskStyles-0.1','graph-1.0', 'visual-graph-1.0']);
+      </script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/tasks/2014/2014-FR-08-maze/",
+          "language": "en",
+          "version": "en.01",
+          "authors": "Anouk Baradawis and Mathias Hiron, Eljakim Schrijvers, France-ioi",
+          "license": "CC BY-SA 3.0",
+          "translators": [
+          ],
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [
+          ],
+          "acceptedAnswers": [
+          ],
+          "difficulty": {"1": "hard", "2": "medium", "3": "medium", "4": "easy"},
+          "categories": {ALG : true},
+          "answerType": "Interactive, drag instructions to create a program",
+          "fullFeedback": true,
+          "status": "test"
+      };
+      </script>
+      <script>
+         var stringsLanguage = 'en';
+         var taskStrings = {
+            up: "Up",
+            down: "Down",
+            right: "Right",
+            left: "Left",
+            availableCommands: "Available commands",
+            yourProgram: "Your program",
+            success: "Congratulations, you did it!",
+            partialFailure: "Only one of the two marbles is out&nbsp;!",
+            failure: "No marble is out!"
+         };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+      <style>
+      #laby {
+         text-align:center;
+      }
+      #laby > table {
+         background:white;
+         padding:5px;
+         margin:auto;
+      }
+      .instruction {
+         border: solid black 1px;
+         text-align: center;
+      }
+      #textSolution {
+         font-weight: bold;
+       }
+      </style>
+   </head>
+   <body>
+      <div id="task">
+         <img src="icon.png" style="display:none" >
+         <h1>The Two Marbles</h1>
+         <div id="tabsContainer"></div>   <!-- will contain the versions tabs -->
+         <div id="taskContent">        <!-- will contain the content of the task --> 
+            <div id="zone_1">
+               <div class="consigne">
+                  <p>
+                  Write a program to <b> get the two marbles </b> out of the maze. 
+                  Each command leads the balls in a certain direction.
+                  </p>
+                  <p>      
+                  Begin by following the example to understand how it's works. 
+                  Then drag the commands to modify the program.
+                  </p>
+               </div>
+            </div>
+            <div id="zone_2">
+               <table>
+                  <tr>
+                     <td style="vertical-align:top; width:380px">
+                        <div id="anim" class="touch"></div>
+                     </td>
+                     <td style="vertical-align:top; width:380px">
+                        <div id="laby" style="margin-left:0.8em">
+                        </div>
+                        <!-- Toolbar -->
+                        <div id="simuToolbar">
+                           <input type="button" id="play" value="Tout exécuter">
+                           <input type="button" id="step" value="Une étape">
+                           <input type="button" id="restart" value="Remettre à zéro">
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </div>
+         </div>
+         <img src="icon.png" style="display:none"> 
+      </div>
+      <div id="solution">
+<!--
+       <h2>Solution</h2>
+
+          <p>Il y avait plusieurs solutions. Par exemple&nbsp;:<br>
+          <span id="textSolution"></span>.
+          </p>
+          
+       <h2>C'est de l'informatique !</h2>
+            <p>
+            Pour résoudre ce sujet, il fallait écrire un programme sous la forme d'une séquence d'instructions. La difficulté consistait à trouver une séquence qui convient.
+            </p>
+            <p>
+            Les programmes informatiques en général sont également constitués d'une séquence d'instructions à exécuter. La principale différence est qu'ils utilisent des instructions plus compliquées.
+            </p>
+-->
+      </div>
+   </body>
+</html>

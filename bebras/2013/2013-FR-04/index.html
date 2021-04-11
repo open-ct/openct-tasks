@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=770, initial-scale=1.0">
+      <title>Boîtes de chocolats</title>
+      <script>
+         window.stringsLanguage = 'fr';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1_M.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+         var modulesPath = '../../../_common/modules';
+         importModules([
+            'jquery-1.7.1', 'jquery-ui.touch-punch', 'raphael-2.1', 'JSON-js', 'jschannel',
+            'beav-1.0', 'beaver-task-2.0', 'simulation-2.0', 'raphaelFactory-1.0',
+            'delayFactory-1.0', 'simulationFactory-1.0', 'raphaelButton-1.0',
+            'platform-pr', 'buttonsAndMessages', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1', 'randomGenerator-1.0', 'drag_lib-2.0', 'shape-paths',
+            'graph-1.0', 'visual-graph-1.1'
+         ]);
+      </script>
+
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/tasks/2013/2013-FR-04/",
+          "language": "fr",
+          "version": "fr.01",
+          "authors": "France-ioi",
+          "translators": [],
+          "license": "CC BY-SA 3.0",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "acceptedAnswers": ["77"]
+      };
+      </script>
+
+      <script type="text/javascript" src="task.js"></script>
+      <script type="text/javascript">
+         var taskStrings = {
+            success: "Bravo, vous avez réussi !",
+            failure: "Ce n'est pas la bonne réponse.",
+            start: "Début",
+            end: "Fin",
+            addRound: function(nb) {
+               var plural = (nb > 1) ? "s" : "";
+               return "Mettre "+nb+" chocolat"+plural+"\n dans la boîte ronde"
+            },
+            addSquare: function(nb) {
+               return "Mettre "+nb+" chocolats\n dans la boîte carrée"
+            },
+            moreThanInSquare: function(nb) {
+               return "Y a-t-il strictement plus de "+nb+"\n chocolats dans la boîte carrée ?"
+            },
+            removeFromSquare: function(nb) {
+               return "Retirer "+nb+" chocolat\n de la boîte carrée"
+            },
+            yes: "oui",
+            no: "non",
+            NaN: "La réponse doit être un nombre entier positif."
+         };
+      </script>
+      <!-- put task css here -->
+      <style class="">
+         #red_box,#green_box {
+            width: 75px;
+            height: 60px;
+            margin: 0 1em;
+         }
+         #paper {
+            margin: 1em auto;
+         }
+         #answer {
+            text-align: center;
+         }
+      </style>
+   </head>
+   <body>
+   <div id="task">
+      <h1>Boîtes de chocolats</h1>
+      <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <div id="zone_1">
+               <div class="consigne">
+                  <p>
+                  Castor veut ranger des chocolats dans ces deux boîtes&nbsp;:
+                  </p>
+                  <p>
+                  <center>
+                     <img src="red_box.png" id="red_box">
+                     <img src="green_box.png" id="green_box">
+                  </center>
+                  </p>
+                  <p>
+                  Le schéma suivant indique la méthode qu'il suit.
+                  Il commence au rectangle «&nbsp;Début&nbsp;». Il suit ensuite la flèche pour trouver l'instruction suivante. 
+                  Quand il y a une question, il suit la flèche qui correspond à la réponse à cette question. 
+                  </p>
+                  <p>
+                  Castor s'arrête quand il arrive sur le rectangle «&nbsp;Fin&nbsp;». À ce moment-là, combien de chocolats
+                  se trouvent dans la boîte ronde&nbsp;?
+                  </p>
+               </div>
+            </div>
+            <div id="zone_2">
+               <div id="paper"></div>
+               <div id="answer" >
+                  <label>Votre réponse:</label>
+                  <input type="text">                   
+               </div>
+               <div id="error"></div>        
+            </div>
+         </div>
+      </div>
+   </div><!-- task -->
+   <div id="solution">
+      <h2>Solution</h2>
+      <p>
+      Le schéma appelé organigramme décrit une séquence d'instructions. En particulier, il contient une «&nbsp;boucle&nbsp;», qui consiste à répéter plusieurs fois la même séquence d'instructions tant qu'une certaine condition est respectée. Ici, la séquence d'instructions à répéter est «&nbsp;prendre un chocolat dans la boîte carrée, mettre un chocolat dans la boîte ronde&nbsp;». Cette séquence est répétée jusqu'à ce qu'il y ait 5 chocolats exactement dans la boîte carrée. En effet, on sort de la boucle lorsque la condition «&nbsp;il y a strictement plus de 5 chocolats dans la boîte carrée&nbsp;» est fausse. 
+      </p>
+      <p>
+      La première fois que l'on commence la répétition (ou qu'on «&nbsp;entre dans la boucle&nbsp;»), la boîte ronde contient 2 chocolats et la boîte carrée contient 80 chocolats. &Agrave; chaque étape, on transfert un chocolat de la boîte carrée vers la boîte ronde. Vu qu'à la fin la boîte carrée contient 5 chocolats, c'est donc qu'on en a transféré 75. La boîte ronde, qui contenait 2 chocolats et qui en a reçu 75, contient donc à la fin 77 chocolats.
+      </p>
+      <h2>C'est de l'informatique</h2>
+      <p>Ce genre de diagramme s'appelle un <i>graphe de flot de
+      contrôle</i>. C'est une représentation graphique de la structure
+      d'un programme informatique. Elle permet ainsi de visualiser les
+      boucles et les dépendances entre les opérations. En pratique,
+      une telle représentation sert à analyser la structure des
+      programmes et est très utile pour optimiser des programmes.
+      </p>
+   </div> <!-- task-solution -->
+</body>
+</html>

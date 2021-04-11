@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>2016-FR-07</title>
+    <link class="module" rel="stylesheet" href="../../../_common/modules/pemFioi/taskStyles-0.1.css" id="http://www.france-ioi.org/modules/pemFioi/taskStyles-0.1.css">
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/jquery/1.7/jquery.min.js" id="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/jquery-ui/jquery.ui.touch-punch.min.js" id="jquery.ui.touch-punch.min.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/raphael/2.2.1/raphael.min.js" id="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.1/raphael.min.js"></script>
+
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/json/json2.min.js" id="https://github.com/douglascrockford/JSON-js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/beav-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/beav-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/drag_lib-2.0.js" id="http://www.france-ioi.org/modules/pemFioi/drag_lib.js"></script>
+
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/beaver-task-2.0.js" id="http://www.france-ioi.org/modules/pemFioi/beaver-task-2.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/simulation-2.0.js" id="http://www.france-ioi.org/modules/pemFioi/simulation-2.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/raphaelFactory-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/raphaelFactory-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/delayFactory-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/delayFactory-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/simulationFactory-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/simulationFactory-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/grid-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/grid-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/randomGenerator-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/randomGenerator-1.0.js"></script>
+
+    <script class="remove" type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js" id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js"></script>
+    <script class="proxy module" type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/platform-pr.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/platform-pr.js"></script>
+    <script class="stdButtonsAndMessages module" type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"  id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"></script>
+    <script class="remove" type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/miniPlatform.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/miniPlatform.js"></script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/tasks/2016/2016-FR-07-shapes/",
+          "language": "fi",
+          "version": "fi.01",
+          "authors": "Arthur Charguéraud, Mathias Hiron, Nir Lavee, France-ioi",
+          "translators": ["Timo Poranen, Heikki Hyyrö"],
+          "license": "CC BY-SA 3.0",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "fullFeedback": true,
+          "acceptedAnswers": [],
+          "usesRandomSeed": false
+      };
+      </script>
+      <script type="text/javascript">
+         var stringsLanguage = 'fi';  //Currently causes code to crash
+      var taskStrings = {
+            wrong: "Lopputuloksesi ei täsmää tavoitteen kanssa.",
+            success: "Onnittelut, ratkaisit tämän version!",
+
+            titleProgram: "Ohjelmasi:",
+            titleResult: "Tulos vaiheen jälkeen:",
+
+            start: "1. aloita ",
+            rulePrefix: function(index) {
+               return "" + (index + 2) + ". Korvaa jokainen ";
+            },
+            ruleInfix: "kuvioilla",
+            ruleSuffix: "Tulos:",
+            target: "Tavoite:"
+         };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+      <style>
+         #anim_container {
+            text-align: center;
+         }
+         #anim {
+            display: inline-block;
+         }
+         #solution img {
+            border-top: solid black 1px;
+            border-bottom: solid black 1px;
+         }
+      </style>
+   </head>
+   <body>
+      <div id="task">
+         <h1>Korvaaminen</h1>
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <p>
+               Raahaa alla olevat kuviot harmaisiin lokeroihin muodostaaksesi "ohjelman", joka tuottaa tavoitteena olevat kuviot.<br/>
+            <p>
+            <div id="anim_container">
+               <div id="anim"></div>
+            </div>
+            <img src="icon.png" style="display:none">
+         </div>
+      </div><!-- task -->
+      <div id="solution">
+
+         <h2>Ratkaisu</h2>
+            <div class = "easy">
+			<p>Tavoite koostuu kolmesta peräkkäisestä salmiakki-tähti-parista. Voimme siten ensin valita minkä tahansa kuvion (vaikkapa ympyrän), ja asettaa sen kolme kertaa peräkkäin alkuasetelmaan. Tämän jälkeen määritämme korvaussäännön, jossa edellä valitsemamme kuvio (vaikkapa ympyrä) korvataan salmiakilla ja tähdellä.</p>
+			<p><img src = "sol_easy_fi.png"></p>
+            </Div>
+            <div class = "medium">
+				<p>Koska alkuasetelmaan valitaan vain yksi kuvio, joka sitten toisessa vaiheessa korvataan kolmella kuviolla, on tilanne sama kuin jos alussa suoraan valitsisimme kolme kuviota, joista kolmannessa vaiheessa jonkin kuvion esiintymät korvataan joillain kahdella kuviolla. Jotta tämä tuottaisi tavoitekuvion, pitää siitä löytää keskenään samanlaisia kahden kuvion osia. Esim. heti tavoitteen alusta lötyy kaksi peräkkäistä 6-kulmio-kolmio-paria. Jos kolmannen vaiheen korvaus tuottaisi nämä kaksi paria, on tavoitteen viimeisen 6-kulmion oltava jo aiemmin olemassa. Jos valitsemme 6-kulmio-kolmio parien korvaamaksi kuvioksi vaikkapa ympyrän, on asetelma alla esitetyn mukainen:</p>	
+               <p><img src = "sol_medium_1_fi.png"></p>
+               <p>Edellinen asetelma voidaan suoraviivaisesti täydentää kokonaiseksi ratkaisuksi. Huomaa, että voimme vapaasti valita, mitkä kuviot valitsemme ensimmäiseen vaiheeseen ja toisen vaiheen kahdeksi ensimmäiseksi korvaavaksi kuvioksi. Alla käytetään salmiakkia ja ympyrää, mutta on paljon muitakin toimivia vaihtoehtoja.</p>
+               <p><img src = "sol_medium_fi.png"></p>
+            </Div>
+            <div class = "hard">
+				<p>Koska korvaukset muuttavat kaikkia täsmääviä osia samalla tavalla, voimme aloittaa yrittämällä etsiä tavoitteesta keskenään samanlaisia osia. Voimme huomata, että tavoitteen alussa ja lopussa on kolmen kuvion yhdistelmä tähti-ympyrä-kolmio, ja näiden välissä on kaksi 6-kulmiota. Alussa meidän pitää valita neljä kuviota. Voisimme siis yrittää edetä seuraavan kuvan esittämästä lähtökohdasta: asetamme 6-kulmiot jo valmiiksi keskelle, ja niitä ennen ja jälkeen asetetaan keskenään samat kuviot (vaikkapa salmiakit), jotka sitten toisessa ja kolmannessa vaiheessa pyrimme muuntamaan tähti-ympyrä-kolmio-yhdistelmiksi.</p>
+               <p><img src = "sol_hard_2_fi.png"></p>
+               <p>Sekä toisessa että kolmannessa askeleessa yksi kuvio korvataan kahdella kuviolla. Ei ole hankalaa keksiä tapaa, miten salmiakki saadaan muutettua tähti-ympyrä-kolmio-yhdistelmäksi kahdella tällaisella korvauksella. Alla on esimerkiksi esitetty ratkaisu, jossa ensin salmiakki korvataan tähdellä ja salmiakilla, ja sen jälkeen salmiakki korvataan ympyrällä ja kolmiolla. Tähän voi keksiä monia muitakin tapoja.</p>
+               <p><img src = "sol_hard_fi.png"></p>
+            </Div>
+
+         <h2> Tämä on tietojenkäsittelyä! </h2>
+
+            <p>Esimerkiksi monet tekstinkäsittelyohjelmat sisältävät "etsi ja korvaa"-toiminnon, jolla kaikki antamamme hakumerkkijonon esiintymät dokumentissa voi korvata antamallamme korvausmerkkijonolla. Tehtävässä käytettiin samantapaista toimintoa, joskin etsittiin ja korvattiin merkkijonojen sijaan kuvioita ja pääpaino oli sen pohtimisessa, miten korvaukset muuttavat lähtöasetelmaa.</p>
+	  </div> <!-- task-solution -->
+   </body>
+</html>

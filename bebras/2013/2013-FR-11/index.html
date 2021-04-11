@@ -1,0 +1,165 @@
+<!doctype html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>2013-FR-11</title>
+      <script>
+         window.stringsLanguage = 'fr';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1_M.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+         var modulesPath = '../../../_common/modules';
+         importModules([
+            'jquery-1.7.1', 'jquery-ui.touch-punch', 'raphael-2.2.1', 'JSON-js',
+            'beav-1.0', 'beaver-task-2.0', 'simulation-2.0', 'raphaelFactory-1.0',
+            'delayFactory-1.0', 'simulationFactory-1.0', 'raphaelButton-1.0', 'drag_lib-2.0',
+            'jschannel', 'platform-pr', 'buttonsAndMessages', 'installationAPI.01', 'randomGenerator-1.0',
+            'miniPlatform', 'taskStyles-0.1','graph-1.0','visual-graph-1.0','graph-mouse-1.0']);
+      </script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/tasks/2013/2013-FR-11/",
+          "language": "fr",
+          "version": "fr.01",
+          "authors": "Arthur Charguéraud, France-ioi",
+          "translators": [],
+          "license": "CC BY-SA 3.0",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "acceptedAnswers": [""]
+      };
+      </script>
+      <script>
+         var taskStrings = {
+            success: "Bravo ! Vous avez réussi.",
+            dam: "barrage",
+            alreadyExist: "Il existe déjà une ligne <br />entre ces deux points.",
+            isolatedHouse: "Il reste une maison qui peut être privée d'électricité en coupant une seule ligne.",
+            tooManyLines: "Vous avez réussi, mais il est possible d'y arriver en construisant moins de lignes. Essayez encore.",
+            numberOfLines: function(nb) {
+               return "Nombre de lignes construites : <b>" + nb + "</b>. "
+            }
+         };
+      </script>
+      <style class="">
+      #graph_task {
+         width: 450px; 
+         /*height: 300px;*/
+         text-align: center;
+         margin-top: 1em;
+      }
+      #message {
+         margin-bottom: 1em;
+      }
+      #error {
+         height: 2em;
+      }
+      </style>
+      <script src="task.js"></script>
+   </head>
+   <body>
+      <div id="task">
+         <h1>Transport d'électricité</h1>
+         <div id="tabsContainer"></div>   <!-- will contain the versions tabs -->
+         <div id="taskContent">        <!-- will contain the content of the task --> 
+            <div id="zone_1">
+               <div class="consigne">
+                  <p>Au pays des castors, l'électricité est produite par un barrage,
+                  et toutes les maisons sont reliées par des lignes électriques.
+                  Les castors souhaitent construire des lignes électriques supplémentaires
+                  afin que la coupure d'<b>une seule</b> ligne ne suffise plus à priver une maison
+                  d'électricité.
+                  </p>
+                  <p>
+                  Aidez les castors en leur montrant où construire les lignes.
+                  Moins vous utilisez de lignes, plus vous aurez de points.
+                  </p>
+               </div>
+            </div>
+            <div id="zone_2">
+               <center>
+                  <table>
+                     <tr>
+                     <td>
+
+                        <div id="graph_task"></div>
+
+                     </td>
+                     <td>
+                        <p>
+                        Cliquez sur deux maisons pour les relier par une ligne.
+                        Cliquez sur une ligne pour l'effacer.
+                        </p>
+                        <center>
+                           <div id="buttons_2013_FR_11">
+                              <div id="message"></div>
+                              <div id="error"></div>
+                           </div>
+                        </center>
+                     </td>
+                     </tr>
+                  </table>
+               </center>
+            </div>
+         </div>
+         
+<!--           <center>
+            <span id="cancel_2013_FR_11" style="display:none">
+              <span style="color:blue;font-weight:bold">Votre réponse a été enregistrée. </span>
+              <br/>
+              <input type="button" value="Annuler la réponse enregistrée" onclick="nm_2013_FR_11.cancel()">
+            </span>
+          </center> -->
+
+
+      </div><!-- task -->
+      <div id="solution">
+         <h2>Solution</h2>
+         <p>Il suffisait de <b>3</b> lignes pour que le réseau résiste à la destruction d'une seule ligne. </p>
+         <style> 
+           .soltable td { 
+              vertical-align: top;
+              padding-right: 1em; 
+           }
+         </style>
+
+         <table class="soltable">
+         <tr>
+            <td>Commençons par repérer les maisons qui ne sont reliées au barrage que par un seul chemin, et qui risquent donc une coupure d'électricité si une seule ligne de ce chemin est coupée. Ces maisons «&nbsp;à risque&nbsp;» sont montrées en rouge sur le dessin ci-contre.
+            </td>
+            <td><img src="2013-FR-11_electricity_sol_1.png">
+            </td>
+         </tr>
+         <tr>
+            <td>Le but du sujet est d'ajouter des lignes de sorte à ce qu'il n'y ait plus aucune maison à risque. Par exemple, le schéma ci-contre montre comment l'ajout d'une ligne permet de sécuriser l'alimentation en électricité de deux maisons à risque.
+            </td>
+            <td><img src="2013-FR-11_electricity_sol_2.png">
+            </td>
+         </tr>
+         <tr>
+            <td>Afin de construire le moins de lignes possibles, il faut mieux ajouter des lignes reliant entre elles des maisons isolées. Par exemple, le schéma ci-contre montre qu'avec une seule nouvelle ligne on peut retirer 5 maisons à risque par rapport à la situation initiale.
+            </td>
+            <td><img src="2013-FR-11_electricity_sol_3.png">
+            </td>
+         </tr>
+         </table>
+         <p>En ajoutant deux lignes de plus, on arrive à la meilleure solution, qui n'utilise que 3 lignes.</p>
+         <div id="graph_solution" style="width:500px; height:300px; margin:10px; text-align:center"></div>
+         <h2>C'est de l'informatique !</h2>
+         <p>Les réseaux, que ce soit des réseaux d'électricité ou de communication, 
+         doivent être <b>robustes</b>, c'est-à-dire qu'ils doivent être construits
+         de sorte à ce que la connexion ne soit pas interrompue trop souvent.
+         </p>
+         <p>Un certain degré de robustesse peut être obtenu en s'assurant que
+         chaque paire de ronds est reliée par plusieurs chemins. Dans le sujet
+         ci-dessus, on demandait qu'il y ait au moins deux chemins distincts
+         entre chaque paire de ronds, mais on aurait pu se poser la question 
+         pour trois chemins, par exemple. </p>
+         <p>Dans le sujet, seriez-vous capable, en ne construisant pas plus de 10 lignes
+         (et sans construire de lignes superposées),
+         de faire en sorte que la coupure de 2 lignes (n'importe lesquelles)
+         ne suffisent pas à déconnecter une maison du réseau&nbsp;?</p>
+      </div> <!-- task-solution -->
+   </body>
+</html>

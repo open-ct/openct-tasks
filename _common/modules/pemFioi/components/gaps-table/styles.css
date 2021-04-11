@@ -1,0 +1,85 @@
+.gaps-table .label {
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+.gaps-table .value {
+    display: inline-block;
+    border: 1px solid #4a90e2;
+    background: white;
+    text-align: center;
+    cursor: move;
+    padding: 4px 20px;
+}
+
+.gaps-table .gaps-toolbar {
+    min-height: 28px;
+}
+
+.gaps-table .gaps-toolbar .value {
+    margin: 5px 10px 5px 5px;
+}
+
+.gaps-table .table-container {
+    display: block;
+    margin: 10px 0 10px 0;
+}
+  
+.gaps-table .table-outline {
+    display: inline-block;
+    border: 1px dotted #000;
+}
+
+.gaps-table table {
+    margin: 5px;
+}
+
+.gaps-table table th {
+    background: #CCC;
+}
+
+.gaps-table table th,
+.gaps-table table td {
+    padding: 0;
+    padding: 5px;
+    text-align: center;        
+}
+ 
+.gaps-table table .placeholder {
+    border: 1px solid #4a90e2;
+}
+  
+.gaps-table table .placeholder-hover {
+    background: #4a90e2;
+    padding: 5px 0px;
+}
+  
+.gaps-table table .placeholder:empty:before {
+    content: "\00a0";
+}
+
+.gaps-table table .value {
+    display: block;    
+    margin: -5px;
+}
+
+.gaps-table table .mistake {
+    background: #FF6666;
+}
+
+.gaps-table table .mistake .value {
+    background: #FF6666;
+    border-color: #FF6666;
+}
+
+.gaps-table .csv {
+    font-family: monospace;
+    display: block;
+    margin: 5px 0 10px 0;
+    padding: 5px;
+    border: 1px solid #999;
+}
+
+.gaps-table .csv .mistake {
+    background: #FF6666;
+}

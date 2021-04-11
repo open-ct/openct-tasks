@@ -1,0 +1,494 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>2016-FR-12</title>
+    <link class="module" rel="stylesheet" href="../../../_common/modules/pemFioi/taskStyles-0.1.css" id="http://www.france-ioi.org/modules/pemFioi/taskStyles-0.1.css">
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/jquery/1.7/jquery.min.js" id="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/jquery-ui/jquery.ui.touch-punch.min.js" id="jquery.ui.touch-punch.min.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/raphael/2.2.1/raphael.min.js" id="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.1/raphael.min.js"></script>
+
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/json/json2.min.js" id="https://github.com/douglascrockford/JSON-js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/beav-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/beav-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/drag_lib-2.0.js" id="http://www.france-ioi.org/modules/pemFioi/drag_lib.js"></script>
+
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/beaver-task-2.0.js" id="http://www.france-ioi.org/modules/pemFioi/beaver-task-2.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/raphaelFactory-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/raphaelFactory-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/delayFactory-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/delayFactory-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/simulationFactory-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/simulationFactory-1.0.js"></script>
+
+    <script class="remove" type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js" id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js"></script>
+    <script class="proxy module" type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/platform-pr.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/platform-pr.js"></script>
+    <script class="stdButtonsAndMessages module" type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"  id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"></script>
+    <script class="remove" type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/miniPlatform.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/miniPlatform.js"></script>
+      <script>
+         var stringsLanguage = 'fi';
+      </script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/tasks/2016/2016-FR-12-filters/",
+          "language": "fi",
+          "version": "fi.01",
+          "authors": "Arthur Charguéraud, Mathias Hiron, Nir Lavee, France-ioi",
+          "translators": "Timo Poranen, Heikki Hyyrö",
+          "license": "CC BY-SA 3.0",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "fullFeedback": true,
+          "acceptedAnswers": [],
+          "usesRandomSeed": false
+      };
+      </script>
+      <script type="text/javascript">
+      /* Note for translateors: for hard version, make sure to pick names for the items in such a way that sorting by name does not accidentally sort items by price. */
+
+      var taskStrings = {
+            columns: {
+               image: "Kuva",
+               name: "Nimike",
+               type: "Tyyppi",
+               color: "Väri",
+               price: "Hinta"
+            },
+            properties: {
+               name: {
+                  orange: "Appelsiini",
+                  brocoli: "Parsakaali",
+                  rose: "Ruusu",
+                  carrot: "Porkkana",
+                  cucumber: "Kurkku",
+                  radish: "Retiisi",
+                  apple: "Omena",
+                  tulip: "Tulppaani",
+                  banana: "Banaani",
+                  kiwi: "Kiivi",
+                  blackberry: "Karhunvatukka",
+                  eggplant: "Munakoiso"
+               },
+               type: {
+                  fruit: "Hedelmä",
+                  vegetable: "Vihannes",
+                  flower: "Kukka"
+               },
+               color: {
+                  orange: "Oranssi",
+                  green: "Vihreä",
+                  red: "Punainen",
+                  yellow: "Keltainen",
+                  black: "Musta"
+               }
+            },
+            columnWidth: {
+                "image": 55,
+                "name": 85,
+                "type": 85,
+                "color": 65,
+                "price": 55
+                },
+            priceOf: function(cost) { return cost + " &euro;"; },
+            success: "Onnittelut, ratkaisit tämän version!",
+            wrong: "Sinun listasi on erilainen kuin toivelista. Yritä uudelleen.",
+            empty: "Tyhjä (mikään ei täytä ehtojasi)." 
+         };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+      <style>
+         table {
+            border: 0px;
+         }
+         #mainDiv, #mainTable {
+            width: 100%;
+         }
+         #controllersDiv {
+            width: 760px;
+            margin: auto;
+         }
+         .mainTableCell {
+            vertical-align: top;
+         }
+         .titles {
+            font-size: 20px;
+            padding-top: 7px;
+            padding-bottom: 10px;
+         }
+         .mainTableTitle {
+            text-align: center;
+         }
+         .itemTable {
+            margin: 0 auto auto auto;
+            border-collapse: collapse;
+         }
+         .itemTable td {
+            border: 1px solid black;
+            text-align: center;
+            height: 30px;
+            width: 50px;
+         }
+         .itemTable img {
+            max-height: 28px;
+            max-width: 40px;
+         }
+         .itemTable tr:first-child td {
+            font-weight: bold;
+         }
+         .conditionals {
+            margin: 0px 20px 0px 20px;
+         }
+         select {
+            margin: 5px;
+            height: 32px;
+            font-size: 18px;
+            min-width: 60px;
+         }
+         #messageEmpty {
+            text-align: center;
+            width: 100%;
+         }
+         .solutionFilter {
+            font-weight: bold;
+            margin-top: 0.4em;
+            margin-bottom: 1.0em;
+         }
+      </style>
+   </head>
+   <body>
+      <div id="task">
+         <h1>Toivelista</h1>
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <p>
+               Muodosta "Oma lista", joka on samanlainen kuin "Toivelista"<span class="easy">.</span><span class="medium hard">,<br/> ja aseta lista oikeaan järjestykseen.</span>
+            </p>
+            <p>
+               Määritä alla annettujen valikoiden avulla ehdot, jotka johtavat haluttuun lopputulokseen.
+            </p>
+            <div id="controllersDiv">
+               <table>
+                  <tr>
+                     <td>
+                        <div class="easy">
+                           <table>
+                              <tr>
+                                 <td>
+                                    Valitse tyyppi:
+                                 </td>
+                                 <td>
+                                    <select id="easy-type" class="controller property-type">
+                                       <option value="_empty"></option>
+                                    </select>
+                                 </td>
+                              </tr>
+                              <tr>
+                                 <td>
+                                    Valitse väri:
+                                 </td>
+                                 <td>
+                                    <select id="easy-color" class="controller property-color">
+                                       <option value="_empty"></option>
+                                    </select>
+                                 </td>
+                             </tr>
+                           </table>
+                        </div>
+                        <div class="medium">
+                           <table>
+                              <tr>
+                                 <td>
+                                    Tyyppi
+                                 </td>
+                                 <td>
+                                    <select id="medium-type-comp" class="controller">
+                                       <option value="_empty"></option>
+                                       <option value="equal">on</option>
+                                       <option value="unequal">ei ole</option>
+                                    </select>
+                                    <select id="medium-type" class="controller property-type">
+                                       <option value="_empty"></option>
+                                    </select>
+                                 </td>
+                                 <td></td>
+                                 <td></td>
+                               </tr>
+                              <tr>
+                                 <td>
+                                    Väri
+                                 </td>
+                                 <td>
+                                    <select id="medium-color-comp" class="controller">
+                                       <option value="_empty"></option>
+                                       <option value="equal">on</option>
+                                       <option value="unequal">ei ole</option>
+                                    </select>
+                                    <select id="medium-color" class="controller property-color">
+                                       <option value="_empty"></option>
+                                    </select>
+                                 </td>
+                              </tr>
+                              <tr>
+                                 <td>
+                                    Hinta
+                                 </td>
+                                 <td>
+                                    <select id="medium-price-comp" class="controller">
+                                       <option value="_empty"></option>
+                                       <option value="lower_equal">on enintään</option>
+                                       <option value="greater_equal">on vähintään</option>
+                                    </select>
+                                    <select id="medium-price" class="controller property-price">
+                                       <option value="_empty"></option>
+                                       <option value="1">1 &euro;</option>
+                                       <option value="2">2 &euro;</option>
+                                       <option value="3">3 &euro;</option>
+                                       <option value="4">4 &euro;</option>
+                                       <option value="5">5 &euro;</option>
+                                       <option value="6">6 &euro;</option>
+                                       <option value="7">7 &euro;</option>
+                                       <option value="8">8 &euro;</option>
+                                       <option value="9">9 &euro;</option>
+                                       <option value="10">10 &euro;</option>
+                                    </select>
+                                 </td>
+                             </tr>
+                              <tr>
+                                 <td>Järjestys</td>
+                                 <td colspan="5">
+                                    <select id="medium-sorting" class="controller sorting">
+                                    <option value="_empty"></option>
+                                    <option value="color">Värin mukainen aakkosjärjestys</option>
+                                    <option value="name">Nimikkeen mukainen aakkosjärjestys</option>
+                                    <option value="type">Tyypin mukainen aakkosjärjestys</option>
+                                    <option value="price">Hinnan mukainen kasvava järjestys</option>
+                                    </select>
+                                 </td>
+                              </tr>
+                           </table>
+                        </div>
+                        <div class="hard">
+                           <table>
+                              <tr>
+                                 <td>
+                                    <table>
+                                       <tr>
+                                          <td>
+                                             Tyyppi
+                                          </td>
+                                          <td>
+                                             <select id="hard-type-comp1" class="controller">
+                                                <option value="_empty"></option>
+                                                <option value="equal">on</option>
+                                                <option value="unequal">ei ole</option>
+                                             </select>
+                                             <select id="hard-type1" class="controller property-type">
+                                                <option value="_empty"></option>
+                                             </select>
+                                          </td>
+                                          <td>
+                                             <select id="hard-type-cond" class="controller conditionals">
+                                                <option value="and">ja</option>
+                                                <option value="or">tai</option>
+                                             </select>
+                                          </td>
+                                          <td>
+                                             Tyyppi
+                                          </td>
+                                          <td>
+                                             <select id="hard-type-comp2" class="controller">
+                                                <option value="_empty"></option>
+                                                <option value="equal">on</option>
+                                                <option value="unequal">ei ole</option>
+                                             </select>
+                                             <select id="hard-type2" class="controller property-type">
+                                                <option value="_empty"></option>
+                                             </select>
+                                          </td>
+                                       </tr>
+                                       <tr>
+                                          <td>
+                                             Väri
+                                          </td>
+                                          <td>
+                                             <select id="hard-color-comp1" class="controller">
+                                                <option value="_empty"></option>
+                                                <option value="equal">on</option>
+                                                <option value="unequal">ei ole</option>
+                                             </select>
+                                             <select id="hard-color1" class="controller property-color">
+                                                <option value="_empty"></option>
+                                             </select>
+                                          </td>
+                                          <td>
+                                             <select id="hard-color-cond" class="controller conditionals">
+                                                <option value="and">ja</option>
+                                                <option value="or">tai</option>
+                                             </select>
+                                          </td>
+                                          <td>
+                                             Väri
+                                          </td>
+                                          <td>
+                                             <select id="hard-color-comp2" class="controller">
+                                                <option value="_empty"></option>
+                                                <option value="equal">on</option>
+                                                <option value="unequal">ei ole</option>
+                                             </select>
+                                             <select id="hard-color2" class="controller property-color">
+                                                <option value="_empty"></option>
+                                             </select>
+                                          </td>
+                                       </tr>
+                                       <tr>
+                                          <td>
+                                             Hinta
+                                          </td>
+                                          <td>
+                                             <select id="hard-price-comp1" class="controller">
+                                                <option value="_empty"></option>
+                                                <option value="lower_equal">on enintään</option>
+                                                <option value="greater_equal">on vähintään</option>
+                                             </select>
+                                             <select id="hard-price1" class="controller property-price">
+                                                <option value="_empty"></option>
+                                                <option value="1">1 &euro;</option>
+                                                <option value="2">2 &euro;</option>
+                                                <option value="3">3 &euro;</option>
+                                                <option value="4">4 &euro;</option>
+                                                <option value="5">5 &euro;</option>
+                                                <option value="6">6 &euro;</option>
+                                                <option value="7">7 &euro;</option>
+                                                <option value="8">8 &euro;</option>
+                                                <option value="9">9 &euro;</option>
+                                                <option value="10">10 &euro;</option>
+                                             </select>
+                                          </td>
+                                          <td>
+                                             <select id="hard-price-cond" class="controller conditionals">
+                                                <option value="and">ja</option>
+                                                <option value="or">tai</option>
+                                             </select>
+                                          </td>
+                                          <td>
+                                             Hinta
+                                          </td>
+                                          <td>
+                                             <select id="hard-price-comp2" class="controller">
+                                                <option value="_empty"></option>
+                                                <option value="lower_equal">on enintään</option>
+                                                <option value="greater_equal">on vähintään</option>
+                                             </select>
+                                             <select id="hard-price2" class="controller property-price">
+                                                <option value="_empty"></option>
+                                                <option value="1">1 &euro;</option>
+                                                <option value="2">2 &euro;</option>
+                                                <option value="3">3 &euro;</option>
+                                                <option value="4">4 &euro;</option>
+                                                <option value="5">5 &euro;</option>
+                                                <option value="6">6 &euro;</option>
+                                                <option value="7">7 &euro;</option>
+                                                <option value="8">8 &euro;</option>
+                                                <option value="9">9 &euro;</option>
+                                                <option value="10">10 &euro;</option>
+                                             </select>
+                                          </td>
+                                       </tr>
+                                       <tr>
+                                           <td>
+                                             Järjestys
+                                           </td>
+                                           <td colspan="5">
+                                             <select id="hard-sorting" class="controller sorting">
+                                                <option value="_empty"></option>
+                                                <option value="color">Värin mukainen aakkosjärjestys</option>
+                                                <option value="name">Nimikkeen mukainen aakkosjärjestys</option>
+                                                <option value="type">Tyypin mukainen aakkosjärjestys</option>
+                                                <option value="price">Hinnan mukainen kasvava järjestys</option>
+                                             </select>
+                                          </td>
+                                       </tr>
+                                    </table>
+                                 </td>
+                              </tr>
+                           </table>
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </div>
+            <div id="mainDiv">
+               <table id="mainTable">
+                  <tr>
+                     <td class="mainTableTitle titles">Oma lista:</td>
+                     <td class="mainTableTitle titles">Toivelista:</td>
+                  </tr>
+                  <tr>
+                     <td class="mainTableCell">
+                        <table id="resultTable" class="itemTable">
+                        </table>
+                     </td>
+                     <td class="mainTableCell">
+                        <table id="targetTable" class="itemTable">
+                        </table>
+                     </td>
+                  </tr>
+               </table>
+            </div>
+            <img id="orange_image" src="orange.png" style="display:none">
+            <img id="brocoli_image"  src="brocoli.png" style="display:none">
+            <img id="rose_image"  src="rose.png" style="display:none">
+            <img id="carrot_image"  src="carrot.png" style="display:none">
+            <img id="cucumber_image" src="cucumber.png" style="display:none">
+            <img id="radish_image" src="radish.png" style="display:none">
+            <img id="apple_image" src="apple.png" style="display:none">
+            <img id="tulip_image" src="tulip.png" style="display:none">
+            <img id="banana_image" src="banana.png" style="display:none">
+            <img id="kiwi_image" src="kiwi.png" style="display:none">
+            <img id="eggplant_image" src="eggplant.png" style="display:none">
+            <img id="blackberry_image" src="blackberry.png" style="display:none">
+            <img id="icon_image" src="icon.png" style="display:none">
+         </div>
+      </div><!-- task -->
+      <div id="solution">
+
+         <h2>Ratkaisu</h2>
+            <div class="easy">
+               <p>Toivelista koostuu parsakaalista ja kurkusta, ja ne molemmat ovat vihreitä vihanneksia. Toisaalta nämä kaksi ovat ainoat aluksi omassa listassamme olevat vihreät vihannekset. Toivelista voidaan siten muodostaa seuraavilla valinnoilla:</p>
+               <ol>
+               <li><p class="solutionFilter">Valitse tyyppi: vihannes</p></li>
+               <li><p class="solutionFilter">Valitse väri: vihreä</p></li>
+               </ol>
+            </div>   
+            <div class="medium">
+               <p>Toivelista saadaan luotua askeleittain:</p>
+               <ol>
+               <li>Toivelistassa on kahta eri tyyppiä: hedelmä ja kukka. Omassa listassa on alunperin kolmea eri tyyppiä: edellisten lisäksi vihanneksia. Karsitaan vihannekset pois valitsemalla:
+               <p class="solutionFilter">Tyyppi: ei ole vihannes</p></li>
+               <li>Toivelistassa esiintyy keltainen ja punainen väri. Omassa listassa on alunperin näiden lisäksi myös vihreää ja oranssia, mutta toisaalta edellä tehty tyyppivalinta tuli jo karsineeksi pois vihreät vaihtoehdot. Karsitaan tässä pois lisäksi oranssi väri valinnalla:
+               <p class="solutionFilter">Väri: ei ole oranssi</p></li>
+               <li>Edellisten valintojen jälkeen ainoa ylimääräinen omassa listassa oleva vaihtoehto on tulppaani. Sen voi karsia pois esimerkiksi hinnan perusteella:
+               <p class="solutionFilter">Hinta: on enintään 6 €</p></li>
+               <li>Nyt omassa listassa on samat vaihtoehdot kuin toivelistassa. Enää pitää järjestää ne (toivelista on nimikkeiden mukaisessa aakkosjärjestyksessä):
+               <p class="solutionFilter">Järjestys: nimikkeen mukainen aakkosjärjestys</p></li>
+               </ol>
+            </div>
+            <div class="hard">
+               <p>Toivelista saadaan luotua askeleittain:</p>
+               <ol>
+               <li>Toivelistassa on hedelmiä ja vihanneksia, joten valitaan:
+               <p class="solutionFilter">Tyyppi: on hedelmä tai Tyyppi: on vihannes</p></li>
+               <li>Toivelistan värit ovat punainen, vihreä ja musta, joten karsitaan muut värit eli oranssi ja keltainen pois:
+               <p class="solutionFilter">Väri: ei ole oranssi ja Väri: ei ole keltainen</p></li>
+               <li>Nyt omassa listassa on ylimääräisinä enää 6 € maksava munakoiso ja 5 € maksava kurkku. Toivelistan hinnoista huomataan, että kukin maksaa joko korkeintaan 4 € tai vähintään 9 €. Lisätään siis vielä tällainen valinta:
+               <p class="solutionFilter">Hinta: on enintään 4 € tai Hinta: on vähintään 9 €</p></li>
+               <li>Nyt omassa listassa on samat vaihtoehdot kuin toivelistassa, mutta järjestys pitää vielä määrittää samaksi kuin toivelistassa:
+               <p class="solutionFilter">Järjestys: hinnan mukainen kasvava järjestys</p></li>
+               </ol>
+               <p>Tämä oli eräs ratkaisutapa. On olemassa myös muita tapoja.</p>
+            </div>
+         <h2>Tämä on tietojenkäsittelyä!</h2>
+            <p>Tehtävä havainnollistaa tietojenkäsittelyssä käytettyjä <strong>tietokantakyselyitä</strong>. Esimerkiksi erittäin laajasti käytetyt <b>relaatiotietokannat</b> tyypillisesti tallettavat tietoa tehtävässä esitetyn "oman listan" tapaisiin taulukoihin, joiden rivit sisältävät yksittäisten alkioiden erilaisia ominaisuuksia. Tietokannoista voidaan tietokantakyselyiden avulla hakea kyselyssä määritetyt ominaisuudet omaavat alkiot, samaan tapaan kuin tehtävässä voitiin karsia omasta listasta jäljelle vain määrittämämme ehdot täyttävät rivit.</p>
+            <p>Tietokantoihin ja tietokantakyselyihin törmää (ainakin välillisesti) päivittäisessä elämässä. Yksi esimerkki varsin puhtaasta tietokannan käytöstä on vaikkapa monen kirjaston verkkosivuillaan tarjoama mahdollisuus tehdä hakuja kirjaston kokoelmista. Kokoelman tiedot on tallennettu tietokantaan, ja hakusivulla voi kohdistaa tietokantaan kyselyitä, joihin voi yleensä määrittää samantapaisia ehtoja kuin tässä tehtävässäkin (esim. onko haettava tyyppi kirja, CD-levy, tms.). Valtaosa verkossa toimivista kaupoista tarjoaa verkkosivuillaan mahdollisuuden hakea tietynlaiset ehdot täyttäviä tuotteita kaupan valikoimasta; tässäkin on kyse tietokantakyselystä, joka kohdistuu verkkokaupan tuotteiden tietoja ylläpitävään tietokantaan. Ja jos kirjaudut verkossa jollekin sivustolle (vaikkapa pankkiin tai sosiaalisen median palveluun), ylläpitää sivusto todennäköisesti käyttäjätietojasi (käyttäjätunnus, nimi, sähköpostiosoite tms.) tietokannassa. Vastaavia esimerkkejä löytyy todella paljon lisääkin; tietokantoja on lähes kaikkialla!</p>
+            <p>Katso lisää esim. <a href="https://fi.wikipedia.org/wiki/Tietokanta" target="_blank">https://fi.wikipedia.org/wiki/Tietokanta</a> (ja erityisesti alakohta <a href="https://fi.wikipedia.org/wiki/Tietokanta#Relaatiotietokannat" target="_blank">https://fi.wikipedia.org/wiki/Tietokanta#Relaatiotietokannat</a>).</p>
+
+	  </div> <!-- task-solution -->
+   </body>
+</html>

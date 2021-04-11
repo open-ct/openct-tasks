@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>taskVideo</title>
+        <script>
+            window.stringsLanguage = 'en';
+        </script>
+        <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.4-mobileFirst.js" id="import-modules"></script>
+        <script class="remove" type="text/javascript">
+            var modulesPath = '../../../_common/modules';
+            importModules([
+                'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'jschannel',
+                'platform-pr', 'installationAPI.01', 'miniPlatform',
+                'taskStyles-mobileFirst',
+                'taskVideo', 'taskVideoPlayer', 'taskVideo_css']);
+        </script>
+        <script class="remove" type="text/javascript">
+            var json = {
+                "id": "Logique/mathinfoly_lafourcade_2",
+                "language": "fr",
+                "version": "fr.01",
+                "authors": ["Pascal Lafourcade : cours", "Christophe Stoltz, Prometea : captation", "Barbara Arsenault : montage", "Association Plaisir Maths : organisation", "Association France-ioi : commanditaire"],
+                "translators": [],
+                "license": "CC-BY-SA 3.0",
+                "taskPathPrefix": "",
+                "modulesPathPrefix": "",
+                "browserSupport": []
+            };
+        </script>
+        <script type="text/javascript">
+var videoData = {
+    video_id: "ZcsnBdUrIAk",
+    sections: [
+        {
+            title: "Objectifs",
+            description: "Comment fonctionne un SAT-solver, algorithme DPLL, notations et formalisation de la logique de 1er ordre",
+            parts: 4,
+            start: '0:32'
+        },
+        {
+            title: "Théorème de Gödel",
+            description: "{Machine de Turing|1:23} &mdash; " +
+                         "{Problèmes indécidables|2:05} &mdash; " +
+                         "{Machine qui répond vrai ou faux sans se tromper|2:49} &mdash; " +
+                         "{Exemple où la machine ne peut pas répondre|3:30} &mdash; " +
+                         "{Théorème de Gödel|6:04} &mdash; " +
+                         "{Anecdote de Don Quichotte|6:41}",
+            parts: 4,
+            start: '0:48'
+        },
+        {
+            title: "Algorithme de Davis et Putnam (DPLL)",
+            description: "{Historique, auteurs|8:47} &mdash; " +
+                         "{Objectif : déterminer si un ensemble de clauses est satisfiable|9:14} &mdash; " +
+                         "{Deux transformations : préserver le sens puis la satisfiabilité|10:09} &mdash; " +
+                         "{Branch and bound|13:35} &mdash; " +
+                         "{Choix des variables à affecter|15:01} &mdash; " +
+                         "{Exploration des branches|15:37} &mdash; " +
+                         "{Solution différentes|16:02}",
+            parts: 4,
+            start: '8:18'
+        },
+        {
+            title: "DPLL : Supprimer clauses contenant des littéraux isolés",
+            description: "{Littéral isolé|17:32} &mdash; " +
+                         "{Lemme : satisfiabilité préservée|19:17} &mdash; " +
+                         "{Exemple|19:59} &mdash; " +
+                         "{Question : clause et forme normale|22:17} &mdash; " +
+                         "{Correction du Lemme|23:15} &mdash; " +
+                         "{Correction de l'exemple|24:19} &mdash; " +
+                         "{Application du Lemme|24:33} &mdash; " +
+                         "{Pourquoi on peut les supprimer|25:24} &mdash; " +
+                         "{Question / éclaircissement|26:09} &mdash; " +
+                         "{Suite de l'application|27:45} &mdash; " +
+                         "{Critère intéressant car syntaxique|28:38}",
+            parts: 4,
+            start: '17:10'
+        },
+        {
+            title: "DPLL : Résolution unitaire",
+            description: "{Définition : clause unitaire|29:12} &mdash; " +
+                         "{Lemme associé : clauses unitaires|30:19} &mdash; " +
+                         "{Exercice 1|34:10} &mdash;" +
+                         "{Exercice 2|37:40} &mdash; " +
+                         "{Exercice 3|38:44} &mdash; " +
+                         "{Lemme : suppression des clauses valides|41:05}",
+            parts: 4,
+            start: '28:52'
+        },
+        {
+            title: "DPLL : Algorithme",
+            description: "{Suppression des clauses valides|43:08} &mdash; " +
+                         "{Appliquer sur les clauses non valides|43:32} &mdash; " +
+                         "{Renvoyer faux si contradiction|44:03} &mdash; " +
+                         "{Renvoyer vrai si ensemble vide|44:25} &mdash; " +
+                         "{Retirer les clauses qui en contiennent une autre|44:40} &mdash; " +
+                         "{Résolution unitaire|45:40} &mdash; " +
+                         "{Si modèle modifié, recommencer|46:17} &mdash; " +
+                         "{Choisir une variable et appliquer DPLL pour chaque affectation|46:35} &mdash; " +
+                         "{Vraie question : quelle variable choisir|47:17} &mdash; " +
+                         "{Compétition de SAT-solvers|47:59} &mdash; " +
+                         "{Question sur le 4e point|49:00}",
+            parts: 4,
+            start: '42:52'
+        },
+        {
+            title: "DPLL : Exemple 1",
+            description: "{Exemple|49:15} &mdash; " +
+                         "{Choisir la variable a|50:14} &mdash; " +
+                         "{Branche a = 0|51:07} &mdash; " +
+                         "{Enlever la clause qui contient b|51:44} &mdash; " +
+                         "{Résolution unitaire|51:56} &mdash; " +
+                         "{Branche a = 1|52:27} &mdash; " +
+                         "{|0:00}",
+            parts: 4,
+            start: '49:15'
+        },
+        {
+            title: "DPLL : Observations",
+            description: "{Pourquoi il se termine|53:32} &mdash; " +
+                         "{Montrer qu'il est correct|53:45} &mdash; " +
+                         "{Conclusion: vous pouvez le programmer|54:03} &mdash; " +
+                         "{Question : quand utilise-t-on les litéraux isolés ?|54:21} &mdash; " +
+                         "{Correction : litéraux isolés|55:10}",
+            parts: 4,
+            start: '53:20'
+        },
+        {
+            title: "DPLL : Exemple 2",
+            description: "{Exemple|58:25} &mdash; " +
+                         "{Branche s = 0|59:55} &mdash; " +
+                         "{Réduction, Élimination|1:00:16}",
+            parts: 4,
+            start: '58:25'
+        },
+        {
+            title: "Logique du premier ordre",
+            description: "{Deux nouveaux symboles : il existe et quel que soit|01:01:49} &mdash; " +
+                         "{Domaine|1:02:17} &mdash; " +
+                         "{Termes, relations, formules|01:03:08} &mdash; " +
+                         "{Exemple : terme père(x), relation frère(x,y), formule|01:04:02}",
+            parts: 4,
+            start: '01:01:23'
+        },
+        {
+            title: "Exercices",
+            description: "{Exercices : phrases à traduire|01:06:20}<br/>" +
+                         "{Exercice 1 : il y a des gens qui s'aiment|01:08:37} &mdash; " +
+                         "{Domaine à définir, prédicats à lister|01:09:30} &mdash; " +
+                         "{Spécifier x != y ?|1:10:09} &mdash; " +
+                         "{SAT-Solveurs modulo théorie équationnelle SMT|1:11:43}<br/>" +
+                         "{Exercice 2 : si deux personnes s'aiment elles sont conjointes|01:12:03} &mdash; " +
+                         "{Corrigé|1:12:44} &mdash;" +
+                         "{Exercice 3 : On ne peut pas aimer deux personnes à la fois|01:14:40}<br/>" +
+                         "{Question : y plutôt que z|1:15:54} &mdash; " +
+                         "{Que faire pour le projet|01:16:48} &mdash; " +
+                         "{Question : proposition alternative|01:17:21} &mdash; " +
+                         "{Question : définition de l'égalité|01:18:25}",
+            parts: 4,
+            start: '01:06:20'
+        },
+
+    ],
+    show_viewed: true,
+    youtube: {
+        rel: 0,
+        autoplay: 0
+    }
+};
+        </script>
+   </head>
+   <body>
+        <div id="task">
+            <h1>Introduction à la logique, par Pascal Lafourcade, partie 2</h1>
+            <div>
+                <p>Conférence 2 de <a href="http://www.mathinfoly.org/" target="_blank">Mathinfoly</a> 2019, par Pascal Lafourcade</p>
+            </div>
+            <div id="taskContent">Loading...</div>
+
+            <div>
+                <p>Vidéo en licence Creative Commons CC-BY-SA 3.0</p>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,223 @@
+<!doctype html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>2016-FR-21</title>
+      <script class="module" type="text/javascript" src="../../modules/ext/jquery/1.7/jquery.min.js" id="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+      <script class="module" type="text/javascript" src="../../modules/ext/json/json2.min.js" id="https://github.com/douglascrockford/JSON-js"></script>
+      <script class="module" type="text/javascript" src="../../modules/ext/raphael/2.2.1/raphael.min.js" id="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.1/raphael.min.js"></script>
+
+      <script class="module" type="text/javascript" src="../../modules/pemFioi/drag_lib-2.0.js" id="http://www.france-ioi.org/modules/pemFioi/drag_lib.js"></script>
+      <script class="module" type="text/javascript" src="../../modules/integrationAPI.01/installationAPI.01/pemFioi/tracker.js" id="http://castor-informatique.fr/tasks/modules/tracker.js"></script>
+      <script class="module" type="text/javascript" src="../../modules/pemFioi/beaver-task.js" id="http://www.france-ioi.org/modules/pemFioi/beaver-task.js"></script>
+      <script class="module" type="text/javascript" src="../../modules/ext/jschannel/jschannel.js" id="http://www.france-ioi.org/modules/ext/jschannel/jschannel.js"></script>      
+      <script class="proxy module" type="text/javascript" src="../../modules/integrationAPI.01/official/platform-pr.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/platform-pr.js"></script>
+      <script class="stdButtonsAndMessages module" type="text/javascript" src="../../modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"  id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"></script>
+      <script class="module" type="text/javascript" src="../../modules/pemFioi/beav-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/beav-1.0.js"></script>
+      <script class="remove" type="text/javascript" src="../../modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js"></script>
+      <script class="remove" type="text/javascript" src="../../modules/integrationAPI.01/official/miniPlatform.js"></script>
+
+      <link class="module" rel="stylesheet" type="text/css" href="../../modules/pemFioi/taskStyles-0.1.css" id="http://www.france-ioi.org/modules/pemFioi/taskStyles-0.1.css">
+      <script type="text/javascript">
+      var stringsLanguage = 'en';
+      var taskStrings = {
+         cmdForward: "F",
+         cmdBackwards: "B",
+         cmdRight: "R",
+         cmdLeft: "L",
+         cmdF1: "F1",
+         cmdF2: "F2",
+         instructionsLabel: "Instructions : ",
+         programLabel: "Program : ",
+         functionLabel: function(name) { return "Function " + name + " : "; },
+         tryLabel: "Try",
+         stopLabel: "Stop",
+         success: "Congratulations, you did it.",
+         incomplete: "The robot has not passed over all the gray lines.",
+         executionComplete: "Execution completed.",
+         outOfZone: "The robot tries to move outside the gray lines.",
+         infiniteLoop: function(name) { return "Your program runs in circles: the execution of the function " + name + " requested to run the function " + name + "again."; }
+         };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/algorea_tasks/2016/2016-FR-21-snowflake/",
+          "language": "en",
+          "version": "en.01",
+          "authors": "Ismael Belghiti, Simon Mauras, Arthur Charguéraud, Mathias Hiron",
+          "translators": [],
+          "license": "",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "acceptedAnswers": [""],
+          "fullFeedback": true
+      };
+      </script>
+
+      <style>
+         #drawing_and_controls {
+           border: 1px solid black;
+         }
+         #drawing {
+            margin-left: 50px;
+            margin-right: 35px;
+         }
+         #program {
+           padding-left: 10px;
+           border: 1px solid black;
+         }
+         #message {
+           color: red;
+         }
+         .examples  {
+           border-collapse: collapse;
+         }
+         .examples td {
+           border: 1px solid black;
+           padding: 0.5em;
+         }
+         #try_examples {
+            font-weight: bold;
+            width: 11em;
+         }
+         #completedMessage {
+            height: 1em;
+            margin-bottom: 1.5em;
+            font-weight:bold;
+            color: red;
+         }
+         .exampleProgramRow {
+            border-collapse: collapse;
+         }
+         .exampleProgramRow td {
+            border: 0px;
+            padding: 0px;
+            margin: 0px;
+         }
+         .exampleProgram {
+            margin-top: 3px;
+            margin-bottom: 3px;
+            background-color: #e0e0f8;
+            font-weight: bold;
+            font-size: 1.2em;
+            border-collapse: collapse;
+         }
+         .exampleProgram td {
+            padding: 0px;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            border: solid black 1px;
+         }
+         .instructions {
+            margin-right: 0.3em;
+         }
+
+      </style>
+   </head>
+   <body> 
+      <div id="task">
+         <h1>Snowflake</h1>
+         <img style="display:none" src="robot.png" />
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <p>
+            Your objective is to program the robot represented by the green triangle, so that it passes at least once on each of the gray lines of the pattern displayed below.
+             Use the following instructions :
+            </p>
+            <center>
+            <table style="width: 600px;text-align:left">
+               <tr>
+                  <td style="padding-right:50px">
+                     <table><tr>
+                        <td><table class="exampleProgram instructions" style="display:inline-block;vertical-align:middle"><tr><td>F</td></tr></table></td>
+                        <td>move forward</td>
+                     </tr></table>
+                  </td>
+                  <td style="padding-right:50px">
+                     <table><tr>
+                        <td><table class="exampleProgram instructions" style="display:inline-block;vertical-align:middle"><tr><td>B</td></tr></table></td>
+                        <td>move backward</td>
+                     </tr></table>
+                  </td>
+               </tr>
+               <tr>
+                  <td style="padding-right:50px">
+                     <table><tr>
+                        <td><table class="exampleProgram instructions" style="display:inline-block;vertical-align:middle"><tr><td>L</td></tr></table></td>
+                        <td>turn left</td>
+                     </tr></table>
+                  </td>
+                  <td style="padding-right:50px">
+                     <table><tr>
+                        <td><table class="exampleProgram instructions" style="display:inline-block;vertical-align:middle"><tr><td>R</td></tr></table></td>
+                        <td>turn right</td>
+                     </tr></table>
+                  </td>
+               </tr>
+               <tr class="medium hard">
+                  <td style="padding-right:50px" colspan=2>
+                     <table><tr>
+                        <td><table class="exampleProgram instructions" style="display:inline-block;vertical-align:middle"><tr><td>F1</td></tr></table></td>
+                        <td>Execute all the instructions placed in front of "Function F1"</td>
+                     </tr></table>
+                  </td>
+               </tr>
+               <tr class="hard">
+                  <td style="padding-right:50px" colspan=2>
+                     <table><tr>
+                        <td><table class="exampleProgram instructions" style="display:inline-block;vertical-align:middle"><tr><td>F2</td></tr></table></td>
+                        <td>Execute all the instructions placed in front of "Function F2"</td>
+                     </tr></table>
+                  </td>
+               </tr>
+            </table>
+            </center>
+            <p>
+            Drag your instructions in the "Program" slots <span class="medium">and</span><span class="hard">,</span><span class="medium hard"> "Function F1"</span><span class="hard"> and "Function F2"</span> at the bottom of the page, then click "Try". 
+            <span class="hard">Caution, in this version, the robot <b>turns 60 degrees</b> with left (G) and right (D).</span>
+            </p>
+
+            <center>
+            <table class="examples">
+               <tr>
+                  <td id="try_examples" rowspan="2">Try the examples to understand.</td>
+                  <td style="min-width:200px"><div id="example0"></div></td>
+                  <td style="min-width:200px"><div id="example1"></div></td>
+               </tr>
+               <tr>
+                  <td><center><input id="button0" type="button" onclick="task.loadExample(0)" value="Example 1"></center></td>
+                  <td><center><input id="button1" type="button" onclick="task.loadExample(1)" value="Example 2"></center></td>
+               </tr>
+            </table>
+            </center>
+
+            <div id="drawing_and_controls"><table><tr>
+               <td>
+                  <div id="drawing" style="margin-top: 1em"></div>
+               </td>
+               <td>
+                  <div id="completedMessage"></div>
+                  <input id="resetExecution" type="button" onclick="task.resetExecution()" value="Reset">
+               </td>
+            </tr></table></div>
+            <div id="program"></div>
+            <div><span id="message"></span></div>
+            <center>
+               <input id="tryExecution" type="button" onclick="task.tryExecution()" value="Try">
+            </center>
+            <img src="icon.png" style="display:none">
+         </div>
+      </div><!-- task -->
+      <div id="solution">
+         <h2>Solution</h2> 
+         <p>Voici une solution possible :</p>
+         <div class="easy"><img src="solution_easy.png" /></div>
+         <div class="medium"><img src="solution_medium.png" /></div>
+         <div class="hard"><img src="solution_hard.png" /></div>
+
+      </div> <!-- task-solution -->
+   </body>
+</html>

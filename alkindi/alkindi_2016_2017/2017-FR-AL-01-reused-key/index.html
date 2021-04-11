@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <!-- legacy -->
+    <script type="text/javascript" src="../../../_common/modules/ext/jschannel/jschannel.js"></script>
+    <script type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/platform-pr.js"></script>
+    <script type="text/javascript" src="../../../_common/modules/ext/jquery/2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/miniPlatform.js"></script>
+
+    <!-- task -->
+    <script src="build/vendor.js"></script>
+    <script src="build/bundle.js"></script>
+</head>
+<body>
+    <div id="container" class="container"></div>
+    <script type="text/javascript">
+        var options = {
+            server_module: {
+                host: 'http://localhost:3000'
+            }
+        };
+        window.app = ReactTask.run(document.getElementById('container'), options);
+    </script>
+</body>

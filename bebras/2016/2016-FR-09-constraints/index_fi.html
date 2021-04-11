@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>2016-FR-09</title>
+    <link class="module" rel="stylesheet" href="../../../_common/modules/pemFioi/taskStyles-0.1.css" id="http://www.france-ioi.org/modules/pemFioi/taskStyles-0.1.css">
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/jquery/1.7/jquery.min.js" id="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/jquery-ui/jquery.ui.touch-punch.min.js" id="jquery.ui.touch-punch.min.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/raphael/2.2.1/raphael.min.js" id="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.1/raphael.min.js"></script>
+
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/json/json2.min.js" id="https://github.com/douglascrockford/JSON-js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/beav-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/beav-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/drag_lib-2.0.js" id="http://www.france-ioi.org/modules/pemFioi/drag_lib.js"></script>
+
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/beaver-task-2.0.js" id="http://www.france-ioi.org/modules/pemFioi/beaver-task-2.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/simulation-2.0.js" id="http://www.france-ioi.org/modules/pemFioi/simulation-2.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/raphaelFactory-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/raphaelFactory-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/delayFactory-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/delayFactory-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/simulationFactory-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/simulationFactory-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/grid-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/grid-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/randomGenerator-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/randomGenerator-1.0.js"></script>
+
+    <script class="remove" type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js" id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js"></script>
+    <script class="proxy module" type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/platform-pr.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/platform-pr.js"></script>
+    <script class="stdButtonsAndMessages module" type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"  id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"></script>
+    <script class="remove" type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/miniPlatform.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/miniPlatform.js"></script>
+      <script>
+         var stringsLanguage = 'fi';
+      </script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/tasks/2016/2016-FR-09-constraints/",
+          "language": "fi",
+          "version": "fi.01",
+          "authors": "Arthur Charguéraud, Mathias Hiron, Nir Lavee, France-ioi",
+          "translators": "Timo Poranen, Heikki Hyyrö",
+          "license": "CC BY-SA 3.0",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "fullFeedback": true,
+          "acceptedAnswers": [],
+          "usesRandomSeed": false
+      };
+      </script>
+      <script type="text/javascript">
+      var taskStrings = {
+            success: "Onnittelut, ratkaisit tämän version!",
+            wrong: function(attr, level) { 
+               var base = "Kaksi kehystettyä kuviota ovat lähekkäin ";
+               if (attr == "shape") {
+                  return base + "vaikka ne ovat samanmuotoisia.";
+               } else if (attr == "fill") {
+                  return base + "vaikka ne ovat samanmuotoisia.";
+               } else if (attr == "size") {
+                  if (level == "hard") {
+                     return base + " (kulmittain) vaikka ne ovat samankokoisia.";
+                  } else {
+                     return base + "vaikka ne ovat samankokoisia.";
+                  }
+               }
+               return "FEL";
+            }
+         };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+      <style>
+         #anim_container {
+            text-align: center;
+         }
+         #anim {
+            display: inline-block;
+         }
+         #control {
+            text-align: center;
+         }
+         .constraints li {
+            padding-bottom: 0.5em;
+         }
+      </style>
+   </head>
+   <body>
+      <div id="task">
+         <h1>Hyvät naapurit</h1>
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <p class="easy">
+               Järjestä kuviot raahaamalla siten, että samanlaiset kuviot EIVÄT OLE KOSKAAN vierekkäin.
+            </p>
+            <div class="medium">
+               <p>
+               Järjestä kuviot raahaamalla siten, että:
+               </p>
+               <ul class="constraints">
+                  <li>Kaksi ympyrää tai kaksi neliötä eivät ole koskaan vierekkäin.</li>
+                  <li>Kaksi pientä kuviota tai kaksi isoa kuviota eivät ole koskaan vierekkäin.</li>
+               </ul>
+            </div>
+            <div class="hard">
+               <p>
+                  Järjestä kuviot ruudukkoon siten, että:
+                  <ul class="constraints">
+                     <li>Kaksi ympyrää tai kaksi neliötä <strong>eivät ole koskaan vierekkäin</strong> (pysty- tai vaakasuorassa).</li>
+                     <li>Kaksi pientä kuviota tai kaksi suurta kuviota <strong>eivät ole koskaan kulmittain </strong>.</li>
+                  </ul>
+               </p>
+            </div>
+            <div id="anim_container">
+               <div id="anim"></div>
+            </div>
+            <div id="control">
+                <input type="button" id="execute" value="Tarkista vastaus"/>
+            </div>
+            <img src="icon.png" style="display:none">
+         </div>
+      </div><!-- task -->
+      <div id="solution">
+         <h2>Ratkaisu</h2>
+            <div class="easy">
+               <p>Tähän versioon löytyy suoraviivainen ratkaisu: aseta neliöt joka toiseen ruutuun.</p>
+               <p><img src="sol_easy.png"></p>
+            </div>   
+            <div class="medium">
+               <p>Voimme tehdä seuraavat havainnot:</p>
+               <ul>
+               <li>Sekä isoja neliöitä että pieniä ympyröitä on kaksi. Nämä voivat vuorotella kaskenään muodostaen neljän kuvion jakson, jonka toisessa päässä on iso neliö ja toisessa päässä pieni ympyrä.</li>
+               <li>Sekä isoja ympyröitä että pieniä neliöitä on kaksi. Nämä voivat vuorotella kaskenään muodostaen neljän kuvion jakson, jonka toisessa päässä on iso ympyrä ja toisessa päässä pieni neliö.</li>
+               <li>Edellä kuvattuja neljän kuvion jaksoja ei voi liittää suoraan peräkkäin riippumatta siitä, miten päin kumpikin jakso käännetään: aina tulisi peräkkäin joko kaksi samankokoista tai kaksi samanmuotoista kuviota.</li>
+               <li>Edellä kuvattujen neljän kuvion jaksojen väliin voidaan asettaa iso 6-kulmio, jos kumpikin jakso asetetaan niin päin, että pieni kuvio tulee 6-kulmion viereen.</li>
+               </ul>
+               <p>Oheinen kuva esittää yllä kuvailtua ratkaisua:</p>
+               <p><img src="sol_medium_2.png"></p>
+            </div>
+            <div class="hard">
+               <p>Ratkaisua voi alkaa hahmotella esim. keskittymällä ensin ainoastaan 8 neliön ja 8 ympyrän asetteluun ensimmäisen säännön puitteissa, sivuuttaen toistaiseksi kokoerot sekä niitä koskevan toisen säännön. Ensimmäisestä säännöstä seuraa, että jokaisella rivillä ja jokaisessa sarakkeessa joka toinen kuvio on neliö ja joka toinen ympyrä. Tämä selvästi pakottaa meidät asettelemaan kuviot shakkilautaa muistuttavaan tapaan:</p>
+               <p><img src="sol_hard_1.png"></p>
+               <p>Otetaan nyt lisäksi mukaan myös kokoerot sekä toinen sääntö. Sen mukaan jokaisella diagonaalilla pitää olla vuorotellen iso ja vuorotellen pieni kuvio. Jos alamme asetella kuvioita ruudukkoon tämän säännön mukaan, noudattaen samalla myös edellä havaittua shakkilautamaista asettelutapaa, pääsemme esimerkiksi keskidiagonaalin sekä sen viereisen diagonaalin osalta seuraavaan lopputulokseen:</p>
+               <p><img src="sol_hard_2.png"></p>
+               <p>Jos jatkamme täyttämään loputkin diagonaalit samaan tapaan, päädymme alla kuvattuun ratkaisuun. On olemassa myös muita samantapaisia, jotka eroavat vain sen suhteen, millaisen kuvion päädyimme aluksi asettamaan vasempaan yläkulmaan.</p>
+               <p><img src="sol_hard.png"></p>
+            </div>
+         <h2>Tämä on tietojenkäsittelyä!</h2>
+            <p>Tietojenkäsittelyn piirissä on monia sovelluksia, joissa jokin alkiojoukko (tässä kuviot) halutaan asettaa jotkin tietyt kriteerit (tässä: tehtävässä annetut säännöt) täyttävään järjestykseen. Tällaisia, ja monia muitakin tietojenkäsittelytieteen ongelmia, voidaan yrittää ratkaista esim. sopivaa <b>heuristiikkaa</b> noudattaen. Heuristiikalla tarkoitetaan jonkinlaista epäformaalia menetelmää ongelmanratkaisuun.</p>
+            <p>Katso lisää esim. <a href="https://fi.wikipedia.org/wiki/Heuristiikka" target="_blank">https://fi.wikipedia.org/wiki/Heuristiikka</a>.</p>
+	  </div> <!-- task-solution -->
+   </body>
+</html>

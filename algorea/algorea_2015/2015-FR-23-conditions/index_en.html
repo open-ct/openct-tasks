@@ -1,0 +1,171 @@
+<!doctype html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>2015-FR-23-conditions</title>
+      <script class="module" type="text/javascript" src="../../modules/ext/jquery/1.7/jquery.min.js" id="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+      <script class="module" type="text/javascript" src="../../modules/ext/json/json2.min.js" id="https://github.com/douglascrockford/JSON-js"></script>
+      <script class="module" type="text/javascript" src="../../modules/ext/raphael/2.2.1/raphael.min.js" id="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.1/raphael.min.js"></script>
+
+      <script class="module" type="text/javascript" src="../../modules/pemFioi/beaver-task.js" id="http://www.france-ioi.org/modules/pemFioi/beaver-task.js"></script>
+      <script class="remove" type="text/javascript" src="../../modules/ext/jschannel/jschannel.js"></script>
+      <script class="proxy module" type="text/javascript" src="../../modules/integrationAPI.01/official/platform-pr.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/platform-pr.js"></script>
+      <script class="stdButtonsAndMessages module" type="text/javascript" src="../../modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"  id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"></script>
+      <script class="module" type="text/javascript" src="../../modules/pemFioi/beav-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/beav-1.0.js"></script>
+      <script class="remove" type="text/javascript" src="../../modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js"></script>
+      <script class="remove" type="text/javascript" src="../../modules/integrationAPI.01/official/miniPlatform.js"></script>
+
+      <link class="module" rel="stylesheet" type="text/css" href="../../modules/pemFioi/taskStyles-0.1.css" id="http://www.france-ioi.org/modules/pemFioi/taskStyles-0.1.css">
+      <script>
+         var stringsLanguage = 'en';
+         var taskStrings = {
+            invalidExpression: "The expression is invalid. It seems to be missing something.",
+            and: "AND",
+            or: "OR",
+            not: "NOT",
+            invalidExpressionExpectingNumberXY: function(expr) {
+               return "The expression \"" + expr + "\" is invalid.";
+            },
+            invalidParameter: function(param, op) {
+               return "The parameter \"" + param + "\" is invalid for the operator " + op + ".";
+            },
+            invalidExpression2Params: function(expr, op) {
+               return "The expression \"" + expr + "\" is invalid: the operator " + op + " can only have two parameters.";
+            },
+            invalidExpression1Param: function(op) {
+               return "The operator " + op + " can only have one parameter.";
+            },
+            missingParenthesis: "It lacks a parenthesis.",
+            parenthesisMissingForOps: function(op1, op2) {
+               return "To be able to use both  " + op1 + " and " + op2 + ", It is necessary to use parentheses.";
+            },
+            invalidCharacterAfterExpression: function(character, expr) {
+               return "Unrecognized character \"" + character + "\" after \"" + expr + "\".";
+            },
+            expressionNotBoolean: "The expression is not Boolean.",
+            invalidExpressionTokenMissing: "The expression is invalid. It seems to be missing something.",
+            none: " ",
+            appliedCondition: "Applied condition:",
+            success: "Congratulations, you did it.",
+            failure: "You did not reproduce the pattern."
+         };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/tasks/algorea_2015/2015-FR-23-conditions/",
+          "language": "en",
+          "version": "en.01",
+          "authors": "Mathias Hiron",
+          "translators": [],
+          "license": "",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "acceptedAnswers": [""],
+          "fullFeedback": true
+      };
+      </script>
+      <style>
+         #drawing {
+            margin-left: 1em;
+         }
+         .columns td {
+            vertical-align: top;
+            padding-right: 1em;
+         }
+         .column_head {
+            font-weight: bold;
+         }
+         #message {
+            text-align: center;
+            font-weight: bold;
+            color: red;
+            padding: 0.5em;
+            height: 1em;
+         }
+         .buttons input {
+            margin-bottom: 5px;
+         }
+         #textSolution li {
+            margin-top: 0.2em;
+         }
+         .valigntop td {
+            vertical-align: top;
+         }
+         .examples  {
+            border-collapse: collapse;
+         }
+         .examples td {
+            border: 1px solid black;
+            padding: 0.5em;
+         }
+      </style>
+   </head>
+
+   <body>
+      <div id="task">
+         <h1>Conditions</h1>
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <p>
+		Click on the buttons below to see the effect of each condition on the grid called "Applied Conditions".
+            </p>
+            <table class="examples" style="margin: auto">
+               <tr>
+                  <td><input id="sample0" type="button" onclick="task.executeSample(0);" value="x < 3"/></td>
+                  <td class="easy"><input id="sample1" type="button" onclick="task.executeSample(1);" value="x >= 4"/></td>
+                  <td class="medium hard"><input id="sample2" type="button" onclick="task.executeSample(2);" value="y >= 4"/></td>
+                  <td class="easy"><input id="sample3" type="button" onclick="task.executeSample(3);" value="x >= 4 AND x <= 8"/></td>
+                  <td class="easy"><input id="sample4" type="button" onclick="task.executeSample(4);" value="x < 2 OR x > 4"/></td>
+                  <td class="medium hard"><input id="sample5" type="button" onclick="task.executeSample(5);" value="y >= 4 AND x <= 8"/></td>
+                  <td class="medium hard"><input id="sample6" type="button" onclick="task.executeSample(6);" value="x < 2 OR y > 4"/></td>
+                  <td class="medium hard"><input id="sample7" type="button" onclick="task.executeSample(7);" value="x > 7 OR (x < 5 AND y > 4)"/></td>
+               </tr>
+            </table>
+            <!--
+            <p>Test erreurs :</p>
+            <table class="examples" style="margin: auto;">
+               <tr>
+                  <td><input id="sample5" type="button" onclick="task.executeSample(5);" value="x < z"/></td>
+                  <td><input id="sample6" type="button" onclick="task.executeSample(6);" value="ET >= 4"/></td>
+                  <td><input id="sample7" type="button" onclick="task.executeSample(7);" value="4 <= x ET y"/></td>
+                  <td><input id="sample8" type="button" onclick="task.executeSample(8);" value="4 <= 5 <= 6 <= 7"/></td>
+                  <td><input id="sample9" type="button" onclick="task.executeSample(9);" value="(4) <= (X) ET X <= 8"/></td>
+                  <td><input id="sample10" type="button" onclick="task.executeSample(10);" value="4 < "/></td>
+                  <td><input id="sample11" type="button" onclick="task.executeSample(11);" value="x < 4 ET y < 5 OU x < 5"/></td>
+                  <td><input id="sample12" type="button" onclick="task.executeSample(12);" value="x < 4 > 5"/></td>
+               </tr>
+            </table>
+            -->
+            <p>
+               Write your own condition, so that you can reproduce the grid on the left which is called "Target".
+            </p>
+            <div style="display: inline-block; padding: 8px">
+               <input id="expression" type="text" style="width: 650px" onkeydown="task.keydown();"/>
+            </div>
+            <button onclick="task.testAnswer()">Try</button>
+            <table class="contentCentered" style="width: 100%; margin: auto;">
+               <tr style="vertical-align: top;">
+                  <td><p><b>Target:</b></p></td>
+                  <td ><p id="programUsed">&nbsp;<br/>&nbsp;</p></td>
+               </tr>
+               <tr>
+                  <td><div id="target"></div></td>
+                  <td><div id="grid"></div></td>
+               </tr>
+            </table>
+         </div>
+         <img src="icon.png" style="display: none;"/>
+      </div><!-- task -->
+
+      <div id="solution">
+         <h2>Solution</h2> 
+         <ul>
+            <li>Version facile : x &lt; 5 OU x &gt; 7</li>
+            <li>Version moyenne : x &gt; 4 ET x &lt; 9 ET y &gt; 2</li>
+            <li>Version difficile : (x &gt; 4 ET x &lt; 10) OU (y &gt; 0 ET y &lt; 4)</li>
+         </ul>
+      </div><!-- task-solution -->
+   </body>
+</html>

@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>training-repeat-if-paint</title>
+      <script>
+      window.stringsLanguage = 'fr';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.0.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+        var modulesPath = '../../../_common/modules/'
+        importModules([
+            'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+            'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1']);
+        // set Blockly as default language when none is specified through ?language=
+        importLanguageModules('blockly');
+      </script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/questions/algorea_training/training-repeat-if-paint/",
+          "language": "fr",
+          "version": "fr.01",
+          "authors": "Mathias Hiron",
+          "translators": [],
+          "license": "",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "fullFeedback": true,
+          "minWidth": "auto"
+      };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+   </head>
+   <body onresize="task.displayedSubTask.updateScale()">
+      <div id="task">
+         <h1>Dessiner les cases marquées</h1>
+         <img src="paint.png" style="display:none" />
+         <img src="marker.png" style="display:none" />
+         <img src="green_robot.png" style="display:none" />
+         <img src="icon.png" style="display:none" />
+
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <div id="taskIntro">
+               <p>
+                  Programmer le robot pour qu'il peigne toutes les cases marquées.
+               </p>
+               <p class="medium hard">
+                  Elles sont toujours par deux l'une au dessus de l'autre. Votre robot doit peindre les deux avant de passer à la colonne suivante.
+               </p>
+               <div class="easy">
+                  <p>
+                     Avec
+                     <span data-lang="blockly scratch">le bloc « si »,</span>
+                     <span data-lang="python">l'instruction <code>if</code>,</span>
+                     vous pouvez tester le contenu de la case du robot, et ne la peindre que si elle est marquée :
+                  </p>
+                  <p data-lang="blockly">
+                     <img src="example_if.png" style="width:250px"/>
+                  </p>
+                  <p data-lang="scratch">
+                     <img src="example_if_scratch.png" style="width:200px"/>
+                  </p>
+                  <p data-lang="python">
+<code>
+if caseMarquee():
+   peindre()
+</code>
+                  </p>
+               </div>
+               <div class="medium">
+                  <p>
+                     Notez que vous pouvez placer plusieurs instructions dans
+                     <span data-lang="blockly scratch">un bloc « si »,</span>
+                     <span data-lang="python">une instruction <code>if</code>,</span>
+                     comme illustré ci-dessous :
+                  </p>
+                  <p data-lang="blockly">
+                     <img src="example_if_2.png" style="width:250px">
+                  </p>
+                  <p data-lang="scratch">
+                     <img src="example_if_2_scratch.png" style="width:200px">
+                  </p>
+                  <p data-lang="python">
+<code>
+if caseMarquee():
+   peindre()
+   droite()
+</code>
+                  </p>
+               </div>
+               <div class="hard">
+                  <p>
+                     Vous pouvez utiliser
+                     <span data-lang="blockly scratch">un bloc « si / sinon »,</span>
+                     <span data-lang="python">une instruction <code>if</code> / <code>else</code>,</span>
+                     qui permet d'effectuer des opérations différentes selon si la case du robot contient une marque ou non.
+                  </p>
+                  <p data-lang="blockly">
+                     <img src="example_if_else.png" style="width:250px">
+                  </p>
+                  <p data-lang="scratch">
+                     <img src="example_if_else_scratch.png" style="width:200px">
+                  </p>
+                  <p data-lang="python">
+<code>
+if caseMarquee():
+   peindre()
+else:
+   haut()
+</code>
+                  </p>
+               </div>
+               <p>Indication : au total, le robot doit se déplacer 14 fois vers la droite pour atteindre le dernier marqueur.</p>
+            </div>
+            <div id="gridContainer"></div>
+            <div id="blocklyLibContent"></div>
+         </div>
+
+      </div><!-- task -->
+   </body>
+</html>
+ 

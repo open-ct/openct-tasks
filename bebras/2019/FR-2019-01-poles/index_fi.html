@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+
+<head>
+   <meta charset="utf-8"></meta>
+   <title>2019-FR-01-poles</title>
+   <script>
+      window.stringsLanguage = 'fi';
+   </script>
+   <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1_M.js" id="import-modules"></script>
+   <script class="remove" type="text/javascript">
+      var modulesPath = '../../../_common/modules';
+      importModules([
+         'jquery-1.7.1', 'jquery-ui.touch-punch', 'raphael-2.1', 'JSON-js', //'grid-1.0',
+         'beav-1.0', 'beaver-task-2.0', 'simulation-2.0', 'raphaelFactory-1.0',
+         'delayFactory-1.0', 'simulationFactory-1.0', 'raphaelButton-1.0',
+         'platform-pr', 'buttonsAndMessages', 'installationAPI.01', 'miniPlatform',
+         'taskStyles-0.1', 'randomGenerator-1.0', 'drag_lib-2.0'
+      ]);
+   </script>
+   <script class="remove" type="text/javascript">
+      var json = {
+         "id": "http://castor-informatique.fr/tasks/2019/FR-2019-01-poles/",
+         "language": "fi",
+         "version": "fi.01",
+         "authors": "Arthur Charguéraud, Mathias Hiron, France-ioi",
+         "translators": "Heikki Hyyrö",
+         "license": "CC BY-SA 3.0",
+         "taskPathPrefix": "",
+         "modulesPathPrefix": "",
+         "browserSupport": [],
+         "fullFeedback": true,
+         "acceptedAnswers": [],
+         "usesRandomSeed": false
+       };
+   </script>
+   <script type="text/javascript">
+      var taskStrings = {
+         success: "Onnittelut, ratkaisit tämän version!",
+         tooManyJumps: function(nbBounces, maxNbBounces) {
+             return "Majava onnistui hyppäämään " + nbBounces + " kertaa.<br/>Majavan pitäisi jäädä jumiin " + maxNbBounces + " hypyn jälkeen."; },
+         "try": "Kokeile"
+
+      };
+   </script>
+   <script type="text/javascript" src="task.js"></script>
+   <style>
+      #paper {
+         margin: 1em auto;
+         touch-action: none;
+      }
+      #error {
+         min-height: 1em;
+         text-align: center;
+      }
+
+   </style>
+</head>
+
+<body>
+   <div id="task">
+      <h1>Pylväät</h1>
+      <div id="tabsContainer"></div>
+      <div id="taskContent">
+         <div id="zone_1">
+            <div class="consigne">
+               <p>
+                  Majava hyppii pylväältä toiselle. Hän hyppää aina nykyistä matalammalle pylväälle.
+               </p>
+               <p>
+                  Majava ei voi hypätä nykyistä korkeamman pylvään yli.
+               </p>
+               <p>
+                  Majava hyppää mahdollisimman monta kertaa. Estä majavaa hyppäämästä enempää kuin <strong><span class="easy medium">kaksi</span><span class="hard">kolme</span></strong> kertaa.
+               </p>
+               <p>
+                  Muuta pylväiden paikkoja raahaamalla.
+               </p>
+            </div>
+         </div>
+         <div id="zone_2">
+             <div id="paper"></div>
+         </div>
+         <div id="error"></div>
+      </div>
+      <img src="beaversBall.png" style="display:none" id="beaversBall">
+      <img src="icon.png" style="display:none">
+   </div>
+
+   <!-- task -->
+
+   <div id="solution">
+      <h2>Ratkaisu</h2>
+          <div class="easy">
+           <p>Aseta majavan lähtöpylväs keskimmäiseksi. Nyt majava voi tehdä korkeintaan 2 hyppyä keskipylväältä sen jommalla kummalla puolella oleville kahdelle pylväälle.</p>
+           <img src="sol_easy_fi.png">
+          </div>
+         <div class="medium">
+           <p>Tarkastellaan majavan ensimmäistä hyppyä. Voimme tehdä kolme havaintoa:</p>
+           <ul>
+           <li>Majava hyppää korkeimmalta pylväältä jollekin sen vasemmalla tai oikealla puolella olevalle pylväälle. Myös kaikkien loppujen hyppyjen tulee kohdistua samalla puolella lähtöpylvästä oleviin pylväisiin, koska majava ei enää myöhemmin pysty hyppäämään lähtöpylvään yli sen vastakkaiselle puolelle.</li>
+           <li>Majavan kannattaa aina hypätä valitsemansa puolen korkeimmalle pylväälle: kyseiseltä korkeimmalta pylväältä voi puolestaan hypätä mille tahansa muulle kyseisen puolen pylväälle, joten hyppy suoraan jollekin toiselle pylväälle johtaisi kokonaisuudessaan vähintään yhteen hyppyyn vähemmän kuin hyppääminen korkeimman pylvään kautta.</li>
+           <li>Majava ei voi suorittaa enempää hyppyjä kuin mitä lähtöpylväältä hypätyllä puolella on pylväitä. Hyppyjen määrän voi minimoida huolehtimalla, että lähtöpylvään hypätyllä puolella voi isoimmillaankin  olla mahdollisimman vähän pylväitä. Tämä saadaan aikaan siirtämällä lähtöpylväs keskelle.</li>
+           </ul>
+           <p>Edellisen mukaan voimme aloittaa asettamalla majavan lähtöpylvään keskimmäiseksi: majavan lähtöpylvään kummallekin puolelle jää 3 pylvään joukot, ja ensimmäinen hyppy päätyy niistä jomman kumman korkeimmalle pylväälle.</p>
+           <img src="sol_medium_1_fi.png">
+           <p>Tarkastellaan nyt majavan toista hyppyä. Edellisen havainnon mukaan voimme olettaa, että majava on nyt lähtöpylvään jommalla kummalla puolella olevan pylväsjoukon korkeimmalla pylväällä. Voimme huomata, että ongelmanasettelu on oikeastaan hyvin samanlainen kuin alussa: majava on jonkin pylväsjoukon (tässä rajoitettu nyt lähtöpylvään vasemman- tai oikeanpuoleiseen pylväsjoukkoon) korkeimmalla pylväällä ja pyrkii hyppäämään (tästä eteenpäinkin) mahdollisimman monta kertaa. Voimme siten soveltaa samaa logiikkaa kuin edellä, mutta nyt erikseen lähtöpylvään kummankin puoleisiin pylväsjoukkoihin: siirretään lähtöpylvään kummankin puolen pylväsjoukkojen korkeimmat pylväät kyseisten joukkojen keskimmäisiksi pylväiksi. Näiden keskimmäisten pylväiden oikeille ja vasemmille puolille jää 1 pylvään joukot, ja majavan (viimeistään) toinen hyppy päätyy niistä jonkin ainoalle pylväälle.</p>
+           <p>Majava ei pääse enää 1 pylvään joukosta eteenpäin (ei ole enää oikeaa tai vasenta vielä matalammista pylväistä koostuvaa puolta, mihin hypätä). Hyppyjä tulee näin ollen korkeintaan 2. Ratkaisu on valmis.</p>
+           <img src="sol_medium_fi.png">
+         </div>
+         <div class="hard">
+           <li>Majava hyppää korkeimmalta pylväältä jollekin sen vasemmalla tai oikealla puolella olevalle pylväälle. Myös kaikkien loppujen hyppyjen tulee kohdistua samalla puolella lähtöpylvästä oleviin pylväisiin, koska majava ei enää myöhemmin pysty hyppäämään lähtöpylvään yli sen vastakkaiselle puolelle.</li>
+           <li>Majavan kannattaa aina hypätä valitsemansa puolen korkeimmalle pylväälle: kyseiseltä korkeimmalta pylväältä voi puolestaan hypätä mille tahansa muulle kyseisen puolen pylväälle, joten hyppy suoraan jollekin toiselle pylväälle johtaisi kokonaisuudessaan vähintään yhteen hyppyyn vähemmän kuin hyppääminen korkeimman pylvään kautta.</li>
+           <li>Majava ei voi suorittaa enempää hyppyjä kuin mitä lähtöpylväältä hypätyllä puolella on pylväitä. Hyppyjen määrän voi minimoida huolehtimalla, että lähtöpylvään hypätyllä puolella voi isoimmillaankin  olla mahdollisimman vähän pylväitä. Tämä saadaan aikaan siirtämällä lähtöpylväs keskelle.</li>
+           </ul>
+           <p>Edellisen mukaan voimme aloittaa asettamalla majavan lähtöpylvään keskimmäiseksi: majavan lähtöpylvään kummallekin puolelle jää 7 pylvään joukot, ja ensimmäinen hyppy päätyy niistä jomman kumman korkeimmalle pylväälle.</p>
+           <img src="sol_hard_1_fi.png">
+           <p>Tarkastellaan nyt majavan toista hyppyä. Edellisen havainnon mukaan voimme olettaa, että majava on nyt lähtöpylvään jommalla kummalla puolella olevan 7 pylvään joukon korkeimmalla pylväällä. Voimme huomata, että ongelmanasettelu on oikeastaan hyvin samanlainen kuin alussa: majava on jonkin pylväsjoukon (tässä rajoitettu nyt lähtöpylvään vasemman- tai oikeanpuoleiseen pylväsjoukkoon) korkeimmalla pylväällä ja pyrkii hyppäämään (tästä eteenpäinkin) mahdollisimman monta kertaa. Voimme siten soveltaa samaa logiikkaa kuin edellä, mutta nyt erikseen lähtöpylvään kummankin puoleisiin pylväsjoukkoihin: siirretään lähtöpylvään kummankin puolen pylväsjoukkojen korkeimmat pylväät kyseisten joukkojen keskimmäisiksi pylväiksi. Näiden keskimmäisten pylväiden oikeille ja vasemmille puolille jää 3 pylvään joukot, ja majavan (viimeistään) toinen hyppy päätyy niistä jonkin korkeimmalle pylväälle.</p>
+           <img src="sol_hard_2_fi.png">
+           <p>Kun tarkastelemme seuraavaksi kolmatta hyppyä, voimme jälleen huomata olevamme samassa tilanteessa kuin edellä. Nyt vain olemme päätyneet tarkastelemaan lähtöpylvään kummankin puolen 7 pylvään joukkojen keskimmäisten pylväiden kummallakin puolella olevia neljää eri 3 pylvään pylväsjoukkoa. Siirretään näidenkin joukkojen korkeimmat pylväät keskimmäisiksi, jolloin keskimmäisten pylväiden oikeille ja vasemmille puolille jää 1 pylvään joukot. Majavan (viimeistään) kolmas hyppy päätyy jonkin 1 pylvään joukon ainoalle pylväälle.</p>
+           <p>Majava ei pääse enää 1 pylvään joukosta eteenpäin (ei ole enää oikeaa tai vasenta vielä matalammista pylväistä koostuvaa puolta, mihin hypätä). Hyppyjä tulee näin ollen korkeintaan 2. Ratkaisu on valmis.</p>
+           <img src="sol_hard_fi.png">
+           <p>On hyvä huomata, että jos pylväitä olisi enemmän, voisi samaa ideaa jatkaa seuraavaksi neljänteen, viidenteen, jne. hyppyyn, kunnes vasemmat ja/tai oikeat pylväsjoukot koostuvat enää yksittäisistä (tai tyhjistä) pylväistä. Päädymme varsin nopeasti tällaiseen tilanteeseen, koska tarkastelemamme pylväsjoukot tulevat suunnilleen puolitetuiksi kunkin hyppykerran yhteydessä.</p>
+         </div>
+
+      <h2>Tämä on tietojenkäsittelyä!</h2>
+         <p>Tehtävän haastavampien versioiden ratkaisuiden yhteydessä ongelmaa analysoitiin <b>rekursiivisesti</b>. Rekursio on tietojenkäsittelyn sovelluksissa monesti käytetty tekniikka, missä jokin toimenpide (tässä tehtävässä: hyppy korkeimmalta pylväältä sen jommalle kummalle puolelle) suoritetaan toistuvasti alitapauksiin haarautuen (tässä tehtävässä: korkeimman pylvään oikean- ja vasemmanpuoleisiin pylväsjoukkoihin). Rekursio on huolellisesti sovellettuna varsin kätevä lähestymistapa monien tietojenkäsittelyn ongelmien analysointiin ja ratkaisuun, joskin tekniikkaa pidetään hieman hankalana oppia.</p>
+         <p>Katso lisää esim. <a href="https://fi.wikipedia.org/wiki/Rekursiivinen_algoritmi" target="_blank">https://fi.wikipedia.org/wiki/Rekursiivinen_algoritmi</a>.</p>
+
+   </div>
+   <!-- task-solution -->
+</body>
+
+</html>

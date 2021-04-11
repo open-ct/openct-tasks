@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=770, initial-scale=1.0">
+      <title>2013-FR-13</title>
+      <script>
+         window.stringsLanguage = 'fr';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1_M.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+         var modulesPath = '../../../_common/modules';
+         importModules([
+            'jquery-1.7.1', 'jquery-ui.touch-punch', 'raphael-2.1', 'JSON-js', 'jschannel',
+            'beav-1.0', 'beaver-task-2.0', 'simulation-2.0', 'raphaelFactory-1.0',
+            'delayFactory-1.0', 'simulationFactory-1.0', 'raphaelButton-1.0',
+            'platform-pr', 'buttonsAndMessages', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1', 'randomGenerator-1.0', 'drag_lib-2.0', 'shape-paths',
+            // 'graph-1.0', 'visual-graph-1.1'
+            // 'grid-1.0'
+         ]);
+      </script>
+
+      <script class="remove" type="text/javascript">
+      var json = {
+         "id": "http://castor-informatique.fr/tasks/2013/2013-FR-13/",
+         "language": "fr",
+         "version": "fr.01",
+         "authors": "France-ioi",
+         "translators": [
+         ],
+         "license": "CC BY-SA 3.0",
+         "taskPathPrefix": "",
+         "modulesPathPrefix": "",
+         "browserSupport": [
+         ],
+         "acceptedAnswers": [
+            "[5,3,0,2,1,4]"
+         ]
+      };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+      <script type="text/javascript">
+         var taskStrings = {
+            success: "Bravo, vous avez réussi !",
+            failure: "Ce n'est pas la bonne réponse.",
+            lighter: "plus léger",
+            heavier: "plus lourd",
+         };
+      </script>
+      <style>
+         #paper {
+            margin: 1em auto;
+         }
+         #error {
+            text-align: center;
+            margin: 1em 0;
+         }
+      </style>
+   </head>
+   <body>
+      <div id="task">
+         <h1>Trier par poids</h1>
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <div id="zone_1">
+               <div class="consigne">
+                  <p>
+                  Castor possède 6 frisbees de différentes couleurs et de différents poids. Il souhaite les ranger sur son étagère du plus léger (à gauche) au plus lourd (à droite). 
+                  </p>
+                  <p>
+                  Aidez Castor à ranger ses frisbees. Pour comparer le poids de deux frisbees, faites-en glisser un sur l'autre. La balance vous indiquera alors quel est le plus léger des deux. 
+                  </p>
+               </div>
+            </div>
+            <div id="zone_2">
+               <div id="paper"></div>   
+            </div>
+            <div id="error"></div>
+         </div>
+      </div><!-- task -->
+      <div id="solution">
+         <h2>Solution</h2>
+         <p>La solution est : <b>FDACBE</b>.</p>
+         <p>Il existe de nombreuses méthodes pour trier des objets.
+         Une méthode particulièrement adaptée pour ce sujet consiste
+         à trier d'abord les deux premiers frisbees, puis prendre le
+         troisième et le placer au bon endroit par rapport aux deux 
+         premiers, puis prendre le quatrième et l'insérer à sa place
+         par rapport aux trois premiers, etc... Par exemple, au moment
+         où l'on a déjà les trois premiers frisbees dans l'ordre (A, puis C, puis B), 
+         on se retrouvent dans la situation suivante, où l'on se 
+         demande où placer le frisbee D.<p/>
+         <p><img src="correction_img.png"></p>
+         <p>Pour savoir où insérer D, on le compare avec les 
+         frisbees déjà triés. Par exemple, si D était plus lourd
+         que C mais plus léger que B, on le placerait entre C et B.
+         Il se trouve que D est plus léger que A, du coup on
+         place D tout à gauche.
+         </p>
+         <p>
+         En répétant ce processus, on peut ranger les frisbees un par
+         un à leur place. &Agrave; la fin, pour vérifier que l'on ne s'est
+         pas trompé, on peut s'assurer que tous les frisbees sont dans le
+         bon ordre. Pour cela, on vérifie que chaque frisbee est bien plus léger que
+         le frisbee placé immédiatement à sa droite.
+         </p>
+       </p>
+         <h2>C'est de l'informatique !</h2>
+         <p>
+         Dans ce sujet, il fallait trouver et appliquer une méthode pour trier des objets.
+         Il existe de nombreux «&nbsp;algorithmes de tris&nbsp;». 
+         </p>
+         <p>
+         Tant qu'il n'y a qu'un petit nombre d'objets à trier, on peut utiliser n'importe
+         quel algorithme de tri. En revanche, en informatique ont est souvent amené à
+         trier des millions, voire des milliards de données. Pour de telles applications,
+         il est important d'utiliser un algorithme de tri plus efficace que celui décrit
+         dans la solution de ce sujet.
+         </p>
+      </div> <!-- task-solution -->
+   </body>
+</html>

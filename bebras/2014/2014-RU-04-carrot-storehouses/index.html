@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>2014-RU-04-carrot-storehouses</title>
+      <script>
+         window.stringsLanguage = 'fr';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1_M.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+         var modulesPath = '../../../_common/modules';
+         importModules([
+            'jquery-1.7.1', 'jquery-ui.touch-punch', 'raphael-2.2.1', 'JSON-js',
+            'beav-1.0', 'beaver-task-2.0', 'simulation-2.0', 'raphaelFactory-1.0',
+            'delayFactory-1.0', 'simulationFactory-1.0', 'raphaelButton-1.0',
+            'jschannel', 'platform-pr', 'buttonsAndMessages', 'installationAPI.01', 'randomGenerator-1.0',
+            'miniPlatform', 'taskStyles-0.1','graph-1.0', 'visual-graph-1.0']);
+      </script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/tasks/2014/2014-RU-04-carrot-storehouses/",
+          "language": "en",
+          "version": "en.01",
+          "authors": "Mathias Hiron<br/>Christian Datzko, christian@datzko.ch, Switzerland<br/>Khairul Anwar M. Zaki, Malaysia<br/>Sergei Pozdniakov, Russia<br/>Eljakim Schrijvers, Pays-Bas, France-ioi",
+          "license": "CC BY-NC-SA 3.0",
+          "translators": [
+          ],
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [
+          ],
+          "acceptedAnswers": [
+          ],
+          "difficulty": {"3": "hard", "4": "hard"},
+          "categories": {ALG : true},
+          "answerType": "Interactive, click on a grid",
+          "fullFeedback": true,
+          "status": "test"
+      };
+      </script>
+      <script>
+         var taskStrings = {
+            clickOnCells: "Cliquez sur les cases pour sélectionner les boîtes.",
+            boxesSelected: function(nbSelected) {
+               var plural = "";
+               if (nbSelected > 1) {
+                  plural = "s";
+               }
+               return nbSelected + " boîte" + plural + " sélectionnée" + plural + ".";
+            },
+            failure: "Les boîtes sélectionnées ne permettent pas de déduire le nombre de pièces du cadre noir.",
+            boxesSelectedFinal: function(nbSelected) {
+               var plural = "";
+               if (nbSelected > 1) {
+                  plural = "s";
+               }
+               return "Vous avez réussi en sélectionnant " + nbSelected + " boîte" + plural + ". ";
+            },
+            success: "Bravo ! C'est le minimum possible.",
+            partialFailure: "Essayez en sélectionnant moins de boîtes."
+         };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+      <script class="solution" type="text/javascript">
+         // Not needed for task or grader
+         task.solutions = {
+            half: [6, 14, 23, 30, 45, 62],
+            full: [3, 23, 45, 63] }
+      </script>
+      <style>
+         #sample {
+            float: right;
+            margin: 1em;
+            margin-right: 0;
+         }
+      </style>
+    </style>
+  </head>
+  <body>
+      <div id="task">
+         <h1>Pièces d'or</h1>
+         <div id="tabsContainer"></div>   <!-- will contain the versions tabs -->
+         <div id="taskContent">        <!-- will contain the content of the task --> 
+            <div id="zone_1">
+               <div class="consigne">
+                  <div id="sample"></div>
+                  <p>
+                   Castor range ses pièces d'or dans des boîtes disposées de manière particulière. Il s'arrange pour que chaque boîte contienne exactement autant de pièces que les deux boîtes situées juste en-dessous d'elle. Par exemple, la boîte verte ci-contre contient le même nombre de pièces que les deux boîtes situées dans le cadre noir.
+                  </p>
+                  <p>
+                   Les boîtes ci-dessous sont rangées selon le même principe, sauf que vous n'en voyez pas le contenu car elles sont fermées.
+                   <b>Sélectionnez un minimum de boîtes telles que, si on les ouvrait, on pourrait déterminer le nombre total de pièces contenues dans le cadre noir.</b>
+                  </p>
+               </div>
+            </div>
+            <div id="zone_2">
+               <center>
+                  <div id="anim"></div>
+                  <div id="result" style="height:40px;color:blue;font-weight:bold">
+                  </div>            
+               </center>
+            </div>
+         </div>
+         <img src="icon.png" style="display:none"> 
+      </div><!-- task -->
+      <div id="solution">
+          <h2>Solution</h2>
+          <p>
+          Pour calculer le nombre de pièces des boîtes du cadre noir, il n'est pas nécessaire d'ouvrir toutes les boîtes du cadre. Par exemple, s'il existe une boîte couvrant deux boîtes que l'on veut ouvrir, il suffit d'ouvrir cette boîte du dessus pour obtenir le résultat souhaité.
+          </p>
+          <p>
+          En itérant (répétant) ce principe, on trouve une première solution&nbsp;: le nombre de pièces contenues dans le cadre noir est égal à la somme des nombres de pièces contenues dans les boîtes sélectionnées ci-dessous.
+          </p>
+          <div id="animSolutionHalf"></div>
+          <p>
+          On peut faire mieux cependant, si l'on n'utilise pas que des additions mais également des soustractions. Dans la solution ci-dessous, on peut ajouter le contenu des 3 boîtes de gauche, et soustraire le contenu de la boîte de droite, et cela donne exactement le résultat souhaité.
+          </p>
+          <!--<div id="animSolutionFull"></div>-->
+          <div><img src="solution.png" /></div>
+
+          <h2>C'est de l'informatique !</h2>
+
+          <p>
+          Cet exercice introduit le concept «&nbsp;d'arbre binaire des sommes&nbsp;» («&nbsp;sum tree&nbsp;» en anglais). Cette structure permet, étant donné une séquence de nombres (correspondant aux valeurs dans les cases de la dernière rangée), de calculer la somme d'une sous-séquence quelconque de la séquence de départ (autrement dit, la somme des nombres situés dans le rectangle noir, quelle que soit la position du rectange noir). Avec la structure d'arbre binaire, on obtient le résultat bien plus efficacement qu'en faisant la somme de toutes les cases une par une.
+          </p>
+  
+
+      </div>
+  </body>
+</html>

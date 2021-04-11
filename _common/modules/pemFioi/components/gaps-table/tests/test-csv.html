@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Gaps table test - data in CSV format</title>
+        <script type="text/javascript" src="../../../../ext/jquery/2.1/jquery.min.js"></script>
+        <script type="text/javascript" src="../../../../ext/jquery-ui/1.10/jquery-ui-1.10.3.custom.min.js"></script>
+        <link href="../../../../ext/jquery-ui/1.10/jquery-ui.css" rel="stylesheet">
+        <script type="text/javascript" src="../../../../ext/jquery-csv/jquery.csv.js"></script>
+        <script src="../component.js"></script>
+        <link href="../styles.css" rel="stylesheet">
+        <style>
+            html, 
+            body {
+                font: 14px sans;                
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                height: 100%;
+            }            
+        </style>
+    </head>
+    <body>
+        <div id="table"></div>
+        <hr>
+        <button id="validate">Validate</button>
+        <div id="msg"></div>
+
+        <script type="text/javascript">
+
+
+
+            var table = GapsTable({
+                parent: $('#table'),
+                tables: [
+                    {
+                        schema: '*,"static ""cell 1"\n"*","*"',
+                        values: '"cell A1",\ncell A2,cell B2'
+                    }
+                ]
+            });
+
+
+            $('#validate').click(function() {
+                var valid = table.validate();
+                $('#msg').html(valid ? 'Valid' : 'Mistake');
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+
+<head>
+   <meta charset="utf-8"></meta>
+   <title>2019-FR-02-registers</title>
+   <script>
+      window.stringsLanguage = 'fi';
+   </script>
+   <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1_M.js" id="import-modules"></script>
+   <script class="remove" type="text/javascript">
+      var modulesPath = '../../../_common/modules';
+      importModules([
+         'jquery-1.7.1', 'jquery-ui.touch-punch', 'raphael-2.2.1', 'JSON-js', //'grid-1.0',
+         'beav-1.0', 'beaver-task-2.0', 'simulation-2.0', 'raphaelFactory-1.0',
+         'delayFactory-1.0', 'simulationFactory-1.0', 'raphaelButton-1.0',
+         'platform-pr', 'buttonsAndMessages', 'installationAPI.01', 'miniPlatform',
+         'taskStyles-0.1', 'randomGenerator-1.0', 'drag_lib-2.0',
+         'graph-1.0','visual-graph-1.0','graph-mouse-1.1', 'shape-paths'
+      ]);
+   </script>
+   <script class="remove" type="text/javascript">
+      var json = {
+         "id": "http://castor-informatique.fr/tasks/2019/FR-2019-02-registers/",
+         "language": "fi",
+         "version": "fi.01",
+         "authors": "Arthur Charguéraud, Mathias Hiron, France-ioi",
+         "translators": "Heikki Hyyrö",
+         "license": "CC BY-SA 3.0",
+         "taskPathPrefix": "",
+         "modulesPathPrefix": "",
+         "browserSupport": [],
+         "fullFeedback": true,
+         "acceptedAnswers": [],
+         "usesRandomSeed": false
+       };
+   </script>
+   <script type="text/javascript">
+      var taskStrings = {
+         success: "Onnittelut, ratkaisit tämän version!",
+         tooManyMarkers: function(max) {
+            return "Sinulla ei ole nappuloita jäljellä. Klikkaa nappulaa ottaaksesi se takaisin.";
+         },
+         sumGreaterThan: function(max) { 
+            return "Sinulla ei ole nappuloita jäljellä. Klikkaa nappulaa ottaaksesi se takaisin.";
+         },
+         noMarkerBelow: "Nappulan voi asettaa ympyrään vain, jos molemmissa välittömästi sen alla olevissa ympyröissä on nappulat.",
+         placed: "Asetettuja nappuloita",
+         failure: "Ylimmässä ympyrässä ei ole nappulaa.",
+         reserve: "Jäljellä olevat nappulat:",
+         empty: "Tyhjä.",
+         takeBack: "Voit poistaa ympyröistä nappuloita klikkaamalla niitä.",
+         validateNow: "Onnistuit, mutta paina vielä tarkistus-nappia!",
+         undo: "Peru"
+
+      };
+   </script>
+   <script type="text/javascript" src="task.js"></script>
+   <style>
+      #paper {
+         margin: 1em auto;
+      }
+      #error {
+         text-align: center;
+         height: 2em;
+      }
+      .task-rules li {
+         margin-top: 1em;
+      }
+   </style>
+</head>
+
+<body>
+   <div id="task">
+      <h1>Nousevat nappulat</h1>
+      <div id="tabsContainer"></div>
+      <div id="taskContent">
+         <div id="zone_1">
+            <div class="consigne">
+               <p>
+                  Tavoitteena on asettaa nappula kaikkein ylimpään ympyrään.
+               </p>
+               <p>Klikkaa ympyrää asettaaksesi tai poistaaksesi siitä <span class="hard">ympyrässä näytetyn lukumäärän nappuloita</span><span class="easy medium">nappulan</span>.</p>
+
+               <p>Ympyrään voi asettaa <span class="easy medium">nappulan</span><span class="hard">nappuloita</span> vain, jos <span class="easy">molemmat</span><span class="medium hard">kaikki</span> siihen nuolilla osoittavat ympyrät sisältävät nappulan. Nappuloita voi myös poistaa ympyröistä.
+               </p>
+         </div>
+         </div>
+         <div id="zone_2">
+            <div id="paper"></div>
+            <button type="button" class="btn btn-default" id="undo">Cancel</button>
+         </div>
+         <div id="error"></div>
+      </div>
+      <img src="icon.png" style="display:none">
+   </div>
+
+   <!-- task -->
+
+   <div id="solution">
+      <h2>Ratkaisu</h2>
+          <div class="easy">
+           <p>Täytetään ensin vasemman puolen kolme ympyrää järjestyksessä alhaalta ylöspäin.</p>
+           <img src="sol_easy_1.png">
+           <p>Nyt voimme poistaa kaksi vasemman puolen alinta nappulaa, jonka jälkeen nappuloita on riittävästi oikean puolen kolmen ympyrän täyttämiseen järjestyksessä alhaalta ylöspäin.</p>
+           <img src="sol_easy_2.png">
+           <p>Lopuksi voimme poistaa oikean puolen kaksi alinta nappulaa ja sitten asettaa nappulan ylimpään ympyrään. Ratkaisu on valmis!</p>
+           <img src="sol_easy_3.png">
+          </div>
+
+         <div class="medium">
+           <p>Meillä on vain 4 nappulaa ja tehtävässä on kaksi sellaista ympyrää, johon osoittaa 3 muuta ympyrää. Tällaisen 4 ympyrän (3 osoittavaa ja 1 osoitettu) asetelman ylimmän ympyrän täyttäminen vaatii kaikki 4 nappulaa. Meidän on pakko aloittaa ratkaisu täyttämällä oikealla alhaalla oleva neljän ympyrän asetelma nappuloilla.</p>
+           <img src="sol_medium_1.png">
+           <p>Poistetaan edellä asetetut 3 alinta nappulaa. Seuraavaksi pyrimme täyttämään toisen edellä kuvatunlaisen 4 ympyrän asetelman (joka on keskellä ylhäällä). Tämä vaatii sen alihaarojen täyttämisen. Täytetään seuraavaksi vasemmalla oleva 2 osoittavan ja 1 osoitetyn ympyrän asetelma.</p>
+           <img src="sol_medium_2.png">
+           <p>Poistetaan edellä asetetut 2 alinta nappulaa, ja täytetään keskimmäinen yksittäisten osoitusten ketju: ensin nappula keskelle alimpaan ja toiseksi alimpaan ympyrään, sitten alin nappula pois, ja lopuksi nappula 3 ympyrän osoittamaan ylempään ympyrään.</p>
+           <img src="sol_medium_3.png">
+           <p>Poistateen 3 alinta nappulaa, ja täytetään niiden avulla suoraviivaisesti ensin vasen ja sitten oikea vielä tyhjä haara alhaalta ylöspäin toiseksi ylimpään tasoon asti (aina poistaen jo tarpeettomat alimmat nappulat): Tämänjälkeen voimme lopuksi asettaa nappulan ylimpään ympyrään. Ratkaisu on valmis!</p>
+           <img src="sol_medium_4.png">
+         </div>
+
+         <div class="hard">
+           <p>Meillä on 8 nappulaa. Ohessa keltaisella merkittyjen ympyräiden täyttö vaatii ne kaikki, joten aloitetaan täyttämällä ne. Täytön jälkeen voimme poistaa alimmat 7 nappulaa.</p>
+           <img src="sol_hard_1.png">
+           <p>Oikealla olevian kahden keltaisen ympyrän täyttö vaatii kaikki jäljellä olevat 7 nappulaa, joten täytetään ne ja poistetaan sen jälkeen alimmat 5 nappulaa.</p>
+           <img src="sol_hard_2.png">
+           <p>Seuraavaksi voimme täyttää 5 nappulalla edellä täytetyn 2 nappulan ympyrän viereiset 2 nappulan ympyrät sekä niiden yläpuolisen ympyrän. Tämän jälkeen voimme poistaa nappulat kolmesta alemmasta 2 nappulan ympyrästä.</p>
+           <img src="sol_hard_3.png">
+           <p>Keskellä olevat kaksi keltaista ympyrää vaativat 6 nappulaa, joten täytetään ne, poistetaan alin 1 nappula ja asetetaan se 5 nappulan ympyrän yläpuolelle. Lopukso voimme poistaa kyseisen 5 nappulan ympyrän nappulat.</p>
+           <img src="sol_hard_4.png">
+           <p>Vasemmalla olevat kaksi keltaista ympyrää vaativat 5 nappulaa. Täytetään ne, poistetaan alimmat 4 nappulaa, lisätään 2 nappulaa niiden yläpuolella olevaan 2 nappulan ympyrään, ja poistetaan nappulat kyseisen ympyrän alapuolisista 1 nappulan ympyröistä.</p>
+           <img src="sol_hard_5.png">
+           <p>Käytetään nyt meillä olevat 4 nappulaa oikealla olevan 3 osoittavan ja 1 osoitetun keltaisen ympyrän asetelman täyttämiseen, ja poistetaan alemmat 3 nappulaa.</p>
+           <img src="sol_hard_6.png">
+           <p>Nyt olevilla 3 nappulalla voidaan ensin täyttää keskellä vasemmalla oleva haara toiseksi ylimpään tasoon asti. Tarpeettomien nappuloiden poiston jälkeen on 2 nappulaa, joilla vasemmanpuoleisin haara voidaan täyttää toiseksi ylimpään tasoon asti. Lopuksi voimme poistaa vasemmanpuoleisimman haaran tarpeettomaksi jääneen nappulan ja asettaa sen ylimpään ympyrään. Ratkaisu on valmis!</p>
+           <img src="sol_hard_7.png">
+
+         </div>
+
+      <h2>Tämä on tietojenkäsittelyä!</h2>
+      <p>Tehtävässä käsitelty ympyröistä ja nuolista koostuva rakenne vastaa tietojenkäsittelyssä erittäin laajasti käytettyä <b>puu</b>-tietorakennetta. Nimitys tulee siitä, kuinka rakenteen haarautuminen muistuttaa puun oksien haarautumista. Tehtävän puut oli esitetty tässä mielessä "ylösalaisin", koska haarautuminen eteni ylhäältä alaspäin eikä alhaalta ylöspäin, niinkuin oikeissa puissa. Tietojenkäsittelyssä kutakin puun alkiota (tehtävässä ympyrää) nimitetään <b>solmuksi</b>, ja solmujen välisiä yhteyksiä (tehtävässä nuolia) <b>kaariksi</b>. Tehtävän esitystavan mukaisissa puu-tietorakenteissa ylintä solmua kutsutaan <b>juureksi</b> tai <b>juurisolmuksi</b> ja alimpia solmuja (joihin mikään muu solmu ei osoita) <b>lehdiksi</b> tai <b>lehtisolmuiksi</b>. Tämäkin terminologia viittaa rakenteelliseen vastaavuuteen luonnossa elävien puiden kanssa.
+      </p>
+      <p>Puu on erikoistapaus <b>graafista</b>, joka on myös erittäin yleisesti tietojenkäsittelyssä käytetty tietorakenne.</p>
+      <p>Tehtävän ongelmanasettelu ja ratkaisuperiaate vastaa oikeaa tietojenkäsittelyn ongelmaa: tietokoneen suorittimen (prosessori, CPU) rekisterien mahdollisimman tehokasta käyttöä. Rekisterit ovat suorittimen muistipaikkoja, johon se tallettaa laskutoimituksissa käytetyt arvot sekä laskutoimituksen tuloksen. Jotta suoritin voisi suorittaa jonkin laskutoimituksen, täytyy laskutoimituksen osat ensin lukea suorittimen rekistereihin. Koska suorittimissa on vain rajallinen määrä rekistereitä (32 rekisteriä on yleinen määrä moderneissa suorittimissa), on rekistereiden huolellinen käyttö tärkeää. Laskutoimituksen osien esittäminen sopivassa puumuodossa auttaa päättelemään, mitä ja milloin lukea suorittimen rekistereihin, ja milloin rekisterin arvoa ei enää tarvita ja rekisteri voidaan vapauttaa toisen laskutoimituksen käyttöön. Esimerkiksi laskutoimitus (3 - 4) &times; (1 + 2) voidaan esittää seuraavanlaisena puuna:</p>
+      <img src="sol_expression_tree.png" style="width:300px">
+      <p>Tätä hyödyntäen voidaan päätellä, että suorittimen tulisi ensin lukea (esimerkiksi) arvot 3 ja 4 kahteen rekisteriin, asettaa laskutoimituksen 3-4 tulos -1 yhteen rekisteriin, ja sen jälkeen arvoja 3 ja 4 ei enää tarvita rekistereissä. Seuraavaksi voisi lukea arvot 1 ja 2 kahteen rekisteriin ja asettaa laskutoimituksen 1+2 tuloksen 3 yhteen rekisteriin. Jälleen arvoja 1 ja 2 ei enää tarvita rekistereissä. Lopuksi suoritin voisi asettaa rekistereissä yhä olevien välitulosten -1 ja 3 välisen laskutoimituksen -1&times;3 tuloksen -3  rekisteriin, jonka jälkeen laskutoimituksen lopullinen tulos on saatu laskettua eikä väliarvoja -1 ja 3 enää tarvita rekistereissä. Tämän menettelyn analogia tehtävän ympyröitä ja nappuloita koskevien sääntöjen kanssa lienee ilmeinen.</p>
+      <p>Katso lisää esim. <a href="https://fi.wikipedia.org/wiki/Puu_(graafiteoria)" target="_blank">https://fi.wikipedia.org/wiki/Puu_(graafiteoria)</a>, <a href="https://fi.wikipedia.org/wiki/Graafi" target="_blank">https://fi.wikipedia.org/wiki/Graafi</a> ja <a href="https://fi.wikipedia.org/wiki/Rekisteri_(tietokonetekniikka)" target="_blank">https://fi.wikipedia.org/wiki/Rekisteri_(tietokonetekniikka)</a>.</p>
+   </div>
+   <!-- task-solution -->
+</body>
+
+</html>

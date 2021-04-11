@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>training-while-marbles</title>
+      <script>
+      window.stringsLanguage = 'fr';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.0.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+        var modulesPath = '../../../_common/modules/'
+        importModules([
+            'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+            'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1']);
+        // set Blockly as default language when none is specified through ?language=
+        importLanguageModules('blockly');
+      </script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/questions/algorea_training/training-while-marbles/",
+          "language": "fr",
+          "version": "fr.01",
+          "authors": "Mathias Hiron",
+          "translators": [],
+          "license": "",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "fullFeedback": true,
+          "minWidth": "auto"
+      };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+   </head>
+   <body onresize="task.displayedSubTask.updateScale()">
+      <div id="task">
+         <h1>Rangement de billes</h1>
+         <img src="hole.png" style="display:none" />
+         <img src="marble.png" style="display:none" />
+         <img src="green_robot.png" style="display:none" />
+         <img src="icon.png" style="display:none" />
+
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <div id="taskIntro">
+               <p>
+                  Programmer le robot pour qu'il ramasse <span class="easy">la</span><span class="medium hard">chaque</span> bille et la mette dans le trou plus loin sur sa rangée.
+               </p>
+               <p class="medium hard">
+                  Le robot ne peut transporter qu'une bille à la fois.
+               </p>
+               <div>
+                  <p>
+                     Vous aurez besoin d'utiliser
+                     <span data-lang="blockly">le bloc « répéter tant que » ou « répéter jusqu'à »,</span>
+                     <span data-lang="scratch">le bloc « répéter jusqu'à »,</span>
+                     <span data-lang="python">boucles <code>for</code>,</span>
+                     comme dans l'exemple ci-dessous.
+                  </p>
+                  <p data-lang="blockly">
+                     <img src="example_while_blockly.png" style="height:80px;vertical-align:middle"> ou
+                     <img src="example_until_blockly.png" style="height:80px;vertical-align:middle">
+                  </p>
+                  <p data-lang="scratch">
+                     <img src="example_until_scratch.png" style="height:110px;vertical-align:middle">
+                  </p>
+                  <p>
+                     Ce type de boucle est utile lorsque l'on ne connaît pas à l'avance le nombre de répétitions. <span class="easy">Ici, vous ne connaissez pas le nombre de cases entre la bille et le trou :</span><span class="medium">Dans cette version, vous ne connaissez pas le nombre de lignes contenant une bille et un trou :</span>
+                  </p>
+                  <img class="easy" src="easy_tests.png" style="height:60px" />
+                  <img class="medium" src="medium_tests.png" style="height:200px" />
+                  <p class="easy medium">
+                     Ce sujet contient deux tests, <span class="easy">avec une position différente pour le trou</span><span class="medium">avec un nombre de billes différent</span>. Votre programme doit fonctionner sur les deux.
+                  </p>
+                  <p data-lang="scratch">
+                  </p>
+<code data-lang="python">
+</code>
+               </div>
+            </div>
+            <div id="gridContainer"></div>
+            <div id="blocklyLibContent"></div>
+         </div>
+
+      </div><!-- task -->
+   </body>
+</html>
+ 

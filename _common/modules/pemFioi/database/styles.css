@@ -1,0 +1,84 @@
+#database_controls {
+    height: 35px;
+    overflow: hidden;
+}
+
+#database_controls .pull_left {
+    float: left;
+}
+
+#database_controls .pull_right {
+    float: right;
+}
+
+.renderers_wrapper {
+    position: relative;
+}
+
+.renderer_html {
+    width: 100%;
+    overflow: auto;
+}
+
+.renderer_html table {
+    width: 100%;
+    border: 1px solid #999999;
+    border-collapse: collapse;
+}
+
+.renderer_html th,
+.renderer_html td {
+    border: 1px solid #999999;
+    border-collapse: collapse;
+    padding: 2px;
+    text-align: center;
+    vertical-align: middle;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 200px;
+}
+
+.renderer_html td.invalid {
+    background: #FFAAAA;
+}
+
+.renderer_map {
+    position: absolute;
+    left: 0;
+    top: 5px;
+    right: 0;
+    bottom: 5px;
+}
+
+.renderer_map canvas {
+    margin: 0 auto;
+}
+
+
+.highlight-result table,
+.highlight-result th,
+.highlight-result td {
+    border-color: #999;
+    color: #FFF;
+    background: #336;
+}
+
+
+
+/* console renderer */
+.console {
+    width: auto;
+    overflow-x: hidden
+}
+.console .console_row {
+    text-align:left;
+}
+.console .console_time {
+    color:darkgray;
+    width: 55px;
+    float: left;
+    text-align: left;
+    overflow: hidden;
+}

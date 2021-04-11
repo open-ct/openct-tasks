@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>2014-SI-02-alien-language</title>
+      <script>
+         window.stringsLanguage = 'en';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1_M.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+         var modulesPath = '../../modules';
+         importModules([
+            'jquery-1.7.1', 'jquery-ui.touch-punch', 'raphael-2.2.1', 'JSON-js',
+            'beav-1.0', 'beaver-task-2.0', 'simulation-2.0', 'raphaelFactory-1.0',
+            'delayFactory-1.0', 'simulationFactory-1.0', 'raphaelButton-1.0',
+            'platform-pr', 'buttonsAndMessages', 'installationAPI.01', 'randomGenerator-1.0',
+            'miniPlatform', 'taskStyles-0.1','graph-1.0', 'visual-graph-1.0']);
+      </script>
+      <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/drag_lib-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/drag_lib.js"></script>
+      <script class="remove" type="text/javascript">
+         var json = {
+            "id": "http://castor-informatique.fr/tasks/2014/2014-SI-02-alien-languages/",
+            "language": "en",
+            "version": "en.01",
+            "authors": "Janez Demšar, janez.demsar@fri.uni-lj.si, Slovenia ; Arthur Chargueraud ; Mathias Hiron, France-ioi",
+            "translators": [],
+            "license": "CC BY-NC-SA 3.0",
+            "taskPathPrefix": "",
+            "modulesPathPrefix": "",
+            "browserSupport": [],
+            "fullFeedback" : true,
+            "acceptedAnswers": []
+         };
+      </script>
+      <script>
+         var taskStrings = {
+            placeNotesOnCells: "Place the notes in the blue boxes to direct the robot.",
+            success: "Congratulations, you did it.",
+            failure: "With these notes, the robot will not arrive at the golden palace.<br /> Beaver does not whistle them, and the robot does not move. <br />Retry with other notes."
+         };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+      <style>
+         #textSolution0, #textSolution1, #prefix {
+            font-weight: bold;
+         }
+         #maze {
+            display: block;
+            margin: 1em;
+         };
+      </style>
+   </head>
+   <body>
+      <div id="task">
+         <img src="icon.png" style="display:none" >
+         <h1>Alien Language</h1>
+         <div id="tabsContainer"></div>   <!-- will contain the versions tabs -->
+         <div id="taskContent">        <!-- will contain the content of the task --> 
+            <div id="zone_1">
+               <div class="consigne">
+                  <p>
+                  When Beavers arrived on Pluto, they found a robot can be directed by whistling.
+                  When the Beavers whistled «&nbsp;<span id="prefix"></span>&nbsp;», The robot moved from the Beaver box to its current position on the map.
+                  </p>
+                  <p>
+                  Beavers now wants the robot to continues his way to the strange golden palace. 
+         	 Write down the note that Beaver should whistle.
+                  </p>
+                  </div>
+            </div>
+            <div id="zone_2">
+               <center>
+                  <img src="maze_easy.png" id="maze" class="easy" />
+                  <img src="maze_medium.png" id="maze" class="medium" />
+                  <img src="maze_hard.png" id="maze" class="hard" />
+                  <div id="programming" class="touch"></div>
+               </center>
+            </div>
+         </div>
+         <img src="icon.png" style="display:none">
+      </div><!-- task -->
+      <div id="solution">
+<!--
+         <h2>Solution</h2>
+             <p>
+             Pour résoudre ce sujet, il faut identifier à quelle direction correspond chaque note. Pour arriver à sa position en 5 étapes, le robot a forcément dû s'éloigner de Castor en partant vers la gauche de 2 cases, puis en montant 2 cases, puis en allant d'une case vers la droite.
+             </p>
+             <p>
+             On en déduit ainsi que <b>Mi</b> correspond à «&nbsp;gauche&nbsp;», que <b>La</b> correspond à «&nbsp;haut&nbsp;», et que <b>Si</b> correspond à «&nbsp;droite&nbsp;». Du coup, on se doute que la note <b>Do</b> doit correspondre à «&nbsp;bas&nbsp;», la quatrième direction possible.
+             </p>
+             <p>Il y avait deux chemins de 7 déplacements chacun permettant au robot de rejoindre le palais doré. Les deux solutions correspondantes sont&nbsp;:</p>
+             <ul>
+             <li><span id="textSolution0"></span> (pour le chemin passant par le bas),</li>
+             <li><span id="textSolution1"></span> (pour le chemin passant par le haut).</li>
+             </ul>
+
+         <h2>C'est de l'informatique !</h2>
+            <p>
+            Dans ce sujet, il faut programmer un robot avec des instructions pour le faire arriver à destination. Cependant, contrairement à d'autres sujets où les instructions sont nommées explicitement («&nbsp;gauche&nbsp;», «&nbsp;droite&nbsp;», etc&hellip;), les instructions sont ici codées par des notes de musique.
+            </p>
+            <p>
+            Pour résoudre le sujet, il fallait donc décoder les instructions, en déduisant la signification des instructions à partir de l'observation d'une exécution précédente de ces instructions (la partie déjà parcourue par le robot).
+            </p>
+            <p>
+            L'activité qui consiste à déduire les règles d'exécution à partir d'observations s'appelle la «&nbsp;rétroingénierie&nbsp;» (<em>reverse engineering</em> en anglais). 
+           La rétroingénierie est très utilisé notamment pour «&nbsp;cracker&nbsp;» des logiciels, comme par exemple pour pouvoir sauter des niveaux dans des jeux vidéos. Elle est également utilisée pour récupérer des algorithmes utilisés dans des logiciels dont le code source est gardé secret par les auteurs.
+            </p>
+-->
+      </div> <!-- task-solution -->
+   </body>
+</html>
+ 

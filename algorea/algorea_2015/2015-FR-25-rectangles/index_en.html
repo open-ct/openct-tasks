@@ -1,0 +1,183 @@
+<!doctype html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>2015-FR-25-rectangles</title>
+      <script class="module" type="text/javascript" src="../../modules/ext/jquery/1.7/jquery.min.js" id="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+      <script class="module" type="text/javascript" src="../../modules/ext/json/json2.min.js" id="https://github.com/douglascrockford/JSON-js"></script>
+      <script class="module" type="text/javascript" src="../../modules/ext/raphael/2.2.1/raphael.min.js" id="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.1/raphael.min.js"></script>
+
+      <script class="module" type="text/javascript" src="../../modules/pemFioi/beaver-task.js" id="http://www.france-ioi.org/modules/pemFioi/beaver-task.js"></script>
+      <script class="remove" type="text/javascript" src="../../modules/ext/jschannel/jschannel.js"></script>
+      <script class="proxy module" type="text/javascript" src="../../modules/integrationAPI.01/official/platform-pr.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/platform-pr.js"></script>
+      <script class="stdButtonsAndMessages module" type="text/javascript" src="../../modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"  id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"></script>
+      <script class="module" type="text/javascript" src="../../modules/pemFioi/beav-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/beav-1.0.js"></script>
+      <script class="remove" type="text/javascript" src="../../modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js"></script>
+      <script class="remove" type="text/javascript" src="../../modules/integrationAPI.01/official/miniPlatform.js"></script>
+
+      <link class="module" rel="stylesheet" type="text/css" href="../../modules/pemFioi/taskStyles-0.1.css" id="http://www.france-ioi.org/modules/pemFioi/taskStyles-0.1.css">
+      <script>
+         var stringsLanguage = 'en';
+         var taskStrings = {
+            paramInvalidAtInstr: function(param, instr) {
+               return "The parameter " + param + " of instruction " + instr + " is invalid";;
+            },
+            param5Invalid: function(instr) {
+               return "Parameter 5 of the instruction " + instr + " is invalid";
+            },
+            leftAfterRight: function(instr) {
+               return "The left column of the rectangle " + instr + " is to the right of its right column.";
+            },
+            topBelowBottom: function(instr) {
+               return "The top line of the rectangle " + instr + " is below its bottom line."
+            },
+            success: "Congratulations, you did it.",
+            failure: "You did not reproduce the pattern."
+         }
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/tasks/algorea_2015/2015-FR-25-rectangles/",
+          "language": "en",
+          "version": "en.01",
+          "authors": "Mathias Hiron",
+          "translators": [],
+          "license": "",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "acceptedAnswers": [""],
+          "fullFeedback": true
+      };
+      </script>
+      <style>
+         #drawing {
+            margin-left: 1em;
+         }
+         .columns td {
+            vertical-align: top;
+            padding-right: 1em;
+         }
+         .column_head {
+            font-weight: bold;
+         }
+         #message {
+            text-align: center;
+            font-weight: bold;
+            color: red;
+            padding: 0.5em;
+            height: 1em;
+         }
+         .buttons input {
+            margin-bottom: 5px;
+         }
+         #textSolution li {
+            margin-top: 0.2em;
+         }
+         .valigntop td {
+            vertical-align: top;
+         }
+         .examples  {
+            border-collapse: collapse;
+         }
+         .examples td {
+            border: 1px solid black;
+            padding: 0.5em;
+         }
+         .easy, .medium, .hard {
+            display: none;
+         }
+      </style>
+   </head>
+
+   <body>
+      <div id="task">
+         <h1>Rectangle Function</h1>
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <p>
+		Each example below is a sequence of instructions to be executed.
+		Each statement is a call to the <b>Rectangle Function</ b>, which draws a rectangle in the grid at the bottom right.
+            </p>
+
+		<p>
+		Try the following examples to understand.
+           	</p>
+
+            <table class="examples contentCentered" style="margin: auto;">
+               <tr>
+                  <td><code id="sample0"></code></td>
+                  <td><code id="sample1"></code></td>
+                  <td><code id="sample2"></code></td>
+               </tr>
+               <tr>
+                  <td><input id="button0" type="button" value="Try" onclick="task.testSample(0);"></div></td>
+                  <td><input id="button1"  type="button" value="Try" onclick="task.testSample(1);"></div></td>
+                  <td><input id="button2"  type="button" value="Try" onclick="task.testSample(2);"></div></td>
+               </tr>
+            </table>
+            <p>
+               The 5 numbers in parentheses are the <b> parameters </ b> of the rectangle function, and describe in the following order:
+            </p>
+            <table class="examples" style="margin: auto;"><tr>
+               <td>Left Side</td>
+               <td>Top Line</td>
+               <td>Right Side</td>
+               <td>Bottom Line</td>
+               <td>Rectangle Color: <br/> 0 for black, <br/> 1 for white.</td>
+            </tr></table>
+            <table class="contentCentered" style="width: 100%; margin-top: .5em;"><tr>
+               <td>
+                  <p><b>Target:</b></p>
+                  <p><div id="target"></div></p></td>
+               <td>
+                  <p><b>Result of the program:</b></p>
+                  <p><div id="grid"></div></p>
+               </td>
+            </tr></table>
+            <p>
+Complete the program below to reproduce the Target pattern in the right grid:
+            </p>
+            <table style="margin: auto;"><tr>
+               <td style="vertical-align: top; width: 350px;">
+                  <table id="rectangles">
+                  </table>
+               </td>
+               <td style="vertical-align: top; width: 300px;">
+                  <input type="button" value="Try your program" onclick="task.tryAnswer();"/>               
+                  <p class="medium hard">Note that the program can not contain more than 4 instructions.</p>
+               </td>
+            </tr></table>
+         </div>
+         <img src="icon.png" style="display: none;"/>
+      </div><!-- task -->
+
+      <div id="solution">
+         <h2>Solution</h2> 
+         <ul>
+            <li>Version facile :
+               <ul>
+                  <li>rectangle(1, 2, 7, 3, 0)</li>
+                  <li>rectangle(1, 2, 5, 5, 0)</li>
+               </ul>
+            </li>
+            <li>Version moyenne :
+               <ul>
+                  <li>rectangle(0, 0, 9, 6, 0)</li>
+                  <li>rectangle(1, 1, 8, 5, 1)</li>
+                  <li>rectangle(4, 0, 5, 6, 1)</li>
+                  <li>rectangle(0, 2, 9, 4, 1)</li>
+               </ul>
+            </li>
+            <li>Version difficile :
+               <ul>
+                  <li>rectangle(1, 0, 9, 6, 0)</li>
+                  <li>rectangle(3, 1, 7, 5, 1)</li>
+                  <li>rectangle(4, 2, 9, 6, 1)</li>
+                  <li>rectangle(3, 3, 5, 3, 0)</li>
+               </ul>
+            </li>
+      </div><!-- task-solution -->
+   </body>
+</html>

@@ -1,0 +1,32 @@
+.csv-text-editor .label {
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+.csv-text-editor .mistake {
+    background: #900; 
+}
+
+.csv-text-editor .editor {
+    border: 1px solid #333;
+    padding: 3px;
+}
+
+.csv-text-editor .editor .mistake {
+    position: absolute;
+}
+
+.csv-text-editor table {
+    border-collapse: collapse;
+}
+
+.csv-text-editor table, 
+.csv-text-editor td {
+    border: 1px solid #333;
+}
+
+.csv-text-editor td pre {
+    border: 0;
+    margin: 0;
+    padding: 5px 10px;
+}

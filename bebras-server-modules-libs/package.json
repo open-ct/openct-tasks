@@ -1,0 +1,27 @@
+{
+  "name": "bebras-server-modules-libs",
+  "version": "1.0.0",
+  "description": "Libraries to communicate with bebras-server-modules",
+  "main": "bebras_tools.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/France-ioi/bebras-server-modules-libs.git"
+  },
+  "author": "mobydimk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/France-ioi/bebras-server-modules-libs/issues"
+  },
+  "homepage": "https://github.com/France-ioi/bebras-server-modules-libs#readme",
+  "dependencies": {
+    "isomorphic-fetch": "^2.2.1",
+    "jsonwebtoken": "^8.1.0",
+    "mime": "^2.0.3"
+  }
+}

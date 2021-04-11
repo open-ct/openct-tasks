@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>2015-FR-taquin</title>
+      <script class="module" type="text/javascript" src="../../modules/ext/jquery/1.7/jquery.min.js" id="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+      <script class="module" type="text/javascript" src="../../modules/ext/json/json2.min.js" id="https://github.com/douglascrockford/JSON-js"></script>
+      <script class="module" type="text/javascript" src="../../modules/ext/raphael/2.2.1/raphael.min.js" id="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.1/raphael.min.js"></script>
+
+      <script class="module" type="text/javascript" src="../../modules/integrationAPI.01/installationAPI.01/pemFioi/tracker.js" id="http://castor-informatique.fr/tasks/modules/tracker.js"></script>
+      <script class="module" type="text/javascript" src="../../modules/pemFioi/beaver-task.js" id="http://www.france-ioi.org/modules/pemFioi/beaver-task.js"></script>
+      <script class="remove" type="text/javascript" src="../../modules/ext/jschannel/jschannel.js"></script>
+      <script class="proxy module" type="text/javascript" src="../../modules/integrationAPI.01/official/platform-pr.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/platform-pr.js"></script>
+      <script class="stdButtonsAndMessages module" type="text/javascript" src="../../modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"  id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"></script>
+      <script class="remove" type="text/javascript" src="../../modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js"></script>
+      <script class="remove" type="text/javascript" src="../../modules/integrationAPI.01/official/miniPlatform.js"></script>
+
+      <link class="module" rel="stylesheet" type="text/css" href="../../modules/pemFioi/taskStyles-0.1.css" id="http://www.france-ioi.org/modules/pemFioi/taskStyles-0.1.css">
+      <script>
+         var stringsLanguage = 'en';
+         var taskStrings = {
+            programTooLong: "The program is too long. It must not exceed 100 characters.",
+            cantUnderstandProgram: "I do not understand your program.",
+            executionTooLong: "Your program would take too long to run.",
+            resetting: "Resetting...",
+            programExecuted: "Programme executed:",
+            up: "U",
+            down: "D",
+            right: "R",
+            left: "L",
+            holeExitingGrid: "Your program tries to get the hole out of the grid.",
+            holeIntoObstacle: "Your program tries to move the hole to an obstacle.",
+            success: "Congratulations, you did it.",
+            failure: "Cell 1 is not on the top right."
+         }
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+      <script class="remove" type="text/javascript">
+         var json = {
+            "id": "http://castor-informatique.fr/tasks/algorea_2015/2015-FR-21-taquin/",
+            "language": "en",
+            "version": "en.01",
+            "authors": "Charles Freou",
+            "translators": [],
+            "license": "",
+            "taskPathPrefix": "",
+            "modulesPathPrefix": "",
+            "browserSupport": [],
+            "acceptedAnswers": [""],
+            "fullFeedback": true
+         };
+      </script>
+      <style>
+         .examples {
+            border-collapse: collapse;
+         }
+         .examples td {
+            border: 1px solid black;
+            padding: 0.5em;
+         }
+         #resetButton {
+            display: none;
+         }
+      </style>
+   </head>
+
+   <body>
+      <div id="task">
+         <h1>Taquin</h1>
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <p>
+               The grids below represent a game of teasing. The game features numbered pieces, and a hole, represented by the gray box. 
+               At each step, a piece next to the hole can be slid towards the hole.
+               The hole is moved Upward by (U), Down by (D), Right by (R) or left by (L).
+            </p>
+            <p>
+               To repeat a command several times, you can put a number before it; e.g. "3RU" moves the hole three times to the right, then once up.
+            </p>
+            <p>
+	    Write a program that brings the blue piece numbered 1 to the box at the top right of the grid.
+               To help you, try the programs below first by clicking on the buttons.
+            </p>
+            <p class="medium hard">
+               <b>Medium and difficult versions :</b> to repeat a group of commands several times, put it in brackets with a number before.
+               For example : 3(UD) execute (UD) for 3 times.
+            </p>
+            <p class="hard">
+               <b>Hard Version :</b> The red boxes are impossible to move.
+            </p>
+            <table class="examples" style="margin: auto;">
+               <tr>
+                  <td class="easy medium"><input type="button" id="sample0" class="exampleButton" onclick="task.executeSample(0);" value="U"/></td>
+                  <td class="easy medium"><input type="button" id="sample1" class="exampleButton" onclick="task.executeSample(1);" value="2R"/></td>
+                  <td class="easy medium"><input type="button" id="sample2" class="exampleButton" onclick="task.executeSample(2);" value="URDL"/></td>
+                  <td class="easy medium"><input type="button" id="sample3" class="exampleButton" onclick="task.executeSample(3);" value="3RUL"/></td>
+                  <td class="medium"><input type="button" id="sample4" class="exampleButton" onclick="task.executeSample(4);" value="3(RULD)"/></td>
+                  <td class="hard"><input type="button" id="sample5" class="exampleButton" onclick="task.executeSample(5);" value="3(LURD)"/></td>
+                  <td class="hard"><input type="button" id="sample6" class="exampleButton" onclick="task.executeSample(6);" value="3(2(UD)L)U"/></td>
+               </tr>
+            </table>
+            <table style="width: 100%; margin-top: 1em;"><tr>
+               <td style="width: 200px;">
+                  Your program&nbsp;:<br/>
+                  <div style="padding: 8px;">
+                     <textarea id="answer" cols="50" maxlength="200" style="width: 300px; height: 100px;" onkeydown="task.resetExecution();"></textarea>
+                  </div>
+                  <div class="contentCentered">
+                     <input class="exampleButton" type="button" value="Try" onclick="task.executeAnswer();"/>
+                  </div>
+               </td>
+               <td class="contentCentered">
+                  <div style="padding-bottom: .5em;">The teasing game&nbsp;:</div>
+                  <div id="taquin"></div>
+                  <p id="programRan" style="width: 400px; word-wrap: break-word;"></p>
+                  <p><input id="resetButton" disabled="true" type="button" value="Reset" onclick="task.resetExecution();"/></p>
+               </td>
+            </tr></table>
+         </div>
+         <img src="icon.png" style="display: none;"/>
+      </div><!-- task -->
+
+      <div id="solution">
+         <h2>Solution</h2> 
+         <ul>
+            <li>Version facile : H5DB</li>
+            <li>Version moyenne : 11(DHGBD)</li>
+            <li>Version difficile : 11(GHDBG) GH 3(HDBGH) BD 11(DHGBD)</li>
+         </ul>
+      </div><!-- task-solution -->
+   </body>
+</html>

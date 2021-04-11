@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="utf-8"></meta>
+   <title>FR-2019-13-align-strips</title>
+   <script>
+      window.stringsLanguage = 'fi';
+   </script>
+   <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1_M.js" id="import-modules"></script>
+   <script class="remove" type="text/javascript">
+      var modulesPath = '../../../_common/modules';
+      importModules([
+         'jquery-1.7.1', 'jquery-ui.touch-punch', 'raphael-2.2.1', 'JSON-js', 'grid-1.0',
+         'beav-1.0', 'beaver-task-2.0', 'simulation-2.0', 'raphaelFactory-1.0',
+         'delayFactory-1.0', 'simulationFactory-1.0', 'raphaelButton-1.0',
+         'platform-pr', 'buttonsAndMessages', 'installationAPI.01', 'miniPlatform',
+         'taskStyles-0.1', 'randomGenerator-1.0', 'drag_lib-2.0', 'graph-1.0'
+      ]);
+   </script>
+   <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/visual-graph-1.1.js"></script>
+
+   <script class="remove" type="text/javascript">
+      var json = {
+         "id": "http://castor-informatique.fr/tasks/2019/FR-2019-13-align-strips/",
+         "language": "fi",
+         "version": "fi.01",
+         "authors": "Arthur Charguéraud, Mathias Hiron, France-ioi",
+         "translators": "Heikki Hyyrö",
+         "license": "CC BY-SA 3.0",
+         "taskPathPrefix": "",
+         "modulesPathPrefix": "",
+         "browserSupport": [],
+         "fullFeedback": true,
+         "acceptedAnswers": [],
+         "usesRandomSeed": false
+       };
+   </script>
+   <script type="text/javascript">
+      var taskStrings = {
+         success: "Onnittelut, ratkaisit tämän version!",
+         wrong: function(nbBeavers) {
+            var msg = "Jotkut majavat eivät saa vettä!";
+            if (nbBeavers == 1) {
+               msg = "Joku majava ei saa vettä!";
+            }
+            return msg + " Yritä muuttaa tilanne sellaiseksi, että kaikista putkista tulee sinisiä.";
+           },
+         clickToTurn: "Käännä klikkaamalla",
+         clickToLower: "Irrota/kiinnitä pyörä klikkaamalla",
+         tooManyDisconnect: "Onnistuit, mutta ratkaisu on mahdollista irrottamalla vähemmän pyöriä.",
+         undo: "Peru",
+         nbDisconnect: function(n) {
+            return "Irrotuksia: "+n;
+         }
+      };
+   </script>
+   <script type="text/javascript" src="task.js"></script>
+   <style>
+      #paper {
+         margin-top: 1em;
+      }
+      #error {
+         text-align: center;
+      }
+      .actions-descr li {
+         margin-top: 1em;
+      }
+   </style>
+</head>
+
+<body>
+   <div id="task">
+      <h1>Putkisto</h1>
+      <div id="tabsContainer"></div>
+      <div id="taskContent">
+         <p id="difficultyWarning" class="hard"></p>
+         <div id="zone_1">
+            <div class="consigne">
+               <p>Tehtäväsi on kääntää harmaat putket siten, että neliönmuotoisesta vesitankista virtaa vettä <span class="hard">kaikille neljälle </span>majavalle.</p>
+
+               <p>Putket on kiinnitetty pyöriin. Putkia voi kääntää seuraavasti:
+               </p>
+               <ol class="actions-descr">
+               <li>Käännä mustaa vipua: kaikki vipuun yhdistetyt pyörät kääntyvät.</li>
+               <li>Klikkaa pyörää: pyörä irrottuu viereisistä pyöristä (tai kiinnittyy takaisin, jos se aiemmin oli irrotettu).</li>
+               </ol>
+            </div>
+         </div>
+         <div id="zone_2">
+            <div id="paper"></div>
+         </div>
+         <div id="error"></div>
+      </div>
+      <img src="icon.png" style="display:none">
+      <img src="beaversBall.png" style="display:none" id="beaversBall">
+   </div>
+
+   <!-- task -->
+
+   <div id="solution">
+      <h2>Ratkaisu</h2>
+          <p>Tehtävän voi ratkaista alla luetellulla klikkausketjulla. <span class="easy medium">V tarkoittaa vivun kääntämistä</span><span class="hard">V tarkoittaa vivun kääntämistä vasemmalle, O vivun kääntämistä oikealle,</span> ja numero oheisessa kuvassa kyseisellä numerolla merkityn pyörän klikkaamista.<br/>
+          <b>
+          <span class="easy">2 V 2&nbsp;&nbsp;V 3 V 3</span>
+          <span class="medium">2 V 2&nbsp;&nbsp;V 3 V 3&nbsp;&nbsp;V 4 V 4&nbsp;&nbsp;V 6 V 6</span>
+          <span class="hard">7 V 7&nbsp;&nbsp;V 2 O 2&nbsp;&nbsp;O 10 V 10&nbsp;&nbsp;V 9 O 9&nbsp;&nbsp;V 12 O 12&nbsp;&nbsp;V 14 O 14</span>
+          </b></p>
+         
+          <img class="easy" src="sol_easy_fi.png">
+          <img class="medium" src="sol_medium_fi.png">
+          <img class="hard" src="sol_hard_fi.png">
+
+          <p>Tehtävää voi yrittää ratkaista monella tavalla. Alla on kuvattu yksi melko helppo lähestymistapa.</p>
+          <p>Käännetään aluksi vipuun yhdistetty pyörä oikeaan asentoon. Tämän jälkeen käsittelemme loputkin pyörät niin, että jokaisella askeleella kasvatamme veden saavuttamien pyörien lukumäärää vähintään yhdellä.</p> 
+          <p>Valitaan sellainen jonkin jo vettä saavan pyörän vieressä oleva pyörä, joka ei saa vettä. Käytämme ensin vipua niin monta kertaa, että kyseinen pyörä tulee oikeaan asentoon. Tämä toimenpide jättänee aiemmin vettä saaneet pyörät väärään asentoon. Korjaamme ne takaisin oikeisiin asentoihin klikkaamalla nyt oikeaan asentoon kääntämäämme pyörää, jolloin se irtautuu aiemmista pyöristä, ja kääntämällä sen jälkeen vipua käyttäen aiemmat pyörät takaisin oikeaan asentoon niin, että ne saavat taas vettä. Lopuksi klikkaamme edellä irrotettua pyörää uudelleen, jolloin se jälleen kiinnittyy näihin aiempiin pyöriin.</p>
+          <p>Toistamme edeltävää menettelyä kunnes kaikki pyörät saavat vettä.</p>
+
+      <h2>Tämä on tietojenkäsittelyä!</h2>
+      <p>
+         Vaikeimmassa versiossa oikeastaan manipuloitiin niin sanottua <b>juurellista puuta</b>, joka on yleisesti käytetty apuväline tietojenkäsittelyssä. Tehtävässä vesitankki vastaa puun juurisolmua ja pyörät ja majavat muita solmuja.
+      </p>
+      <p>
+         Meidän piti kyetä järjestämään kaikki pyörät keskenään oikeisiin asentoihin. Ehdotettu esimerkkiratkaisu voidaan tulkita puun solmujen järjestelmällisen läpikäynnin (esimerkiksi <b>syvyyshaun</b>) ja <b>ahneen algoritmin</b> yhdistelmäksi. Syvyyshaku on eräs järjestelmällinen tapa käydä puun kaikki solmut läpi sen juurisolmusta alkaen. Ahne algoritmi taas tarkoittaa sellaista ongelman ratkaisutapaa, jossa aloitetaan pienestä osaratkaisusta (esim. vain vivun viereisen pyörän asettamisesta oikein), ja osaratkaisua laajennetaan askeleittan kohti kokonaista ratkaisua niin, että jokainen osaratkaisun laajennusaskel tehdään sillä hetkellä parhaalta vaikuttavalla tavalla (tässä: aiempaan osaratkaisuun lisättävä pyörä asetetaan oikeaan asentoon).
+      </p>
+      <p>Katso lisää esim. <a href="https://fi.wikipedia.org/wiki/Puu_(graafiteoria)" target="_blank">https://fi.wikipedia.org/wiki/Puu_(graafiteoria)</a>, <a href="https://fi.wikipedia.org/wiki/Syvyyssuuntainen_l%C3%A4pik%C3%A4ynti" target="_blank">https://fi.wikipedia.org/wiki/Syvyyssuuntainen_läpikäynti</a> ja <a href="https://fi.wikipedia.org/wiki/Ahne_algoritmi" target="_blank">https://fi.wikipedia.org/wiki/Ahne_algoritmi</a>.</p>
+   </div>
+   <!-- task-solution -->
+</body>
+
+</html>

@@ -1,0 +1,172 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>2016-FR-08</title>
+    <link class="module" rel="stylesheet" href="../../../_common/modules/pemFioi/taskStyles-0.1.css" id="http://www.france-ioi.org/modules/pemFioi/taskStyles-0.1.css">
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/jquery/1.7/jquery.min.js" id="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/jquery-ui/jquery.ui.touch-punch.min.js" id="jquery.ui.touch-punch.min.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/raphael/2.2.1/raphael.min.js" id="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.1/raphael.min.js"></script>
+
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/json/json2.min.js" id="https://github.com/douglascrockford/JSON-js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/beav-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/beav-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/drag_lib-2.0.js" id="http://www.france-ioi.org/modules/pemFioi/drag_lib.js"></script>
+
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/beaver-task-2.0.js" id="http://www.france-ioi.org/modules/pemFioi/beaver-task-2.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/simulation-2.0.js" id="http://www.france-ioi.org/modules/pemFioi/simulation-2.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/raphaelFactory-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/raphaelFactory-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/delayFactory-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/delayFactory-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/simulationFactory-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/simulationFactory-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/grid-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/grid-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/randomGenerator-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/randomGenerator-1.0.js"></script>
+
+    <script class="remove" type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js" id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js"></script>
+    <script class="proxy module" type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/platform-pr.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/platform-pr.js"></script>
+    <script class="stdButtonsAndMessages module" type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"  id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"></script>
+    <script class="remove" type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/miniPlatform.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/miniPlatform.js"></script>
+      <script>
+         var stringsLanguage = 'fi';
+      </script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/tasks/2016/2016-FR-08-repeating-pattern/",
+          "language": "fi",
+          "version": "fi.01",
+          "authors": "Arthur Charguéraud, Mathias Hiron, Nir Lavee, France-ioi",
+          "translators": "Timo Poranen, Heikki Hyyrö",
+          "license": "CC BY-SA 3.0",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "fullFeedback": true,
+          "acceptedAnswers": [],
+          "usesRandomSeed": false
+      };
+      </script>
+      <script type="text/javascript">
+      var taskStrings = {
+            collision: "Robotti on törmännyt seinään.",
+            outside: "Robotti on ruudukon ulkopuolella.",
+            noGoal: "Robotti ei ole päässyt vihreälle alueelle.",
+            success: "Onnittelut, ratkaisit tämän version!",
+            noInstructions: "Raahaa nuolet alla oleviin valkoisiin ruutuihin.",
+            zoneTooEarly: "Robotti ylitti sinisen viivan ennen käskyjonon viimeisen käskyn suorittamista.",
+            zoneNoExit: "Robotti ei ylittänyt viimeisellä käskyllä sinistä viivaa.",
+
+            executeButtonPlay: "Suorita käskyt",
+            executeButtonPause: "Lopeta",
+            executeButtonContinue: "Jatka",
+
+            loopText: function(loopTimes) {
+               return loopTimes + "x";
+            }
+
+            /* DEPRECATED BUT KEEP FOR FUTURE USE
+            zone: function(index) {
+               return "Partie " + index; 
+            }*/
+         };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+      <style>
+         #anim_container {
+            text-align: center;
+         }
+         #anim {
+            display: inline-block;
+         }
+         #control {
+            margin-top: 1em;
+            margin-bottom: 3em;
+         }
+         #control input {
+            margin-left: 1em;
+            margin-right: 1em;
+            width: 8em;
+         }
+         .instructionsUsage p {
+            text-align: center;
+            margin-top: 0.2em;
+            margin-bottom: 0em;
+         }
+         #markersUsage {
+            margin-top: 1em;
+            font-weight: bold;
+         }
+      </style>
+   </head>
+   <body>
+      <div id="task">
+         <h1>Auta robottia</h1>
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <p id="difficultyWarning" class="hard"></p>
+            <p>
+               Ohjelmoi robotti kulkemaan ruudukon oikeassa reunassa olevalle vihreälle alueelle.
+            </p> 
+            <div id="anim_container">
+               <div id="anim1"></div>
+               <div class="instructionsUsage">
+                  <p>
+                     Raahaa alla olevia nuolia valkoisiin ruutuihin. Robotti kulkee käskyjonon mukaisesti <span id="loopTimes">loopTimes</span> kertaa.
+                  </p>
+                  <p>
+                     Käskyjonon viimeisen nuolen pitää johdattaa robotti aina sinisen viivan yli.
+                  </p>
+                  <p id="markersUsage">
+                     Vihje: voit klikata sokkelon ruutuja värittääksesi ne mustiksi.
+                  </p>
+               </div>
+               <div id="anim2"></div>
+                 <div id="control">
+                  <input type="button" id="execute" value="Suorita ohjelma"/>
+                  <input type="button" id="stop" value="Palauta robotti"/>
+                </div>
+            </div>
+            <img src="icon.png" style="display:none">
+         </div>
+      </div><!-- task -->
+      <div id="solution">
+
+         <h2>Ratkaisu</h2>
+            <div class="easy">
+				<p>Alla on kuvattu koko polku niin, että komentojen kunkin eri toistokerran askeleet on esitetty eri väreillä:</p>
+               <p><img src="solution_easy_fi.png"></p>
+               <p>Kunkin toistokerran sisällä tehtävät askeleet vastaavat seuraavia nuolia:</p>
+               <p><img src="sol_easy_arrows.png"></p>
+            </div>   
+            <div class="medium">
+			   <p>Robotti suorittaa kussakin neljässä osassa täsmälleen samanlaiset askeleet. Yritetään etsiä sellainen ratkaisu, jossa robotti siirtyy osasta seuraavaan aina ylimmällä rivillä: tällöin robotti kulkee jokaisessa osassa keskenään täysin vastaavat ruudut. Mahdollinen esteeseen törmääminen voidaan tällöin tutkia asettamalla kaikkien neljän osan esteet yhteen osaan. Tämä on esitettu alla vaiheittain. Lisätään ensimmäiseen osaan toisen osan esteet (mustina neliöinä).</p>
+               <p><img src="sol_medium_1.png"></p>
+               <p>Seuraavaksi lisätään myös kolmannen osan esteet.</p>
+               <p><img src="sol_medium_2.png"></p>
+               <p>Ja lopuksi neljännen osan esteet.</p>
+               <p><img src="sol_medium_3.png"></p>
+               <p>Nyt kaikkien osien esteet on huomioitu ja voimme etsiä polun, joka kulkee osan vasemmasta yläkulmasta osan oikeaan yläkulmaan törmäämättä mihinkään esteeseen. Alla on esitetty tällaisista osapoluista koostuva kokonainen ratkaisu niin, että kunkin osan sisällä kuljetut polut on esitetty eri väreillä:</p>
+			   <p><img src="solution_medium_fi.png"></p>
+			   <p>Kunkin toistokerran sisällä tehtävät askeleet vastaavat seuraavia nuolia:</p>
+               <p><img src="sol_medium_0.png"></p>
+            </div>
+            <div class="hard">
+				<p>Robotti suorittaa kussakin neljässä osassa täsmälleen samanlaiset askeleet. Tässä versiossa emme voi löytää ratkaisua, jossa robotti siirtyisi osasta seuraavaan aina oikeasta ylänurkasta: toisen osan vasemmassa yläkulmassa on este. Tästä seuraa, että robotti siirtyy osasta seuraavaan alemmalla rivillä kuin mistä se tuli osaan. Koska ruudukon sisusta on 6 riviä korkea, on ainoa vaihtoehto siirtyä yksi rivi alemmas (muuten robotti törmäisi ruudukon alalaitaan). Alla olevaan kuvaan on merkitty kunkin osan alku- ja loppuruudut mustilla neliöillä.</p>
+               <p><img src="sol_hard_path_1.png"></p>
+               <p>Lähdetään nyt etsimään polkua, joka yhdistää kunkin osan alku- ja loppuruudut törmäämättä esteeseen minkään osan sisällä. Toisessa osassa on pakko kiertää alakautta (muuten vastaava polku törmäisi ensimmäisessä osassa ruudun ylälaitaan). Tätä vastaavat ruudut on merkitty toiseen osaan mustilla neliöillä.</p>
+               <p><img src="sol_hard_path_2.png"></p>
+               <p>Yllä toiseen osaan osittain hahmoteltu alakautta kiertäminen ei voi edetä yhtään askelta alemmas, koska muuten vastaava polku törmäisi neljännessä osassa ruudukon alalaitaan. Alla on täydennetty toiseen osaan siitä puuttunut yksi ruutu, ja tämän toisessa osassa valmiiksi saadun osapolun askeleet on lisäksi merkitty muihinkin osiin. Ratkaisu on löydetty.</p>
+               <p><img src="sol_hard_path_3.png"></p>
+               <p>Alla on kuvattu koko polku nuolilla niin, että komentojen kunkin eri toistokerran askeleet on esitetty eri väreillä:</p>
+               <p><img src="solution_hard_fi.png"></p>
+               <p>Kunkin toistokerran sisällä tehtävät askeleet vastaavat seuraavia nuolia:</p>
+               <p><img src="sol_hard_arrows.png"></p>
+            </div>
+         
+         
+         <h2>Tämä on tietojenkäsittelyä!</h2>
+
+            <p>Tässä tehtävässä tutustuttiin ohjelmointiin muodostamalla robotille käskyjono, jonka toistuvan suorittamisen piti tuottaa haluttu lopputulos. Haastavampien versioiden ratkaisuissa piti lisäksi osata yhdistää useita ehtoja, jotka kunkin eri toistokerran tuottaman osapolun piti täyttää. Monissa tietojenkäsittelyn ongelmissa on tavallista, että pitää huomioida useita ehtoja samanaikaisesti.</p>
+            <p>Katso lisää esim. <a href="https://fi.wikipedia.org/wiki/Imperatiivinen_ohjelmointi" target="_blank">https://fi.wikipedia.org/wiki/Imperatiivinen_ohjelmointi</a>.</p>
+
+
+	  </div> <!-- task-solution -->
+   </body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=770, initial-scale=1.0">
+      <title>2013-JP-02</title>
+      <script>
+         window.stringsLanguage = 'fr';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1_M.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+         var modulesPath = '../../../_common/modules';
+         importModules([
+            'jquery-1.7.1', 'jquery-ui.touch-punch', 'raphael-2.1', 'JSON-js', 'jschannel',
+            'beav-1.0', 'beaver-task-2.0', 'simulation-2.0', 'raphaelFactory-1.0',
+            'delayFactory-1.0', 'simulationFactory-1.0', 'raphaelButton-1.0',
+            'platform-pr', 'buttonsAndMessages', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1', 'randomGenerator-1.0', 'drag_lib-2.0', 'shape-paths'
+         ]);
+      </script>
+
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/tasks/2013/2013-JP-02/",
+          "language": "fr",
+          "version": "fr.01",
+          "authors": "Yukio Idosaka, JAP",
+          "translators": [],
+          "license": "CC BY-SA 3.0",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "acceptedAnswers": ["[4,2,3,1]"]
+      };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+      <script type="text/javascript">
+         var taskStrings = {
+            success: "Bravo, vous avez réussi !",
+            failure: "Ce n'est pas la bonne réponse.",
+            missingBeaver: "Tous les castors ne sont pas passés de l'autre côté."
+         };
+      </script>
+      <style type="text/css">
+         #paper {
+            margin: 1em auto;
+         }
+         #error {
+            text-align: center;
+         }
+         #example_1, #example_2, #example_3 {
+            margin: auto;
+         }
+      </style>
+   </head>
+   <body>
+      <div id="task">
+         <h1>Tunnels magiques</h1>
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <div id="zone_1">
+               <div class="consigne">
+                  <p>Quatre castors aiment jouer avec des tunnels magiques. Lorsqu'ils entrent tous ensemble dans un tunnel, ils en ressortent dans un ordre différent.</p>
+                  <p>Si le tunnel est <b>noir</b>, ils ressortent en ordre <b>inverse</b>.</p>
+                  <div id="example_1"></div>
+                  <p>Si le tunnel est <b>blanc</b>, ils ressortent dans le même ordre sauf que le <b>premier et le dernier échangent leurs places</b>.</p>
+                  <div id="example_2"></div>
+                  <p class="hard">Si le tunnel est <b>rayé</b>, ils ressortent dans le même ordre sauf que le <b>deuxième et le troisième échangent leurs places</b>.</p>
+                  <div id="example_3"></div>
+                  <p><span class="easy medium">Les quatre</span><span class="hard">Cinq</span> castors traversent successivement les tunnels suivants.
+                  Glissez les lettres des castors à droite, dans l'ordre dans lequel ils vont ressortir.</p>
+               </div>
+            </div>
+            <div id="zone_2">
+               <div id="paper" class="touch"></div>
+            </div>            
+            <img src="beaver_1.png" id="beaver_1" style="display:none">
+            <img src="beaver_2.png" id="beaver_2" style="display:none">
+            <img src="beaver_3.png" id="beaver_3" style="display:none">
+            <img src="beaver_4.png" id="beaver_4" style="display:none">
+            <img src="tunnel_black.png" id="tunnel_black" style="display:none">
+            <img src="tunnel_white.png" id="tunnel_white" style="display:none">
+            <img src="tunnel_striped.png" id="tunnel_striped" style="display:none">
+         </div><!-- task -->
+      <div id="solution">
+         <h2>Solution</h2>
+              <table>
+                  <tr>
+                     <td style="padding-left:1em">Si les castors<br/> entrent dans l'ordre :</td>
+                     <td style="vertical-align:bottom">
+                        <div id="beaver_1f" style="width:50px;height:90px;display:inline-block"></div>
+                     </td><td style="vertical-align:bottom">
+                        <div id="beaver_2f" style="width:45px;height:80px;display:inline-block"></div>
+                     </td><td style="vertical-align:bottom">
+                        <div id="beaver_3f" style="width:35px;height:65px;display:inline-block"></div>
+                     </td><td style="vertical-align:bottom">
+                        <div id="beaver_4f" style="width:30px;height:59px;display:inline-block"></div>
+                     </td>
+                     <td style="padding-left:1em;padding-right:1em">alors ils sortent des<br/>3 tunnels dans l'ordre :</td>
+                     <td style="vertical-align:bottom">
+                        <div id="beaver_4e" style="width:25px;height:35px;display:inline-block"></div>
+                     </td><td style="vertical-align:bottom">
+                        <div id="beaver_2e" style="width:40px;height:55px;display:inline-block"></div>
+                     </td><td style="vertical-align:bottom">
+                        <div id="beaver_3e" style="width:33px;height:44px;display:inline-block"></div>
+                     </td><td style="vertical-align:bottom">
+                        <div id="beaver_1e" style="width:50px;height:66px;display:inline-block"></div>
+                     </td>
+                  </tr>
+              </table>
+
+         <p>
+         Il y avait plusieurs façons de résoudre le sujet. La manière naïve consiste à appliquer les règles des tunnels les une après les autres, en représentant la position des 4 castors à la sortie de chacun des 3 tunnels.</p>
+         <div style='text-align:center'><img src="2013-JP-02_sol.png" /></div>
+         <p>
+         Il existait une manière plus astucieuse de résoudre le sujet. On part des deux observations suivantes&nbsp;:
+         </p>
+         <ol>
+         <li>Le résultat final ne change pas si l'on modifie l'ordre des tunnels.</li>
+         <li>Si les castors passent successivement dans 2 tunnels noirs, leur ordre ne changent pas.</li>
+         </ol>
+         <p>
+         Ainsi, dans le sujet l'effet des deux tunnels noirs s'annule. Le passage à travers les trois tunnels est donc équivalent au passage dans le seul tunnel blanc. L'effet de ce tunnel blanc étant décrit dans le sujet, il suffit d'en recopier l'ordre de sortie des castors.
+         </p>
+         <h2>C'est de l'informatique&nbsp;!</h2>
+         <p>
+         De nombreux algorithmes, en particulier les algorithmes de tri, font intervenir des <i>permutations</i>, c'est-à-dire des opérations changeant l'ordre des éléments. En regardant la manière dont fonctionnent les différentes permutations, on peut souvent optimiser la manière dont on effectue (ou fait effectuer par un programme) les changements d'ordre.
+         </p>
+         <p>
+         Par exemple, dans ce sujet, on peut observer que la permutation «&nbsp;inverser l'ordre de tous les castors&nbsp;» et la permutation «&nbsp;inverser l'ordre du premier et du dernier castor&nbsp;»  sont des permutations que l'on peut effectuer dans l'ordre que l'on veut, sans changer le résultat. De plus, pour chacune de ces deux permutations, si on l'effectue deux fois de suite, alors cela revient à ne rien changer. Du coup, l'ordre final des castors ne dépend que de la parité du nombre de tunnels noirs et de la parité du nombre de tunnels blancs.
+         </p>
+         <p>Ainsi, un programme qui simule l'effet de plusieurs millions de tunnels n'a pas besoin de réaliser plusieurs millions d'opérations de changement de place&nbsp;: il suffit de regarder s'il y a un nombre impair de tunnels noirs (auquel cas il faut inverser tous les castors) et s'il y a un nombre impair de tunnels blancs (auquel cas il faut inverser le premier et le dernier castor). Un petit peu de réflexion économise des millions de calculs&nbsp;!
+         </p>
+      </div> <!-- task-solution -->
+   </body>
+</html>

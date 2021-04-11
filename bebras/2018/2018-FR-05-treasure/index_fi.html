@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>2018-FR-05-treasure</title>
+    <script>
+        window.stringsLanguage = 'fi';
+    </script>
+    <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1_M.js" id="import-modules"></script>
+    <script class="remove" type="text/javascript">
+        var modulesPath = '../../../_common/modules';
+        importModules([
+            'jquery-1.7.1', 'jquery-ui.touch-punch', 'raphael-2.2.1', 'JSON-js',
+            'beav-1.0', 'beaver-task-2.0', 'simulation-2.0', 'raphaelFactory-1.0',
+            'delayFactory-1.0', 'simulationFactory-1.0', 'drag_lib-2.0',
+            'graph-1.0', 'visual-graph-1.0', 'graph-mouse-1.0', 'randomGenerator-1.0',
+            'platform-pr', 'buttonsAndMessages', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1']);
+    </script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/tasks/2016/2016-FR-07-shapes/",
+          "language": "fi",
+          "version": "fi.01",
+          "authors": "Arthur Charguéraud, Mathias Hiron, France-ioi",
+          "translators": ["Timo Poranen, Heikki Hyyrö"],
+          "license": "CC BY-SA 3.0",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "fullFeedback": true,
+          "acceptedAnswers": [],
+          "usesRandomSeed": false
+      };
+      </script>
+      <script type="text/javascript">
+      var taskStrings = {
+            error: function(level) {
+               var thick = (level == "hard") ? " kokonaispaksuudeltaan" : "";
+               var walls = "rikkomalla" + thick + " pienempi määrä seinämiä";
+               return "Löysit aarteen, mutta tämä on mahdollista tehdä " + walls + ". Yritä uudelleen. Ole huolellinen, aarre voi nyt olla eri huoneessa."
+            },
+            success: "Onnittelut, ratkaisit tämän version!",
+            notFinished: "Et ole vielä löytänyt aarretta!",
+            feedbackHard: "Hajotettujen seinämien</br>kokonaispaksuus:",
+            feedbackEasyMedium: "Hajotettujen seinämien lukumäärä:"
+         };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+      <style type="text/css">
+         #anim { 
+            width: 500px;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 20px;
+         }
+         #result {
+            display: inline-block;
+            text-align: center;
+            vertical-align: middle;
+            margin-left:20px; 
+         }
+         #nb_walls {
+            font-size: 2.5em;
+            font-weight: bold;
+         }        
+      </style>
+   </head>
+   <body>
+      <div id="task">
+         <h1>Pienin työmäärä</h1>
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <div id="zone_1">
+               <div class="consigne">
+            <p>
+               Pyöreät huoneet on yhdistetty toisiinsa käytävillä. Joskus käytävät on tukittu seinämillä.
+            </p>
+            <div class="easy medium">
+               <p>Tässä on esimerkiksi käytävä, joka on tukittu kolmella seinämällä:</p>
+               <p style="text-align: center;"><img class="exampleImage" src="example.png"></p>
+            </div>
+            <div class="hard">
+               <p>Tässä on esimerkki käytävästä, joka on tukittu 12 yksikköä paksulla seinämällä:</p>
+               <p style="text-align: center;"><img class="exampleImage" src="example_hard.png"></p>
+            </div>
+            <p>Hajota <span class="easy medium">pienin mahdollinen määrä seinämiä</span><span class="hard">kokonaispaksuudeltaan mahdollisimman pieni määrä seinämiä</span> tutkiaksesi huoneet ja löytääksesi aarteen.</p>
+            <p>Klikkaa käytävää hajottaaksesi kyseisen <span class="easy medium">käytävän kaikki seinämät</span><span class="hard">käytävän seinämän</span>.</p>
+               </div>
+            </div>
+            <div id="zone_2">
+               <div id="anim"></div>
+               <p id="result"></p>
+            </div>
+            <img src="icon.png" style="display:none">
+            <img id="treasure" src="treasure.png" style="display:none">
+         </div>
+      </div>
+    <div id="solution">
+
+          <h2>Ratkaisu</h2>
+          <div class="easy">
+            <p>Tässä toimii seuraava yleinen ratkaisuperiaate: valitaan jokaisella askeleella sellainen vielä käymättömään huoneeseen johtava käytävä, jossa on vähiten seiniä.</p>
+           <p>Esimerkiksi oheisen kuvan tilanteessa etenisimme seuraavaksi oikealla alhaalla olevaa käytävää pitkin, jossa on vain kaksi seinää. Sen yläpuolella olevat kaksi muuta käymättömään huoneeseen johtavaa käytävää ovat huonompia, koska niissä on kolme seinää.</p>
+           <img src="sol_easy.png">
+          </div>
+
+         <div class="medium">
+           <p>Tässä toimii seuraava yleinen ratkaisuperiaate: valitaan jokaisella askeleella sellainen vielä käymättömään huoneeseen johtava käytävä, jossa on vähiten seiniä.</p>
+           <p>Esimerkiksi oheisen kuvan tilanteessa etenisimme seuraavaksi toisen sarakkeen alarivillä olevaa käytävää, jossa on yksi seinä.</p>
+           <img src="sol_medium.png">
+         </div>
+
+         <div class="hard">
+           <p>Tässä toimii seuraava yleinen ratkaisuperiaate: valitaan jokaisella askeleella sellainen vielä käymättömään huoneeseen johtava käytävä, jossa on ohuin seinä.</p>
+           <p>Esimerkiksi oheisen kuvan tilanteessa etenisimme seuraavaksi jompaa kumpaa käytävää, joissa on 13 yksikköä paksu seinä, koska kaikissa muissa käymättömiin huoneisiin johtavissa käytävissä on paksumpi seinä.</p>
+           <img src="sol_hard.png">
+         </div>
+
+
+      <h2>Tämä on tietojenkäsittelyä!</h2>
+      <p>Tehtävä vastaa tietojenkäsittelyssä hyvin kuuluisaa <b>pienimmän virittävän puun</b> ongelmaa. Kun on annettu jokin <b>solmuista</b> (tässä huoneista) ja niiden välisistä <b> painotetuista kaarista</b> (tässä seiniä sisältävistä käytävistä) koostuva <b>graafi</b>, on minimivirittävä puu sellainen mahdollisimman pienen painojen summan omaava kaarien (tässä käytävien) joukko, joita pitkin pääsee kaikkiin solmuihin.</p>
+      <p>Minimivirittävät puut voivat kuvata monia käytännön tilanteita. Esimerkiksi jos meillä on joukko rakennuksia, jotka halutaan yhdistää toisiinsa verkkokaapelilla (vaikkapa internet-yhteyden jakamiseksi), voisimme ajatella taloja solmuina ja kunkin taloparin välisen kaapeloinnin kustannuksia painotettuna kaarena. Tällöin halvin tapa yhdistää rakennukset yhtenäiseksi verkoksi niin, että kustakin rakennuksesta kulkee jonkinlainen kaapelireitti kuhunkin toiseen rakennukseen, voidaan määrittää muodostamalla minimivirittävä puu.</p>
+      <p>Tehtävän ratkaisun yhteydessä kuvattu periaate vastaa Primin algoritmia, joka on yksi tunnetuimmista minimivirittävän puun ratkaisualgoritmeista.</p>
+      <p>Katso lisää esim. <a href="https://fi.wikipedia.org/wiki/Graafi" target="_blank">https://fi.wikipedia.org/wiki/Graafi</a>, <a href="https://fi.wikipedia.org/wiki/Viritt%C3%A4v%C3%A4_puu" target="_blank">https://fi.wikipedia.org/wiki/Virittävä_puu</a> ja <a href="https://en.wikipedia.org/wiki/Prim%27s_algorithm" target="_blank">https://en.wikipedia.org/wiki/Prim's_algorithm</a> (englanniksi).</p>
+
+    </div> <!-- task-solution -->
+    </body>
+</html>

@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>2013-SK-01</title>
+      <script>
+         window.stringsLanguage = 'fr';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1_M.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+         var modulesPath = '../../../_common/modules';
+         importModules([
+            'jquery-1.7.1', 'jquery-ui.touch-punch', 'raphael-2.2.1', 'JSON-js',
+            'beav-1.0', 'beaver-task-2.0', 'simulation-2.0', 'raphaelFactory-1.0',
+            'delayFactory-1.0', 'simulationFactory-1.0', 'raphaelButton-1.0', 'drag_lib-2.0',
+            'jschannel', 'platform-pr', 'buttonsAndMessages', 'installationAPI.01', 'randomGenerator-1.0',
+            'miniPlatform', 'taskStyles-0.1','graph-1.0','visual-graph-1.0','graph-mouse-1.0']);
+      </script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/tasks/2013/2013-SK-01/",
+          "language": "fr",
+          "version": "fr.01",
+          "authors": "Monika Gujberova et Martina Kabatova, sk, France-ioi",
+          "translators": [],
+          "license": "CC BY-SA 3.0",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "acceptedAnswers": ["3"]
+      };
+      </script>
+      <script src="task.js"></script>
+      <script type="text/javascript">
+         var taskStrings = {
+            success: "Bravo, vous avez réussi !",
+            click: "Cliquez sur les arbres de la forêt pour les sélectionner.",
+            notEnoughTrees: "Vous n'avez pas sélectionné assez d'arbres.",
+            tooManyTrees: "Vous avez sélectionné trop d'arbres.",
+            wrongTree: "Un des arbres sélectionné ne correspond pas.",
+            wrongPath: "Cette séquence d'arbres ne corerspond pas à un chemin allant de l'entrée à la sortie de la forêt.",
+            clickButton: "Cliquez sur le bouton gris pour choisir un arbre.",
+            missingTrees: "La séquence d'arbre est incomplète."
+         };
+      </script>
+      <style class="">
+         #path {
+            margin-top: 1em;
+         }
+      </style>
+   </head>
+   <body>
+      <div id="task">
+         <h1>Promenade en forêt</h1>
+         <div id="tabsContainer"></div>   <!-- will contain the versions tabs -->
+         <div id="taskContent">        <!-- will contain the content of the task --> 
+            <div id="zone_1">
+               <div class="consigne">
+                  <p>Boris s'est promené dans la forêt représentée ci-dessous.</p>
+                  <p>
+                  Il a dessiné les arbres qu'il a rencontrés au fur et à mesure de sa promenade<span class="easy">. Retracez son parcours en cliquant sur les arbres de la forêt.</span><span class="medium">, mais il en a oublié un. Trouvez l'arbre manquant en cliquant sur le bouton.</span><span class="hard">, mais il en a oublié trois. Trouvez les arbres manquants en cliquant sur les boutons.</span>
+                  </p>
+               </div>
+            </div>
+            <div id="zone_2">
+               <center>
+                  <div id="path"></div>
+                  <div id="graph"></div>
+               </center>
+            </div>
+         </div>
+         <img src="icon.png" style="display:none">
+         <img src="tree_1.png" id="tree_1" style="display:none">
+         <img src="tree_2.png" id="tree_2" style="display:none">
+         <img src="tree_3.png" id="tree_3" style="display:none">
+         <img src="tree_4.png" id="tree_4" style="display:none">
+         <img src="tree_5.png" id="tree_5" style="display:none">
+         <img src="tree_6.png" id="tree_6" style="display:none">
+         <img src="arrow.png" id="arrow" style="display:none">
+      </div><!-- task -->
+      <div id="solution">
+         <h2>La solution</h2>
+         <p>Pour déterminer si une suite d'arbres dessinés peut correspondre à un chemin emprunté par Boris, on peut essayer d'avancer étape par étape à travers la forêt, en essayant à chaque fois de trouver le prochain arbre dessiné.</p>
+         <p>Il faut faire très attention au fait qu'il peut y avoir plusieurs choix possibles à un moment donné. Par exemple, tout au début, on a deux chemins possibles menant à un arbre dont la partie supérieure est représentée par un oval vert foncé. Dans un tel cas, il faut essayer tous les chemins possibles.</p>
+         <p>Si, à un moment donné, on ne trouve pas l'arbre suivant que l'on est censé rencontrer, c'est que le chemin que l'on a suivi n'est pas le bon. En essayant toutes les propositions, on peut voir que la seule qui correspond à un chemin rejoignant l'arrivée est celle représentée ci-dessous.</p>
+         <div style="text-align:center"><img src="solution2.png"></div>
+         <p>La réponse est donc : </p>
+         <div style="text-align:center"><img src="solution1.png" style="border:2px solid black"></div>
+         <h2>C'est de l'informatique </h2>
+         <p>
+         Le plan de la forêt constitue ce que l'on appelle un <i>graphe</i>. Les graphes ont de très nombreuses applications en informatique. En particulier, les graphes peuvent être utilisés pour représenter des cartes telles que des cartes routières dans les systèmes de navigation par GPS. </p>
+         <p>
+         Souvent, on étudie un graphe pour trouver le plus court chemin entre un point de départ et une arrivée. Dans ce sujet, on s'intéressait à différents chemins possibles, afin de reconnaître quels sont les chemins vérifiant certaines propriétés particulières.</p>
+      </div> <!-- task-solution -->
+   </body>
+</html>

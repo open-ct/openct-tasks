@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>JSON text editor test</title>
+        <script src="../../../ext/ace/ace.js"></script>
+        <script src="../../../ext/ace/mode-json.js"></script>
+        <script src="../../../ext/ace/ext-language_tools.js"></script>
+        <script src="editor.js"></script>
+        <style>
+            html, 
+            body {
+                font: 14px sans;                
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                height: 100%;
+            }            
+            .column1 {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 50%;
+                height: 100%;
+            }
+            .column2 {
+                position: absolute;
+                left: 50%;
+                top: 0;
+                width: 50%;
+                height: 100%;
+            }
+            #editor {
+                width: 100%;
+                height: 100%;
+            }
+            #output {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                height: 100%;
+                border: 0;
+            }
+        </style>        
+    </head>
+    <body>
+        <div class="column1">
+            <div id="editor"></div>
+        </div>
+        <div class="column2">
+            <textarea id="output"></textarea>                        
+        </div>
+        <script type="text/javascript">
+            var elements = {
+                output: document.getElementById('output'),
+                editor: document.getElementById('editor'),
+            }
+            var editor = JSONTextEditor({
+                parent: elements.editor,
+                height: 500,
+                onChange: function(obj) {
+                    elements.output.value = JSON.stringify(obj, null, 2);
+                }
+            });
+
+            editor.setContent([
+                { 
+                    type: 'point',
+                    x: 225, 
+                    y: 100
+                },
+                {
+                    type: 'line',
+                    points: [
+                        { x: 150, y: 200 },
+                        { x: 175, y: 225 },
+                        { x: 200, y: 200 },
+                        { x: 225, y: 225 },
+                        { x: 250, y: 200 }
+                    ]
+                },                
+                {
+                    type: 'line',
+                    points: [
+                        { x: 150, y: 200 },
+                        { x: 175, y: 225 },
+                        { x: 200, y: 200 },
+                        { x: 225, y: 225 },
+                        { x: 250, y: 200 }
+                    ]
+                },               
+            ])
+        </script>
+    </body>
+</html>

@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>training-repeat-if-obstacles</title>
+      <script>
+      window.stringsLanguage = 'fr';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.0.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+        var modulesPath = '../../../_common/modules/'
+        importModules([
+            'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+            'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1']);
+        // set Blockly as default language when none is specified through ?language=
+        importLanguageModules('blockly');
+      </script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/questions/algorea_training/training-repeat-if-obstacles/",
+          "language": "fr",
+          "version": "fr.01",
+          "authors": "Mathias Hiron",
+          "translators": [],
+          "license": "CC-BY-SA",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "fullFeedback": true,
+          "minWidth": "auto"
+      };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+   </head>
+   <body onresize="task.displayedSubTask.updateScale()">
+      <div id="task">
+         <h1>Contourner les obstacles</h1>
+         <img src="green.png" style="display:none" />
+         <img src="obstacle.png" style="display:none" />
+         <img src="green_robot.png" style="display:none" />
+         <img src="icon.png" style="display:none" />
+
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <div id="taskIntro">
+               <p>
+                  Programmer le robot pour qu'il atteigne la zone verte tout au bout du parcours, sans rentrer dans un obstacle.
+               </p>
+               <div class="easy">
+                  <p>
+                     Pour tester s'il y a un obstacle devant le robot, utilisez un bloc « si ».
+                  </p>
+                  <p>Par exemple, pour déplacer le robot vers le bas s'il a un obstacle à sa droite, vous pouvez écrire :</p>
+                  <p data-lang="blockly">
+                     <img src="example_if.png" style="width:250px">
+                  </p>
+                  <p data-lang="scratch">
+                     <img src="example_if_scratch.png" style="width:200px">
+                  </p>
+                  <p data-lang="python">
+<code>
+if obstacleDroite():
+   bas()
+</code>
+                  </p>
+               </div>
+               <div class="medium hard">
+                  <p>
+                     Pour tester s'il y a un obstacle devant le robot, utilisez
+                        <span data-lang="blockly scratch">un bloc « si / sinon »</span><!--
+                     --><span data-lang="python">les instructions <code>if</code> / <code>else</code></span>.
+                  </p>
+                  <p>Par exemple, pour déplacer le robot vers le bas s'il a un obstacle à sa droite, et vers le haut dans le cas contraire, vous pouvez écrire :</p>
+                  <p data-lang="blockly">
+                     <img src="example_if_else.png" style="width:250px">
+                  </p>
+                  <p data-lang="scratch">
+                     <img src="example_if_else_scratch.png" style="width:200px">
+                  </p>
+                  <p data-lang="python">
+<code>
+if obstacleDroite():
+   bas()
+else:
+   haut()
+</code>
+                  </p>
+               </div>
+               <p class="easy hard">Indication : au total, le robot doit se déplacer 16 fois vers la droite pour atteindre la zone verte.</p>
+               <p class="medium">Indication : au total, le robot doit faire 24 déplacements pour atteindre la zone verte.</p>
+            </div>
+            <div id="gridContainer"></div>
+            <div id="blocklyLibContent"></div>
+         </div>
+
+      </div><!-- task -->
+   </body>
+</html>
+ 

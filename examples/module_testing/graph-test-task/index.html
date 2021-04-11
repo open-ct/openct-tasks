@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Graph Editor</title>
+      <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1_M.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+         var modulesPath = '../../../_common/modules';
+         importModules([
+            'jquery-1.7.1', 'jquery-ui.touch-punch', 'raphael-2.2.1', 'JSON-js', //'grid-1.0',
+            'beav-1.0', 'beaver-task-2.0', 'simulation-2.0', 'raphaelFactory-1.0',
+            'delayFactory-1.0', 'simulationFactory-1.0', 'raphaelButton-1.0',
+            'platform-pr', 'buttonsAndMessages', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1', 'randomGenerator-1.0', 'drag_lib-2.0',
+            'graph-1.0','visual-graph-1.1','graph-mouse-1.1', 'grid-1.0'
+         ]);
+      </script>
+      <link class="module" rel="stylesheet" href="../../../_common/modules/pemFioi/taskStyles-0.1.css" id="http://www.france-ioi.org/modules/pemFioi/taskStyles-0.1.css">
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/tasks/2015/2015-FR-07-placing-arrows/",
+          "language": "fr",
+          "version": "fr.01",
+          "authors": "Arthur Chargueraud",
+          "translators": [],
+          "license": "",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "fullFeedback": true,
+          "acceptedAnswers": [],
+          "usesRandomSeed": false
+      };
+      </script>
+      <script type="text/javascript">
+      var taskStrings = {
+
+         };
+
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+      <style>
+         #anim_container {
+            text-align: center;
+         }
+         #anim {
+            display: inline-block;
+         }
+         #controls {
+            text-align: left;
+            border-collapse: collapse;
+            width: 100%;
+         }
+         #controls td {
+            border: 1px solid black;
+         }
+         #controls .col1 {
+            width: 25%;
+         }
+         #controls .col2 {
+            width: 40%;
+         }
+         #controls .col3 {
+            width: 35%;
+         }
+         #infoTable {
+            width: 100%;
+            margin-bottom: 5px;
+         }
+         #infoCell {
+            text-align: left;
+            padding-left: 10px;
+            width: 300px;
+         }
+         #undo {
+            width: 240px;
+            padding: 5px;
+         }
+         #json_controls > * {
+            margin: 0 1em;
+         }
+         #visual_json, #options_json {
+            width: 97%;
+            height: 350px;
+            resize: none;
+         }
+         textarea {
+            -moz-user-select: text !important;
+         }
+/*         #textAlignLabel {
+            margin-left: 1em;
+            font-style: italic;
+            font-size: 90%;
+            visibility: hidden;
+         }*/
+      </style>
+   </head>
+   <body>
+      <div id="task">
+         <h1>Graph Editor</h1>
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <div id="anim_container">
+               <div id="anim"></div>
+               <table id="infoTable">
+                  <tr>
+                     <td id="infoCell">
+                        <div id="info"></div>
+                     </td>
+                     <td id="undoCell">
+                        <input type="button" id="undo" value="Undo">
+                     </td>
+                  </tr>
+               </table>
+               <table id="controls">
+                  <tr>
+                     <td class="col1">
+                        Options:
+                     </td>
+                     <td class="col2">
+                        Visual Graph JSON:
+                     </td>
+                     <td class="col3">
+                        Options JSON:
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <label>
+                           <input type="checkbox" id="createVertex" checked>Create/remove vertices
+                        </label>
+                        <br>
+                        <label>
+                           <input type="checkbox" id="createEdge" checked>Create/remove edges
+                        </label>
+                        <br>
+                        <br>
+                        <label>
+                           <input type="checkbox" id="dragVertex" checked>Drag vertices
+                        </label>
+                        <br>
+                        <label>
+                           <input type="checkbox" id="dragEdge" checked>Drag edges 
+                        </label>
+                        <br>
+                        <label>
+                           <input type="checkbox" id="dragGraph" checked>Drag graph
+                        </label>
+                        <br>
+                        <label>
+                           <input type="checkbox" id="scaleGraph" checked>Scale graph (shift + drag)
+                        </label>
+                        <br>
+                        <br>
+                        <label>
+                           <input type="checkbox" id="editVertexLabel" checked>Edit vertex label 
+                        </label>
+                        <br>
+                        <label>
+                           <input type="checkbox" id="editEdgeLabel" checked>Edit edge label
+                        </label>
+                        <br>
+                        <label>
+                           <input type="checkbox" id="defaultVertexLabel" checked>Default vertex label
+                        </label>
+                        <br>
+                        <label>
+                           <input type="checkbox" id="defaultEdgeLabel" checked>Default edge label
+                        </label>
+                        <br>
+                        <br>
+                        <label>
+                           <input type="checkbox" id="multipleEdges" checked>Multiple edges 
+                        </label>
+                        <br>
+                        <label>
+                           <input type="checkbox" id="loop" checked>Loops 
+                        </label>
+                        <br>
+                        <label>
+                           <input type="checkbox" id="globalTableMode">Global table mode
+                        </label>
+                        <br>
+                        <label>
+                           <input type="checkbox" id="localTableMode">Local table mode
+                        </label>
+                        <br>
+                        <br>
+                        <label>
+                           <input type="checkbox" id="snapToGrid">Snap to grid
+                        </label>
+                        <br>
+                        <label>
+                           <input type="checkbox" id="useGrid" checked>Grid size
+                        </label>
+                         <input type="textbox" id="gridSize" style="width: 3em" value="32">
+                         <br>
+                        
+<!--                         <label id="textAlignLabel">
+                           Text align
+                           <select id="textAlign">
+                              <option>center</option>
+                              <option>left</option>
+                              <option>right</option>
+                           </select>
+                        </label>
+                        <br>  -->
+                         <br>
+                        <label>
+                           <input type="checkbox" id="directed">Directed
+                        </label>
+                     <td>
+                        <!-- <textarea id="visual_json" rows="23" cols="45"></textarea> -->
+                        <textarea id="visual_json"></textarea>
+                     </td>
+                     <td>
+                        <!-- <textarea id="options_json" rows="23" cols="30"></textarea> -->
+                        <textarea id="options_json"></textarea>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                     </td>
+                     <td colspan=2 style="text-align: center" id="json_controls">
+                        <label><input type="checkbox" id="pretty" checked>Pretty print</label>
+                        <input type="button" id="import" value="Import from JSON" style="width: 200px">
+                     </td>
+                  </tr>
+               </table>
+               <br>
+               <table>
+                  <tr>
+                     <td>
+                        Circle attr:
+                        <br>
+                        <textarea id="circleAttr" rows="8" cols="20"></textarea>
+                     </td>
+                     <td>
+                        Line attr:
+                        <br>
+                        <textarea id="lineAttr" rows="8" cols="20"></textarea>
+                     </td>
+                     <td>
+                        Vertex label attr:
+                        <br>
+                        <textarea id="vertexLabelAttr" rows="8" cols="20"></textarea>
+                     </td>
+                     <td>
+                        Vertex content attr:
+                        <br>
+                        <textarea id="vertexContentAttr" rows="8" cols="20"></textarea>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td colspan="4">
+                        <input type="button" id="apply_attr" value="Apply">
+                     </td>
+                  </tr>
+               </table>
+            </div>
+         </div>
+    <div>Directed: line attr += "arrow-end": "long-classic-wide"</div>
+    <div>UnDirected: line attr += "arrow-end": "none"</div>
+      </div><!-- task -->
+      <div id="solution">
+
+         <h2>Solution</h2>
+
+
+	  </div> <!-- task-solution -->
+   </body>
+</html>

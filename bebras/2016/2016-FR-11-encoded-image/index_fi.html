@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>2016-FR-11</title>
+    <link class="module" rel="stylesheet" href="../../../_common/modules/pemFioi/taskStyles-0.1.css" id="http://www.france-ioi.org/modules/pemFioi/taskStyles-0.1.css">
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/jquery/1.7/jquery.min.js" id="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/jquery-ui/jquery.ui.touch-punch.min.js" id="jquery.ui.touch-punch.min.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/raphael/2.2.1/raphael.min.js" id="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.1/raphael.min.js"></script>
+
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/json/json2.min.js" id="https://github.com/douglascrockford/JSON-js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/beav-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/beav-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/drag_lib-2.0.js" id="http://www.france-ioi.org/modules/pemFioi/drag_lib.js"></script>
+
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/beaver-task-2.0.js" id="http://www.france-ioi.org/modules/pemFioi/beaver-task-2.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/simulation-2.0.js" id="http://www.france-ioi.org/modules/pemFioi/simulation-2.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/raphaelFactory-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/raphaelFactory-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/delayFactory-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/delayFactory-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/simulationFactory-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/simulationFactory-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/grid-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/grid-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/randomGenerator-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/randomGenerator-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/raphaelButton-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/raphaelButton-1.0.js"></script>
+
+    <script class="remove" type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js" id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js"></script>
+    <script class="proxy module" type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/platform-pr.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/platform-pr.js"></script>
+    <script class="stdButtonsAndMessages module" type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"  id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"></script>
+    <script class="remove" type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/miniPlatform.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/miniPlatform.js"></script>
+      <script>
+         var stringsLanguage = 'fi';
+      </script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/tasks/2016/2016-FR-11-encoded-image/",
+          "language": "fi",
+          "version": "fi.01",
+          "authors": "Arthur Charguéraud, Mathias Hiron, Nir Lavee, France-ioi",
+          "translators": "Timo Poranen, Heikki Hyyrö",
+          "license": "CC BY-SA 3.0",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "fullFeedback": true,
+          "acceptedAnswers": [],
+          "usesRandomSeed": false
+      };
+      </script>
+      <script type="text/javascript">
+      var taskStrings = {
+            userGrid: "Sinun kuvasi:",
+            targetGrid: "Haluttu kuva:",
+            undo: "Peru",
+            success: "Onnittelut, ratkaisit tämän version!",
+            partial: "Kuvasi poikkeaa halutusta. Yritä uudelleen.",
+            hint: "Vihje: tehtävän voi ratkaista käyttämättä nollaa."
+         };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+      <style>
+         #anim_container {
+            text-align: center;
+         }
+         #anim {
+            display: inline-block;
+         }
+      </style>
+   </head>
+   <body>
+      <div id="task">
+         <h1>Pakattu kuva</h1>
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <p id="difficultyWarning" class="hard"></p>
+            <p>
+               Muodosta numerojono, jonka tuloksena syntyy haluttu kuva. 
+            </p>
+            <p>Klikkaa numeronappeja lisätäksesi numeroita jonoon ja ymmärtääksesi, kuinka numeroiden lisääminen vaikuttaa kuvaan.</p>
+            <p class="medium"><strong>Vihje: tehtävän voi ratkaista käyttämättä nollaa.</strong></p>
+            <p class="hard"><strong>Vihje: ruudun väriin vaikuttaa myös sen yläpuolella olevan ruudun väri.</strong></p>
+            <div id="anim_container">
+               <div id="anim"></div>
+            </div>
+            <img src="icon.png" style="display:none">
+         </div>
+      </div><!-- task -->
+      <div id="solution">
+
+         <h2>Ratkaisu</h2>
+            <div class="easy">
+               <p>Kokeilemalla voimme huomata, että 0 vastaa valkoista ruutua ja 1 mustaa ruutua, ja että numerot vastaavat ruutuja riveittäin etenevässä järjestyksessä. Tämän jälkeen ratkaisu saadaan määritettyä varsin suoraviivaisesti.</p>
+               <p><img src="sol_easy.png"></p>
+            </div>   
+            <div class="medium">
+               <p>Kokeilemalla voimme huomata, että joka toinen numero vastaa peräkkäisten valkoisten ruutujen jaksoa ja joka toinen mustien peräkkäisten ruutujen jaksoa niin, että numero kertoo jaksoon sisältyvien ruutujen määrän.</p>
+               <p>Voimme siis muodostaa ratkaisun kirjaamalla numeroriville halutussa kuvassa vuorottelevien valkoisten ja mustien jaksojen pituudet. Alussa on 2 valkoista, sitten on 2 mustaa, sitten on 3 valkoista (joista kolmas on toisen rivin alussa), sitten 4 mustaa, sitten 1 valkoinen, jne. Koko ratkaisu on esitetty alla:</p>
+               <p><img src="sol_medium.png"></p>
+            </div>
+            <div class="hard">
+               <p>Kokeilemalla voimme huomata, että joka toinen (jo valmiiksi annettujen kolmen numeron jälkeinen) numero vastaa sellaisten peräkkäisten ruutujen jaksoa, jossa ruudun väri on <b>eri</b> kuin sitä ylemmän ruudun väri, ja joka toinen numero sellaisten ruutujen jaksoa, jossa ruudun väri on <b>sama</b> kuin sitä ylemmän ruudun väri. Numero kertoo jaksoon sisältyvien ruutujen määrän.</p>
+               <p>Voimme siis muodostaa ratkaisun lisäämällä numeroriville halutussa kuvassa vuorottelevien ylänaapuriruutunsa kanssa eriväristen sekä samanväristen jaksojen pituudet. Tarkastelu aloitetaan halutun kuvan toisen rivin alusta, koska valmiiksi annetut kolme numeroa täyttivät täsmälleen ruudukon ensimmäisen rivin 8 ruutua. Halutun kuvan toisen rivin alussa on 3 ruutua, jotka eroavat ylänaapureistaan (ensimmäisellä rivillä samassa kohdissa olevista ruuduista). Sen jälkeen on 2 ylänaapurinsa kanssa samanväristä, jonka jälkeen on 4 ylänaapurinsa kanssa eriväristä. Näistä viimeksimainituista 4 erivärisestä viimeinen oli yhtäkuin kolmannen rivin ensimmäinen ruutu. Sen jälkeen on 6 ylänaapurinsa kanssa samanväristä ruutua. Kun jatkamme tällaisten jaksojen määritystä halutun kuvan loppuun asti, päädymme alla esitettyyn kokonaiseen ratkaisuun:</p>
+               <p><img src="sol_hard.png"></p>
+            </div>
+         <h2>Tämä on tietojenkäsittelyä!</h2>
+
+            <p>Kahden tähden versio havainnollistaa tietojenkäsittelyssä yleisesti mustavalkokuvien esittämiseen käytettyä <strong>esitystapaa (koodausta)</strong>, jossa arvo 0 vastaa valkoista ja arvo 1 mustaa kuvapistettä. Kuvapistettä kutsutaan usein <b>pikseliksi</b></p>
+
+            <p>Kolmen tähden versio havainnollistaa tietojenkäsittelyssä laajasti käytettyä <strong>kuvanpakkausta</strong>. Kuvanpakkauksen tavoitteena on esittää kuvan sisältö tarvitsematta tallentaa jokaisen pikselin arvoa (väriä) erikseen. Tehtävässä esitetty yksinkertainen tapa, jossa talletetaan yksittäisten pikselien sijaan samanvärisistä peräkkäisistä pikseleistä koostuvien jaksojen pituuksia, kykenee säästämään paljon tilaa, jos kuvassa on isoja samanvärisiä alueita (ja siten pitkiä samanväristen pikseleiden jaksoja). Esimerkiksi mustavalkoisia pikseleitä vastaava osuus "00000000000011111111" voidaan esittää selvästi lyhyemmin muodossa "12,8", joka tarkoittaa 12 kertaa 0 ja 8 kertaa 1 (eli 12 kertaa valkoinen pikseli ja 8 kertaa musta pikseli).</p>
+
+            <p>Edellä kuvattu pakkausmenetelmä tunnetaan yleisemmin nimellä RLE-koodaus (Run-Length Encoding).</p>
+            
+            <p>Neljän tähden versio sivuaa monimutkaisempia kuvanpakkausmenetelmiä, joissa hyödynnetään tietoa pikselin naapureista. Esimerkiksi PNG-kuvaformaatti, jota käytetään melko yleisesti internet-sivuilla, käyttää mm. tämäntapaista menetelmää.</p>
+
+            <p>Katso lisää esim. <a href="https://fi.wikipedia.org/wiki/Pikseli" target="_blank">https://fi.wikipedia.org/wiki/Pikseli</a>, <a href="https://en.wikipedia.org/wiki/Binary_image" target="_blank">https://en.wikipedia.org/wiki/Binary_image</a> (englanniksi), <a href="https://fi.wikipedia.org/wiki/RLE" target="_blank">https://fi.wikipedia.org/wiki/RLE</a> ja <a href="https://en.wikipedia.org/wiki/Image_compression" target="_blank">https://en.wikipedia.org/wiki/Image_compression</a> (englanniksi).</p>
+	  </div> <!-- task-solution -->
+   </body>
+</html>

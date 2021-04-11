@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>training-var</title>
+      <script>
+      window.stringsLanguage = 'fr';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.0.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+        var modulesPath = '../../../_common/modules/'
+        importModules([
+            'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+            'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1']);
+        // set Blockly as default language when none is specified through ?language=
+        importLanguageModules('blockly');
+      </script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/questions/algorea_training/training-var",
+          "language": "fr",
+          "version": "fr.01",
+          "authors": "Mathias Hiron",
+          "translators": [],
+          "license": "",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "acceptedAnswers": [""],
+          "fullFeedback": true,
+          "minWidth": "auto"
+      };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+   </head>
+   <body onresize="task.displayedSubTask.updateScale()">
+      <div id="task">
+         <h1>Peinture au numéro</h1>
+         <img src="green_robot.png" style="display:none" />
+         <img src="icon.png" style="display:none" />
+
+         <div id="tabsContainer"></div>
+         <div id="taskContent" style="text-align:left;position:relative">
+            <div id="taskIntro">
+               <div class="easy">
+                  <p>
+                     Programmez le robot pour qu'il recopie les numéros de la colonne de gauche dans la colonne de droite.
+                  </p>
+                  <p>
+                     Le robot doit lire le contenu de la case, le stocker dans sa mémoire, avancer de deux cases, puis écrire le contenu de sa mémoire dans la case.
+                  <p>
+                  <p>
+                     Pour lire le nombre de la case du robot et le stocker dans la variable « mémoire du robot », utilisez l'instruction suivante :
+                  </p>
+                  <img data-lang="blockly" src="read_number_blockly.png" style="height:30px" />
+                  <img data-lang="scratch" src="read_number_scratch.png" style="height:50px" />
+                  <code data-lang="python">
+memoireRobot = nombreCase()
+                  </code>
+                  <p>
+                     Pour écrire sur sa case la valeur stockée dans la variable « mémoire du robot », utilisez l'instruction suivante :
+                  </p>
+                  <img data-lang="blockly" src="write_number_blockly.png" style="height:30px" />
+                  <img data-lang="scratch" src="write_number_scratch.png" style="height:50px" />
+                  <code data-lang="python">
+ecrireNombre(memoireRobot)
+                  </code>
+               </div>
+               <div class="medium">
+                  <p>
+                     Programmez le robot pour qu'il écrive dans la colonne de zéros sur chaque ligne, la somme des deux nombres de gauche.
+                  </p>
+                  <p>
+                     Après avoir stocké premier nombre de la ligne dans la variable « mémoire du robot », vous devrez la modifier pour lui ajouter le deuxième nombre.
+                  </p>
+                  <img data-lang="blockly" src="change_variable_blockly.png" style="height:40px" />
+                  <img data-lang="scratch" src="change_variable_scratch.png" style="height:50px" />
+               </div>
+               <div class="hard">
+                  <p>
+                     Programmez le robot pour qu'il écrive à la place des zéros à droite de chaque ligne, la somme des nombres de la partie gauche de la ligne.
+                  </p>
+               </div>
+            </div>
+            <div id="gridContainer"></div>
+            <div id="blocklyLibContent"></div>
+         </div>
+
+      </div><!-- task -->
+   </body>
+</html>
+ 

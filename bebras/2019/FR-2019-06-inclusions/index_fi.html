@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="utf-8"></meta>
+   <title>2019-FR-06-inclusion</title>
+   <script>
+      window.stringsLanguage = 'fi';
+   </script>
+   <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1_M.js" id="import-modules"></script>
+   <script class="remove" type="text/javascript">
+      var modulesPath = '../../../_common/modules';
+      importModules([
+         'jquery-1.7.1', 'jquery-ui.touch-punch', 'raphael-2.2.1', 'JSON-js', //'grid-1.0',
+         'beav-1.0', 'beaver-task-2.0', 'simulation-2.0', 'raphaelFactory-1.0',
+         'delayFactory-1.0', 'simulationFactory-1.0', 'raphaelButton-1.0',
+         'platform-pr', 'buttonsAndMessages', 'installationAPI.01', 'miniPlatform',
+         'taskStyles-0.1', 'randomGenerator-1.0', 'drag_lib-2.0', 'graph-1.0'
+      ]);
+   </script>
+   <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/visual-graph-1.1.js"></script>
+   <script class="remove" type="text/javascript">
+      var json = {
+         "id": "http://castor-informatique.fr/tasks/2019/FR-2019-06-inclusions/",
+         "language": "fi",
+         "version": "fi.01",
+         "authors": "Arthur Charguéraud, Mathias Hiron, France-ioi",
+         "translators": "Heikki Hyyrö",
+         "license": "CC BY-SA 3.0",
+         "taskPathPrefix": "",
+         "modulesPathPrefix": "",
+         "browserSupport": [],
+         "fullFeedback": true,
+         "acceptedAnswers": [],
+         "usesRandomSeed": false
+       };
+   </script>
+   <script type="text/javascript">
+      var taskStrings = {
+         success: "Onnittelut, ratkaisit tämän version!",
+         errorGraph: "Molemmissa kuvioissa pitää olla punainen nuoli."
+      };
+   </script>
+   <script type="text/javascript" src="task.js"></script>
+   <style>
+      #diagrams {
+         margin: 1em 0 1em 0;
+      }
+      #diagrams > * {
+         display: inline-block;
+         vertical-align: middle;
+      }
+      #target, #current {
+         width: 350px;
+      }
+      hr {
+         width: 1px;
+         /*height: 250px;*/
+         background: black;
+         border: none;
+      }
+      h4 {
+         text-align: center;
+         /*margin: 0;*/
+      }
+      #rectangles {
+         touch-action: none;
+         margin: auto;
+      }
+      #error {
+         height: 2em;
+         text-align: center;
+      }
+
+   </style>
+</head>
+
+<body>
+   <div id="task">
+      <h1>Sisäkkäiset suorakulmiot</h1>
+      <div id="tabsContainer"></div>
+      <div id="taskContent">
+         <div id="zone_1">
+            <div class="consigne">
+               <p>
+                  Tämänhetkinen tila kuvaa, mitkä tehtävän alaosan harmaalla
+                  työalueella sijaitsevat suorakulmiot ovat sisäkkäin.
+               </p>
+               <table><tr><td>
+                 <div id="example" style="padding-right: 10px"></div>
+               </td><td>
+                  Nuoli B:stä A:han tarkoittaa, että suorakulmio B
+                  on kokonaan suorakulmion A sisällä.
+               </td></tr></table>
+               <p>
+                  Asettele työalueen suorakulmiot siten,
+                  että niiden tämänhetkinen tila tulee samanlaiseksi kuin
+                  tavoitetila. Suorakulmioita voi liikuttaa raahaamalla keskeltä,
+                  ja niiden kokoja voi muuttaa raahaamalla sinisistä kulmista.
+               </p>
+         </div>
+         </div>
+         <div id="zone_2">
+            <div id="diagrams">
+               <div>
+                  <h4>Tämänhetkinen tila</h4>
+                  <div id="current"></div>
+               </div>
+               
+               <hr>
+               <div>
+                  <h4>Tavoitetila</h4>
+                  <div id="target"></div>
+               </div>
+               
+               
+            </div>
+            <div id="rectangles"></div>
+         </div>
+         <div id="error"></div>
+      </div>
+      <img src="icon.png" style="display:none">
+   </div>
+
+   <!-- task -->
+
+   <div id="solution">
+      <h2>Ratkaisu</h2>
+          <div class="easy">
+           <p>Tässä piti asettaa suorakulmiot <b>B</b> ja <b>C</b> suorakulmion <b>A</b> sisälle.</p>
+           <img src="sol_easy.png">
+           <p>Huomaa, että suorakulmio <b>B</b> ei saa olla suorakulmion <b>C</b> sisällä eikä suorakulmio <b>C</b> saa olla suorakulmion <b>B</b> sisällä.</b>
+          </div>
+
+         <div class="medium">
+           <p>Suorakulmiot <b>B</b> ja <b>C</b> pitää asettaa suorakulmion <b>A</b> sisälle, ja lisäksi suorakulmiot <b>D</b> ja <b>E</b> suorakuomion <b>B</b> sisälle. Näistä erillään pitää vielä asettaa suorakulmio <b>G</b> suorakulmion <b>F</b> sisälle.</p>
+           <img src="sol_medium.png">
+         </div>
+
+         <div class="hard">
+           <p>Suorakulmio <b>C</b> on helppo asettaa oikein, koska se tarvitsee ainoastaan asettaa suorakulmion <b>A</b> sisälle ilman suhteita muihin suorakulmioihin. Samaan tapaan myös suorakulmiot <b>D</b> ja <b>G</b> ovat yksinkertaisia: ne tarvitsee ainoastaan asettaa suorakulmion <b>B</b> sisälle. Jätetään siis aluksi suorakulmiot <b>C</b>, <b>D</b> ja <b>G</b>sivuun, ja muodostetaan ratkaisu muiden suorakulmioiden osalta. Nämä kolme suorakulmiota voidaan suoraviivaisesti lisätä ratkaisuun vasta lopuksi.</p>
+           <p>Suorakulmioiden <b>E</b> ja <b>F</b> pitää olla sekä suorakulmion <b>A</b> että <b>B</b> sisällä. Asetetaan siis suorakulmiot <b>A</b> ja <b>B</b> toistensa kanssa osin päällekkäin ja sitten <b>E</b> ja <b>F</b> kyseisen päällekkäin olevan osan sisälle.</p>
+           <img src="sol_hard_1.png">
+           <p>Suorakulmion <b>H</b> pitää olla sekä suorakulmion <b>E</b> että <b>F</b> sisällä, joten muutetaan jälkimmäisten asettelu osin päällekkäiseksi ja asetetaan <b>H</b> päällekkäisen osan sisälle.</p>
+           <img src="sol_hard_2.png">
+           <p>Nyt meillä on enää jäljellä kolme alussa sivuun jättämäämme suorakulmiota <b>C</b>, <b>D</b> ja <b>G</b>, joista ensimmäinen voidaan suoraviivaisesti lisätä suorakulmion <b>A</b> ja kaksi jälkimmäistä suorakulmion <b>B</b> sisälle. Ratkaisu on valmis!</p>
+           <img src="sol_hard.png">
+         </div>
+
+      <h2>Tämä on tietojenkäsittelyä!</h2>
+      <p>
+         Tietojenkäsittelyssä käytetään yleisestä <b>graafeja</b> kuvaamaan jonkin systeemin osien välisiä suhteita. Graafi koostuu solmuista sekä niiden välisiä yhteyksiä kuvaavista kaarista. Tässä tehtävässä pienet mustat kirjaimilla merkityt neliöt olivat graafin solmuja ja niiden väliset nuolet kaaria, ja tehtävässä piti osata tulkita annetun graafin pohjalta, millaisia suorakulmioiden välisiä suhteita se kuvaa.
+      </p>
+      <p>Tietojenkäsittelytieteessä on kehitetty vuosien saatossa suuri määrä graafien ominaisuuksia kuvaavaa teoriaa sekä monia erilaisia graafeihin liittyviä ongelmia ratkaisevia algoritmeja. Tämän vuoksi monet tietojenkäsittelyn sovelluksissa ratkaistavat ongelmat pyritään usein esittämään graafimuodossa, jotta ongelman analysoinnissa ja ratkaisussa voitaisiin hyödyntää valmiiksi tunnettuja teoreettisia tuloksia ja algoritmeja.</p>
+      <p>Katso lisää esim. <a href="https://fi.wikipedia.org/wiki/Graafi" target="_blank">https://fi.wikipedia.org/wiki/Graafi</a>.</p>
+   </div>   <!-- task-solution -->
+</body>
+
+</html>

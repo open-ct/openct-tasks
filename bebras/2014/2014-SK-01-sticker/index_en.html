@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>2014-SK-01-sticker</title>
+      <script>
+         window.stringsLanguage = 'en';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1_M.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+         var modulesPath = '../../modules';
+         importModules([
+            'jquery-1.7.1', 'jquery-ui.touch-punch', 'raphael-2.2.1', 'JSON-js',
+            'beav-1.0', 'beaver-task-2.0', 'simulation-2.0', 'raphaelFactory-1.0',
+            'delayFactory-1.0', 'simulationFactory-1.0', 'raphaelButton-1.0', 'drag_lib-2.0',
+            'platform-pr', 'buttonsAndMessages', 'installationAPI.01', 'randomGenerator-1.0',
+            'miniPlatform', 'taskStyles-0.1','graph-1.0', 'visual-graph-1.0','graph-mouse-1.0']);
+      </script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/tasks/2014/2014-SK-01-sticker/",
+          "language": "en",
+          "version": "",
+          "authors": "Monika Gujberová, mgujberova@gmail.com , Slovakia. ; Mathias Hiron, France-ioi",
+          "license": "CC BY-NC-SA 3.0",
+          "translators": [
+          ],
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [
+          ],
+          "acceptedAnswers": [
+          ],
+          "difficulty": {"1": "medium", "2": "medium", "3": "easy", "4": "easy"},
+          "categories": {},
+          "answerType": "Interactive, drag and drop",
+          "fullFeedback": true,
+          "status": "test"
+      };
+      </script>
+      <script>
+         var taskStrings = {
+            success: "Bravo, You did it.",
+            failure: "This is not the right order.",
+            missingStickers: "You haven't placed all the stickers.",
+            missingEdge: "There is not enough arrows.",
+            noEdge: "Click on the stickers to link them with arrows.",
+            tooManyEdges: "There are too many arrows.",
+            wrongEdge: "One of the arrows is not at the right place."
+         };
+      </script>
+      <script type="text/javascript" src="task_v2.js"></script>
+      <style>
+      #textSolution img {
+         border: 1px solid gray;
+         margin: 1em;
+      }
+      .aquarium {
+            display: block; 
+            width:400px;
+            height:400px;
+            margin: 1em auto;
+
+         }
+      </style>
+ 
+   </head>
+   <body>
+      <div id="task">
+         <h1>Stickers</h1>
+         <div id="tabsContainer"></div>   <!-- will contain the versions tabs -->
+         <div id="taskContent">        <!-- will contain the content of the task --> 
+            <div id="zone_1">
+               <div class="consigne">
+                  <p>
+                  A Beaver has decorated his aquarium with stickers.
+                  Find in which order Beaver pasted the stickers,
+                  <span class="easy medium">and drag them in the graph.</span>
+                  <span class="hard">and link them in that order. Click on the stickers to link them with arrows.</span>
+                  </p>
+                  <img class="aquarium easy" src="full_easy.png" />
+                  <img class="aquarium medium" src="full_medium.png" />
+                  <img class="aquarium hard" src="full_hard.png" />
+               </div>
+            </div>
+            <div id="zone_2">
+               <div id="anim" class="touch"></div>
+            </div>
+         </div>
+         <img src="icon.png" style="display:none" >
+         <img src="easy0.png" style="display:none" />
+         <img src="easy1.png" style="display:none" />
+         <img src="easy2.png" style="display:none" />
+         <img src="easy3.png" style="display:none" />
+      </div>
+      
+      <div id="solution">
+<!--
+      <h2>Solution</h2>
+          <p>En observant l'aquarium, on note que :</p>
+          <ul>
+            <li>Castor est en partie recouvert par les algues et par le poisson, donc Castor a été collé avant les algues et avant le poisson.</li>
+            <li>Les algues sont en partie recouvertes par le poisson et par les cailloux, donc les algues ont été collées avant le poisson et les cailloux.</li>
+            <li>Le poisson est en partie recouvert par les cailloux, donc le poisson a été collé avant les cailloux.</li>
+          </ul>
+          <p>Ces observations nous permettent de déduire que les autocollants ont été collés dans l'ordre suivant&nbsp;:</p>
+          <div id="textSolution"></div>
+          
+          <h2>C'est de l'informatique</h2>
+          <p>
+          <img src="stickers_graph.png" style="float:right; margin-left:0.5em" />
+          Dans ce sujet, il fallait trouver un ordre qui respecte un certain nombre de contraintes. Le placement d'une image par dessus une
+          autre sur le dessin implique une contrainte du type "a été collé avant". L'ensemble des contraintes forme un «&nbsp;graphe&nbsp;», comme représenté
+          ci-contre, où chaque flèche correspond à une contrainte et part de l'image qui a été collée en première.
+          </p>
+          <p>
+          Trouver un ordre qui est compatible avec un graphe est ce que l'on appelle un «&nbsp;tri topologique&nbsp;» des sommets du graphe. Il s'agit d'un problème classique d'algorithmique. Dans cet exemple, il n'y avait qu'un seul ordre possible, mais pour des graphes plus complexes,
+          il peut y en avoir plusieurs.
+          </p>
+          <p>
+          Au contraire, lorsque le graphe contient un cycle, par exemple si le poisson recouvre
+          les algues, qui recouvrent les cailloux, qui recouvrent le poisson, aucun ordre n'est possible. Le tri topologique ne s'applique qu'aux graphes sans cycles, que l'on appelle les graphes «&nbsp;acycliques&nbsp;».
+          </p>
+          <div style="clear:both"></div>
+-->
+      </div>
+  </body>
+</html>

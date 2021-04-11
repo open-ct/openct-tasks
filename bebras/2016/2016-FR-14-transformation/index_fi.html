@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>2016-FR-14</title>
+    <link class="module" rel="stylesheet" href="../../../_common/modules/pemFioi/taskStyles-0.1.css" id="http://www.france-ioi.org/modules/pemFioi/taskStyles-0.1.css">
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/jquery/1.7/jquery.min.js" id="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/jquery-ui/jquery.ui.touch-punch.min.js" id="jquery.ui.touch-punch.min.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/raphael/2.2.1/raphael.min.js" id="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.1/raphael.min.js"></script>
+
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/json/json2.min.js" id="https://github.com/douglascrockford/JSON-js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/beav-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/beav-1.0.js"></script>
+
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/beaver-task-2.0.js" id="http://www.france-ioi.org/modules/pemFioi/beaver-task-2.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/simulation-2.0.js" id="http://www.france-ioi.org/modules/pemFioi/simulation-2.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/raphaelFactory-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/raphaelFactory-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/delayFactory-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/delayFactory-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/simulationFactory-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/simulationFactory-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/grid-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/grid-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/randomGenerator-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/randomGenerator-1.0.js"></script>
+
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/graph-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/graph-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/visual-graph-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/visual-graph-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/graph-mouse-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/graph-mouse-1.0.js"></script>
+
+    <script class="remove" type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js" id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js"></script>
+    <script class="proxy module" type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/platform-pr.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/platform-pr.js"></script>
+    <script class="stdButtonsAndMessages module" type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"  id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"></script>
+    <script class="remove" type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/miniPlatform.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/miniPlatform.js"></script>
+      <script>
+         var stringsLanguage = 'fi';
+      </script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/tasks/2016/2016-FR-14-transformation/",
+          "language": "fi",
+          "version": "fi.01",
+          "authors": "Arthur Charguéraud, Mathias Hiron, Nir Lavee, France-ioi",
+          "translators": "Timo Poranen, Heikki Hyyrö",
+          "license": "CC BY-SA 3.0",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "fullFeedback": true,
+          "acceptedAnswers": [],
+          "usesRandomSeed": false
+      };
+      </script>
+      <script type="text/javascript">
+      var taskStrings = {
+            success: "Onnittelut, ratkaisit tämän version!",
+            wrong: "Punaisella ympäröity kuvio on väärässä paikassa."
+         };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+      <style>
+         #anim_container {
+            text-align: center;
+         }
+         #anim {
+            display: inline-block;
+         }
+         #control {
+            text-align: center;
+            margin-top: 3px;
+         }
+         #stepCounter {
+            text-align: center;
+         }
+      </style>
+   </head>
+   <body>
+      <div id="task">
+         <h1>Kuvioiden tanssi</h1>
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <p id="difficultyWarning" class="hard"></p>
+            <p>Lisää valkean ympyrän kuvioiden välille nuolia niin, että kukin kuvio siirtyy harmaassa renkaassa olevan samanlaisen kuvion viereen.
+            Kukin kuvio siirtyy <strong><span class="easy">nuolen mukaisesti</span><span class="medium">nuolten mukaisesti kaksi peräkkäistä askelta</span><span class="hard">nuolten mukaisesti kolme peräkkäistä askelta</span></strong>.</p>
+            <p>Nuolen voi lisätä klikkaamalla peräkkäin kahta valkean ympyrän kuviota. Nuolen voi poistaa klikkaamalla sitä.</p>
+            
+            <div id="anim_container">
+               <div id="anim"></div>
+            </div>
+            <div id="stepCounter" class="medium hard"></div>
+            <div id="control">
+               <input type="button" value="Tarkista vastaus" id="execute" />
+               <br><br>
+               <input type="button" value="Palauta kuviot" id="resetSim" />
+            </div>
+            <img src="icon.png" style="display:none">
+         </div>
+      </div><!-- task -->
+      <div id="solution">
+
+         <h2>Ratkaisu</h2>
+
+            <div class="easy">
+               <p>Kukin valkean ympyrän kuvio liikkuu suoraan nuolen osoittamaan paikkaan. Haluttu lopputulos saadaan asettamalla kustakin valkoisen ympyrän kuviosta nuoli siihen valkoisen ympyrän kuvioon, jonka kohdalla harmaassa renkaassa on sama kuvio.</p>
+               <p><img src="sol_easy.png"></p>
+            </div>   
+            <div class="medium">
+               <p>Tässä versiossa valkoisen ympyrän kuviot liikkuvat kaksi peräkkäistä nuolten osoittamaa askelta. Valitaan aluksi umpimähkään jokin kuvio (vaikkapa tähti), ja luodaan siitä alkava kahden nuolen polku, joka johtaa harmaan renkaan tähden viereen. Valitsemme ensimmäisen nuolen kohteen satunnaisesti (tässä se johtaa vaikkapa kolmioon):</p>
+               <p><img src="sol_medium_1.png"></p>
+               <p>Ohjataan seuraavaksi edellisen polun toinen kuvio (= kolmio) oikeaan paikkaan jatkamalla edellä luotua polkua nuolella, joka johtaa harmaan renkaan kolmion viereen:</p>
+               <p><img src="sol_medium_2.png"></p>
+               <p>Tässä vaiheessa huomataan, että myös risti on jo tullut ohjatuksi oikeaan paikkaan. Jäljellä on vielä salmiakki, ympyrä ja 6-kulmio. Noudatamme niiden kohdalla samanlaista periaatetta kuin edellä ja saamme seuraavanlaisen ratkaisun:</p>
+               <p><img src="sol_medium_3.png"></p>
+
+            </div>
+            <div class="hard">
+               <p>Tässä versiossa valkoisen ympyrän kuviot liikkuvat kolme peräkkäistä nuolten osoittamaa askelta. Aloitetaan ratkaisun etsiminen merkitsemällä kuvioon kunkin valkoisen ympyrän kuvion oikea siirtokohde. Nämä on esitetty alla vihreillä nuolilla.</p>
+               <p><img src="sol_hard_1.png"></p>
+               <p>Voimme huomata, että lisäämämme nuolet jakoivat kuviot kolmeen erilliseen kolmen nuolen määrittämään silmukkaan: salmiakki-kolmio-I, ympyrä-tiimalasi-6-kulmio ja noppa-tähti-risti. On selvää, että kolmen nuolen kulkeminen 3 kuvion silmukassa vie kuvion takaisin alkuperäiseen paikkaansa, joten mikään kuvio ei päädy kolmen nuolen kulkemisen jälkeen oikeaan kohtaa ellemme lisää kuvioon sellaisia nuolia, jotka kulkevat eri silmukoiden välillä.</p>
+               <p>Valitaan aluksi vaikkapa tähti, ja luodaan sellainen kolmen nuolen polku, joka käy kahden muun silmukan kautta. Valitsimme alla umpimähkään välietapeiksi 6-kulmion ja kolmion.</p>
+               <p><img src="sol_hard_2.png"></p>
+               <p>Alla on kuvattu tämän polun lisäyksen jälkeinen tilanne.</p>
+               <p><img src="sol_hard_3.png"></p>
+               <p>Tarkastellaan seuraavaksi polun toista kuviota: 6-kulmiota. Sen vienti oikealle paikalle vaatii edellisen polun jatkamista nuolella, joka vie harmaan renkaan 6-kulmion viereen:</p>
+               <p><img src="sol_hard_4.png"></p>
+               <p>Jatkamme polkua saman periaatteen mukaisesti myös polun kolmannen ja neljännen kuvion (kolmio ja risti) kohdalla:</p>
+               <p><img src="sol_hard_5.png"></p>
+               <p>Kun nuolipolkua pidennetään edellisen periaatteen mukaisesti lopuillekin kuvioille (tiimalasi, I, noppa, ympyrä ja salmiakki), saadaan lopputuloksena alla esitetty ratkaisu:</p>
+               <p><img src="sol_hard_6.png"></p>
+
+            </div>
+
+         <h2>Tämä on tietojenkäsittelyä!</h2>
+              <p>Tehtävä havainnollistaa monessa tietojenkäsittelytieteen ongelmassa tärkeitä <strong>permutaatioita</strong>. Meillä on annettu joukko alkioita (tässä kuvioita), jotka voidaan muuttaa toiseen järjestykseen (= saman alkiojoukon toinen permutaatio). Permutaatioiden tulee usein noudattaa tiettyjä sääntöjä.</p>
+              <p>Eräs kuuluisimmista permutaatioihin liittyvistä ongelmista on ns. kauppamatkustajan ongelma, jossa haluttaisiin löytää kokonaispituudeltaan lyhin reitti, joka kulkee kaikkien haluttujen kaupunkien läpi. Kukin kauppamatkustajan ongelman mahdollinen ratkaisu voidaan pohjimmiltaan esittää käytyjen kaupunkien permutaationa (kaupunkien järjestys permutaatiossa ilmaisee, missä järjestyksessä kaupungeissa käydään). Monia arkisiakin ongelmia voidaan kuvata permutaatioiden avulla. Esimerkiksi korttipakan sekoittamisessa on kyse korttien satunnaisen permutaation luomisesta.</p>
+             <p>Katso lisää esim. <a href="https://fi.wikipedia.org/wiki/Permutaatio" target="_blank">https://fi.wikipedia.org/wiki/Permutaatio</a> ja <a href="https://fi.wikipedia.org/wiki/Kauppamatkustajan_ongelma" target="_blank">https://fi.wikipedia.org/wiki/Kauppamatkustajan_ongelma</a>.</p>
+	  </div> <!-- task-solution -->
+   </body>
+</html>

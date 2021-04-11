@@ -1,0 +1,96 @@
+Functions to understand or clarify, related to displaying scores and messages :
+
+checkAnswerChanged: called on a regular basis to check if the message needs to be updated because the user has changed his current answer
+restartAll: called when we click on "restart all" button
+validate: called by the platform after a call to platform.validate, or if we validate while the solution is visible. sometimes called by tasks, but shouldn't be
+updateScore: recalculate and display the scores for a given answer, and either for the current level or all levels
+updateScoreOneLevel: same but for a given level (this is where gradeTask is called, from the task's side)
+updateScoreDisplays: update the display of scores in tabs (and at the bottom of the task?)
+hasNonSavedAnswer: do we have an answer that is different from the default answer, that has not been submitted yet?
+retreiveAnswer (to fix)
+reloadAnswer
+reloadState
+
+
+- why do you need to go through the platform to validate an answer? Shouldn't buttonsAndMessages determine whether the new answer is better than the previous one, and only
+transfer to the platform if it was better ? => Not necessarily. We could allow the platform to record every attempt. It's for the platform to decide.
+
+Study of the most important variables:
+
+- savedAnswer:
+=> Corresponds to the best answer so far, the one we provide to the platform.
+   - reset to '' when cancel is called (never used on new tasks, this is for multiple choice etc.)
+   - if we validate :
+	- recorded if we are not in fullback (showScore) mode
+	- otherwise
+		- if there are no levels: recorded if the score is better than before
+		- if there are levels: we record the score of the current level if it is better than before
+   - reset to the given value if reloadAnswer is called (a little surprising. What if we had a better answer saved ?
+
+- sumbittedAnswer:
+=> Corresponds to the answer which score should be displayed, if there is one (current answer validated, and not modified since then)
+   - reset to the answer given, if we call reloadAnswer
+   - reset to savedAnswer's value if we call retreiveAnswer
+   - set to the answer given, if we call validate
+   - reset to '' as soon as the current answe is different from this answer
+
+- graderScore :
+=> Corresponds to the score of the best answer (for the current level)
+   Question: is this correctly updated when we change level ?
+   - initialised to "noScore" in load
+   - if we are in solution mode, set to the value provided by the grader in updateScoreOneLevel
+   - set to the new value if it is better, when calling gradeTask from updateScoreOneLevel
+
+- levelsScore :
+=> Corresponds to the score of the best answer for each level
+   - if we are in solution mode, this is the value, for the current level, just like gradeAnswer
+   - set to the new value if it is better (for the current level), when calling gradeTask
+
+- prevLevelsScores
+=> Corresponds to the best score we had just before validating (using levels)
+   - when we just validated, set to the current value of levelsScores
+
+- prevSavedScore
+=> Corresponds to the best score we had just before validating (no levels)
+   - in showView, if we show the solution and graderScore is defined, we set it to this value
+   - when we just validated, set to the current value of graderScore
+
+- prevAnswer
+=> This is just the answer as it was the last time we looked
+   - reset to the value provided, when calling reloadAnswer
+   - set to the current value of answer, every time hasNonSavedAnswer is set
+
+- defaultAnswer
+=> Corresponds to the value of getAnswer() when nothing has changed since the task was loaded
+   - set to the current answer provided by getAnswer, when calling showViews (done right after load, so after getDefaultAnswerObject, if there are levels)
+
+- hasAnswerChanged
+=> Just saves the fact the the answer has just changed compared to last time we checked
+   - true at the beginning
+   - set to true in checkAnswerChanged if hasNonSavedAnswer says true
+   - set to false in checkAnswerChanged if hasNonSavedAnswer says false(?)
+
+- refreshMessages
+=> Indicates that it is necessary to update messages
+   - set to true when showView is called
+   - set to true when retrieveAnswer is called
+   - set to true when setLevel is called
+   - set to true in checkAnswerChanged if submittedAnswer is not empty
+   - set to true if we have just changed hasAnswerChanged
+   - set to false when updateMessages is called
+
+- stoppedShowingResult
+=> Indicates if it is still necessary to display the result at the bottom of the page (grader's message)
+   - set to true when stopShowingResult() is called
+   - set to false when validate is called
+
+
+- previousMessages
+=> stores the previous message, to determine if it is useful to redisplay the new message (avoided some blinking in the past, not sure if still necessary, I think there was a better fix done recently)
+    - set to the value of messages, right after they are displayed in updateMessages
+
+- submittedScore
+=> Corresponds to the score of the answer we just validated, or of the best answer if we just changed level
+    - set to the best score for the current level when we change level
+    - set to the new score when we just called the grader
+

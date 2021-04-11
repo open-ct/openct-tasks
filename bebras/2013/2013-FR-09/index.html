@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=770, initial-scale=1.0">
+      <title>2013-FR-09</title>
+      <script>
+         window.stringsLanguage = 'fr';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1_M.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+         var modulesPath = '../../../_common/modules';
+         importModules([
+            'jquery-1.7.1', 'jquery-ui.touch-punch', 'raphael-2.1', 'JSON-js', 'jschannel',
+            'beav-1.0', 'beaver-task-2.0', 'simulation-2.0', 'raphaelFactory-1.0',
+            'delayFactory-1.0', 'simulationFactory-1.0', 'raphaelButton-1.0',
+            'platform-pr', 'buttonsAndMessages', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1', 'randomGenerator-1.0', 'drag_lib-2.0', 'shape-paths'
+         ]);
+      </script>
+
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/tasks/2013/2013-FR-09/",
+          "language": "fr",
+          "version": "fr.01",
+          "authors": "Arthur Chargueraud, France-ioi",
+          "translators": [],
+          "license": "CC BY-SA 3.0",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "acceptedAnswers": []
+      };
+      </script>
+<!--       <script class="" type="text/javascript">
+      </script>
+      <script class="grader" type="text/javascript"> -->
+<!--       </script> -->
+      <script type="text/javascript" src="task.js"></script>
+      <script type="text/javascript">
+         var taskStrings = {
+            success: "Bravo, vous avez réussi !",
+            failure: "Ce n'est pas la bonne réponse. Cliquez sur \"Réessayer\"",
+            prince: "Prince",
+            empty: "La séquence est vide.",
+            tooLong: "La séquence des portes est trop longue ! Vous ne devez pas dépasser 50 caractères.",
+            invalidChar: "Un des caractères est invalide.",
+            window: "La princesse est tombée par la fenêtre!",
+            errorFirstDoor: "Le code de la première porte est mauvais.",
+            wrongPath: "La princesse n'est pas arrivée à destination.",
+            out: "La princesse est ressortie du château!",
+            noDoor: function(char) {
+               return "Il n'y a pas de porte nommée " + char+ " ici."
+            }
+         };
+      </script>
+      <style type="text/css">
+         #paper {
+            margin: 1em auto;
+         }
+         #answer {
+            margin-right: 2em;
+         }
+         #error {
+            text-align: center;
+         }
+      </style>
+   </head>
+   <body>
+      <div id="task">
+         <h1>Sauver le prince</h1>
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <div id="zone_1">
+               <div class="consigne">
+                  <p>
+                  Le prince Castor est emprisonné dans le château, dans la pièce marquée d'une couronne sur le plan. 
+                  Les pièces du château contiennent des portes, chacune marquée par une lettre. 
+                  </p>
+                  <p>
+                  La princesse va partir de l'entrée et tenter de délivrer le prince. <span class="hard">Mais le château est magique et les lettres des portes changent d'une certaine manière à chaque fois qu'une porte est ouverte.</span> Quelle séquence de lettres donner à la princesse pour qu'elle puisse rejoindre le prince en passant les portes correspondantes&nbsp;?
+                  </p>
+               </div>
+            </div>
+            <div id="zone_2">
+               <div id="paper"></div>
+               <center>
+                  <input type="text" id="answer"> 
+                  <input type="button" value="Essayer cette séquence" id="answerButton">
+                  <p>
+                  Vous pouvez essayer autant de séquences que vous souhaitez.
+                  </p>
+               </center>
+               <div id="error"></div>
+            </div>
+            <img src="prince.png" id="prince" style="display:none">
+            <img src="princess.png" id="princess" style="display:none">
+
+      </div><!-- task -->
+      <div id="solution">
+
+         <h2>Solution</h2>
+         <p>
+         Il y avait plusieurs chemins possibles. La solution la plus courte est&nbsp;: <input type="text" readonly="true" style="border:none;font-size:100%;font-weight:bold" value="ABCEBEDAE">.</p>
+
+         <h2>C'est de l'informatique !</h2>
+         <p>
+         Les déplacements sont souvent décrits à l'aide d'instructions qui ne dépendent pas de l'état du terrain, par exemple «&nbsp;déplace-toi d'une case vers le Nord&nbsp;», ou «&nbsp;tourne à droite de 90 degrés&nbsp;» ou «&nbsp;avance d'une case&nbsp;».
+         </p>
+         <p>
+         Cependant, les règles de déplacements peuvent également dépendre du terrain. Ainsi, dans ce sujet, une instruction «&nbsp;passe par la porte B&nbsp;» décrit un déplacement qui dépend non seulement de la lettre «&nbsp;B&nbsp;» considérée, mais aussi de la pièce où se trouve actuellement la princesse.
+         </p>
+         <p>
+         Plus généralement, les instructions d'un programme informatique peuvent être indépendantes des données (par exemple, «&nbsp;écrire 5 dans la case numéro 3&nbsp;»), ou bien être dépendantes des données (par exemple, «&nbsp;écrire 5 dans la case dont le numéro est égal à la valeur stockée dans la case numéro 2&nbsp;»). Les programmes dont les actions sont indépendantes des données sont plus simples à comprendre, mais les programmes dont les actions dépendent des données permettent d'accomplir beaucoup plus de tâches.
+         </p>
+      </div> <!-- task-solution -->
+   </body>
+</html>
+ 

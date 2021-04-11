@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>2013-SK-09ab</title>
+      <script>
+         window.stringsLanguage = 'fr';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1_M.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+         var modulesPath = '../../../_common/modules';
+         importModules([
+            'jquery-1.7.1', 'jquery-ui.touch-punch', 'raphael-2.2.1', 'JSON-js',
+            'beav-1.0', 'beaver-task-2.0', 'simulation-2.0', 'raphaelFactory-1.0',
+            'delayFactory-1.0', 'simulationFactory-1.0', 'raphaelButton-1.0', 'drag_lib-2.0',
+            'jschannel', 'platform-pr', 'buttonsAndMessages', 'installationAPI.01', 'randomGenerator-1.0',
+            'miniPlatform', 'taskStyles-0.1','graph-1.0','visual-graph-1.0','graph-mouse-1.0']);
+      </script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/tasks/2013/2013-SK-09ab/",
+          "language": "fr",
+          "version": "fr.01",
+          "authors": "France-ioi",
+          "translators": [],
+          "license": "CC BY-SA 3.0",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "acceptedAnswers": []
+      };
+      </script>
+      <script src="task.js"></script>
+      <script type="text/javascript">
+         var taskStrings = {
+            success: "Bravo, vous avez réussi !",
+            run: "Exécuter la séquence",
+            failure: "Ce n'est pas la disposition attendue."
+         };
+      </script>
+      <!-- put task css here -->
+      <style class="">
+         #target {
+            margin: auto;
+         }
+         #anim, #run {
+            display: inline-block;
+            vertical-align: middle;
+         }
+      </style>
+   </head>
+   <body>
+      <div id="task">
+         <h1>Dessiner un dé</h1>
+         <div id="tabsContainer"></div>   <!-- will contain the versions tabs -->
+         <div id="taskContent">        <!-- will contain the content of the task --> 
+            <div id="zone_1">
+               <div class="consigne">
+                  <p>On dispose de quatre commandes permettant de dessiner des points dans un carré ou de faire tourner le carré d'un quart de tour. Trouvez une suite de commandes permettant d'obtenir les points disposés comme ci-dessous. 
+                  </p>
+                  <div id="target"></div>
+                  <p>Faites glisser des commandes dans les cases bleues décrivant la séquence.</p>
+                  <p>Vous pouvez faire autant d'essais que vous le souhaitez.</p>
+               </div>
+            </div>
+            <div id="zone_2">
+               <center>
+                  <div id="anim" class="touch"></div>
+                  <input type="button" id="run">
+               </center>
+               <center>
+                  <div id="success"></div>
+               </center>
+            </div>
+         </div>
+      </div><!-- task -->
+
+      <div id="solution">
+         <h2>Solution</h2>
+         <p>
+         La plus courte séquence qui convient est&nbsp;:
+         </p>
+         <div>
+         <img src="2013-SK-09a_draw_2.png" width="60" />
+         <img src="2013-SK-09a_turn90.png" width="60" />
+         <img src="2013-SK-09a_draw_2.png" width="60" />
+         <img src="2013-SK-09a_draw_2A.png" width="60" />
+         </div>
+         <h2>C'est de l'informatique</h2>
+         <p>
+         Ces quatre commandes très simples permettent de réaliser
+         de nombreux dessins différents. On peut voir ces commandes comme formant 
+         un langage de programmation très simple, où l'on donnerait des
+         ordres à un robot pour aboutir à la pièce demandée. 
+         </p>
+         <p>Une application particulière de l'informatique 
+         correspond à ce qu'on appelle l'<i>informatique
+         industrielle</i>, qui utilise des instructions relativement
+         simples pour programmer des robots industriels, tels que
+         les robots utilisés pour construire des voitures.
+         </p>
+      </div> <!-- task-solution -->
+   </body>
+</html>
