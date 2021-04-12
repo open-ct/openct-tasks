@@ -115,12 +115,12 @@ function initTask(subTask) {
       var result;
       getLongestPath();
       if (path.length == 1) {
-         result = { successRate: 0, message: "error with answer format" };
+         result = { successRate: 0, message: "error with answer format", minJumps: minJumps, jumps: path.length - 1, path: path };
       }
       if(minJumps < path.length - 1){
-         result = { successRate: 0, message: taskStrings.tooManyJumps(path.length-1, minJumps) };
+         result = { successRate: 0, message: taskStrings.tooManyJumps(path.length-1, minJumps), minJumps: minJumps, jumps: path.length - 1, path: path };
       }else{
-         result = { successRate: 1, message: taskStrings.success };
+         result = { successRate: 1, message: taskStrings.success, minJumps: minJumps, jumps: path.length - 1, path: path };
       }
       return result;
    }
@@ -210,6 +210,9 @@ function initTask(subTask) {
       var result = getResultAndMessage(); // indirectly calls getLongestPath();
       // DEPRECATED(to cut animation after 2 jumps) path.splice(minJumps + 2);
       jumpAnimation(path, result);
+
+      result.message = undefined;
+      parent.postMessage(result, "*");
    };
 
    function getLongestPath() {
