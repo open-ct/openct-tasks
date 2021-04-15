@@ -385,7 +385,7 @@ $(document).ready(function() {
          hasPlatform = true;
        }
    }
-   if (!hasPlatform) {
+   if (true) {
       var platformLoad = function(task) {
          window.task_token = new TaskToken({
             id: taskMetaData.id,
