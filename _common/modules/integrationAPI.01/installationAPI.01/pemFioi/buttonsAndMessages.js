@@ -36,7 +36,7 @@ window.displayHelper = {
    thresholdMedium: 120,
 
    timeoutMinutes: 5,
-   avatarType: "beaver",
+   avatarType: "none",
    bUseFullWidth: false,
 
    hasLevels: false,
