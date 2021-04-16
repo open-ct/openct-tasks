@@ -728,12 +728,12 @@ window.displayHelper = {
          }
 
          var taskDelayWarning = function() {
-            if (self.popupMessageShown) {
-               self.taskDelayWarningTimeout = setTimeout(taskDelayWarning, 5000);
-            } else {
-               self.showPopupMessage(self.formatTranslation(self.strings.warningTimeout, [self.timeoutMinutes]), 'blanket', self.strings.alright, null, null, "warning");
-               self.taskDelayWarningTimeout = null;
-            }
+            // if (self.popupMessageShown) {
+            //    self.taskDelayWarningTimeout = setTimeout(taskDelayWarning, 5000);
+            // } else {
+            //    self.showPopupMessage(self.formatTranslation(self.strings.warningTimeout, [self.timeoutMinutes]), 'blanket', self.strings.alright, null, null, "warning");
+            //    self.taskDelayWarningTimeout = null;
+            // }
          };
          if (self.timeoutMinutes > 0) {
             self.taskDelayWarningTimeout = setTimeout(taskDelayWarning, self.timeoutMinutes * 60 * 1000);
