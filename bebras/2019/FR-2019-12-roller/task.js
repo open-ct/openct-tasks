@@ -388,6 +388,7 @@ function initTask(subTask) {
             break;
       }
       updateRoller(rollerID);
+      parent.postMessage(answer, "*");
    };
 
    function getSelectedRollerID() {
@@ -479,6 +480,7 @@ function initTask(subTask) {
          }
          drawStamp(rollerID,stampID);
          updateRoller(rollerID);
+         parent.postMessage(answer, "*");
       }
    };
 
@@ -497,6 +499,7 @@ function initTask(subTask) {
             rollersRaph[id][2].attr("opacity",1).toBack();
             clearParameters(previous);
             initParameters();
+            parent.postMessage(answer, "*");
          }
       }
    };

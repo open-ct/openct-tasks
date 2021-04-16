@@ -241,7 +241,7 @@ function initTask(subTask) {
       }
       if (level == "easy") {
          defaultAnswer[0][1] = "spot_2_0";
-         defaultAnswer[1][0] = "spot_0_0";         
+         defaultAnswer[1][0] = "spot_0_0";
       }
       return defaultAnswer;
    };
@@ -384,6 +384,7 @@ function initTask(subTask) {
                   cont.draggableElements[0].remove();
                }
             }
+            parent.postMessage(answer, "*");
          },
          actionIfDropped : function(srcCont, srcPos, dstCont, dstPos, dropType)
          {

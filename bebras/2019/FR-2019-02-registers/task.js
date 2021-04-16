@@ -271,7 +271,7 @@ function initTask(subTask) {
    };
 
    function getResultAndMessage() {
-      var result = replayAnswer();      
+      var result = replayAnswer();
       return result;
    }
 
@@ -314,11 +314,11 @@ function initTask(subTask) {
    function updateUndo() {
       if(answer.length > 0){
          $("#undo").off("click");
-         $("#undo").click(undo);  
+         $("#undo").click(undo);
          $("#undo").css({
             cursor: "pointer",
             opacity: 1
-         })   
+         })
       }else{
          $("#undo").off("click");
          $("#undo").css({
@@ -340,6 +340,7 @@ function initTask(subTask) {
    };
 
    function vertexToggle(id,selected) {
+      console.log(id, selected)
       if((id != "00" || !selected) && answer.length > 0 && Beav.Array.has(answer[answer.length - 1],"00")){
          var info = graph.getVertexInfo(id);
          info.selected = !selected;
@@ -526,6 +527,7 @@ function initTask(subTask) {
          }
       }
       answer.push(selectedVertices);
+      parent.postMessage(selectedVertices, "*");
       updateUndo();
    };
 
@@ -568,7 +570,7 @@ function initTask(subTask) {
             var id = currSelected[iVertex];
             currGraph.setVertexInfo(id,{selected:true});
          }
-         
+
          var vertices = currGraph.getAllVertices();
          var nbSelected = 0;
 

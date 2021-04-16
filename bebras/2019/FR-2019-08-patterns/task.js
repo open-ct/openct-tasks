@@ -279,9 +279,9 @@ function initTask(subTask) {
       if(answer.selectedSpots[draggedID]){
          answer.selectedSpots[draggedID] = null;
       }
-      
+
    };
-   
+
    function onMove(dx,dy,x,y,event) {
       if(draggedID != null){
          var xi = answer.patternsPos[draggedID].x;
@@ -305,7 +305,7 @@ function initTask(subTask) {
          tx = (xf - srcPos[draggedID].x);
          ty = (yf - srcPos[draggedID].y);
          patterns[draggedID].transform("t"+tx+" "+ty+"r"+rot+" "+(srcPos[draggedID].x + cellSize/2)+" "+(srcPos[draggedID].y + cellSize*1.5));
- 
+
          highlightCells(xf,yf,draggedID);
          patterns[draggedID].toFront();
       }
@@ -372,7 +372,7 @@ function initTask(subTask) {
             var yMin = yp;
             var yMax = yp + 3*cellSize;
             if(x > xMin && y > yMin && x < xMax && y < yMax){
-               if((x > xp || y > yp + cellSize) && 
+               if((x > xp || y > yp + cellSize) &&
                   (x < xp + cellSize || y > yp + cellSize) &&
                   (x > xp || y < yp + 2*cellSize) &&
                   (x < xp + cellSize || y < yp + 2*cellSize)){
@@ -601,6 +601,7 @@ function initTask(subTask) {
    };
 
    function checkResult(noVisual) {
+      parent.postMessage(answer.selectedSpots, "*");
       if(answer.selectedSpots.length < nbPatterns){
          if(!noVisual)
             displayError(taskStrings.missingPattern(nbPatterns));

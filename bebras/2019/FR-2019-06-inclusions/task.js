@@ -326,6 +326,7 @@ function initTask(subTask) {
 
       addEdges(levels,parents,graph);
       invertEdges(graph);
+      parent.postMessage(graph.getAllEdges(), "*");
       var vertexVisualInfo = getVertexVisualInfo(levels);
       if(visual){
          if(target){
@@ -531,7 +532,7 @@ function initTask(subTask) {
          draggedRect = null;
          rectID = null;
       }
-      updateGraph(true,false); 
+      updateGraph(true,false);
    };
 
    function findRectangle(xc,yc) {
@@ -938,9 +939,10 @@ function initTask(subTask) {
       initGraph();
       var targetVertexVisualInfo = updateGraph(false,true);
       var currentVertexVisualInfo = updateGraph(false,false);
+      console.log(currentVertexVisualInfo);
 
       result = compareGraphs(targetGraph,currentGraph,targetVertexVisualInfo,currentVertexVisualInfo,noVisual);
-      
+
       if(!noVisual){
          if(result.successRate){
             platform.validate("done");

@@ -447,7 +447,7 @@ function initTask(subTask) {
       minEdges = data[level].minEdges;
       maxEdges = minEdges;
       paperHeight = data[level].paperHeight;
-      paperWidth = data[level].paperWidth;   
+      paperWidth = data[level].paperWidth;
       displayHelper.customValidate = checkResult;
    };
 
@@ -625,7 +625,13 @@ function initTask(subTask) {
    function saveAnswer() {
       answer.connectedPairs = [];
       var edges = graph.getAllEdges();
-      for(var iEdge = 0; iEdge < edges.length; iEdge++){
+
+     var initialGraph = Graph.fromJSON(JSON.stringify(JSON.parse(visualGraphJSON).minGraph));
+     var initialEdges = initialGraph.getAllEdges();
+     var newEdges = edges.filter(n => !initialEdges.includes(n));
+     parent.postMessage(newEdges, "*");
+
+     for(var iEdge = 0; iEdge < edges.length; iEdge++){
          var edge = edges[iEdge];
          var info = graph.getEdgeInfo(edge);
          if(info["new"]){

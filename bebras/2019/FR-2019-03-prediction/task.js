@@ -273,6 +273,7 @@ function initTask(subTask) {
          displayError(taskStrings.noBeaver);
          return;
       }
+      parent.postMessage(answer.prediction, "*");
       answer.prediction[row][col] = 1 - answer.prediction[row][col];
       if(answer.prediction[row][col]){
          event.data.entry = 6;

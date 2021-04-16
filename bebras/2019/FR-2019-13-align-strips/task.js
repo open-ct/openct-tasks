@@ -479,13 +479,14 @@ function initTask(subTask) {
          }
          if(!undo){
             var action = {action:"lower",row:row,col:col,previous:low};
-            answer.actions.push(action);
+            // answer.actions.push(action);
             updateUndo();
          }
          getNbOfDisconnections();
          updateCounter();
          showWaterFlow();
          getRotatingWheels();
+         parent.postMessage({rotation: answer.rotation, lowered: answer.lowered}, "*");
       }
    };
 
@@ -545,10 +546,11 @@ function initTask(subTask) {
             }
          }
          if(!undo){
-            answer.actions.push({action:"rotate",direction:direction});
+            // answer.actions.push({action:"rotate",direction:direction});
             updateUndo();
          }
          rotationAnim(rotatingWheels,direction,Beav.Navigator.isIE8());
+         parent.postMessage({rotation: answer.rotation, lowered: answer.lowered}, "*");
       }
    };
 
@@ -627,7 +629,7 @@ function initTask(subTask) {
             }
          }
       }
-      
+
       var animHandle = new Raphael.animation({transform:"r "+angle+" "+handleRotCenter.x+" "+handleRotCenter.y},animTime,function(){
          subTask.raphaelFactory.animate("anim_Handle2",handleRaph,animHandle2);
          showWaterFlow();
