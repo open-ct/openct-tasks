@@ -931,6 +931,7 @@ window.displayHelper = {
    },
 
    updateLayout: function() {
+      $("#showSolutionButton").hide();
       if (!this.bUseFullWidth) {
          return
       }
