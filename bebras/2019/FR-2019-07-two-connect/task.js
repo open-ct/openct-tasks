@@ -629,7 +629,7 @@ function initTask(subTask) {
      var initialGraph = Graph.fromJSON(JSON.stringify(JSON.parse(visualGraphJSON).minGraph));
      var initialEdges = initialGraph.getAllEdges();
      var newEdges = edges.filter(n => !initialEdges.includes(n));
-     parent.postMessage(newEdges, "*");
+     parent.postMessage({level: level, data: newEdges}, "*");
 
      for(var iEdge = 0; iEdge < edges.length; iEdge++){
          var edge = edges[iEdge];

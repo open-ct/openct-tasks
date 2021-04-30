@@ -67,7 +67,7 @@ function initTask(subTask) {
       nbPoles = data[level].nbPoles;
       minJumps = data[level].minJumps;
       paperHeight = data[level].paperHeight;
-      paperWidth = data[level].paperWidth; 
+      paperWidth = data[level].paperWidth;
       dragWindow.height = paperHeight - 70;
       dragWindow.width = data[level].window;
       placeAttr.width = dragWindow.width/nbPoles;
@@ -212,7 +212,7 @@ function initTask(subTask) {
       jumpAnimation(path, result);
 
       result.message = undefined;
-      parent.postMessage(result, "*");
+      parent.postMessage({level: level, data: result}, "*");
    };
 
    function getLongestPath() {

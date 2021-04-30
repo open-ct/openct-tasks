@@ -188,7 +188,7 @@ function initTask(subTask) {
       initTarget();
       initClickHere();
       updateResult();
-      parent.postMessage(answer, "*");
+      parent.postMessage({level: level, data: answer}, "*");
       displayHelper.customValidate = checkResult;
       displayError("");
       if (typeof(enableRtl) != "undefined") {
@@ -354,7 +354,7 @@ function initTask(subTask) {
       if(answer.sequence.length < maxLength ){
          answer.sequence.push(0);
          updateResult();
-         parent.postMessage(answer, "*");
+         parent.postMessage({level: level, data: answer}, "*");
       }
    };
 
@@ -364,7 +364,7 @@ function initTask(subTask) {
       if(answer.sequence.length > 1){
          answer.sequence.pop();
          updateResult();
-         parent.postMessage(answer, "*");
+         parent.postMessage({level: level, data: answer}, "*");
       }
    };
 
@@ -508,7 +508,7 @@ function initTask(subTask) {
          removeHighlight();
          answer.sequence[id] = (answer.sequence[id] + 1)%nbShapes;
          updateResult();
-         parent.postMessage(answer, "*");
+         parent.postMessage({level: level, data: answer}, "*");
       }
    };
 
@@ -519,7 +519,7 @@ function initTask(subTask) {
          answer.transformation[rule][id] = (answer.transformation[rule][id] + 1)%nbTransformationShapes;
          updateTransformation(rule);
          updateResult();
-         parent.postMessage(answer, "*");
+         parent.postMessage({level: level, data: answer}, "*");
       }
    };
 
@@ -557,7 +557,7 @@ function initTask(subTask) {
          }
          updateTransformation(rule);
          updateResult();
-         parent.postMessage(answer, "*");
+         parent.postMessage({level: level, data: answer}, "*");
       }
    };
 

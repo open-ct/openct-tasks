@@ -601,7 +601,7 @@ function initTask(subTask) {
    };
 
    function checkResult(noVisual) {
-      parent.postMessage(answer.selectedSpots, "*");
+      parent.postMessage({level: level, data: answer.selectedSpots}, "*");
       if(answer.selectedSpots.length < nbPatterns){
          if(!noVisual)
             displayError(taskStrings.missingPattern(nbPatterns));

@@ -527,7 +527,7 @@ function initTask(subTask) {
          }
       }
       answer.push(selectedVertices);
-      parent.postMessage(selectedVertices, "*");
+      parent.postMessage({level: level, data: selectedVertices}, "*");
       updateUndo();
    };
 

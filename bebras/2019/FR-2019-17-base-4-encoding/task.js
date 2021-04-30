@@ -339,7 +339,7 @@ function initTask(subTask) {
       if(Beav.Navigator.isIE8()){
          updateResult();
       }
-      parent.postMessage({sliders: answer.sliders}, "*");
+      parent.postMessage({level: level, data: answer.sliders}, "*");
    };
 
    function onMove(dx,dy,x,y,event) {
@@ -450,7 +450,7 @@ function initTask(subTask) {
 
    function reloadAnswerDisplay() {
       updateResult();
-      parent.postMessage({sliders: answer.sliders}, "*");
+      parent.postMessage({level: level, data: answer.sliders}, "*");
    };
 
    function checkResult(noVisual) {

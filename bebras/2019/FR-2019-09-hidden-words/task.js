@@ -421,7 +421,7 @@ function initTask(subTask) {
             displayError("");
          }
          removeCellHighlight();
-         parent.postMessage(answer, "*");
+         parent.postMessage({level: level, data: answer}, "*");
       }else{
          var pos = draggedData.pos;
          var dx = dropSpot.x - pos.x + 1;
@@ -436,7 +436,7 @@ function initTask(subTask) {
          if(dropLabel){
             dropLabel.remove();
          }
-         parent.postMessage(answer, "*");
+         parent.postMessage({level: level, data: answer}, "*");
       }
    };
 

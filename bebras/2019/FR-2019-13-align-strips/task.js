@@ -486,7 +486,7 @@ function initTask(subTask) {
          updateCounter();
          showWaterFlow();
          getRotatingWheels();
-         parent.postMessage({rotation: answer.rotation, lowered: answer.lowered}, "*");
+         parent.postMessage({level: level, data: {rotation: answer.rotation, lowered: answer.lowered}}, "*");
       }
    };
 
@@ -550,7 +550,7 @@ function initTask(subTask) {
             updateUndo();
          }
          rotationAnim(rotatingWheels,direction,Beav.Navigator.isIE8());
-         parent.postMessage({rotation: answer.rotation, lowered: answer.lowered}, "*");
+         parent.postMessage({level: level, data: {rotation: answer.rotation, lowered: answer.lowered}}, "*");
       }
    };
 

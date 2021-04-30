@@ -326,7 +326,7 @@ function initTask(subTask) {
 
       addEdges(levels,parents,graph);
       invertEdges(graph);
-      parent.postMessage(graph.getAllEdges(), "*");
+      parent.postMessage({level: level, data: graph.getAllEdges()}, "*");
       var vertexVisualInfo = getVertexVisualInfo(levels);
       if(visual){
          if(target){
