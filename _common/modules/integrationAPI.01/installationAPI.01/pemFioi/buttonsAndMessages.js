@@ -791,6 +791,15 @@ window.displayHelper = {
    },
 
    setupLevels: function(initLevel, reloadWithCallbacks, levels) {
+      let hash = window.location.hash;
+      if (hash === "#easy") {
+         initLevel = "easy";
+      } else if (hash === "#medium") {
+         initLevel = "medium";
+      } else if (hash === "#hard") {
+         initLevel = "hard";
+      }
+
       this.reloadWithCallbacks = reloadWithCallbacks;
       this.initLanguage();
       if(levels) {
@@ -886,17 +895,17 @@ window.displayHelper = {
       // keep tabsMenu as some interfaces depend on that
       var tabsInnerHTML = '';
       var nbLevels = 0;
-      for (curLevel in this.levelsRanks) {
-         nbLevels++;
-         tabsInnerHTML += '<span class="li" id="tab_' + curLevel + '"><a href="#' + curLevel + '">';
-         if (this.pointsAsStars) {
-            tabsInnerHTML += '<span class="levelLabel">' + this.strings.version + '</span><span id="stars_' + this.levelsRanks[curLevel] + '"></span>';
-         } else {
-            tabsInnerHTML += this.strings["levelName_" + curLevel] + ' — ' +
-               '<span id="tabScore_' + curLevel + '">0</span> / ' + maxScores[curLevel];
-         }
-         tabsInnerHTML += '</a></span>';
-      }
+      // for (curLevel in this.levelsRanks) {
+      //    nbLevels++;
+      //    tabsInnerHTML += '<span class="li" id="tab_' + curLevel + '"><a href="#' + curLevel + '">';
+      //    if (this.pointsAsStars) {
+      //       tabsInnerHTML += '<span class="levelLabel">' + this.strings.version + '</span><span id="stars_' + this.levelsRanks[curLevel] + '"></span>';
+      //    } else {
+      //       tabsInnerHTML += this.strings["levelName_" + curLevel] + ' — ' +
+      //          '<span id="tabScore_' + curLevel + '">0</span> / ' + maxScores[curLevel];
+      //    }
+      //    tabsInnerHTML += '</a></span>';
+      // }
       if(nbLevels < 2) { tabsInnerHTML = ''; }
       var tabsHTML = '<div id="tabsMenu">' + tabsInnerHTML + '</div>';
       $('#tabsContainer').append(tabsHTML);
