@@ -1,11 +1,11 @@
-# French Beaver Contest Archive
+# OpenCT Contest Archive
 
-This repository contains tasks used in past [French Beaver Contest](http://castor-informatique.fr/). They are in a particular format, and can be used in [Bebras Platform](https://github.com/France-ioi/bebras-platform).
+This repository contains tasks used in past [ OpenCT Contest]. They are in a particular format, and can be used in  OpenCT.
 
 To start using:
 
 ```
-git clone https://github.com/France-ioi/bebras-tasks.git
+git clone https://github.com/open-ct/openct-tasks
 cd bebras-tasks
 git submodule update --init
 ```
