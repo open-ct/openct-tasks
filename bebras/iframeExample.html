@@ -1,0 +1,24 @@
+
+<script>
+    function showAnswer1() {
+      const data = "111";
+      const text = document.getElementById("text");
+      text.innerText = data;
+      parent.postMessage(data, "*");
+    }
+
+    function showAnswer2() {
+      const data = "222";
+      const text = document.getElementById("text");
+      text.innerText = data;
+      parent.postMessage(data, "*");
+    }
+</script>
+
+<div>
+    Answer:
+    <div id="text">Null</div>
+</div>
+
+<input type="radio" name="single" value="111" onclick="showAnswer1()">111</input>
+<input type="radio" name="single" value="222" onclick="showAnswer2()">222</input>
