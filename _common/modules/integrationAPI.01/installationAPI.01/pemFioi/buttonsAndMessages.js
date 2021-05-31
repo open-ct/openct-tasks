@@ -1485,10 +1485,10 @@ window.displayHelper = {
                // Move onto next task after a specified difficulty
                actionNext = "nextTask";
                fullMessage += this.strings.tryNextTask;
-            } else if(!threshold || (threshold && secondsSinceLoaded < threshold)) {
-               actionNext = nextLevel;
-               if(gradedLevel == "easy") { fullMessage += this.strings.tryMediumLevel; }
-               if(gradedLevel == "medium") { fullMessage += this.strings.tryHardLevel; }
+            // } else if(!threshold || (threshold && secondsSinceLoaded < threshold)) {
+            //    actionNext = nextLevel;
+            //    if(gradedLevel == "easy") { fullMessage += this.strings.tryMediumLevel; }
+            //    if(gradedLevel == "medium") { fullMessage += this.strings.tryHardLevel; }
             } else {
                actionNext = "nextTask";
                fullMessage += this.strings.tryNextTask;
