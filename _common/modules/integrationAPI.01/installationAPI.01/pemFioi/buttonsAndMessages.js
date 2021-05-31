@@ -1276,19 +1276,20 @@ window.displayHelper = {
    },
 
    restartAllNoConfirm: function() {
-      displayHelper.stopShowingResult();
-      if (!displayHelper.hasLevels) {
-         // TODO is this the desired behavior for no levels?
-         task.reloadAnswer('', function() {});
-      } else {
-         task.getAnswer(function(strAnswer) {
-            var answer = $.parseJSON(strAnswer);
-            var defaultAnswer = task.getDefaultAnswerObject();
-            var level = displayHelper.taskLevel;
-            answer[level] = defaultAnswer[level];
-            task.reloadAnswer(JSON.stringify(answer), function() {});
-         });
-      }
+      window.location.reload();
+      // displayHelper.stopShowingResult();
+      // if (!displayHelper.hasLevels) {
+      //    // TODO is this the desired behavior for no levels?
+      //    task.reloadAnswer('', function() {});
+      // } else {
+      //    task.getAnswer(function(strAnswer) {
+      //       var answer = $.parseJSON(strAnswer);
+      //       var defaultAnswer = task.getDefaultAnswerObject();
+      //       var level = displayHelper.taskLevel;
+      //       answer[level] = defaultAnswer[level];
+      //       task.reloadAnswer(JSON.stringify(answer), function() {});
+      //    });
+      // }
    },
 
    setValidateString: function(str) {
