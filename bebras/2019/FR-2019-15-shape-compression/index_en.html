@@ -51,6 +51,75 @@
       };
    </script>
    <script type="text/javascript" src="task.js"></script>
+   <script type="text/javascript">
+      window.onload = function(){
+         let stepIndex = 0
+         $('body').append(`<div id="guide-box">
+                              <div class="guide-area">
+                                 <div class="guide-tip-box" id="guide-tip">
+                                    <div class="guide-tip-content">
+                                       <div class="circle"></div>
+                                       <div class="tip-info">
+                                          <span></span>
+                                       </div>
+                                       <div class="button-box" id="btn-box"></div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>`)
+         let elementList = [{
+            target:'#displayHelper_validate',
+            tips:'点击“试一试”来验证你的想法，不限次数~',
+            tip_position:{
+               bottom:'-62px',
+               left:'30px',
+            },
+            padding:'10px 0px'
+         },{
+            target:'#paper > svg > rect:nth-of-type(17)',
+            tips:'点击形状可以变为不同的形状',
+            padding:'10px 20px',
+            tip_position:{
+               bottom:'-62px',
+               left:'30px',
+            },
+         }]
+         updateGuide(elementList,stepIndex)
+         $('#btn-box').on('click','#next-step-btn',()=>{
+            stepIndex += 1
+            updateGuide(elementList,stepIndex)
+         })
+         $('#btn-box').on('click','#last-step-btn',()=>{
+            stepIndex -= 1
+            updateGuide(elementList,stepIndex)
+         })
+         $('#btn-box').on('click','#complete-btn',()=>{
+            $('#guide-box').remove()
+         })
+         $(window).resize(()=>{
+            updateGuide(elementList,stepIndex)
+         })
+      }
+      function updateGuide(elementList,stepIndex){
+         $('#guide-box > .guide-area').css('width',$(elementList[stepIndex].target).width()+'px')
+                                      .css('height',$(elementList[stepIndex].target).height()+'px')
+                                      .css('top',$(elementList[stepIndex].target).offset().top-parseFloat(elementList[stepIndex].padding.split(' ')[0].replace('px'))+'px')
+                                      .css('left',$(elementList[stepIndex].target).offset().left-parseFloat(elementList[stepIndex].padding.split(' ')[1].replace('px'))+'px')
+                                      .css('border-radius',$(elementList[stepIndex].target).height()+20+'px')
+                                      .css('padding',elementList[stepIndex].padding)
+
+         for(let key in elementList[stepIndex].tip_position){
+            $('#guide-tip').css(key,elementList[stepIndex].tip_position[key])
+         }
+        $('#guide-box > .guide-area > .guide-tip-box > .guide-tip-content > .tip-info > span').text(elementList[stepIndex].tips)
+        $('#guide-box > .guide-area > .guide-tip-box > .guide-tip-content > .button-box').html(`
+                                                                                                ${stepIndex!=0?'<div id="last-step-btn" class="step-btn"><span>上一步</span></div>':''}
+                                                                                                ${stepIndex!=elementList.length-1?'<div id="next-step-btn" class="step-btn"><span>下一步</span></div>':''}
+                                                                                                ${elementList.length-1==stepIndex?'<div id="complete-btn" class="step-btn" style="background-color:#FDF151;border:none;"><span>我知道了！</span></div>':''}
+                                                                                             `)
+
+      }  
+   </script>
    <style>
       #paper {
          margin-top: 1em;
@@ -58,7 +127,86 @@
       #error {
          text-align: center;
       }
-
+            #guide-box{
+         width: 100%;
+         height: 100%;
+         position: fixed;
+         left: 0;
+         top: 0;
+         z-index: 998;
+      }
+      #guide-box > .guide-area{
+         box-shadow: 1px 1px 100000px 100000px rgb(124 152 209  / 50%);
+         position: fixed;
+         transition: all 500ms;
+         /* padding: 10px 0px; */
+      }
+      #guide-box > .guide-area > .guide-tip-box{
+         height: 36px;
+         position: absolute;
+         bottom:-60px;
+         left: 60px;
+         box-sizing: border-box;
+      }
+      #guide-box > .guide-area > .guide-tip-box > .guide-tip-content{
+         height: 100%;
+         background-color: white;
+         border-radius: 12px;
+         position: relative;
+         box-sizing: border-box;
+         padding: 0px 8px;
+         display: flex;
+         align-items: center;
+      }
+      #guide-box > .guide-area > .guide-tip-box > .guide-tip-content::before{
+         content:'';
+         display: block;
+         position: absolute;
+         width: 0;
+         height: 0;
+         border-left: 12px solid transparent;
+         border-right: 12px solid transparent;
+         border-bottom: 12px solid white;
+         top: -12px;
+         left: 30px;
+      }
+      #guide-box > .guide-area > .guide-tip-box > .guide-tip-content > .circle{
+         width: 8px;
+         height: 8px;
+         border-radius: 8px;
+         background-color: #FDF151;
+         margin: 14px 10px 14px 0px;
+         float: left;
+      }
+      #guide-box > .guide-area > .guide-tip-box > .guide-tip-content > .tip-info{
+         height: 100%;
+         line-height: 36px;
+         display: inline-block;
+         white-space:nowrap;
+         margin-right: 10px;
+      }
+      #guide-box > .guide-area > .guide-tip-box > .guide-tip-content > .tip-info > span{
+         font-size: 14px;
+      }
+      #guide-box > .guide-area > .guide-tip-box > .guide-tip-content > .button-box{
+         height: 100%;
+         display: flex;
+         align-items: center;
+         white-space:nowrap;
+      }
+      #guide-box > .guide-area > .guide-tip-box > .guide-tip-content > .button-box > .step-btn{
+         padding: 0px 8px;
+         height: 24px;
+         border: 1px solid #ccc;
+         margin: 5px 0px;
+         border-radius: 6px;
+         line-height: 24px;
+         cursor: pointer;
+         margin-right: 10px;
+      }
+      #guide-box > .guide-area > .guide-tip-box > .guide-tip-content > .button-box > .step-btn > span{
+         font-size: 14px;
+      }
    </style>
 </head>
 
