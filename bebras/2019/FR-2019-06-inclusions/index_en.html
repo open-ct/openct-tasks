@@ -2,12 +2,14 @@
 <html>
 
 <head>
-   <meta charset="utf-8"></meta>
+   <meta charset="utf-8">
+   </meta>
    <title>2019-FR-06-inclusion</title>
    <script>
       window.stringsLanguage = 'en';
    </script>
-   <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1_M.js" id="import-modules"></script>
+   <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1_M.js"
+      id="import-modules"></script>
    <script class="remove" type="text/javascript">
       var modulesPath = '../../../_common/modules';
       importModules([
@@ -33,7 +35,7 @@
          "fullFeedback": true,
          "acceptedAnswers": [],
          "usesRandomSeed": false
-       };
+      };
    </script>
    <script type="text/javascript">
       var taskStrings = {
@@ -46,59 +48,221 @@
       #diagrams {
          margin: 1em 0 1em 0;
       }
-      #diagrams > * {
+
+      #diagrams>* {
          display: inline-block;
          vertical-align: middle;
       }
-      #target, #current {
+
+      #target,
+      #current {
          width: 350px;
       }
+
       hr {
          width: 1px;
          /*height: 250px;*/
          background: black;
          border: none;
       }
+
       h4 {
          text-align: center;
          /*margin: 0;*/
       }
+
       #rectangles {
          touch-action: none;
          margin: auto;
       }
+
       #error {
          height: 2em;
          text-align: center;
+      }
+
+      #fullbg {
+         background-color: #7C98D1;
+         opacity: 0.5;
+         left: 0;
+         opacity: 0.5;
+         position: absolute;
+         top: 0;
+         z-index: 1500;
+         filter: alpha(opacity=50);
+         -moz-opacity: 0.5;
+         -khtml-opacity: 0.5;
+         display: block;
+         width: 100vw;
+         height: 100vh;
+      }
+
+      #displayHelper_validate::before {
+         content: '';
+         width: 200%;
+         height: 175%;
+         background-color: rgba(255, 255, 255);
+         z-index: -1;
+         position: absolute;
+         top: -40%;
+         left: 0%;
+         border-radius: 80px;
+      }
+
+      #displayHelper_validate::after {
+         content: '您可以验证答案是否正确或重新开始作答~';
+         width: 200%;
+         height: 180%;
+         background-color: rgba(255, 255, 255);
+         z-index: 1500;
+         position: absolute;
+         top: 250%;
+         left: 10%;
+         border-radius: 83px;
+         font-size: 14px;
+         font-weight: 400;
+         line-height: 1.42857143;
+         text-align: center;
+         display: flex;
+         flex-direction: row;
+         align-items: center;
+         justify-content: center;
+      }
+
+      #displayHelper_saved::after {
+         content: '';
+         width: 0;
+         height: 0;
+         border-width: 0 25px 30px 25px;
+         border-style: solid;
+         border-color: transparent transparent #fff transparent;
+         position: absolute;
+         top: 120%;
+         left: 20%;
+      }
+      
+
+      .relative {
+         position: relative;
+      }
+      #popupMessage.floatingMessage {
+         z-index: 2100;
+      }
+      #current::before {
+         content: '';
+         width: 70%;
+         height: 100%;
+         background-color: rgba(255, 255, 255);
+         z-index: -1;
+         position: absolute;
+         top: 0%;
+         left: 15%;
+      }
+      #current_guide::before {
+         content: '';
+         width: 0;
+         height: 0;
+         border-width:12px 20px 12px 0;
+         border-style: solid;
+         border-color: transparent #fff transparent  transparent;
+         position: absolute;
+         top: -29px;
+         left: 213px;
+      }
+      
+      #current_guide::after {
+         content: '你的图形会随着你拖动的矩形而改变~';
+         width: 288px;
+         height: 30px;
+         background-color: rgba(255, 255, 255);
+         z-index: 1500;
+         position: absolute;
+         top: -32px;
+         left: 220px;
+         font-size: 14px;
+         font-weight: 400;
+         line-height: 1.42857143;
+         text-align: center;
+         display: flex;
+         flex-direction: row;
+         align-items: center;
+         justify-content: center;
+      }
+      #zone_2::after {
+         content: '我知道了！';
+         width: 150px;
+         height: 60px;
+         background-color: #FDF151;
+         z-index: 1500;
+         position: absolute;
+         top: 120%;
+         left: 60%;
+         border-radius: 30px;
+         font-size: 20px;
+         font-weight: 400;
+         line-height: 1.42857143;
+         text-align: center;
+         display: flex;
+         flex-direction: row;
+         align-items: center;
+         justify-content: center;
+         pointer-events: auto;
+      }
+      
+      #rectangles::after {
+         content: '拖动每个矩形的蓝色角，可以改变矩形的大小~';
+         width: 300px;
+         height: 30px;
+         background-color: rgba(255, 255, 255);
+         z-index: 1500;
+         position: absolute;
+         top: 30%;
+         left: 53%;
+         font-size: 14px;
+         font-weight: 400;
+         line-height: 1.42857143;
+         text-align: center;
+         display: flex;
+         flex-direction: row;
+         align-items: center;
+         justify-content: center;
       }
 
    </style>
 </head>
 
 <body>
+   <div id="fullbg">
+
+   </div>
    <div id="task">
-<!--      <h1>嵌套的矩形</h1>-->
-<!--      <div id="tabsContainer"></div>-->
+      <!--      <h1>嵌套的矩形</h1>-->
+      <!--      <div id="tabsContainer"></div>-->
       <div id="taskContent">
          <div id="zone_1">
             <div class="consigne">
                <p>
                   上方的图形描述了下方带蓝色角的矩形之间的组合关系是如何的。
                </p>
-               <table><tr><td>
-                 <div id="example" style="padding-right: 10px"></div>
-               </td><td>
-                  从B到A的箭头意味着矩形B需要完全在矩形A内。
-               </td></tr></table>
+               <table>
+                  <tr>
+                     <td>
+                        <div id="example" style="padding-right: 10px"></div>
+                     </td>
+                     <td>
+                        从B到A的箭头意味着矩形B需要完全在矩形A内。
+                     </td>
+                  </tr>
+               </table>
                <p>
                   如果你想改变嵌套关系，可以采取下列两种方式：（1）拖动矩形进行移动；（2）拖动矩形的蓝色角来改变它们的大小。
                </p>
-         </div>
+            </div>
          </div>
          <div id="zone_2">
             <div id="diagrams">
                <div>
-                  <h4>你的图形</h4>
+                  <h4 id="current_guide">你的图形</h4>
                   <div id="current"></div>
                </div>
 
@@ -107,7 +271,6 @@
                   <h4>目标图形</h4>
                   <div id="target"></div>
                </div>
-
 
             </div>
             <div id="rectangles"></div>
@@ -124,6 +287,26 @@
       <h2>这是提示信息！计算机图形学-碰撞检测算法</h2>
    </div>
    <!-- task-solution -->
+   <script>
+      setTimeout(() => {
+         $('#displayHelper_validate').addClass('relative').css('z-index', 2000);
+         $('#displayHelper_saved').addClass('relative').css('z-index', 2000);
+         $('#displayHelper_cancel').addClass('relative').css('z-index', 2000);
+         $('#current').addClass('relative').css('z-index', 2000);
+         $('#current_guide').addClass('relative').css('z-index', 2000);
+         $('#rectangles').addClass('relative').css('z-index', 2000);
+         $('#zone_2').addClass('relative').css({ 'z-index': 2100 }, { 'pointer-events': 'none' });
+      }, 50);
+      $('#zone_2').on('click', function () {
+         $('#zone_2').append("<style>#zone_2::after{content: none}</style>");
+         $('#displayHelper_validate').append("<style>#displayHelper_validate::after,#displayHelper_validate::before{content: none}</style>");
+         $('#displayHelper_saved').append("<style>#displayHelper_saved::after{content: none}</style>");
+         $('#current').append("<style>#current::before{content: none}</style>");
+         $('#current_guide').append("<style>#current_guide::after,#current_guide::before{content: none}</style>");
+         $('#rectangles').append("<style>#rectangles::after{content: none}</style>");
+         $('#fullbg').css('display', 'none');
+      })
+   </script>
 </body>
 
 </html>
