@@ -37,7 +37,7 @@
             alreadyExist: "这里已经有一个管道了。",
             isolatedHouse: "有一根管子卡住了，红色高亮的那朵花得不到任何水哦",
             max: function(max) {
-              return "You already added "+max+"&nbsp;pipes.";
+              return "你已经添加了 "+max+"&nbsp;根管道了。";
             }
          };
       </script>
@@ -154,7 +154,7 @@
          top: calc(110% - 17px);
          left: 148px;
       }
-      
+
       #paper::after {
          content: '点击任意两朵花，它们之间会出现一个新的管道，表示水可以通过~';
          width: 500px;
@@ -205,7 +205,7 @@
                      <td style="width:200px">
                         <br/>
                         <p class="hard" style="margin-top:1em; height:3em" id="instructions">
-                        <strong>You can move the flowers to help you.</strong>
+                        <strong>你可以移动花的位置。</strong>
                         </p>
                         <div id="error"></div>
                      </td>
@@ -235,8 +235,8 @@
             $('#displayHelper_validate').append("<style>#displayHelper_validate::after,#displayHelper_validate::before{content: none}</style>");
             $('#displayHelper_saved').append("<style>#displayHelper_saved::after{content: none}</style>");
             $('#paper').append("<style>#paper::after,#paper::before{content: none}</style>");
-            $('#fullbg').css('display','none'); 
-            }) 
+            $('#fullbg').css('display','none');
+            })
       </script>
    </body>
 </html>

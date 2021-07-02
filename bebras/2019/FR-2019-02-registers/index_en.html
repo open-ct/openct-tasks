@@ -39,19 +39,19 @@
       var taskStrings = {
          success: "恭喜, 你成功了 !",
          tooManyMarkers: function(max) {
-            return "你的储备库里没有小石子了。点击上方已经放置的小石子可以把它们带回去。";
+            return "你的储备库里没有小石子了。点击上方已经放置进圆圈的小石子就可以把它们取回储备库。";
          },
          sumGreaterThan: function(max) {
-            return "你的储备库里没有小石子了。点击上方已经放置的小石子可以把它们带回去。";
+            return "你的储备库里没有小石子了。点击上方已经放置进圆圈的小石子就可以把它们取回储备库。";
          },
-         noMarkerBelow: "如果你想在红色圆圈中放置小石子，是需要下面的所有圆圈里都已经放置了小石子哦。",
+         noMarkerBelow: "如果你想在红色圆圈中放置小石子，是需要这个圆圈下面的所有圆圈里都已经放置了小石子才可以哦。",
          placed: "已经放置过小石子了",
          failure: "上面的圆圈里没有小石子。",
          reserve: "小石子储备库:",
-         empty: "空的。移除不需要的小石子。",
+         empty: "储备库小石子已经用完了，可以点击之前已经放圆圈里的小石子，取回小石子，再次使用。",
          validateNow: "你成功了，现在只需要验证一下。",
          undo: "撤销",
-         pebbleClick: "点击在保护区的小石子没有用哦。"
+         pebbleClick: "点击储备库的小石子没有用哦。"
 
       };
    </script>
@@ -204,14 +204,14 @@
                if(elementLeft<leftValue[0]){
                   leftValue[0] = elementLeft
                }
-               
+
                if(elementLeft>leftValue[1]){
                   leftValue[1] = elementLeft
                   value = 0
                   value += $(elementItem).width()
                }
             }
-            return value + leftValue[1] - leftValue[0] 
+            return value + leftValue[1] - leftValue[0]
          }
          return isSVG?$(targetElement).get(0).getBBox().width:$(targetElement).outerWidth()
       }
@@ -225,14 +225,14 @@
                if(elementTop<topValue[0]){
                   topValue[0] = elementTop
                }
-               
+
                if(elementTop>topValue[1]){
                   topValue[1] = elementTop
                   value = 0
                   value += $(elementItem).height()
                }
             }
-            return value + topValue[1] - topValue[0] 
+            return value + topValue[1] - topValue[0]
          }
          return isSVG?$(targetElement).get(0).getBBox().height:$(targetElement).outerHeight()
       }
@@ -256,7 +256,7 @@
             return value - padding
          }
          return $(targetElement).offset().left - padding
-      } 
+      }
    </script>
    <style>
       #paper {
