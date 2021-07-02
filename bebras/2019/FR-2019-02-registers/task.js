@@ -487,8 +487,9 @@ function initTask(subTask) {
       }
       if (nPebbles == 0) {
          var msg1 = paper.text(reserveX+margin,reserveY,taskStrings.empty).attr(textAttr).attr({"text-anchor": "start"});
-         var msg2= paper.text(reserveX+margin,reserveY+27,taskStrings.takeBack).attr(textAttr);
-         reserve.push(msg1,msg2);
+         // var msg2= paper.text(reserveX+margin,reserveY+27,taskStrings.empty).attr(textAttr);
+         // reserve.push(msg1,msg2);
+         reserve.push(msg1);
       }
    };
 
