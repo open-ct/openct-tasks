@@ -58,6 +58,7 @@
    <script type="text/javascript" src="task.js"></script>
    <script type="text/javascript">
       window.onload = function(){
+
          let levelHash = window.location.hash?window.location.hash.replace('#',''):'easy'
          let level = ['easy','medium','hard'].includes(levelHash)?levelHash:'easy'
          let stepIndex = 0
@@ -374,7 +375,7 @@
          </div>
          <div id="zone_2">
             <div id="paper"></div>
-            <button type="button" class="btn btn-default" id="undo">Cancel</button>
+            <button type="button" class="btn btn-default" id="undo">取消</button>
          </div>
          <div id="error"></div>
       </div>
@@ -388,6 +389,11 @@
       <h2>这是提示信息！贪心算法</h2>
    </div>
    <!-- task-solution -->
+   <script>
+      setTimeout(() => {
+         console.log(document.querySelector("svg"))
+      }, 50);
+   </script>
 </body>
 
 </html>
