@@ -73,7 +73,8 @@
          height: 100vh;
       }
 
-      #displayHelper_validate::before {
+      @media (min-width:1200px) {
+         #displayHelper_validate::before {
          content: '';
          width: 200%;
          height: 175%;
@@ -172,6 +173,108 @@
          align-items: center;
          justify-content: center;
       }
+   }
+   @media (max-width:1199px) {
+         #displayHelper_validate::before {
+         content: '';
+         width: 200%;
+         height: 175%;
+         background-color: rgba(255, 255, 255);
+         z-index: -1;
+         position: absolute;
+         top: -40%;
+         left: 0%;
+         border-radius: 80px;
+      }
+
+      #displayHelper_validate::after {
+         content: '您可以验证答案是否正确或重新开始作答~';
+         width: 200%;
+         height: 180%;
+         background-color: rgba(255, 255, 255);
+         z-index: 1500;
+         position: absolute;
+         top: 250%;
+         left: 10%;
+         border-radius: 83px;
+         font-size: 14px;
+         font-weight: 400;
+         line-height: 1.42857143;
+         text-align: center;
+         display: flex;
+         flex-direction: row;
+         align-items: center;
+         justify-content: center;
+      }
+
+      #displayHelper_saved::after {
+         content: '';
+         width: 0;
+         height: 0;
+         border-width: 0 25px 30px 25px;
+         border-style: solid;
+         border-color: transparent transparent #fff transparent;
+         position: absolute;
+         top: 120%;
+         left: 35%;
+      }
+
+      .relative {
+         position: relative;
+      }
+      #popupMessage.floatingMessage {
+         z-index: 2100;
+      }
+      #zone_2::after {
+         content: '我知道了！';
+         width: 150px;
+         height: 60px;
+         background-color: #FDF151;
+         z-index: 1500;
+         position: absolute;
+         top: calc(120% + 130px);
+         left: 60%;
+         border-radius: 30px;
+         font-size: 20px;
+         font-weight: 400;
+         line-height: 1.42857143;
+         text-align: center;
+         display: flex;
+         flex-direction: row;
+         align-items: center;
+         justify-content: center;
+         pointer-events: auto;
+      }
+      #paper::before {
+         content: '';
+         width: 0;
+         height: 0;
+         border-width:12px 20px 12px 0;
+         border-style: solid;
+         border-color: transparent #fff transparent  transparent;
+         position: absolute;
+         top: calc(100% - 28px);
+         left: 150px;
+      }
+
+      #paper::after {
+         content: '点击任意两朵花，它们之间会出现一个新的管道，表示水可以通过~';
+         width: 500px;
+         height: 30px;
+         background-color: rgba(255, 255, 255);
+         z-index: 1500;
+         position: absolute;
+         top: calc(100% - 32px);
+         left: 160px;
+         font-size: 16px;
+         font-weight: 400;
+         line-height: 1.42857143;
+         display: flex;
+         flex-direction: row;
+         align-items: center;
+         justify-content: center;
+      }
+   }
       </style>
       <script src="task.js"></script>
    </head>
