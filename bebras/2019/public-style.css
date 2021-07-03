@@ -1,0 +1,16 @@
+#popupMessage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#popupMessage > .container{
+    width: 60%!important;
+    min-width: 400px;
+}
+
+#popupMessage > .container > .buttonsWrapper{
+    text-align: right;
+}
+#popupMessage > .container > .buttonsWrapper > button{
+    margin-left: 0;
+}
