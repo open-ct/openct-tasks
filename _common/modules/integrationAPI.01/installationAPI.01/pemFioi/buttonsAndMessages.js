@@ -1791,6 +1791,7 @@ window.displayHelper = {
                break;
          }
       }
+      messages.saved = taskMode == 'saved_unchanged'?"":this.getFullFeedbackWithLevelsSavedMessage(taskMode);
       for (var type in messages) {
          if (this.loaded && (typeof this.previousMessages[type] === 'undefined' || this.previousMessages[type] !== messages[type])) {
             $('#displayHelper_' + type).html(messages[type]);
