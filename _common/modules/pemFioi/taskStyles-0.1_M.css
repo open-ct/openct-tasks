@@ -292,10 +292,12 @@ h1 .stars {
 #popupMessage .message {
    margin-left: 115px;
    padding: 8px;
-   max-width: 500px;
+   margin-top: 20px;
+   /* max-width: 500px; */
    border: 2px solid black;
    border-radius: 8px;
    text-align: justify;
+   box-sizing: border-box;
 }
 #popupMessage.noAvatar img.beaver, #popupMessage.noAvatar img.messageArrow {
    display: none;
@@ -303,6 +305,9 @@ h1 .stars {
 #popupMessage.noAvatar .message {
    margin-left: 0px;
    border: none;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
 #popupMessage p {
    margin: .5em 0 0;
@@ -387,7 +392,7 @@ h1 .stars {
 .consigne {
 	padding: 10px;
 }
-.
+
 #displayHelperAnswering {
 	padding: 10px;
 }
