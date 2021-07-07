@@ -1,7 +1,11 @@
 /*
  * @Author: stacker
  * @Date: 2021-07-06 23:20:58
+<<<<<<< HEAD
  * @LastEditTime: 2021-07-07 23:36:24
+=======
+ * @LastEditTime: 2021-07-07 00:57:07
+>>>>>>> d4539ab313bbbcd8667839f513e5c46604744278
  * @LastEditors: Please set LastEditors
  * @Description: 步骤引导文件
  * @FilePath: \bebras-tasks\_common\modules\integrationAPI.01\installationAPI.01\pemFioi\stepGuidance.js
@@ -133,8 +137,12 @@ class StepGuidance{
               if(elementLeft>leftValue[1]){
                  leftValue[1] = elementLeft
                  value = 0
+<<<<<<< HEAD
                  //value += $(elementItem).width()
                  value += elementTarget.isSVG?$(elementItem).get(0).getBBox().width:$(elementItem).outerWidth()
+=======
+                 value += $(elementItem).width()
+>>>>>>> d4539ab313bbbcd8667839f513e5c46604744278
               }
            }
            return value + leftValue[1] - leftValue[0]
@@ -154,8 +162,12 @@ class StepGuidance{
               if(elementTop>topValue[1]){
                  topValue[1] = elementTop
                  value = 0
+<<<<<<< HEAD
                  //value += $(elementItem).height()
                  value += elementTarget.isSVG?$(elementItem).get(0).getBBox().height:$(elementItem).outerHeight()
+=======
+                 value += $(elementItem).height()
+>>>>>>> d4539ab313bbbcd8667839f513e5c46604744278
               }
            }
            return value + topValue[1] - topValue[0]
