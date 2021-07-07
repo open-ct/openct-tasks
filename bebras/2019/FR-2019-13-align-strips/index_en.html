@@ -56,208 +56,87 @@
       };
    </script>
    <script type="text/javascript" src="task.js"></script>
+   <script type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/stepGuidance.js"></script>
    <script type="text/javascript">
-      window.onload = function(){
-         let levelHash = window.location.hash?window.location.hash.replace('#',''):'easy'
-         let level = ['easy','medium','hard'].includes(levelHash)?levelHash:'easy'
-         let stepIndex = 0
-         $('body').append(`<div id="guide-box">
-                              <div class="guide-area">
-                                 <div class="guide-tip-box" id="guide-tip">
-                                    <div class="guide-tip-content">
-                                       <div class="triangle"></div>
-                                       <div class="circle"></div>
-                                       <div class="tip-info">
-                                          <span></span>
-                                       </div>
-                                       <div class="button-box" id="btn-box"></div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>`)
-         
-         
-         let elementList = [{
-            target:'#paper > svg > circle:nth-of-type(8)',
-            tips:'点击转动杠杆，改变轨道方向',
-            tip_position:{
-               bottom:'-62px',
-               left:'30px',
-               t_left:'30px'
-            },
-            padding:'10px 10px',
-            level:['easy'],
-            step:{
-               easy:0
-            },
-            borderRadius:16,
-            isSVG:true
-         },{
-            target:'#paper > svg > circle:nth-of-type(11)',
-            tips:'点击转动杠杆，改变轨道方向',
-            tip_position:{
-               bottom:'-62px',
-               left:'30px',
-               t_left:'30px'
-            },
-            padding:'10px 10px',
-            level:['medium'],
-            step:{
-               medium:0
-            },
-            borderRadius:16,
-            isSVG:true
-         },{
-            target:'#paper > svg > circle:nth-of-type(23)',
-            tips:'点击转动杠杆，改变轨道方向',
-            tip_position:{
-               bottom:'-62px',
-               left:'30px',
-               t_left:'30px'
-            },
-            padding:'10px 10px',
-            level:['hard'],
-            step:{
-               hard:0
-            },
-            borderRadius:16,
-            isSVG:true
-         },{
-            target:'#paper > svg > circle:nth-of-type(5)',
-            tips:'点击单个轮子，使其断开或连接单个轮子',
-            tip_position:{
-               bottom:'-62px',
-               left:'30px',
-               t_left:'30px'
-            },
-            padding:'10px 10px',
-            level:['easy','medium'],
-            step:{
-               easy:1,
-               medium:1,
-            },
-            borderRadius:16,
-            isSVG:true
-         },{
-            target:'#paper > svg > circle:nth-of-type(12)',
-            tips:'点击单个轮子，使其断开或连接单个轮子',
-            tip_position:{
-               bottom:'-62px',
-               left:'30px',
-               t_left:'30px'
-            },
-            padding:'10px 10px',
-            level:['hard'],
-            step:{
-              hard:1
-            },
-            borderRadius:16,
-            isSVG:true
-         }]
-         elementList = elementList.filter(item=>item.level.includes(level))
-         updateGuide(elementList,elementList.findIndex(item=>item.step[level]==stepIndex),stepIndex)
-         $('#btn-box').on('click','#next-step-btn',()=>{
-            stepIndex += 1
-            updateGuide(elementList,elementList.findIndex(item=>item.step[level]==stepIndex),stepIndex)
-         })
-         $('#btn-box').on('click','#last-step-btn',()=>{
-            stepIndex -= 1
-            updateGuide(elementList,elementList.findIndex(item=>item.step[level]==stepIndex),stepIndex)
-         })
-         $('#btn-box').on('click','#complete-btn',()=>{
-            $('#guide-box').remove()
-         })
-         $(window).resize(()=>{
-            updateGuide(elementList,elementList.findIndex(item=>item.step[level]==stepIndex),stepIndex)
-         })
-         $(document).scroll(()=>{
-            updateGuide(elementList,elementList.findIndex(item=>item.step[level]==stepIndex),stepIndex)
-         })
-      }
-      function updateGuide(elementList,itemIndex,stepIndex){
-         let elementItem = elementList[itemIndex]
-         $('#guide-box > .guide-area > .guide-tip-box > .guide-tip-content > .triangle').css('left',elementItem.tip_position.t_left)
-         $('#guide-box > .guide-area').css('width',getTargetWidth(elementItem.target,elementItem.isSVG)+'px')
-                                      .css('height',getTargetHeight(elementItem.target,elementItem.isSVG)+'px')
-                                      .css('top',getTargetTop(elementItem.target,parseFloat(elementItem.padding.split(' ')[0].replace('px')),elementItem.isSVG)+'px')
-                                      .css('left',getTargetLeft(elementItem.target,parseFloat(elementItem.padding.split(' ')[1].replace('px')),elementItem.isSVG)+'px')
-                                      .css('border-radius',elementItem.borderRadius+'px')
-                                      .css('padding',elementItem.padding)
-
-         for(let key in elementItem.tip_position){
-            $('#guide-tip').css(key,elementItem.tip_position[key])
-         }
-        $('#guide-box > .guide-area > .guide-tip-box > .guide-tip-content > .tip-info > span').text(elementItem.tips)
-        $('#guide-box > .guide-area > .guide-tip-box > .guide-tip-content > .button-box').html(`
-                                                                                                ${stepIndex!=0?'<div id="last-step-btn" class="step-btn"><span>上一步</span></div>':''}
-                                                                                                ${stepIndex!=elementList.length-1?'<div id="next-step-btn" class="step-btn"><span>下一步</span></div>':''}
-                                                                                                ${elementList.length-1==stepIndex?'<div id="complete-btn" class="step-btn" style="background-color:#FDF151;border:none;"><span>我知道了！</span></div>':''}
-                                                                                             `)
-
-      }
-
-      function getTargetWidth(targetElement,isSVG){
-         if(typeof targetElement == 'object'){
-            let value = 0;
-            let leftValue = [2000,0]
-            for(let elementItem of targetElement){
-               let elementLeft = $(elementItem).offset().left
-               if(elementLeft<leftValue[0]){
-                  leftValue[0] = elementLeft
-               }
-               
-               if(elementLeft>leftValue[1]){
-                  leftValue[1] = elementLeft
-                  value = 0
-                  value += $(elementItem).width()
-               }
-            }
-            return value + leftValue[1] - leftValue[0] 
-         }
-         return isSVG?$(targetElement).get(0).getBBox().width:$(targetElement).outerWidth()
-      }
-
-      function getTargetHeight(targetElement,isSVG) {
-         if(typeof targetElement == 'object'){
-            let value = 0;
-            let topValue = [2000,0]
-            for(let elementItem of targetElement){
-               let elementTop = $(elementItem).offset().top
-               if(elementTop<topValue[0]){
-                  topValue[0] = elementTop
-               }
-               
-               if(elementTop>topValue[1]){
-                  topValue[1] = elementTop
-                  value = 0
-                  value += $(elementItem).height()
-               }
-            }
-            return value + topValue[1] - topValue[0] 
-         }
-         return isSVG?$(targetElement).get(0).getBBox().height:$(targetElement).outerHeight()
-      }
-
-      function getTargetTop(targetElement,padding,isSVG) {
-         if(typeof targetElement == 'object'){
-            let value = 2000
-            for(let elementItem of targetElement){
-               value = $(elementItem).offset().top<value?$(elementItem).offset().top:value
-            }
-            return value - padding - $(document).scrollTop()
-         }
-         return $(targetElement).offset().top - padding - $(document).scrollTop()
-      }
-      function getTargetLeft(targetElement,padding,isSVG) {
-         if(typeof targetElement == 'object'){
-            let value = 2000
-            for(let elementItem of targetElement){
-               value = $(elementItem).offset().left<value?$(elementItem).offset().left:value
-            }
-            return value - padding
-         }
-         return $(targetElement).offset().left - padding
-      }   
+      let elementList = [{
+         target:'#paper > svg > circle:nth-of-type(8)',
+         tips:'点击转动杠杆，改变轨道方向',
+         tip_position:{
+            bottom:'-62px',
+            left:'30px',
+            t_left:'30px'
+         },
+         padding:'10px 10px',
+         level:['easy'],
+         step:{
+            easy:0
+         },
+         borderRadius:16,
+         isSVG:true
+      },{
+         target:'#paper > svg > circle:nth-of-type(11)',
+         tips:'点击转动杠杆，改变轨道方向',
+         tip_position:{
+            bottom:'-62px',
+            left:'30px',
+            t_left:'30px'
+         },
+         padding:'10px 10px',
+         level:['medium'],
+         step:{
+            medium:0
+         },
+         borderRadius:16,
+         isSVG:true
+      },{
+         target:'#paper > svg > circle:nth-of-type(23)',
+         tips:'点击转动杠杆，改变轨道方向',
+         tip_position:{
+            bottom:'-62px',
+            left:'30px',
+            t_left:'30px'
+         },
+         padding:'10px 10px',
+         level:['hard'],
+         step:{
+            hard:0
+         },
+         borderRadius:16,
+         isSVG:true
+      },{
+         target:'#paper > svg > circle:nth-of-type(5)',
+         tips:'点击单个轮子，使其断开或连接单个轮子',
+         tip_position:{
+            bottom:'-62px',
+            left:'30px',
+            t_left:'30px'
+         },
+         padding:'10px 10px',
+         level:['easy','medium'],
+         step:{
+            easy:1,
+            medium:1,
+         },
+         borderRadius:16,
+         isSVG:true
+      },{
+         target:'#paper > svg > circle:nth-of-type(12)',
+         tips:'点击单个轮子，使其断开或连接单个轮子',
+         tip_position:{
+            bottom:'-62px',
+            left:'30px',
+            t_left:'30px'
+         },
+         padding:'10px 10px',
+         level:['hard'],
+         step:{
+            hard:1
+         },
+         borderRadius:16,
+         isSVG:true
+      }] 
+      let stepGuidance = new StepGuidance(elementList,'align-strips')
+      stepGuidance.init() 
    </script>
    <style>
       #paper {
@@ -269,88 +148,9 @@
       .actions-descr li {
          margin-top: 1em;
       }
-      #guide-box{
-         width: 100%;
-         height: 100%;
-         position: fixed;
-         left: 0;
-         top: 0;
-         z-index: 998;
-      }
-      #guide-box > .guide-area{
-         box-shadow: 1px 1px 100000px 100000px rgb(124 152 209  / 50%);
-         position: fixed;
-         transition: all 500ms;
-         /* padding: 10px 0px; */
-      }
-      #guide-box > .guide-area > .guide-tip-box{
-         height: 36px;
-         position: absolute;
-         bottom:-60px;
-         left: 60px;
-         box-sizing: border-box;
-      }
-      #guide-box > .guide-area > .guide-tip-box > .guide-tip-content{
-         height: 100%;
-         background-color: white;
-         border-radius: 12px;
-         position: relative;
-         box-sizing: border-box;
-         padding: 0px 8px;
-         display: flex;
-         align-items: center;
-      }
-      #guide-box > .guide-area > .guide-tip-box > .guide-tip-content > .triangle{
-         /*content:'';
-         display: block;*/
-         position: absolute;
-         width: 0;
-         height: 0;
-         border-left: 12px solid transparent;
-         border-right: 12px solid transparent;
-         border-bottom: 12px solid white;
-         top: -12px;
-         /*left: 30px;*/
-      }
-      #guide-box > .guide-area > .guide-tip-box > .guide-tip-content > .circle{
-         width: 8px;
-         height: 8px;
-         border-radius: 8px;
-         background-color: #FDF151;
-         margin: 14px 10px 14px 0px;
-         float: left;
-      }
-      #guide-box > .guide-area > .guide-tip-box > .guide-tip-content > .tip-info{
-         height: 100%;
-         line-height: 36px;
-         display: inline-block;
-         white-space:nowrap;
-         margin-right: 10px;
-      }
-      #guide-box > .guide-area > .guide-tip-box > .guide-tip-content > .tip-info > span{
-         font-size: 14px;
-      }
-      #guide-box > .guide-area > .guide-tip-box > .guide-tip-content > .button-box{
-         height: 100%;
-         display: flex;
-         align-items: center;
-         white-space:nowrap;
-      }
-      #guide-box > .guide-area > .guide-tip-box > .guide-tip-content > .button-box > .step-btn{
-         padding: 0px 8px;
-         height: 24px;
-         border: 1px solid #ccc;
-         margin: 5px 0px;
-         border-radius: 6px;
-         line-height: 24px;
-         cursor: pointer;
-         margin-right: 10px;
-      }
-      #guide-box > .guide-area > .guide-tip-box > .guide-tip-content > .button-box > .step-btn > span{
-         font-size: 14px;
-      }
    </style>
    <link rel="stylesheet" type="text/css" href="../public-style.css">
+   <link rel="stylesheet" type="text/css" href="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/stepGuidance.css">
 </head>
 
 <body>

@@ -305,9 +305,9 @@ h1 .stars {
 #popupMessage.noAvatar .message {
    margin-left: 0px;
    border: none;
-   display: flex;
+   /* display: flex;
    justify-content: center;
-   align-items: center;
+   align-items: center; */
 }
 #popupMessage p {
    margin: .5em 0 0;
