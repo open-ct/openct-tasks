@@ -11,6 +11,7 @@
 #popupMessage > .container > .buttonsWrapper{
     text-align: right;
 }
+
 #popupMessage > .container > .buttonsWrapper > button{
     margin-left: 0;
 }

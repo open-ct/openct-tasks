@@ -50,6 +50,74 @@
       };
    </script>
    <script type="text/javascript" src="task.js"></script>
+   <script type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/stepGuidance.js"></script>
+   <script type="text/javascript">
+      let elementList = [{
+         target:'#paper > svg > path:nth-of-type(17)',
+         tips:'将蓝色的图形复制拖拽到下方的图案上~',
+         tip_position:{
+            bottom:'-62px',
+            left:'0px',
+            t_left:'30px'
+         },
+         padding:'15px 15px',
+         level:['easy'],
+         step:{
+            easy:0
+         },
+         borderRadius:16,
+         isSVG:true
+      },{
+         target:'#paper > svg > path:nth-of-type(15)',
+         tips:'将蓝色的图形复制拖拽到下方的图案上~',
+         tip_position:{
+            bottom:'-62px',
+            left:'0px',
+            t_left:'30px'
+         },
+         padding:'15px 15px',
+         level:['medium'],
+         step:{
+            medium:0,
+         },
+         borderRadius:16,
+         isSVG:true
+      },{
+         target:'#paper > svg > path:nth-of-type(18)',
+         tips:'将蓝色的图形复制拖拽到下方的图案上~',
+         tip_position:{
+            bottom:'-62px',
+            left:'0px',
+            t_left:'30px'
+         },
+         padding:'15px 15px',
+         level:['hard'],
+         step:{
+            hard:0
+         },
+         borderRadius:16,
+         isSVG:true
+      },{
+         target:['#displayHelper_validate','#displayHelper_cancel'],
+         tips:'你可以点击“验证一下”验证你的答案是否正确，或重新开始作答。',
+         tip_position:{
+            bottom:'-62px',
+            left:'30px',
+            t_left:'30px'
+         },
+         padding:'10px 0px',
+         level:['easy','medium','hard'],
+         step:{
+            easy:1,
+            medium:1,
+            hard:1
+         },
+         borderRadius:16,
+      }]
+      let stepGuidance = new StepGuidance(elementList,'patterns')
+      stepGuidance.init()
+   </script>
+
    <style>
       #paper {
          margin-top: 1em;
@@ -58,227 +126,10 @@
       #error {
          text-align: center;
       }
-      #fullbg {
-         background-color: #7C98D1;
-         opacity: 0.5;
-         left: 0;
-         opacity: 0.5;
-         position: absolute;
-         top: 0;
-         z-index: 1500;
-         filter: alpha(opacity=50);
-         -moz-opacity: 0.5;
-         -khtml-opacity: 0.5;
-         display: block;
-         width: 100vw;
-         height: 100vh;
-      }
-     @media (min-width:1200px) {
-      #displayHelper_validate::before {
-         content: '';
-         width: 200%;
-         height: 175%;
-         background-color: rgba(255, 255, 255);
-         z-index: -1;
-         position: absolute;
-         top: -40%;
-         left: 0%;
-         border-radius: 80px;
-      }
-
-      #displayHelper_validate::after {
-         content: '您可以验证答案是否正确或重新开始作答~';
-         width: 200%;
-         height: 180%;
-         background-color: rgba(255, 255, 255);
-         z-index: 1500;
-         position: absolute;
-         top: 250%;
-         left: 10%;
-         border-radius: 83px;
-         font-size: 14px;
-         font-weight: 400;
-         line-height: 1.42857143;
-         text-align: center;
-         display: flex;
-         flex-direction: row;
-         align-items: center;
-         justify-content: center;
-      }
-
-      #displayHelper_saved::after {
-         content: '';
-         width: 0;
-         height: 0;
-         border-width: 0 25px 30px 25px;
-         border-style: solid;
-         border-color: transparent transparent #fff transparent;
-         position: absolute;
-         top: 120%;
-         left: 20%;
-      }
-
-      .relative {
-         position: relative;
-      }
-      #popupMessage.floatingMessage {
-         z-index: 2100;
-      }
-      #zone_2::after {
-         content: '我知道了！';
-         width: 150px;
-         height: 60px;
-         background-color: #FDF151;
-         z-index: 1500;
-         position: absolute;
-         top: 130%;
-         left: 60%;
-         border-radius: 30px;
-         font-size: 20px;
-         font-weight: 400;
-         line-height: 1.42857143;
-         text-align: center;
-         display: flex;
-         flex-direction: row;
-         align-items: center;
-         justify-content: center;
-         pointer-events: auto;
-      }
-      #paper::before {
-         content: '';
-         width: 0;
-         height: 0;
-         border-width:12px 20px 12px 0;
-         border-style: solid;
-         border-color: transparent #fff transparent  transparent;
-         position: absolute;
-         top: -11px;
-         left: 183px;
-      }
       
-      #paper::after {
-         content: '将蓝色的图形复制拖拽到下方的图案上~';
-         width: 288px;
-         height: 28px;
-         background-color: rgba(255, 255, 255);
-         z-index: 1500;
-         position: absolute;
-         top: -14px;
-         left: 190px;
-         font-size: 14px;
-         font-weight: 400;
-         line-height: 1.42857143;
-         text-align: center;
-         display: flex;
-         flex-direction: row;
-         align-items: center;
-         justify-content: center;
-      }
-     }
-     @media (max-width:1199px) {
-      #displayHelper_validate::before {
-         content: '';
-         width: 200%;
-         height: 175%;
-         background-color: rgba(255, 255, 255);
-         z-index: -1;
-         position: absolute;
-         top: -40%;
-         left: 0%;
-         border-radius: 80px;
-      }
-
-      #displayHelper_validate::after {
-         content: '您可以验证答案是否正确或重新开始作答~';
-         width: 200%;
-         height: 180%;
-         background-color: rgba(255, 255, 255);
-         z-index: 1500;
-         position: absolute;
-         top: 250%;
-         left: 10%;
-         border-radius: 83px;
-         font-size: 14px;
-         font-weight: 400;
-         line-height: 1.42857143;
-         text-align: center;
-         display: flex;
-         flex-direction: row;
-         align-items: center;
-         justify-content: center;
-      }
-
-      #displayHelper_saved::after {
-         content: '';
-         width: 0;
-         height: 0;
-         border-width: 0 25px 30px 25px;
-         border-style: solid;
-         border-color: transparent transparent #fff transparent;
-         position: absolute;
-         top: 120%;
-         left: 35%;
-      }
-
-      .relative {
-         position: relative;
-      }
-      #popupMessage.floatingMessage {
-         z-index: 2100;
-      }
-      #zone_2::after {
-         content: '我知道了！';
-         width: 150px;
-         height: 60px;
-         background-color: #FDF151;
-         z-index: 1500;
-         position: absolute;
-         top: calc(120% + 140px);
-         left: 60%;
-         border-radius: 30px;
-         font-size: 20px;
-         font-weight: 400;
-         line-height: 1.42857143;
-         text-align: center;
-         display: flex;
-         flex-direction: row;
-         align-items: center;
-         justify-content: center;
-         pointer-events: auto;
-      }
-      #paper::before {
-         content: '';
-         width: 0;
-         height: 0;
-         border-width:12px 20px 12px 0;
-         border-style: solid;
-         border-color: transparent #fff transparent  transparent;
-         position: absolute;
-         top: -11px;
-         left: 183px;
-      }
-      
-      #paper::after {
-         content: '将蓝色的图形复制拖拽到下方的图案上~';
-         width: 288px;
-         height: 28px;
-         background-color: rgba(255, 255, 255);
-         z-index: 1500;
-         position: absolute;
-         top: -14px;
-         left: 190px;
-         font-size: 14px;
-         font-weight: 400;
-         line-height: 1.42857143;
-         text-align: center;
-         display: flex;
-         flex-direction: row;
-         align-items: center;
-         justify-content: center;
-      }
-     }   
    </style>
    <link rel="stylesheet" type="text/css" href="../public-style.css">
+   <link rel="stylesheet" type="text/css" href="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/stepGuidance.css">
 </head>
 
 <body>
@@ -314,23 +165,6 @@
       <h2>答案解析</h2>
       <h2>这是提示信息！排列组合</h2>
    </div>
-   <!-- task-solution -->
-   <script>
-      setTimeout(() => {
-         $('#displayHelper_validate').addClass('relative').css('z-index', 2000);
-         $('#displayHelper_saved').addClass('relative').css('z-index', 2000);
-         $('#displayHelper_cancel').addClass('relative').css('z-index', 2000);
-         $('#paper').addClass('relative').css('z-index', 2000);
-         $('#zone_2').addClass('relative').css({'z-index': 2000},{'pointer-events': 'none'});
-      }, 50);
-      $('#zone_2').on('click', function () {
-         $('#zone_2').append("<style>#zone_2::after{content: none}</style>");
-         $('#displayHelper_validate').append("<style>#displayHelper_validate::after,#displayHelper_validate::before{content: none}</style>");
-         $('#displayHelper_saved').append("<style>#displayHelper_saved::after{content: none}</style>");
-         $('#paper').append("<style>#paper::after,#paper::before{content: none}</style>");
-         $('#fullbg').css('display','none'); 
-         }) 
-   </script>
 </body>
 
 </html>

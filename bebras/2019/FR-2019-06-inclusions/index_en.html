@@ -44,6 +44,91 @@
       };
    </script>
    <script type="text/javascript" src="task.js"></script>
+
+   <script type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/stepGuidance.js"></script>
+   <script type="text/javascript">
+      let elementList = [{
+         target:'#rectangles > svg > path:nth-of-type(1)',
+         tips:'拖动每个矩形的蓝色角，可以改变矩形的大小~',
+         tip_position:{
+            bottom:'-62px',
+            left:'0px',
+            t_left:'15px'
+         },
+         padding:'10px 15px',
+         level:['easy','medium','hard'],
+         step:{
+            easy:0,
+            medium:0,
+            hard:0
+         },
+         borderRadius:8,
+         isSVG:true
+      },{
+         target:['#current > svg > rect:nth-of-type(2)','#current > svg > rect:nth-of-type(3)','#current > svg > rect:nth-of-type(4)'],
+         tips:'你的图形会随着你拖动矩形而改变~',
+         tip_position:{
+            bottom:'-62px',
+            left:'40px',
+            t_left:'30px'
+         },
+         padding:'10px 15px',
+         level:['easy'],
+         step:{
+            easy:1
+         },
+         borderRadius:8,
+         isSVG:true
+      },{
+         target:['#current > svg > rect:nth-of-type(2)','#current > svg > rect:nth-of-type(4)','#current > svg > rect:nth-of-type(8)'],
+         tips:'你的图形会随着你拖动矩形而改变~',
+         tip_position:{
+            bottom:'-62px',
+            left:'40px',
+            t_left:'30px'
+         },
+         padding:'10px 15px',
+         level:['medium'],
+         step:{
+            medium:1,
+         },
+         borderRadius:8,
+         isSVG:true
+      },{
+         target:['#current > svg > rect:nth-of-type(3)','#current > svg > rect:nth-of-type(9)'],
+         tips:'你的图形会随着你拖动矩形而改变~',
+         tip_position:{
+            bottom:'-62px',
+            left:'40px',
+            t_left:'30px'
+         },
+         padding:'10px 15px',
+         level:['hard'],
+         step:{
+            hard:1
+         },
+         borderRadius:8,
+         isSVG:true
+      },{
+         target:['#displayHelper_validate','#displayHelper_cancel'],
+         tips:'你可以点击“验证一下”验证你的答案是否正确,也可以重新开始作答。',
+         tip_position:{
+            bottom:'-62px',
+            left:'30px',
+            t_left:'30px'
+         },
+         padding:'10px 0px',
+         level:['easy','medium','hard'],
+         step:{
+            easy:2,
+            medium:2,
+            hard:2
+         },
+         borderRadius:16,
+      }]
+      let stepGuidance = new StepGuidance(elementList,'inclusions')
+      stepGuidance.init()
+   </script>
    <style>
       #diagrams {
          margin: 1em 0 1em 0;
@@ -80,295 +165,12 @@
          height: 2em;
          text-align: center;
       }
-
-      #fullbg {
-         background-color: #7C98D1;
-         opacity: 0.5;
-         left: 0;
-         opacity: 0.5;
-         position: absolute;
-         top: 0;
-         z-index: 1500;
-         filter: alpha(opacity=50);
-         -moz-opacity: 0.5;
-         -khtml-opacity: 0.5;
-         display: block;
-         width: 100vw;
-         height: 100vh;
-      }
-      @media (min-width:1200px) {
-         #displayHelper_validate::before {
-         content: '';
-         width: 200%;
-         height: 175%;
-         background-color: rgba(255, 255, 255);
-         z-index: -1;
-         position: absolute;
-         top: -40%;
-         left: 0%;
-         border-radius: 80px;
-      }
-
-      #displayHelper_validate::after {
-         content: '您可以验证答案是否正确或重新开始作答~';
-         width: 200%;
-         height: 180%;
-         background-color: rgba(255, 255, 255);
-         z-index: 1500;
-         position: absolute;
-         top: 250%;
-         left: 10%;
-         border-radius: 83px;
-         font-size: 14px;
-         font-weight: 400;
-         line-height: 1.42857143;
-         text-align: center;
-         display: flex;
-         flex-direction: row;
-         align-items: center;
-         justify-content: center;
-      }
-
-      #displayHelper_saved::after {
-         content: '';
-         width: 0;
-         height: 0;
-         border-width: 0 25px 30px 25px;
-         border-style: solid;
-         border-color: transparent transparent #fff transparent;
-         position: absolute;
-         top: 120%;
-         left: 20%;
-      }
-
-
-      .relative {
-         position: relative;
-      }
-      #popupMessage.floatingMessage {
-         z-index: 2100;
-      }
-      #current::before {
-         content: '';
-         width: 70%;
-         height: 100%;
-         background-color: rgba(255, 255, 255);
-         z-index: -1;
-         position: absolute;
-         top: 0%;
-         left: 15%;
-      }
-      #current_guide::before {
-         content: '';
-         width: 0;
-         height: 0;
-         border-width:12px 20px 12px 0;
-         border-style: solid;
-         border-color: transparent #fff transparent  transparent;
-         position: absolute;
-         top: -29px;
-         left: 213px;
-      }
-
-      #current_guide::after {
-         content: '你的图形会随着你拖动的矩形而改变~';
-         width: 288px;
-         height: 30px;
-         background-color: rgba(255, 255, 255);
-         z-index: 1500;
-         position: absolute;
-         top: -32px;
-         left: 220px;
-         font-size: 14px;
-         font-weight: 400;
-         line-height: 1.42857143;
-         text-align: center;
-         display: flex;
-         flex-direction: row;
-         align-items: center;
-         justify-content: center;
-      }
-      #zone_2::after {
-         content: '我知道了！';
-         width: 150px;
-         height: 60px;
-         background-color: #FDF151;
-         z-index: 1500;
-         position: absolute;
-         top: 120%;
-         left: 60%;
-         border-radius: 30px;
-         font-size: 20px;
-         font-weight: 400;
-         line-height: 1.42857143;
-         text-align: center;
-         display: flex;
-         flex-direction: row;
-         align-items: center;
-         justify-content: center;
-         pointer-events: auto;
-      }
-
-      #rectangles::after {
-         content: '拖动每个矩形的蓝色角，可以改变矩形的大小~';
-         width: 300px;
-         height: 30px;
-         background-color: rgba(255, 255, 255);
-         z-index: 1500;
-         position: absolute;
-         top: 30%;
-         left: 53%;
-         font-size: 14px;
-         font-weight: 400;
-         line-height: 1.42857143;
-         text-align: center;
-         display: flex;
-         flex-direction: row;
-         align-items: center;
-         justify-content: center;
-      }
-   }
-   @media (max-width:1199px) {
-      #displayHelper_validate::before {
-         content: '';
-         width: 200%;
-         height: 175%;
-         background-color: rgba(255, 255, 255);
-         z-index: -1;
-         position: absolute;
-         top: -40%;
-         left: 0%;
-         border-radius: 80px;
-      }
-
-      #displayHelper_validate::after {
-         content: '您可以验证答案是否正确或重新开始作答~';
-         width: 200%;
-         height: 180%;
-         background-color: rgba(255, 255, 255);
-         z-index: 1500;
-         position: absolute;
-         top: 250%;
-         left: 10%;
-         border-radius: 83px;
-         font-size: 14px;
-         font-weight: 400;
-         line-height: 1.42857143;
-         text-align: center;
-         display: flex;
-         flex-direction: row;
-         align-items: center;
-         justify-content: center;
-      }
-
-      #displayHelper_saved::after {
-         content: '';
-         width: 0;
-         height: 0;
-         border-width: 0 25px 30px 25px;
-         border-style: solid;
-         border-color: transparent transparent #fff transparent;
-         position: absolute;
-         top: 120%;
-         left: 35%;
-      }
-
-
-      .relative {
-         position: relative;
-      }
-      #popupMessage.floatingMessage {
-         z-index: 2100;
-      }
-      #current::before {
-         content: '';
-         width: 70%;
-         height: 100%;
-         background-color: rgba(255, 255, 255);
-         z-index: -1;
-         position: absolute;
-         top: 0%;
-         left: 15%;
-      }
-      #current_guide::before {
-         content: '';
-         width: 0;
-         height: 0;
-         border-width:12px 20px 12px 0;
-         border-style: solid;
-         border-color: transparent #fff transparent  transparent;
-         position: absolute;
-         top: -29px;
-         left: 213px;
-      }
-
-      #current_guide::after {
-         content: '你的图形会随着你拖动的矩形而改变~';
-         width: 288px;
-         height: 30px;
-         background-color: rgba(255, 255, 255);
-         z-index: 1500;
-         position: absolute;
-         top: -32px;
-         left: 220px;
-         font-size: 14px;
-         font-weight: 400;
-         line-height: 1.42857143;
-         text-align: center;
-         display: flex;
-         flex-direction: row;
-         align-items: center;
-         justify-content: center;
-      }
-      #zone_2::after {
-         content: '我知道了！';
-         width: 150px;
-         height: 60px;
-         background-color: #FDF151;
-         z-index: 1500;
-         position: absolute;
-         top: calc(120% + 120px);
-         left: 60%;
-         border-radius: 30px;
-         font-size: 20px;
-         font-weight: 400;
-         line-height: 1.42857143;
-         text-align: center;
-         display: flex;
-         flex-direction: row;
-         align-items: center;
-         justify-content: center;
-         pointer-events: auto;
-      }
-
-      #rectangles::after {
-         content: '拖动每个矩形的蓝色角，可以改变矩形的大小~';
-         width: 300px;
-         height: 30px;
-         background-color: rgba(255, 255, 255);
-         z-index: 1500;
-         position: absolute;
-         top: 30%;
-         left: 53%;
-         font-size: 14px;
-         font-weight: 400;
-         line-height: 1.42857143;
-         text-align: center;
-         display: flex;
-         flex-direction: row;
-         align-items: center;
-         justify-content: center;
-      }
-   }
-
    </style>
    <link rel="stylesheet" type="text/css" href="../public-style.css">
+   <link rel="stylesheet" type="text/css" href="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/stepGuidance.css">
 </head>
 
 <body>
-   <div id="fullbg">
-
-   </div>
    <div id="task">
       <!--      <h1>嵌套的矩形</h1>-->
       <!--      <div id="tabsContainer"></div>-->
@@ -420,28 +222,6 @@
       <h2>答案解析</h2>
       <h2>这是提示信息！计算机图形学-碰撞检测算法</h2>
    </div>
-   <!-- task-solution -->
-   <script>
-      setTimeout(() => {
-         $('.consigne').remove();
-         $('#displayHelper_validate').addClass('relative').css('z-index', 2000);
-         $('#displayHelper_saved').addClass('relative').css('z-index', 2000);
-         $('#displayHelper_cancel').addClass('relative').css('z-index', 2000);
-         $('#current').addClass('relative').css('z-index', 2000);
-         $('#current_guide').addClass('relative').css('z-index', 2000);
-         $('#rectangles').addClass('relative').css('z-index', 2000);
-         $('#zone_2').addClass('relative').css({ 'z-index': 2100 }, { 'pointer-events': 'none' });
-      }, 50);
-      $('#zone_2').on('click', function () {
-         $('#zone_2').append("<style>#zone_2::after{content: none}</style>");
-         $('#displayHelper_validate').append("<style>#displayHelper_validate::after,#displayHelper_validate::before{content: none}</style>");
-         $('#displayHelper_saved').append("<style>#displayHelper_saved::after{content: none}</style>");
-         $('#current').append("<style>#current::before{content: none}</style>");
-         $('#current_guide').append("<style>#current_guide::after,#current_guide::before{content: none}</style>");
-         $('#rectangles').append("<style>#rectangles::after{content: none}</style>");
-         $('#fullbg').css('display', 'none');
-      })
-   </script>
 </body>
 
 </html>

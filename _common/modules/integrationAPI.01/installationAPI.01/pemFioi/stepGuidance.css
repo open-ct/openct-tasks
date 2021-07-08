@@ -1,0 +1,80 @@
+#guide-box{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 998;
+ }
+ #guide-box > .guide-area{
+    box-shadow: 1px 1px 100000px 100000px rgb(124 152 209  / 50%);
+    position: fixed;
+    transition: all 500ms;
+    /* padding: 10px 0px; */
+ }
+ #guide-box > .guide-area > .guide-tip-box{
+    height: 36px;
+    position: absolute;
+    bottom:-60px;
+    left: 60px;
+    box-sizing: border-box;
+ }
+ #guide-box > .guide-area > .guide-tip-box > .guide-tip-content{
+    height: 100%;
+    background-color: white;
+    border-radius: 12px;
+    position: relative;
+    box-sizing: border-box;
+    padding: 0px 8px;
+    display: flex;
+    align-items: center;
+ }
+ #guide-box > .guide-area > .guide-tip-box > .guide-tip-content > .triangle{
+    /*content:'';
+    display: block;*/
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 12px solid white;
+    top: -12px;
+    /*left: 30px;*/
+ }
+ #guide-box > .guide-area > .guide-tip-box > .guide-tip-content > .circle{
+    width: 8px;
+    height: 8px;
+    border-radius: 8px;
+    background-color: #FDF151;
+    margin: 14px 10px 14px 0px;
+    float: left;
+ }
+ #guide-box > .guide-area > .guide-tip-box > .guide-tip-content > .tip-info{
+    height: 100%;
+    line-height: 36px;
+    display: inline-block;
+    white-space:nowrap;
+    margin-right: 10px;
+ }
+ #guide-box > .guide-area > .guide-tip-box > .guide-tip-content > .tip-info > span{
+    font-size: 14px;
+ }
+ #guide-box > .guide-area > .guide-tip-box > .guide-tip-content > .button-box{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    white-space:nowrap;
+ }
+ #guide-box > .guide-area > .guide-tip-box > .guide-tip-content > .button-box > .step-btn{
+    padding: 0px 8px;
+    height: 24px;
+    border: 1px solid #ccc;
+    margin: 5px 0px;
+    border-radius: 6px;
+    line-height: 24px;
+    cursor: pointer;
+    margin-right: 10px;
+ }
+ #guide-box > .guide-area > .guide-tip-box > .guide-tip-content > .button-box > .step-btn > span{
+    font-size: 14px;
+ }
