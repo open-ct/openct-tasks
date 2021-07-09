@@ -2,91 +2,222 @@
 <html>
 
 <head>
-   <meta charset="utf-8"></meta>
-   <title>FR-2019-17-base-4-encoding</title>
-   <script>
-      window.stringsLanguage = 'en';
-   </script>
-   <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1_M.js" id="import-modules"></script>
-   <script class="remove" type="text/javascript">
-      var modulesPath = '../../../_common/modules';
-      importModules([
-         'jquery-1.7.1', 'jquery-ui.touch-punch', 'raphael-2.2.1', 'JSON-js', 'grid-1.0',
-         'beav-1.0', 'beaver-task-2.0', 'simulation-2.0', 'raphaelFactory-1.0',
-         'delayFactory-1.0', 'simulationFactory-1.0', 'raphaelButton-1.0',
-         'platform-pr', 'buttonsAndMessages', 'installationAPI.01', 'miniPlatform',
-         'taskStyles-0.1', 'randomGenerator-1.0', 'drag_lib-2.0', 'graph-1.0'
-      ]);
-   </script>
-   <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/visual-graph-1.1.js"></script>
-   <script class="remove" type="text/javascript">
-      var json = {
-         "id": "http://castor-informatique.fr/tasks/2019/FR-2019-base-4-encoding/",
-         "language": "en",
-         "version": "en.01",
-         "authors": "Arthur Charguéraud, Mathias Hiron, France-ioi",
-         "translators": [],
-         "license": "CC BY-SA 3.0",
-         "taskPathPrefix": "",
-         "modulesPathPrefix": "",
-         "browserSupport": [],
-         "fullFeedback": true,
-         "acceptedAnswers": [],
-         "usesRandomSeed": false
-       };
-   </script>
-   <script type="text/javascript">
-      var taskStrings = {
-         success: "祝贺你,你成功了!",
-         result: "结果",
-         target: "目标",
-         error: "红色下划线的符号不同",
-         wrongCase: "One of the symbols underlined in red is in uppercase while the other is in lowercase",
-         sliders: "滑块"
-      };
-   </script>
-   <script type="text/javascript" src="task.js"></script>
-   <style>
-      #paper {
-         margin-top: 1em;
-         touch-action: none;
-      }
-      #error {
-         text-align: center;
-      }
-
-   </style>
-   <link rel="stylesheet" type="text/css" href="../public-style.css">
+    <meta charset="utf-8"></meta>
+    <title>FR-2019-17-base-4-encoding</title>
+    <script>
+        window.stringsLanguage = 'en';
+    </script>
+    <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1_M.js" id="import-modules"></script>
+    <script class="remove" type="text/javascript">
+        var modulesPath = '../../../_common/modules';
+        importModules([
+            'jquery-1.7.1', 'jquery-ui.touch-punch', 'raphael-2.2.1', 'JSON-js', 'grid-1.0',
+            'beav-1.0', 'beaver-task-2.0', 'simulation-2.0', 'raphaelFactory-1.0',
+            'delayFactory-1.0', 'simulationFactory-1.0', 'raphaelButton-1.0',
+            'platform-pr', 'buttonsAndMessages', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1', 'randomGenerator-1.0', 'drag_lib-2.0', 'graph-1.0'
+        ]);
+    </script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/visual-graph-1.1.js"></script>
+    <script class="remove" type="text/javascript">
+        var json = {
+            "id": "http://castor-informatique.fr/tasks/2019/FR-2019-base-4-encoding/",
+            "language": "en",
+            "version": "en.01",
+            "authors": "Arthur Charguéraud, Mathias Hiron, France-ioi",
+            "translators": [],
+            "license": "CC BY-SA 3.0",
+            "taskPathPrefix": "",
+            "modulesPathPrefix": "",
+            "browserSupport": [],
+            "fullFeedback": true,
+            "acceptedAnswers": [],
+            "usesRandomSeed": false
+        };
+    </script>
+    <script type="text/javascript">
+        var taskStrings = {
+            success: "祝贺你,你成功了!",
+            result: "结果",
+            target: "目标",
+            error: "红色下划线的符号不同",
+            wrongCase: "One of the symbols underlined in red is in uppercase while the other is in lowercase",
+            sliders: "滑块"
+        };
+    </script>
+    <script type="text/javascript" src="task.js"></script>
+    <script type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/stepGuidance.js"></script>
+    <script type="text/javascript">
+        let elementList = [{
+            target: '#paper > svg > rect:nth-of-type(67)',
+            tips: '点击改变蓝色标识的位置',
+            tip_position: {
+                bottom: '-62px',
+                left: '30px',
+                t_left: '30px'
+            },
+            padding: '10px 10px',
+            level: ['easy'],
+            step: {
+                easy: 0
+            },
+            borderRadius: 16,
+            isSVG: true
+        }, {
+            target: '#paper > svg > rect:nth-of-type(68)',
+            tips: '点击改变蓝色标识的位置',
+            tip_position: {
+                bottom: '-62px',
+                left: '30px',
+                t_left: '30px'
+            },
+            padding: '10px 10px',
+            level: ['medium'],
+            step: {
+                medium: 0,
+                hard: 0
+            },
+            borderRadius: 16,
+            isSVG: true
+        }, {
+            target: '#paper > svg > rect:nth-of-type(69)',
+            tips: '点击改变蓝色标识的位置',
+            tip_position: {
+                bottom: '-62px',
+                left: '30px',
+                t_left: '30px'
+            },
+            padding: '10px 10px',
+            level: ['hard'],
+            step: {
+                hard: 0
+            },
+            borderRadius: 16,
+            isSVG: true
+        }, {
+            target: '#paper > svg > rect:nth-of-type(64)',
+            tips: '这里对字母的定位会随着上方蓝色标识的变化而变化。',
+            tip_position: {
+                bottom: '-62px',
+                left: '-60px',
+                t_left: '70px'
+            },
+            padding: '10px 10px',
+            level: ['easy', 'medium', 'hard'],
+            step: {
+                easy: 1,
+                medium: 1,
+                hard: 1
+            },
+            borderRadius: 16,
+            isSVG: true
+        }, {
+            target: ['#paper > svg > rect:nth-of-type(65)', '#paper > svg > rect:nth-of-type(74)'],
+            tips: '这里的结果是你所定位到的字母，需要使它和结果保持一致哦！',
+            tip_position: {
+                bottom: '-62px',
+                left: '-160px',
+                t_left: '200px'
+            },
+            padding: '20px 10px',
+            level: ['easy'],
+            step: {
+                easy: 2
+            },
+            borderRadius: 16,
+            isSVG: true
+        }, {
+            target: ['#paper > svg > rect:nth-of-type(66)', '#paper > svg > rect:nth-of-type(87)'],
+            tips: '这里的结果是你所定位到的字母，需要使它和结果保持一致哦！',
+            tip_position: {
+                bottom: '-62px',
+                left: '-160px',
+                t_left: '200px'
+            },
+            padding: '20px 10px',
+            level: ['medium'],
+            step: {
+                medium: 2
+            },
+            borderRadius: 16,
+            isSVG: true
+        }, {
+            target: ['#paper > svg > rect:nth-of-type(67)', '#paper > svg > rect:nth-of-type(124)'],
+            tips: '这里的结果是你所定位到的字母，需要使它和结果保持一致哦！',
+            tip_position: {
+                bottom: '-62px',
+                left: '-160px',
+                t_left: '200px'
+            },
+            padding: '20px 10px',
+            level: ['hard'],
+            step: {
+                hard: 2
+            },
+            borderRadius: 16,
+            isSVG: true
+        }, {
+            target: ['#displayHelper_cancel', '#displayHelper_validate'],
+            tips: '你可以点击“验证一下”验证你的答案是否正确，也可以重新开始作答',
+            tip_position: {
+                bottom: '-62px',
+                left: '30px',
+                t_left: '30px'
+            },
+            padding: '10px 0px',
+            level: ['easy', 'medium', 'hard'],
+            step: {
+                easy: 3,
+                medium: 3,
+                hard: 3
+            },
+            borderRadius: 16,
+        }]
+        let stepGuidance = new StepGuidance(elementList, 'base-4-encoing')
+        stepGuidance.init()
+    </script>
+    <style>
+        #paper {
+            margin-top: 1em;
+            touch-action: none;
+        }
+        
+        #error {
+            text-align: center;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="../public-style.css">
+    <link rel="stylesheet" type="text/css" href="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/stepGuidance.css">
 </head>
 
 <body>
-   <div id="task">
-<!--      <h1>4进制编码</h1>-->
-<!--      <div id="tabsContainer"></div>-->
-      <div id="taskContent">
-         <div id="zone_1">
-            <div class="consigne">
-               <!-- <p>小松鼠用滑块来代表 <strong><span class="easy">1个符号</span><span class="medium">2&nbsp;个符号</span><span class="hard">3&nbsp;个符号</span></strong>.</p>
+    <div id="task">
+        <!--      <h1>4进制编码</h1>-->
+        <!--      <div id="tabsContainer"></div>-->
+        <div id="taskContent">
+            <div id="zone_1">
+                <div class="consigne">
+                    <!-- <p>小松鼠用滑块来代表 <strong><span class="easy">1个符号</span><span class="medium">2&nbsp;个符号</span><span class="hard">3&nbsp;个符号</span></strong>.</p>
                <p>移动这些滑块，使结果与目标相同。</p> -->
+                </div>
             </div>
-         </div>
-         <div id="zone_2">
-            <div id="paper"></div>
-            <div id="overlay_1"></div>
-            <div id="overlay_2"></div>
-         </div>
-         <div id="error"></div>
-      </div>
-      <img src="icon.png" style="display:none">
-   </div>
+            <div id="zone_2">
+                <div id="paper"></div>
+                <div id="overlay_1"></div>
+                <div id="overlay_2"></div>
+            </div>
+            <div id="error"></div>
+        </div>
+        <img src="icon.png" style="display:none">
+    </div>
 
-   <!-- task -->
+    <!-- task -->
 
-   <div id="solution">
-      <h2>答案解析</h2>
-      <h2>这是提示信息！</h2>
-   </div>
-   <!-- task-solution -->
+    <div id="solution">
+        <h2>答案解析</h2>
+        <h2>这是提示信息！</h2>
+    </div>
+    <!-- task-solution -->
 </body>
 
 </html>
