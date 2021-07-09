@@ -2,201 +2,204 @@
 <html>
 
 <head>
-   <meta charset="utf-8"></meta>
-   <title>2019-FR-02-registers</title>
-   <script>
-      window.stringsLanguage = 'en';
-   </script>
-   <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1_M.js" id="import-modules"></script>
-   <script class="remove" type="text/javascript">
-      var modulesPath = '../../../_common/modules';
-      importModules([
-         'jquery-1.7.1', 'jquery-ui.touch-punch', 'raphael-2.2.1', 'JSON-js', //'grid-1.0',
-         'beav-1.0', 'beaver-task-2.0', 'simulation-2.0', 'raphaelFactory-1.0',
-         'delayFactory-1.0', 'simulationFactory-1.0', 'raphaelButton-1.0',
-         'platform-pr', 'buttonsAndMessages', 'installationAPI.01', 'miniPlatform',
-         'taskStyles-0.1', 'randomGenerator-1.0', 'drag_lib-2.0',
-         'graph-1.0','visual-graph-1.0','graph-mouse-1.1', 'shape-paths'
-      ]);
-   </script>
-   <script class="remove" type="text/javascript">
-      var json = {
-         "id": "http://castor-informatique.fr/tasks/2019/FR-2019-02-registers/",
-         "language": "en",
-         "version": "en.01",
-         "authors": "Arthur Charguéraud, Mathias Hiron, France-ioi",
-         "translators": [],
-         "license": "CC BY-SA 3.0",
-         "taskPathPrefix": "",
-         "modulesPathPrefix": "",
-         "browserSupport": [],
-         "fullFeedback": true,
-         "acceptedAnswers": [],
-         "usesRandomSeed": false
-       };
-   </script>
-   <script type="text/javascript">
-      var taskStrings = {
-         success: "恭喜, 你成功了 !",
-         tooManyMarkers: function(max) {
-            return "你的储备库里没有小石子了。点击上方已经放置进圆圈的小石子就可以把它们取回储备库。";
-         },
-         sumGreaterThan: function(max) {
-            return "你的储备库里没有小石子了。点击上方已经放置进圆圈的小石子就可以把它们取回储备库。";
-         },
-         noMarkerBelow: "如果你想在红色圆圈中放置小石子，是需要这个圆圈下面的所有圆圈里都已经放置了小石子才可以哦。",
-         placed: "已经放置过小石子了",
-         failure: "上面的圆圈里没有小石子。",
-         reserve: "小石子储备库:",
-         empty: "储备库小石子已经用完了，可以点击之前已经放圆圈里的小石子，取回小石子，再次使用。",
-         validateNow: "你成功了，现在只需要验证一下。",
-         undo: "撤销",
-         pebbleClick: "点击储备库的小石子没有用哦。"
+    <meta charset="utf-8"></meta>
+    <title>2019-FR-02-registers</title>
+    <script>
+        window.stringsLanguage = 'en';
+    </script>
+    <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1_M.js" id="import-modules"></script>
+    <script class="remove" type="text/javascript">
+        var modulesPath = '../../../_common/modules';
+        importModules([
+            'jquery-1.7.1', 'jquery-ui.touch-punch', 'raphael-2.2.1', 'JSON-js', //'grid-1.0',
+            'beav-1.0', 'beaver-task-2.0', 'simulation-2.0', 'raphaelFactory-1.0',
+            'delayFactory-1.0', 'simulationFactory-1.0', 'raphaelButton-1.0',
+            'platform-pr', 'buttonsAndMessages', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1', 'randomGenerator-1.0', 'drag_lib-2.0',
+            'graph-1.0', 'visual-graph-1.0', 'graph-mouse-1.1', 'shape-paths'
+        ]);
+    </script>
+    <script class="remove" type="text/javascript">
+        var json = {
+            "id": "http://castor-informatique.fr/tasks/2019/FR-2019-02-registers/",
+            "language": "en",
+            "version": "en.01",
+            "authors": "Arthur Charguéraud, Mathias Hiron, France-ioi",
+            "translators": [],
+            "license": "CC BY-SA 3.0",
+            "taskPathPrefix": "",
+            "modulesPathPrefix": "",
+            "browserSupport": [],
+            "fullFeedback": true,
+            "acceptedAnswers": [],
+            "usesRandomSeed": false
+        };
+    </script>
+    <script type="text/javascript">
+        var taskStrings = {
+            success: "恭喜, 你成功了 !",
+            tooManyMarkers: function(max) {
+                return "你的储备库里没有小石子了。点击上方已经放置进圆圈的小石子就可以把它们取回储备库。";
+            },
+            sumGreaterThan: function(max) {
+                return "你的储备库里没有小石子了。点击上方已经放置进圆圈的小石子就可以把它们取回储备库。";
+            },
+            noMarkerBelow: "如果你想在红色圆圈中放置小石子，是需要这个圆圈下面的所有圆圈里都已经放置了小石子才可以哦。",
+            placed: "已经放置过小石子了",
+            failure: "上面的圆圈里没有小石子。",
+            reserve: "小石子储备库:",
+            empty: "储备库小石子已经用完了，可以点击之前已经放圆圈里的小石子，取回小石子，再次使用。",
+            validateNow: "你成功了，现在只需要验证一下。",
+            undo: "撤销",
+            pebbleClick: "点击储备库的小石子没有用哦。"
 
-      };
-   </script>
-   <script type="text/javascript" src="task.js"></script>
+        };
+    </script>
+    <script type="text/javascript" src="task.js"></script>
 
-   <script type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/stepGuidance.js"></script>
-   <script type="text/javascript">
-      let elementList = [{
-         target:['#displayHelper_validate','#displayHelper_cancel'],
-         tips:'您可以验证答案是否正确或重新开始',
-         tip_position:{
-            bottom:'-62px',
-            left:'30px',
-            t_left:'30px'
-         },
-         padding:'10px 0px',
-         level:['easy','medium','hard'],
-         step:{
-            easy:2,
-            medium:2,
-            hard:2
-         },
-         borderRadius:16,
-      },{
-         target:'#paper > svg > circle:nth-of-type(4)',
-         tips:'点击空白小圆圈,可以把小石子放进去',
-         tip_position:{
-            bottom:'-62px',
-            left:'0px',
-            t_left:'30px'
-         },
-         padding:'10px 10px',
-         level:['easy'],
-         step:{
-            easy:0,
-         },
-         borderRadius:16,
-         isSVG:true
-      },{
-         target:'#paper > svg > circle:nth-of-type(19)',
-         tips:'点击空白小圆圈,可以把小石子放进去',
-         tip_position:{
-            bottom:'-62px',
-            left:'0px',
-            t_left:'30px'
-         },
-         padding:'10px 10px',
-         level:['hard'],
-         step:{
-            hard:0
-         },
-         borderRadius:16,
-         isSVG:true
-      },{
-         target:'#paper > svg > circle:nth-of-type(8)',
-         tips:'点击空白小圆圈,可以把小石子放进去',
-         tip_position:{
-            bottom:'-62px',
-            left:'0px',
-            t_left:'30px'
-         },
-         padding:'10px 10px',
-         level:['medium'],
-         step:{
-            medium:0
-         },
-         borderRadius:16,
-         isSVG:true
-      },{
-         target:'#undo',
-         tips:'点击取消,或者点击放有石子的小圆圈可以把小石子取回储备库。',
-         tip_position:{
-            bottom:'-62px',
-            left:'-320px',
-            t_left:'360px'
-         },
-         padding:'10px 10px',
-         level:['easy','medium','hard'],
-         step:{
-            easy:1,
-            medium:1,
-            hard:1
-         },
-         borderRadius:16,
-      }]
-      let stepGuidance = new StepGuidance(elementList,'registers')
-      stepGuidance.init()
-   </script>
-   <style>
-      #paper {
-         margin: 1em auto;
-      }
-      #error {
-         text-align: center;
-         height: 2em;
-      }
-      .task-rules li {
-         margin-top: 1em;
-      }
-      #undo {
-         display: block;
-         margin: auto;
-      }
-   </style>
-   <link rel="stylesheet" type="text/css" href="../public-style.css">
-   <link rel="stylesheet" type="text/css" href="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/stepGuidance.css">
+    <script type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/stepGuidance.js"></script>
+    <script type="text/javascript">
+        let elementList = [{
+            target: ['#displayHelper_cancel', '#displayHelper_validate'],
+            tips: '您可以验证答案是否正确或重新开始',
+            tip_position: {
+                bottom: '-62px',
+                left: '30px',
+                t_left: '30px'
+            },
+            padding: '10px 0px',
+            level: ['easy', 'medium', 'hard'],
+            step: {
+                easy: 2,
+                medium: 2,
+                hard: 2
+            },
+            borderRadius: 16,
+        }, {
+            target: '#paper > svg > circle:nth-of-type(4)',
+            tips: '点击空白小圆圈,可以把小石子放进去',
+            tip_position: {
+                bottom: '-62px',
+                left: '0px',
+                t_left: '30px'
+            },
+            padding: '10px 10px',
+            level: ['easy'],
+            step: {
+                easy: 0,
+            },
+            borderRadius: 16,
+            isSVG: true
+        }, {
+            target: '#paper > svg > circle:nth-of-type(19)',
+            tips: '点击空白小圆圈,可以把小石子放进去',
+            tip_position: {
+                bottom: '-62px',
+                left: '0px',
+                t_left: '30px'
+            },
+            padding: '10px 10px',
+            level: ['hard'],
+            step: {
+                hard: 0
+            },
+            borderRadius: 16,
+            isSVG: true
+        }, {
+            target: '#paper > svg > circle:nth-of-type(8)',
+            tips: '点击空白小圆圈,可以把小石子放进去',
+            tip_position: {
+                bottom: '-62px',
+                left: '0px',
+                t_left: '30px'
+            },
+            padding: '10px 10px',
+            level: ['medium'],
+            step: {
+                medium: 0
+            },
+            borderRadius: 16,
+            isSVG: true
+        }, {
+            target: '#undo',
+            tips: '点击取消,或者点击放有石子的小圆圈可以把小石子取回储备库。',
+            tip_position: {
+                bottom: '-62px',
+                left: '-320px',
+                t_left: '360px'
+            },
+            padding: '10px 10px',
+            level: ['easy', 'medium', 'hard'],
+            step: {
+                easy: 1,
+                medium: 1,
+                hard: 1
+            },
+            borderRadius: 16,
+        }]
+        let stepGuidance = new StepGuidance(elementList, 'registers')
+        stepGuidance.init()
+    </script>
+    <style>
+        #paper {
+            margin: 1em auto;
+        }
+        
+        #error {
+            text-align: center;
+            height: 2em;
+        }
+        
+        .task-rules li {
+            margin-top: 1em;
+        }
+        
+        #undo {
+            display: block;
+            margin: auto;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="../public-style.css">
+    <link rel="stylesheet" type="text/css" href="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/stepGuidance.css">
 </head>
 
 <body>
-   <div id="task">
-<!--      <h1>填充小石子</h1>-->
-<!--      <div id="tabsContainer"></div>-->
-      <div id="taskContent">
-         <div id="zone_1">
-            <div class="consigne">
-               <!-- <p>
+    <div id="task">
+        <!--      <h1>填充小石子</h1>-->
+        <!--      <div id="tabsContainer"></div>-->
+        <div id="taskContent">
+            <div id="zone_1">
+                <div class="consigne">
+                    <!-- <p>
                   你的目标是在最顶部的圆圈中放置一个小石子。
                </p>
                <p>想要在<span class="easy medium">一个</span>圆圈中放置<span class="hard">数字所对应数量的</span>小石子, 下面所有箭头指向的圆圈里都要有小石子。 然后你可以再把这些小石子拿回储备库。
                </p>
                <p>点击圆圈放置<span class="easy medium">一个</span><span class="hard">圆圈中数字所对应数量的</span>小石子<span class="hard">组合 , </span>或者拿回<span class="easy medium">所放置的小石子</span><span class="hard">小石子</span>.</p> -->
 
-         </div>
-         </div>
-         <div id="zone_2">
-            <div id="paper"></div>
-            <button type="button" class="btn btn-default" id="undo">取消</button>
-         </div>
-         <div id="error"></div>
-      </div>
-      <img src="icon.png" style="display:none">
-   </div>
+                </div>
+            </div>
+            <div id="zone_2">
+                <div id="paper"></div>
+                <button type="button" class="btn btn-default" id="undo">取消</button>
+            </div>
+            <div id="error"></div>
+        </div>
+        <img src="icon.png" style="display:none">
+    </div>
 
-   <!-- task -->
+    <!-- task -->
 
-   <div id="solution">
-      <h2>答案解析</h2>
-      <h2>这是提示信息！贪心算法</h2>
-   </div>
-   <!-- task-solution -->
-   <script>
-      setTimeout(() => {
-         console.log(document.querySelector("svg"))
-      }, 50);
-   </script>
+    <div id="solution">
+        <h2>答案解析</h2>
+        <h2>这是提示信息！贪心算法</h2>
+    </div>
+    <!-- task-solution -->
+    <script>
+        setTimeout(() => {
+            console.log(document.querySelector("svg"))
+        }, 50);
+    </script>
 </body>
 
 </html>
