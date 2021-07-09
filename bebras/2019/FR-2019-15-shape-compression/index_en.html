@@ -2,182 +2,182 @@
 <html>
 
 <head>
-   <meta charset="utf-8"></meta>
-   <title>FR-2019-15-shape-compression</title>
-   <script>
-      window.stringsLanguage = 'en';
-   </script>
-   <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1_M.js" id="import-modules"></script>
-   <script class="remove" type="text/javascript">
-      var modulesPath = '../../../_common/modules';
-      importModules([
-         'jquery-1.7.1', 'jquery-ui.touch-punch', 'raphael-2.2.1', 'JSON-js', 'grid-1.0',
-         'beav-1.0', 'beaver-task-2.0', 'simulation-2.0', 'raphaelFactory-1.0',
-         'delayFactory-1.0', 'simulationFactory-1.0', 'raphaelButton-1.0',
-         'platform-pr', 'buttonsAndMessages', 'installationAPI.01', 'miniPlatform',
-         'taskStyles-0.1', 'randomGenerator-1.0', 'drag_lib-2.0', 'graph-1.0', 'shape-paths'
-      ]);
-   </script>
-   <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/visual-graph-1.1.js"></script>
+    <meta charset="utf-8"></meta>
+    <title>FR-2019-15-shape-compression</title>
+    <script>
+        window.stringsLanguage = 'en';
+    </script>
+    <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1_M.js" id="import-modules"></script>
+    <script class="remove" type="text/javascript">
+        var modulesPath = '../../../_common/modules';
+        importModules([
+            'jquery-1.7.1', 'jquery-ui.touch-punch', 'raphael-2.2.1', 'JSON-js', 'grid-1.0',
+            'beav-1.0', 'beaver-task-2.0', 'simulation-2.0', 'raphaelFactory-1.0',
+            'delayFactory-1.0', 'simulationFactory-1.0', 'raphaelButton-1.0',
+            'platform-pr', 'buttonsAndMessages', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1', 'randomGenerator-1.0', 'drag_lib-2.0', 'graph-1.0', 'shape-paths'
+        ]);
+    </script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/visual-graph-1.1.js"></script>
 
-   <script class="remove" type="text/javascript">
-      var json = {
-         "id": "http://castor-informatique.fr/tasks/2019/FR-2019-15-shape-compression/",
-         "language": "en",
-         "version": "en.01",
-         "authors": "Arthur Charguéraud, Mathias Hiron, France-ioi",
-         "translators": [],
-         "license": "CC BY-SA 3.0",
-         "taskPathPrefix": "",
-         "modulesPathPrefix": "",
-         "browserSupport": [],
-         "fullFeedback": true,
-         "acceptedAnswers": [],
-         "usesRandomSeed": false
-       };
-   </script>
-   <script type="text/javascript">
-      var taskStrings = {
-         success: "祝贺你,你成功了!",
-         partialSuccess: "你成功地实现了目标，但是使用的形状太多了。 再试一次，希望你的序列只有6个形状哦。",
-         transformationRules: "转换规则:",
-         yourSequence: "你的序列:",
-         result: "结果:",
-         target: "目标:",
-         clickHere: "点击这里",
-         missingShape: "结果序列中缺少形状。",
-         wrongShape: "用红色高亮标注的形状和目标不一样哦。",
-         wrongLength: "结果比目标长。"
-      };
-   </script>
-   <script type="text/javascript" src="task.js"></script>
-   <script type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/stepGuidance.js"></script>
-   <script type="text/javascript">
-      let elementList = [{
-         target:['#displayHelper_validate','#displayHelper_cancel'],
-         tips:'点击“验证一下”验证你的答案是否正确，或重新开始~',
-         tip_position:{
-            bottom:'-62px',
-            left:'30px',
-            t_left:'30px'
-         },
-         padding:'10px 0px',
-         level:['easy','medium','hard'],
-         step:{
-            easy:1,
-            medium:2,
-            hard:2
-         },
-         borderRadius:16,
-      },{
-         target:'#paper > svg > rect:nth-of-type(17)',
-         tips:'点击形状可以变为不同的形状',
-         tip_position:{
-            bottom:'-62px',
-            left:'30px',
-            t_left:'30px'
-         },
-         padding:'10px 10px',
-         level:['easy'],
-         step:{
-            easy:0,
-         },
-         borderRadius:16,
-         isSVG:true
-      },{
-         target:['#paper > svg > rect:nth-of-type(2)','#paper > svg > rect:nth-of-type(3)'],
-         tips:'点击形状可以变为不同的形状',
-         tip_position:{
-            bottom:'-62px',
-            left:'30px',
-            t_left:'30px'
-         },
-         padding:'10px 10px',
-         level:['medium','hard'],
-         step:{
-            medium:0,
-            hard:0
-         },
-         borderRadius:16,
-         isSVG:true
-      },{
-         target:['#paper > svg > rect:nth-of-type(12)','#paper > svg > rect:nth-of-type(13)'],
-         tips:'点击“+”或“-”，增加或减少形状',
-         tip_position:{
-            bottom:'-62px',
-            left:'30px',
-            t_left:'30px'
-         },
-         padding:'10px 10px',
-         level:['medium'],
-         step:{
-            medium:1,
-         },
-         borderRadius:16,
-         isSVG:true
-      },{
-         target:['#paper > svg > rect:nth-of-type(14)','#paper > svg > rect:nth-of-type(15)'],
-         tips:'点击“+”或“-”，增加或减少形状',
-         tip_position:{
-            bottom:'-62px',
-            left:'30px',
-            t_left:'30px'
-         },
-         padding:'10px 10px',
-         level:['hard'],
-         step:{
-            hard:1,
-         },
-         borderRadius:16,
-         isSVG:true
-      }] 
-      let stepGuidance = new StepGuidance(elementList,'shape-compression')
-      let stepGuidance = new StepGuidance(elementList,'align-strips')
-      stepGuidance.init() 
-   </script>
-   
-   <style>
-      #paper {
-         margin-top: 1em;
-      }
-      #error {
-         text-align: center;
-      }
-   </style>
-   <link rel="stylesheet" type="text/css" href="../public-style.css">
-   <link rel="stylesheet" type="text/css" href="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/stepGuidance.css">
+    <script class="remove" type="text/javascript">
+        var json = {
+            "id": "http://castor-informatique.fr/tasks/2019/FR-2019-15-shape-compression/",
+            "language": "en",
+            "version": "en.01",
+            "authors": "Arthur Charguéraud, Mathias Hiron, France-ioi",
+            "translators": [],
+            "license": "CC BY-SA 3.0",
+            "taskPathPrefix": "",
+            "modulesPathPrefix": "",
+            "browserSupport": [],
+            "fullFeedback": true,
+            "acceptedAnswers": [],
+            "usesRandomSeed": false
+        };
+    </script>
+    <script type="text/javascript">
+        var taskStrings = {
+            success: "祝贺你,你成功了!",
+            partialSuccess: "你成功地实现了目标，但是使用的形状太多了。 再试一次，希望你的序列只有6个形状哦。",
+            transformationRules: "转换规则:",
+            yourSequence: "你的序列:",
+            result: "结果:",
+            target: "目标:",
+            clickHere: "点击这里",
+            missingShape: "结果序列中缺少形状。",
+            wrongShape: "用红色高亮标注的形状和目标不一样哦。",
+            wrongLength: "结果比目标长。"
+        };
+    </script>
+    <script type="text/javascript" src="task.js"></script>
+    <script type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/stepGuidance.js"></script>
+    <script type="text/javascript">
+        let elementList = [{
+            target: ['#displayHelper_validate', '#displayHelper_cancel'],
+            tips: '点击“验证一下”验证你的答案是否正确，或重新开始~',
+            tip_position: {
+                bottom: '-62px',
+                left: '30px',
+                t_left: '30px'
+            },
+            padding: '10px 0px',
+            level: ['easy', 'medium', 'hard'],
+            step: {
+                easy: 1,
+                medium: 2,
+                hard: 2
+            },
+            borderRadius: 16,
+        }, {
+            target: '#paper > svg > rect:nth-of-type(17)',
+            tips: '点击形状可以变为不同的形状',
+            tip_position: {
+                bottom: '-62px',
+                left: '30px',
+                t_left: '30px'
+            },
+            padding: '10px 10px',
+            level: ['easy'],
+            step: {
+                easy: 0,
+            },
+            borderRadius: 16,
+            isSVG: true
+        }, {
+            target: ['#paper > svg > rect:nth-of-type(2)', '#paper > svg > rect:nth-of-type(3)'],
+            tips: '点击形状可以变为不同的形状',
+            tip_position: {
+                bottom: '-62px',
+                left: '30px',
+                t_left: '30px'
+            },
+            padding: '10px 10px',
+            level: ['medium', 'hard'],
+            step: {
+                medium: 0,
+                hard: 0
+            },
+            borderRadius: 16,
+            isSVG: true
+        }, {
+            target: ['#paper > svg > rect:nth-of-type(12)', '#paper > svg > rect:nth-of-type(13)'],
+            tips: '点击“+”或“-”，增加或减少形状',
+            tip_position: {
+                bottom: '-62px',
+                left: '30px',
+                t_left: '30px'
+            },
+            padding: '10px 10px',
+            level: ['medium'],
+            step: {
+                medium: 1,
+            },
+            borderRadius: 16,
+            isSVG: true
+        }, {
+            target: ['#paper > svg > rect:nth-of-type(14)', '#paper > svg > rect:nth-of-type(15)'],
+            tips: '点击“+”或“-”，增加或减少形状',
+            tip_position: {
+                bottom: '-62px',
+                left: '30px',
+                t_left: '30px'
+            },
+            padding: '10px 10px',
+            level: ['hard'],
+            step: {
+                hard: 1,
+            },
+            borderRadius: 16,
+            isSVG: true
+        }]
+        let stepGuidance = new StepGuidance(elementList, 'shape-compression')
+        stepGuidance.init()
+    </script>
+
+    <style>
+        #paper {
+            margin-top: 1em;
+        }
+        
+        #error {
+            text-align: center;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="../public-style.css">
+    <link rel="stylesheet" type="text/css" href="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/stepGuidance.css">
 </head>
 
 <body>
-   <div id="task">
-<!--      <h1>对应的形状</h1>-->
-<!--      <div id="tabsContainer"></div>-->
-      <div id="taskContent">
-         <p id="difficultyWarning" class="hard"></p>
-         <div id="zone_1">
-            <div class="consigne">
-               <!-- <p>小松鼠有一种机器，可以根据某些规则变换一系列形状。</p>
+    <div id="task">
+        <!--      <h1>对应的形状</h1>-->
+        <!--      <div id="tabsContainer"></div>-->
+        <div id="taskContent">
+            <p id="difficultyWarning" class="hard"></p>
+            <div id="zone_1">
+                <div class="consigne">
+                    <!-- <p>小松鼠有一种机器，可以根据某些规则变换一系列形状。</p>
                <p>寻找规则， <strong><span class="medium hard">并且</span> 制作一个形状序列，</strong> 使它对应的结果与目标相同。</p>
                <p class="medium hard">点击按钮 <img src="buttons.png" style="width:58px;vertical-align:-10px;"> 增加或者减少形状。</p>
                <p>点击灰色按钮中的形状来更改结果中的形状。 例如, 点击 <img src="button_shape.png" style="width:35px;vertical-align:-14px;">.</p>
                <p class="hard" style="font-weight:bold">为了得到所有的分数，你的序列应该只包含6个形状。</p> -->
+                </div>
             </div>
-         </div>
-         <div id="zone_2">
-            <div id="paper"></div>
-         </div>
-         <div id="error"></div>
-      </div>
-      <img src="icon.png" style="display:none">
-   </div>
+            <div id="zone_2">
+                <div id="paper"></div>
+            </div>
+            <div id="error"></div>
+        </div>
+        <img src="icon.png" style="display:none">
+    </div>
 
-   <!-- task -->
+    <!-- task -->
 
-   <div id="solution">
-      <h2>答案解析</h2>
-      <h2>这是提示信息！</h2>
-   </div>
-   <!-- task-solution -->
+    <div id="solution">
+        <h2>答案解析</h2>
+        <h2>这是提示信息！</h2>
+    </div>
+    <!-- task-solution -->
 </body>
 
 </html>
