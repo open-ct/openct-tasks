@@ -39,41 +39,41 @@
       var taskStrings = {
          success: "祝贺你,你成功了!",
          end: "结束",
-         toRemove: "若要删除卡片，请拖拽&拖拽它\n到响应区域之外。",
-         wrongSpot: "这里已经有一张卡片了。你可以通过将这里的卡片拖向网格区域来移除它。",
+         toRemove: "若要删除卡片，请拖拽&拖拽它\n到方格外。",
+         wrongSpot: "这里已经有一张卡片了。你可以通过将这里的卡片拖出去而移除它。",
          wrongNeighbourLeft: "你试图放置的卡片不在其左边的卡片位置所给出的坐标处。",
          wrongNeighbourRight: "你试图放置的卡片给出了一张卡片的坐标，而这张卡片并不对应于其右侧的位置。",
          wrongOrder: "请从左边第一个开始放置卡片。",
          wrongFirstLetter: "第一张卡片就不正确哦。请再读一遍题干。",
          failure: function(level) {
             if(level == "easy" || level == "medium"){
-               var word = "5个符号的密码";
+               var word = "5个符号组成的密码";
             }else if(level == "hard"){
-               var word = "the three 5 symbols passwords"
+               var word = "5个符号组成的密码"
             }
-            return "You didn't find "+word+".";
+            return "你还没找到 "+word+"。";
          },
          wrongGoto: function(letter,goto,nextLetter,nextCoord) {
             if (goto == null) {
-               return "卡片 "+letter+" 应该在密码的最后一位, 它后面不能再放置卡片了。";
+               return "卡片"+letter+" 应该在密码的最后一位, 它后面不能再放置卡片了。";
             } else {
-               return "The card "+letter+" indicates the cell "+goto.col+goto.row+", but the card "+nextLetter+" that follows it comes from cell "+nextCoord.col+nextCoord.row+".";
+               return "卡片"+letter+"指向的是单元格"+goto.col+goto.row+", 但是卡片"+nextLetter+"却来自单元格"+nextCoord.col+nextCoord.row+"。";
             }
          },
          wrongLastLetter: function(lastLetterCoord) {
-            return "密码未完成哦！ "+lastLetterCoord.col+lastLetterCoord.row+".";
+            return "密码未完成哦！悄悄告诉你，最后一个卡片应该是 "+lastLetterCoord.col+lastLetterCoord.row+"。";
          },
          sameWordTwice: "同一个密码出现了两次",
          tooManyWords: function(n) {
             var plural = (n > 1) ? "s" : "";
-            return "You only need to form "+n+" password"+plural+" in the grid.";
+            return "你只需要形成 "+n+" 密码"+plural+" 在方格上。";
          },
          missingWord: function(nbWords, nbSolutions) {
             var plural = (nbWords > 1) ? "s" : "";
-            return "VYou have found " + nbWords + " password" + plural + ". Continue and find the " + nbSolutions + " passwords.";
+            return "你已经找到了" + nbWords + " 个密码" + plural + "。 继续寻找剩下的密码吧。";
          },
          wrongLength: function(solutionLength) {
-            return "This password doesn't contain " + solutionLength + " symbols.";
+            return "这个密码没有包含 " + solutionLength + " 字母。";
          },
          dropLabel: "在这个区域放置卡片来创造三个密码。"
       };
