@@ -42,9 +42,7 @@ class StepGuidance {
         this.guidanceName = guidanceName
     }
     init() {
-        if (this.getReloadState()) {
-            console.log('页面为点击重载，不再加载步骤引导')
-        } else {
+        if (!this.getReloadState()) {
             window.onload = () => {
                 this.guidanceBegin()
                 this.updateGuidanceStep()

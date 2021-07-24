@@ -1277,7 +1277,6 @@ function setCookie(cookieName) {
 
         restartAllNoConfirm: function() {
             setCookie('reload')
-            console.log('加载了')
             window.location.reload();
             // displayHelper.stopShowingResult();
             // if (!displayHelper.hasLevels) {
